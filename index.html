@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MYT Consultants</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background: #004080;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    h2 { color: #004080; }
+    .service {
+      display: inline-block;
+      margin: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .service:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      background: #004080;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MYT Consultants</h1>
+    <p>Software • Hardware • Telecom • Engineering Advisory</p>
+  </header>
+
+  <section>
+    <h2>Our Services</h2>
+    <div class="service">Software Services</div>
+    <div class="service">Hardware Infrastructure</div>
+    <div class="service">Telecom & Networks</div>
+    <div class="service">Engineering Advisory</div>
+  </section>
+
+  <section>
+    <h2>About Us</h2>
+    <p>We provide consultancy to government and private entities in Pakistan, delivering reliable solutions across technology and engineering domains.</p>
+  </section>
+
+  <footer>
+    <p>Contact: info@mytconsultants.com</p>
+  </footer>
+
+  <script>
+    // Simple animation: fade-in effect
+    document.addEventListener("DOMContentLoaded", () => {
+      const services = document.querySelectorAll(".service");
+      services.forEach((el, i) => {
+        el.style.opacity = 0;
+        setTimeout(() => {
+          el.style.transition = "opacity 1s ease";
+          el.style.opacity = 1;
+        }, i * 500);
+      });
+    });
+  </script>
+</body>
+</html>
