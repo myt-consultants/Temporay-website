@@ -6,141 +6,806 @@
   <title>MYT Consultants</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      background: url('https://images.unsplash.com/photo-1446776877081-d282a0f896e2?w=1600&h=900&fit=crop') no-repeat center center fixed;
-      background-size: cover;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      background-attachment: fixed;
       color: #fff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
     }
-    .overlay {
-      background: rgba(0,0,0,0.65);
-      padding: 60px 20px;
+
+    /* Hero Section with Background Image */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="star1" cx="30%" cy="20%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.8)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0)"/></radialGradient><radialGradient id="star2" cx="70%" cy="60%"><stop offset="0%" style="stop-color:rgba(255,200,100,0.6)"/><stop offset="100%" style="stop-color:rgba(255,200,100,0)"/></radialGradient><radialGradient id="star3" cx="50%" cy="80%"><stop offset="0%" style="stop-color:rgba(100,200,255,0.7)"/><stop offset="100%" style="stop-color:rgba(100,200,255,0)"/></radialGradient></defs><rect width="1200" height="800" fill="none"/><circle cx="360" cy="160" r="80" fill="url(%23star1)"/><circle cx="900" cy="400" r="120" fill="url(%23star2)"/><circle cx="200" cy="600" r="100" fill="url(%23star3)"/><circle cx="1000" cy="150" r="60" fill="rgba(255,255,255,0.3)"/><circle cx="150" cy="750" r="90" fill="rgba(255,150,100,0.4)"/><circle cx="800" cy="700" r="70" fill="rgba(100,255,200,0.35)"/></svg>');
+      background-size: cover;
+      background-position: center;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 40px 20px;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 800px;
+      animation: slideInDown 1s ease-out;
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #00d4ff, #7b68ee, #ff6b9d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      color: #e0e0e0;
+      font-weight: 300;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 15px 40px;
+      background: linear-gradient(135deg, #00d4ff, #7b68ee);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+      color: white;
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 100px 20px;
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.3));
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 60px;
+      background: linear-gradient(135deg, #00d4ff, #7b68ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     .service-card {
-      transition: transform 0.3s ease;
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 40px 30px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      position: relative;
     }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 104, 238, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
     .service-card:hover {
       transform: translateY(-10px);
-      background: rgba(0,100,200,0.3) !important;
+      border-color: rgba(0, 212, 255, 0.5);
+      box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
     }
-    footer {
-      background: rgba(0,0,0,0.9);
-      padding: 20px;
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #00d4ff, #7b68ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .service-card h5 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .service-card p {
+      color: #b0b0b0;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 100px 20px;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      border-radius: 15px;
+      padding: 50px;
+      backdrop-filter: blur(10px);
       text-align: center;
     }
-    #chatbot {
+
+    .about-content p {
+      font-size: 1.1rem;
+      line-height: 2;
+      color: #e0e0e0;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 212, 255, 0.2);
+    }
+
+    footer p {
+      margin: 10px 0;
+      color: #a0a0a0;
+    }
+
+    .social-links {
+      margin: 20px 0;
+    }
+
+    .social-links a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
+      background: linear-gradient(135deg, #00d4ff, #7b68ee);
+      color: white;
+      border-radius: 50%;
+      line-height: 40px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+    }
+
+    /* Chatbot Styles */
+    #chatbot-widget {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 300px;
-      background: #111;
-      border-radius: 8px;
+      width: 400px;
+      height: 600px;
+      background: rgba(20, 20, 40, 0.95);
+      border: 1px solid rgba(0, 212, 255, 0.4);
+      border-radius: 15px;
       overflow: hidden;
-      display: none;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    }
-    #chatbot-header {
-      background: #004080;
-      padding: 10px;
-      cursor: pointer;
-    }
-    #chatbot-messages {
-      height: 200px;
-      overflow-y: auto;
-      padding: 10px;
-      font-size: 14px;
-    }
-    #chatbot-input {
       display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transform: translateY(100vh);
+      transition: transform 0.3s ease;
     }
-    #chatbot-input input {
-      flex: 1;
+
+    #chatbot-widget.active {
+      transform: translateY(0);
+    }
+
+    .chatbot-header {
+      background: linear-gradient(135deg, #00d4ff, #7b68ee);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .chatbot-header-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chatbot-header-title i {
+      font-size: 1.3rem;
+    }
+
+    .close-btn {
+      background: none;
       border: none;
-      padding: 10px;
-    }
-    #chatbot-input button {
-      background: #004080;
       color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .close-btn:hover {
+      transform: rotate(90deg);
+    }
+
+    #chatbot-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .message {
+      display: flex;
+      margin-bottom: 10px;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message.user {
+      justify-content: flex-end;
+    }
+
+    .message.bot {
+      justify-content: flex-start;
+    }
+
+    .message-content {
+      max-width: 70%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      word-wrap: break-word;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .message.user .message-content {
+      background: linear-gradient(135deg, #00d4ff, #7b68ee);
+      color: white;
+      border-bottom-right-radius: 2px;
+    }
+
+    .message.bot .message-content {
+      background: rgba(255, 255, 255, 0.1);
+      color: #e0e0e0;
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      border-bottom-left-radius: 2px;
+    }
+
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 12px 16px;
+    }
+
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(0, 212, 255, 0.6);
+      border-radius: 50%;
+      animation: bounce 1.4s infinite;
+    }
+
+    .typing-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bounce {
+      0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.6;
+      }
+      30% {
+        transform: translateY(-10px);
+        opacity: 1;
+      }
+    }
+
+    .chatbot-input-area {
+      display: flex;
+      gap: 10px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.3);
+      border-top: 1px solid rgba(0, 212, 255, 0.2);
+    }
+
+    #chatbot-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      border-radius: 8px;
+      padding: 10px 15px;
+      color: white;
+      font-size: 0.95rem;
+      transition: border-color 0.3s ease;
+    }
+
+    #chatbot-input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    #chatbot-input:focus {
+      outline: none;
+      border-color: rgba(0, 212, 255, 0.6);
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+    }
+
+    .send-btn {
+      background: linear-gradient(135deg, #00d4ff, #7b68ee);
       border: none;
-      padding: 10px;
+      color: white;
+      border-radius: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .send-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+    }
+
+    .send-btn:active {
+      transform: scale(0.95);
+    }
+
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #00d4ff, #7b68ee);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(0, 212, 255, 0.6);
+    }
+
+    .chatbot-toggle.hidden {
+      display: none;
+    }
+
+    /* Scrollbar Styling */
+    #chatbot-messages::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #chatbot-messages::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    #chatbot-messages::-webkit-scrollbar-thumb {
+      background: rgba(0, 212, 255, 0.4);
+      border-radius: 10px;
+    }
+
+    #chatbot-messages::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 212, 255, 0.6);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      #chatbot-widget {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        border-radius: 0;
+        bottom: 0;
+        right: 0;
+      }
+
+      .chatbot-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header class="overlay text-center">
-    <h1 class="display-4 fw-bold">MYT Consultants</h1>
-    <p class="lead">Software • Hardware • Telecom • Engineering Advisory</p>
-  </header>
+  <!-- Hero Section -->
+  <section class="hero-section" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1200 800%22><defs><radialGradient id=%22sun%22 cx=%2230%25%22 cy=%2220%25%22><stop offset=%220%25%22 style=%22stop-color:rgba(255,150,100,0.9)%22/><stop offset=%22100%25%22 style=%22stop-color:rgba(255,100,50,0.2)%22/></radialGradient><radialGradient id=%22planet1%22 cx=%2260%25%22 cy=%2245%25%22><stop offset=%220%25%22 style=%22stop-color:rgba(100,200,255,0.8)%22/><stop offset=%22100%25%22 style=%22stop-color:rgba(50,100,200,0.3)%22/></radialGradient><radialGradient id=%22planet2%22 cx=%2270%25%22 cy=%2270%25%22><stop offset=%220%25%22 style=%22stop-color:rgba(200,150,100,0.7)%22/><stop offset=%22100%25%22 style=%22stop-color:rgba(150,100,50,0.2)%22/></radialGradient></defs><rect width=%221200%22 height=%22800%22 fill=%22none%22/><circle cx=%22150%22 cy=%22150%22 r=%22100%22 fill=%22url(%23sun)%22/><circle cx=%22700%22 cy=%22250%22 r=%2280%22 fill=%22url(%23planet1)%22/><circle cx=%22900%22 cy=%22550%22 r=%22120%22 fill=%22url(%23planet2)%22/><circle cx=%22300%22 cy=%22650%22 r=%2260%22 fill=%22rgba(255,255,255,0.4)%22/><circle cx=%221050%22 cy=%22200%22 r=%2240%22 fill=%22rgba(255,255,255,0.3)%22/></svg>'); background-size: cover; background-position: center;">
+    <div class="hero-content">
+      <h1>MYT Consultants</h1>
+      <p>Software • Hardware • Telecom • Engineering Advisory</p>
+      <p style="font-size: 0.95rem; color: #b0b0b0;">Transforming Ideas into Intelligent Solutions</p>
+      <button class="cta-button" onclick="scrollToServices()">Explore Our Services</button>
+    </div>
+  </section>
 
-  <section class="overlay text-center">
-    <h2 class="mb-4">Our Services</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-3 service-card card bg-dark text-light m-2 p-3">
-        <h5>Software Services</h5>
-        <p>Custom solutions, enterprise applications, and digital transformation strategies.</p>
-      </div>
-      <div class="col-md-3 service-card card bg-dark text-light m-2 p-3">
-        <h5>Hardware Infrastructure</h5>
-        <p>Data centers, servers, and secure hardware deployments for mission‑critical systems.</p>
-      </div>
-      <div class="col-md-3 service-card card bg-dark text-light m-2 p-3">
-        <h5>Telecom & Networks</h5>
-        <p>End‑to‑end network design, optimization, and telecom advisory services.</p>
-      </div>
-      <div class="col-md-3 service-card card bg-dark text-light m-2 p-3">
-        <h5>Engineering Advisory</h5>
-        <p>Consultancy for industrial projects, smart infrastructure, and sustainable engineering.</p>
+  <!-- Services Section -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <h2 class="section-title">Our Expertise</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-3">
+          <div class="service-card">
+            <div class="service-card-content">
+              <div class="service-icon"><i class="fas fa-code"></i></div>
+              <h5>Software Solutions</h5>
+              <p>Custom applications, cloud platforms, AI/ML integration, and enterprise software development tailored to your business needs.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="service-card">
+            <div class="service-card-content">
+              <div class="service-icon"><i class="fas fa-server"></i></div>
+              <h5>Hardware Infrastructure</h5>
+              <p>Data centers, server architecture, IoT solutions, and secure hardware deployments for mission-critical systems.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="service-card">
+            <div class="service-card-content">
+              <div class="service-icon"><i class="fas fa-network-wired"></i></div>
+              <h5>Telecom & Networks</h5>
+              <p>5G integration, network design, optimization, VoIP solutions, and comprehensive telecom advisory services.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="service-card">
+            <div class="service-card-content">
+              <div class="service-icon"><i class="fas fa-cogs"></i></div>
+              <h5>Engineering Advisory</h5>
+              <p>Industrial automation, smart infrastructure, sustainable engineering, and technical consultancy for complex projects.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="overlay text-center">
-    <h2>About Us</h2>
-    <p>MYT Consultants partners with government and private entities in Pakistan to deliver reliable, innovative, and future‑ready solutions across technology and engineering domains.</p>
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <h2 class="section-title">About MYT Consultants</h2>
+      <div class="about-content">
+        <p>
+          MYT Consultants is a leading technology and engineering advisory firm partnering with government and private entities across Pakistan. We deliver innovative, reliable, and future-ready solutions that drive digital transformation and engineering excellence.
+        </p>
+        <p style="margin-top: 25px;">
+          With expertise spanning software development, infrastructure management, telecommunications, and strategic engineering, we empower organizations to achieve their most ambitious objectives in an increasingly digital world.
+        </p>
+      </div>
+    </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>Contact: info@mytconsultants.com | © 2026 MYT Consultants</p>
+    <div class="social-links">
+      <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p><strong>MYT Consultants</strong></p>
+    <p>Email: info@mytconsultants.com | Phone: +92 (XXX) XXX-XXXX</p>
+    <p style="margin-top: 15px; font-size: 0.9rem;">© 2026 MYT Consultants. All rights reserved.</p>
   </footer>
 
-  <!-- Chatbot -->
-  <div id="chatbot">
-    <div id="chatbot-header">💬 Chat with us</div>
+  <!-- Chatbot Toggle Button -->
+  <button class="chatbot-toggle" onclick="toggleChatbot()">
+    <i class="fas fa-comments"></i>
+  </button>
+
+  <!-- Chatbot Widget -->
+  <div id="chatbot-widget">
+    <div class="chatbot-header">
+      <div class="chatbot-header-title">
+        <i class="fas fa-robot"></i>
+        <span>MYT Assistant</span>
+      </div>
+      <button class="close-btn" onclick="toggleChatbot()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
     <div id="chatbot-messages"></div>
-    <div id="chatbot-input">
-      <input type="text" id="chatbot-text" placeholder="Type a message...">
-      <button onclick="sendMessage()">Send</button>
+    <div class="chatbot-input-area">
+      <input 
+        type="text" 
+        id="chatbot-input" 
+        placeholder="Ask me anything..."
+        onkeypress="handleKeyPress(event)"
+      >
+      <button class="send-btn" onclick="sendMessage()">
+        <i class="fas fa-paper-plane"></i>
+      </button>
     </div>
   </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const chatbot = document.getElementById("chatbot");
-    const header = document.getElementById("chatbot-header");
-    const messages = document.getElementById("chatbot-messages");
-
-    header.addEventListener("click", () => {
-      chatbot.style.display = chatbot.style.display === "none" ? "block" : "none";
-    });
-
-    function sendMessage() {
-      const input = document.getElementById("chatbot-text");
-      const userMsg = input.value.trim();
-      if (!userMsg) return;
-      const userDiv = document.createElement("div");
-      userDiv.textContent = "You: " + userMsg;
-      messages.appendChild(userDiv);
-
-      const botDiv = document.createElement("div");
-      botDiv.textContent = "Bot: Thanks for reaching out! We'll get back to you soon.";
-      messages.appendChild(botDiv);
-
-      input.value = "";
-      messages.scrollTop = messages.scrollHeight;
+    // Chatbot Toggle
+    function toggleChatbot() {
+      const widget = document.getElementById('chatbot-widget');
+      const toggle = document.querySelector('.chatbot-toggle');
+      widget.classList.toggle('active');
+      toggle.classList.toggle('hidden');
     }
+
+    // Knowledge Base for Chatbot
+    const knowledgeBase = {
+      greetings: {
+        keywords: ['hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening'],
+        responses: [
+          'Hello! Welcome to MYT Consultants. How can I assist you today?',
+          'Hi there! 👋 I\'m MYT Assistant. What can I help you with?',
+          'Greetings! Feel free to ask about our services, expertise, or anything else.'
+        ]
+      },
+      services: {
+        keywords: ['services', 'what do you do', 'expertise', 'offerings', 'solutions', 'help'],
+        responses: [
+          'We offer four main service areas:\n\n📱 Software Solutions - Custom apps and enterprise development\n🖥️ Hardware Infrastructure - Data centers and servers\n📡 Telecom & Networks - 5G and network design\n⚙️ Engineering Advisory - Industrial automation and consulting'
+        ]
+      },
+      software: {
+        keywords: ['software', 'development', 'app', 'application', 'code', 'programming'],
+        responses: [
+          'Our Software Solutions include custom application development, cloud platforms, AI/ML integration, and enterprise software tailored to your business needs. Would you like more details?'
+        ]
+      },
+      hardware: {
+        keywords: ['hardware', 'infrastructure', 'data center', 'server', 'deployment'],
+        responses: [
+          'We provide comprehensive hardware infrastructure solutions including data center setup, server architecture, IoT deployment, and secure systems for mission-critical operations.'
+        ]
+      },
+      telecom: {
+        keywords: ['telecom', 'network', '5g', 'voip', 'communications', 'connectivity'],
+        responses: [
+          'Our Telecom & Networks expertise covers 5G integration, network design and optimization, VoIP solutions, and strategic telecom advisory services.'
+        ]
+      },
+      engineering: {
+        keywords: ['engineering', 'industrial', 'automation', 'advisory', 'infrastructure', 'consulting'],
+        responses: [
+          'We specialize in engineering consultancy for industrial automation, smart infrastructure projects, sustainable solutions, and complex technical challenges.'
+        ]
+      },
+      contact: {
+        keywords: ['contact', 'email', 'phone', 'reach', 'get in touch'],
+        responses: [
+          'You can reach us at:\n📧 Email: info@mytconsultants.com\n☎️ Phone: +92 (XXX) XXX-XXXX\n\nWe\'d love to hear from you!'
+        ]
+      },
+      about: {
+        keywords: ['about', 'company', 'who', 'background', 'team', 'experience'],
+        responses: [
+          'MYT Consultants is a leading technology and engineering advisory firm based in Pakistan. We partner with government and private entities to deliver innovative, reliable, and future-ready solutions across software, hardware, telecommunications, and engineering domains.'
+        ]
+      },
+      location: {
+        keywords: ['location', 'where', 'office', 'based', 'pakistan'],
+        responses: [
+          'MYT Consultants is based in Pakistan and serves clients across the government and private sectors throughout the country.'
+        ]
+      },
+      help: {
+        keywords: ['help', 'assist', 'support', 'problem', 'issue', 'troubleshoot'],
+        responses: [
+          'I can help you with:\n• Information about our services\n• General inquiries\n• Contacting our team\n• Details about our expertise\n\nWhat would you like to know?'
+        ]
+      },
+      default: {
+        responses: [
+          'That\'s interesting! Could you provide more details? You can ask me about our services, expertise, or how to contact us.',
+          'I\'m here to help! Feel free to ask about our Software Solutions, Hardware Infrastructure, Telecom & Networks, or Engineering Advisory services.',
+          'Thanks for your question! I didn\'t quite understand. Could you rephrase or ask about one of our service areas?'
+        ]
+      }
+    };
+
+    // Get Bot Response
+    function getBotResponse(userMessage) {
+      const lowerMessage = userMessage.toLowerCase();
+      
+      for (const [category, data] of Object.entries(knowledgeBase)) {
+        if (category === 'default') continue;
+        if (data.keywords && data.keywords.some(keyword => lowerMessage.includes(keyword))) {
+          return data.responses[Math.floor(Math.random() * data.responses.length)];
+        }
+      }
+      
+      return knowledgeBase.default.responses[Math.floor(Math.random() * knowledgeBase.default.responses.length)];
+    }
+
+    // Send Message
+    function sendMessage() {
+      const input = document.getElementById('chatbot-input');
+      const message = input.value.trim();
+      
+      if (!message) return;
+      
+      const messagesContainer = document.getElementById('chatbot-messages');
+      
+      // Add user message
+      const userMessageDiv = document.createElement('div');
+      userMessageDiv.className = 'message user';
+      userMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(message)}</div>`;
+      messagesContainer.appendChild(userMessageDiv);
+      
+      input.value = '';
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      
+      // Show typing indicator
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'message bot';
+      typingDiv.innerHTML = `<div class="typing-indicator">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>`;
+      messagesContainer.appendChild(typingDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      
+      // Simulate typing delay
+      setTimeout(() => {
+        messagesContainer.removeChild(typingDiv);
+        
+        const botResponse = getBotResponse(message);
+        const botMessageDiv = document.createElement('div');
+        botMessageDiv.className = 'message bot';
+        botMessageDiv.innerHTML = `<div class="message-content">${escapeHtml(botResponse).replace(/\n/g, '<br>')}</div>`;
+        messagesContainer.appendChild(botMessageDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }, 800);
+    }
+
+    // Handle Enter Key
+    function handleKeyPress(event) {
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        sendMessage();
+      }
+    }
+
+    // Escape HTML for security
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+
+    // Scroll to Services
+    function scrollToServices() {
+      document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Initialize with welcome message
+    window.addEventListener('load', () => {
+      const messagesContainer = document.getElementById('chatbot-messages');
+      const welcomeDiv = document.createElement('div');
+      welcomeDiv.className = 'message bot';
+      welcomeDiv.innerHTML = `<div class="message-content">👋 Welcome! I'm the MYT Assistant. Ask me about our services, contact information, or anything else!</div>`;
+      messagesContainer.appendChild(welcomeDiv);
+    });
   </script>
 </body>
 </html>
