@@ -264,7 +264,6 @@
     <div class="bellmenu" id="bellMenu">
       <h6>Notices</h6>
       <div id="noticeList"></div>
-      <button class="act" id="aiAct" onclick="enableGlobal()">Enable online AI (Global mode)</button>
     </div>
     <button class="cta" onclick="openChat()">Get support</button>
     <button class="navtoggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">â‰¡</button>
@@ -351,14 +350,14 @@
   <div class="reveal">
     <span class="eyebrow">The NAHL assistant</span>
     <h2 style="margin-top:9px;">A guide that listens, and knows its limits</h2>
-    <p class="sec-sub">By default the assistant runs <b>Local mode</b> â€” a compact offline engine, no sign-in, nothing leaves your device. You can optionally switch to <b>Global mode</b> (a free online model) from the bell menu, top-right. It answers from verified content, cites sources, and never diagnoses or prescribes.</p>
+    <p class="sec-sub">In <b>Global mode</b> the assistant uses Google's Gemini to phrase answers â€” but only from NAHL's verified, cited content, never from the model's own guesses. If the online AI is unavailable it falls back seamlessly to <b>Local mode</b>, a compact offline engine that runs entirely on your device. Either way it cites its sources and never diagnoses or prescribes.</p>
     <div class="feat"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><b>Grounded &amp; cited.</b> <span>Every answer traces to Tier 1â€“2 sources.</span></div></div>
     <div class="feat"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg><div><b>Safety first.</b> <span>Crisis language routes to human help; no dosages or diagnoses.</span></div></div>
     <div class="feat"><svg viewBox="0 0 24 24"><path d="M4 7V5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2v-2"/><path d="M2 12h9m0 0l-3-3m3 3l-3 3"/></svg><div><b>No pop-ups.</b> <span>Sign-in is never forced; notices live in the bell menu.</span></div></div>
     <button class="btn-fill" style="margin-top:24px;" onclick="openChat()">Try the assistant</button>
   </div>
   <div class="asst-card reveal">
-    <span class="badge-off"><span class="dot"></span> Local by default Â· Global is opt-in</span>
+    <span class="badge-off"><span class="dot"></span> Grounded in verified sources Â· offline fallback</span>
     <p style="color:var(--muted);font-size:14px;margin:16px 0 12px;">Ask things like:</p>
     <div class="chips">
       <span class="chip" onclick="openChat('What is metachromatic leukodystrophy?')">What is MLD?</span>
@@ -386,7 +385,7 @@
     <h4><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9l-8 14A2 2 0 004 21h16a2 2 0 001.7-3l-8-14a2 2 0 00-3.4 0z"/></svg> Important â€” please read</h4>
     <p><b>NAHL â€” National Alliance for Hereditary Limitations â€” is a parent support group offering non-medical guidance and general information only.</b> It is not a hospital, clinic, or medical provider, and nothing here is a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified physician for any medical decision.</p>
     <p>The assistant does not diagnose conditions or recommend medicines, doses, or treatments. Information is drawn from trusted sources and cited, but may be incomplete or out of date; treatment and trial availability varies by country and changes over time. Listed institutions are public information and do not imply endorsement or partnership.</p>
-    <p>In <b>Global mode</b>, your messages are sent to a free third-party AI service to generate replies â€” please do not share names or identifying details. <b>Local mode</b> runs entirely on your device. This is a prototype demo; verify all details independently. <b>In an emergency, contact a qualified doctor or your local emergency services immediately.</b></p>
+    <p>In <b>Global mode</b>, your messages are sent to Google's Gemini service to generate replies â€” please do not share names or identifying details. <b>Local mode</b> runs entirely on your device. This is a prototype demo; verify all details independently. <b>In an emergency, contact a qualified doctor or your local emergency services immediately.</b></p>
   </div>
 </div></section>
 
@@ -415,9 +414,13 @@
 <script>
 /* ============================================================
    NAHL â€” access gate, bell notices, Local/Global modes,
-   offline engine, optional Puter.js (lazy, opt-in, no popups).
+   offline engine + optional Google Gemini (Global mode) with offline fallback.
    ============================================================ */
-const CONFIG = { helplines: [ /* { name:"â€¦", phone:"â€¦" } add VERIFIED numbers */ ] };
+const CONFIG = {
+  geminiKey: "PASTE_YOUR_GEMINI_KEY_HERE",   /* <-- paste your AQ.â€¦ Gemini key here, between the quotes */
+  geminiModel: "gemini-2.5-flash",
+  helplines: [ /* { name:"â€¦", phone:"â€¦" } add VERIFIED numbers */ ]
+};
 const ACCESS = /^MYT\d{3}$/;   // demo access codes: MYT000 â€¦ MYT999
 
 /* ---------- access gate ---------- */
@@ -445,26 +448,29 @@ function toggleBell(){ const m=document.getElementById('bellMenu'); const open=m
 document.addEventListener('click',e=>{ const b=document.getElementById('bell'),m=document.getElementById('bellMenu');
   if(m.classList.contains('open') && !m.contains(e.target) && !b.contains(e.target)) m.classList.remove('open'); });
 renderNotices();
-addNotice("You're in Local mode â€” the offline assistant, with nothing leaving your device. For richer answers you can switch on the optional online AI below (it sends messages to a free third-party service).");
 
-/* ---------- modes ---------- */
-let aiOn=false, puterLoaded=false;
-const modePill=document.getElementById('modePill'), stBadge=document.getElementById('stBadge'), aiAct=document.getElementById('aiAct');
+/* ---------- modes: Gemini (Global) with offline (Local) fallback ---------- */
+let aiOn=false;
+const modePill=document.getElementById('modePill'), stBadge=document.getElementById('stBadge');
+function keySet(){ return CONFIG.geminiKey && CONFIG.geminiKey.indexOf('PASTE')<0 && CONFIG.geminiKey.length>15; }
 function setMode(global){ aiOn=global;
   modePill.textContent=global?'Global mode':'Local mode'; modePill.className='modepill '+(global?'global':'local');
-  stBadge.textContent=global?'Global Â· online AI':'Local Â· offline';
-  aiAct.textContent=global?'Online AI connected âœ“':'Enable online AI (Global mode)'; aiAct.disabled=global; aiAct.style.opacity=global?'.6':'1'; }
-function loadPuter(){ return new Promise((res,rej)=>{ if(puterLoaded&&typeof puter!=='undefined')return res();
-  const s=document.createElement('script'); s.src='https://js.puter.com/v2/';
-  s.onload=()=>{puterLoaded=true;res();}; s.onerror=()=>rej(new Error('load')); document.head.appendChild(s); }); }
-async function enableGlobal(){
-  aiAct.textContent='Connectingâ€¦'; aiAct.disabled=true;
-  try{ await loadPuter();
-    if(puter.auth && typeof puter.auth.isSignedIn==='function' && !puter.auth.isSignedIn()){ await puter.auth.signIn(); }
-    setMode(true); addNotice('Online AI connected â€” Global mode is on. Replies now use a free third-party model; please avoid sharing identifying details.');
-  }catch(e){ setMode(false); aiAct.disabled=false; aiAct.textContent='Enable online AI (Global mode)';
-    addNotice('Could not connect the online AI (it may be blocked or you cancelled sign-in). Staying in Local mode â€” everything still works.'); }
+  stBadge.textContent=global?'Global Â· online AI':'Local Â· offline'; }
+async function gemini(question, ctx){
+  const url="https://generativelanguage.googleapis.com/v1beta/models/"+CONFIG.geminiModel+":generateContent";
+  const body={ system_instruction:{parts:[{text:SYS_LIMITS}]},
+    contents:[{role:"user",parts:[{text:"CONTEXT:\n"+ctx+"\n\nQUESTION: "+question}]}],
+    generationConfig:{temperature:0.3,maxOutputTokens:380} };
+  const r=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":CONFIG.geminiKey},body:JSON.stringify(body)});
+  if(!r.ok) throw new Error("http "+r.status);
+  const data=await r.json();
+  const cand=(data.candidates||[])[0]||{}; const parts=(cand.content||{}).parts||[];
+  const txt=parts.map(p=>p.text||"").join("").trim();
+  if(!txt) throw new Error("empty");
+  return txt;
 }
+if(keySet()){ setMode(true); addNotice("Global mode is on â€” answers use Google's Gemini, grounded in NAHL's verified sources. Your messages are sent to Google to generate replies, so please don't share names or identifying details."); }
+else { setMode(false); addNotice("Local mode â€” the offline engine; nothing leaves your device. To enable Global mode (online AI), add a Gemini API key to CONFIG.geminiKey in the page source."); }
 
 /* ---------- data ---------- */
 const tierName={T1:"tt1",T2:"tt2"};
@@ -596,7 +602,7 @@ function bot(r){const m=document.createElement('div');m.className='m bot'+(r.cls
 function pText(r){if(!r)return'';if(typeof r==='string')return r;return r.message&&r.message.content||r.text||r.content||(r.choices&&r.choices[0]&&r.choices[0].message&&r.choices[0].message.content)||'';}
 function openChat(q){panel.classList.add('open');document.getElementById('fab').style.display='none';
   if(!msgs.children.length){bot({text:"Assalam-o-alaikum. I'm NAHL â€” a parent-support guide for rare genetic conditions."});
-    note("How I work: I'm not a doctor and I don't diagnose or prescribe. I answer from verified, cited sources. You're in "+(aiOn?"Global mode â€” messages go to a free online AI, so please don't share names or identifying details.":"Local mode â€” I run on this device's offline engine.")+" In an emergency, contact a doctor or local services.");}
+    note("How I work: I'm not a doctor and I don't diagnose or prescribe. I answer from verified, cited sources. You're in "+(aiOn?"Global mode â€” Google's Gemini phrases the reply from NAHL's verified content, so please don't share names or identifying details.":"Local mode â€” I run on this device's offline engine.")+" In an emergency, contact a doctor or local services.");}
   if(q){ask(q);} else input.focus();}
 function closeChat(){panel.classList.remove('open');document.getElementById('fab').style.display='flex';}
 async function ask(text){
@@ -607,15 +613,14 @@ async function ask(text){
   if(g==='advice'){bot({text:"I can't recommend medicines, doses or treatments â€” that must come from a qualified doctor who knows the full picture. I can explain a condition in general terms or help you find a specialist. Would that help?"});return;}
   const hits=NAHL.retrieve(text);
   const cites=hits.flatMap(h=>h.src).filter((s,i,a)=>a.findIndex(x=>x[0]===s[0])===i);
-  if(aiOn && typeof puter!=='undefined' && puter.ai && puter.ai.chat){
+  if(aiOn && keySet()){
     const typing=bot({text:"â€¦"});
-    try{const ctx=hits.length?hits.map(h=>`[${h.name}] What: ${h.what} Signs: ${h.signs} Treatment: ${h.status}. Pakistan: ${h.pk}`).join("\n"):"No specific verified NAHL page matched this question.";
-      const resp=await puter.ai.chat([{role:"system",content:SYS_LIMITS},{role:"user",content:"CONTEXT:\n"+ctx+"\n\nQUESTION: "+text}],{temperature:0.3,max_tokens:320});
-      const out=pText(resp).trim(); if(!out)throw new Error('empty');
+    try{const ctx=hits.length?hits.map(h=>`[${h.name}] What: ${h.what} Signs: ${h.signs} Treatment: ${h.status}. Pakistan: ${h.pk} Sources: ${h.src.map(s=>s[0]).join(', ')}`).join("\n"):"No specific verified NAHL page matched this question.";
+      const out=await gemini(text, ctx);
       typing.textContent=out;
       if(cites.length){const c=document.createElement('div');c.className='cites';c.innerHTML='Sources: '+cites.map(s=>s[0]+'<span class="c">'+s[1]+'</span>').join(' ');typing.appendChild(c);}
       const d=document.createElement('div');d.className='dis';d.textContent=DIS;typing.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
-    }catch(e){typing.remove();setMode(false);addNotice('The online AI did not respond, so I switched back to Local mode for this answer.');bot(NAHL.offline(text));}
+    }catch(e){typing.remove();setMode(false);addNotice('Online AI was unavailable (quota, key, or network), so I answered from the offline engine and switched to Local mode for now.');bot(NAHL.offline(text));}
   } else { bot(NAHL.offline(text)); }
 }
 function send(){const t=input.value.trim();if(!t)return;input.value='';ask(t);}
