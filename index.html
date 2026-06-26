@@ -266,7 +266,7 @@
       <div id="noticeList"></div>
     </div>
     <button class="cta" onclick="openChat()">Get support</button>
-    <button class="navtoggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">â‰¡</button>
+    <button class="navtoggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
   </div>
 </nav>
 
@@ -348,7 +348,7 @@
 
 <section id="assistant"><div class="wrap asst">
   <div class="reveal">
-    <span class="eyebrow">The NAHL assistant</span>
+    <span class="eyebrow">Meet AISHA</span>
     <h2 style="margin-top:9px;">A guide that listens, and knows its limits</h2>
     <p class="sec-sub">In <b>Global mode</b> the assistant uses Google's Gemini to phrase answers â€” but only from NAHL's verified, cited content, never from the model's own guesses. If the online AI is unavailable it falls back seamlessly to <b>Local mode</b>, a compact offline engine that runs entirely on your device. Either way it cites its sources and never diagnoses or prescribes.</p>
     <div class="feat"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><b>Grounded &amp; cited.</b> <span>Every answer traces to Tier 1â€“2 sources.</span></div></div>
@@ -395,11 +395,11 @@
 </div></div></footer>
 
 <button class="fab" id="fab" onclick="openChat()" aria-label="Open NAHL assistant">
-  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Ask NAHL</button>
+  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Ask AISHA</button>
 <section class="panel" id="panel" aria-label="NAHL assistant">
-  <div class="ph"><span class="hex" style="width:30px;height:30px;font-size:13px;">N</span>
-    <div><div class="ti">NAHL</div><div class="st" id="stBadge">Local Â· offline</div></div>
-    <button class="x" onclick="closeChat()" aria-label="Close">Ã—</button></div>
+  <div class="ph"><span class="hex" style="width:30px;height:30px;font-size:13px;">A</span>
+    <div><div class="ti">AISHA</div><div class="st" id="stBadge">Local Â· offline</div></div>
+    <button class="x" onclick="closeChat()" aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="msgs" id="msgs"></div>
   <div class="pf">
     <div class="chips">
@@ -417,7 +417,7 @@
    offline engine + optional Google Gemini (Global mode) with offline fallback.
    ============================================================ */
 const CONFIG = {
-  geminiKey: "AQ.Ab8RN6IaGTw34iiNn2TG9YKVKbbbwbR15Rv84oomFBecqUMSeg",   /* <-- paste your AQ.â€¦ Gemini key here, between the quotes */
+  geminiKey: "PASTE_YOUR_GEMINI_KEY_HERE",   /* <-- paste your AQ.â€¦ Gemini key here, between the quotes */
   geminiModel: "gemini-2.5-flash",
   helplines: [ /* { name:"â€¦", phone:"â€¦" } add VERIFIED numbers */ ]
 };
@@ -477,7 +477,7 @@ const tierName={T1:"tt1",T2:"tt2"};
 const DIS="General information only â€” not a diagnosis or medical advice. Please consult a qualified doctor.";
 const KB = {
   stories: [
-    {ctry:"ðŸ‡µðŸ‡° Pakistan Â· MLD", title:"Born on Rare Disease Day â€” Aisha's story",
+    {ctry:"Pakistan Â· MLD", title:"Born on Rare Disease Day â€” Aisha's story",
      teaser:"Aisha was born on Rare Disease Day 2019 in Islamabad and later diagnosed with infantile MLD â€” the same disease that had taken her elder sister, Nahl, in 2016. Because Nahl's rare mutation had already been identified, Aisha's diagnosis came in time for her to receive trial gene therapy in Milan. Now walking at age three, she became the only child from Pakistan to receive it â€” and her family hopes her story opens doors for others who lack timely diagnosis and treatment.",
      src:"Rare Disease Day", url:"https://www.rarediseaseday.org/heroes/born-on-rare-disease-day-with-a-rarest-of-disease-mutation-rare-amongst-the-many-rare/"}
   ],
@@ -540,8 +540,8 @@ const KB = {
 
 /* ---------- render ---------- */
 document.getElementById('storyList').innerHTML = KB.stories.map(s=>
-  `<div class="story"><div class="cty">${s.ctry}</div><h5>${s.title}</h5><p>${s.teaser}</p>
-   <a class="rd" href="${s.url}" target="_blank" rel="noopener">Read the full story â†’ ${s.src}</a></div>`).join('');
+  `<div class="story"><div class="cty"><svg viewBox="0 0 30 20" width="17" height="11" style="vertical-align:middle;border-radius:2px;margin-right:5px"><rect width="30" height="20" fill="#01411C"/><rect width="7.5" height="20" fill="#fff"/><circle cx="18.5" cy="10" r="5" fill="#fff"/><circle cx="20" cy="10" r="4.2" fill="#01411C"/><path d="M23.5 7.2l.6 1.9 1.9.0-1.6 1.2.6 1.9-1.5-1.1-1.5 1.1.6-1.9-1.6-1.2 1.9 0z" fill="#fff"/></svg>${s.ctry}</div><h5>${s.title}</h5><p>${s.teaser}</p>
+   <a class="rd" href="${s.url}" target="_blank" rel="noopener">Read the full story <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M5 12h14M13 6l6 6-6 6"/></svg> ${s.src}</a></div>`).join('');
 function renderConds(list){
   document.getElementById('condBody').innerHTML = list.length ? list.map(c=>{const i=KB.conditions.indexOf(c);
     return `<tr class="clk" onclick="showCond(${i})"><td><span class="cn">${c.name}</span></td><td><span class="gene">${c.gene}</span></td>
@@ -551,7 +551,7 @@ function renderConds(list){
   document.getElementById('condCount').textContent = list.length+" of "+KB.conditions.length+" shown";
 }
 function showCond(i){const c=KB.conditions[i],d=document.getElementById('condDetail');
-  d.innerHTML=`<button class="close" onclick="document.getElementById('condDetail').classList.remove('show')">Ã—</button>
+  d.innerHTML=`<button class="close" onclick="document.getElementById('condDetail').classList.remove('show')"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <h3>${c.name}</h3><div class="meta">Gene ${c.gene} Â· ${c.inherit} Â· ${c.category}</div>
     <h4>What it is</h4><p>${c.what}</p><h4>Common signs</h4><p>${c.signs}</p><h4>How it is diagnosed</h4><p>${c.dx}</p>
     <h4>Treatment / trials</h4><p>${c.status}. Availability and access vary by country.</p><h4>In Pakistan</h4><p>${c.pk}</p>
@@ -579,9 +579,9 @@ const NAHL=(function(){
   function offline(text){const q=norm(text);
     if(/\b(family|families|support group|connect|alone|other parents)\b/.test(q))
       return {text:"You are not alone. Communities like RareConnect (EURORDIS) and disease-specific groups connect families worldwide; locally, look for moderated WhatsApp and Facebook groups for your child's condition. Tell me the condition and I'll point you to good starting places â€” PSMG can also help you reach a specialist who often knows local family networks."};
-    if(/\b(gene therapy|treatment|cure|trial|treatable)\b/.test(q)){const tx=KB.conditions.filter(c=>c.stype==='st-appr').slice(0,6).map(c=>"â€¢ "+c.name+" â€” "+c.status).join("\n");
+    if(/\b(gene therapy|treatment|cure|trial|treatable)\b/.test(q)){const tx=KB.conditions.filter(c=>c.stype==='st-appr').slice(0,6).map(c=>"- "+c.name+" â€” "+c.status).join("\n");
       return {text:"Several conditions in our library now have disease-modifying treatments or active trials internationally (access varies by country). Examples:\n\n"+tx+"\n\nOpen a row in the Conditions table for details, and always discuss options with a specialist.",cites:[["GARD","T1"],["Orphanet","T1"]],dis:DIS};}
-    if(/\b(test|testing|genetic|diagnos|where|hospital|doctor|specialist|karachi|lahore|islamabad)\b/.test(q)){const d=KB.directory.slice(0,3).map(o=>"â€¢ "+o.name+(o.city!=="National"?" ("+o.city+")":"")).join("\n");
+    if(/\b(test|testing|genetic|diagnos|where|hospital|doctor|specialist|karachi|lahore|islamabad)\b/.test(q)){const d=KB.directory.slice(0,3).map(o=>"- "+o.name+(o.city!=="National"?" ("+o.city+")":"")).join("\n");
       return {text:"For genetic evaluation and testing in Pakistan, good starting points are:\n\n"+d+"\n\nAlways verify a specialist on the PMDC register first. Tell me the condition and I can be more specific.",cites:[["PSMG","T1"]]};}
     const hits=retrieve(text);
     if(!hits.length) return {text:"I don't have a verified page on that yet, so I won't guess. The safest next step is a medical geneticist â€” reachable through PSMG â€” or browse the Conditions table on this page. If you describe the main symptoms, I'll try to find a match."};
@@ -589,7 +589,7 @@ const NAHL=(function(){
     return {text:`Here's what NAHL's verified page on ${c.name} says:\n\n${c.what}\n\nCommon signs: ${c.signs}\n\nTreatment status: ${c.status} (access varies).\n\nIn Pakistan: ${c.pk}\n\nOpen the "${c.name}" row in the Conditions table for the full page.`,cites:c.src,dis:DIS};}
   return {score,retrieve,gate,offline};
 })();
-const SYS_LIMITS="You are NAHL, a warm, emotionally steady guide for families affected by rare genetic diseases in Pakistan and worldwide. You are a non-medical parent-support guide. RULES: Use ONLY the information in CONTEXT to make any medical statement; if CONTEXT does not cover it, say you don't have a verified source and suggest seeing a specialist. NEVER diagnose. NEVER recommend medicines, doses, or treatments. Be brief, plain, kind, hopeful but honest. Do not invent facts, names, statistics or sources. Always defer to a qualified doctor.";
+const SYS_LIMITS="You are AISHA (Artificially Intelligent System for Hereditary Advisory), the assistant of NAHL, a warm, emotionally steady guide for families affected by rare genetic diseases in Pakistan and worldwide. You are a non-medical parent-support guide. RULES: Use ONLY the information in CONTEXT to make any medical statement; if CONTEXT does not cover it, say you don't have a verified source and suggest seeing a specialist. NEVER diagnose. NEVER recommend medicines, doses, or treatments. Be brief, plain, kind, hopeful but honest. Do not invent facts, names, statistics or sources. Always defer to a qualified doctor.";
 
 /* ---------- chat ---------- */
 const panel=document.getElementById('panel'),msgs=document.getElementById('msgs'),input=document.getElementById('chatInput');
@@ -599,10 +599,9 @@ function bot(r){const m=document.createElement('div');m.className='m bot'+(r.cls
   if(r.cites&&r.cites.length){const c=document.createElement('div');c.className='cites';c.innerHTML='Sources: '+r.cites.map(s=>s[0]+'<span class="c">'+s[1]+'</span>').join(' ');m.appendChild(c);}
   if(r.dis){const d=document.createElement('div');d.className='dis';d.textContent=r.dis;m.appendChild(d);}
   msgs.appendChild(m);msgs.scrollTop=msgs.scrollHeight;return m;}
-function pText(r){if(!r)return'';if(typeof r==='string')return r;return r.message&&r.message.content||r.text||r.content||(r.choices&&r.choices[0]&&r.choices[0].message&&r.choices[0].message.content)||'';}
 function openChat(q){panel.classList.add('open');document.getElementById('fab').style.display='none';
-  if(!msgs.children.length){bot({text:"Assalam-o-alaikum. I'm NAHL â€” a parent-support guide for rare genetic conditions."});
-    note("How I work: I'm not a doctor and I don't diagnose or prescribe. I answer from verified, cited sources. You're in "+(aiOn?"Global mode â€” Google's Gemini phrases the reply from NAHL's verified content, so please don't share names or identifying details.":"Local mode â€” I run on this device's offline engine.")+" In an emergency, contact a doctor or local services.");}
+  if(!msgs.children.length){bot({text:"Assalam-o-alaikum, and welcome. I'm AISHA â€” an Artificially Intelligent System for Hereditary Advisory. I exist for one reason: so that no family facing a rare genetic condition has to search in the dark, or feel alone. I'll help you understand a diagnosis in plain words and point you toward trusted help."});
+    note("A few honest words on how I work: I'm a guide, not a doctor â€” I never diagnose or prescribe. I answer only from verified, cited sources, and if I don't have one I'll say so rather than guess. You're in "+(aiOn?"Global mode â€” Google's Gemini phrases my replies from NAHL's verified content, so please don't share names or identifying details.":"Local mode â€” I'm running on this device's offline engine.")+" In an emergency, please contact a qualified doctor or local emergency services.");}
   if(q){ask(q);} else input.focus();}
 function closeChat(){panel.classList.remove('open');document.getElementById('fab').style.display='flex';}
 async function ask(text){
