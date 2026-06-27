@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NAHL â€” National Alliance for Hereditary Limitations</title>
+<title>NAHL - National Alliance for Hereditary Limitations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -224,6 +224,45 @@
   }
   @media (max-width:430px){ .hero-img{flex:0 0 78px;} .desc{display:none;} }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;} .reveal{opacity:1;transform:none;}}
+  /* inspiration */
+  .insp{display:grid;grid-template-columns:1.6fr 1fr;gap:26px;align-items:start;}
+  .insp-body p{color:var(--muted);font-size:15px;margin:0 0 14px;}
+  .insp-body .nm{color:var(--ink);font-weight:600;}
+  .insp-quote{font-family:var(--sora);font-size:15.5px;line-height:1.5;color:var(--ink);font-style:italic;border-left:3px solid var(--honey);padding-left:15px;margin:6px 0 18px;}
+  .insp-side{background:var(--surface);border:1px solid var(--line2);border-radius:16px;padding:20px;}
+  .insp-side h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin:0 0 12px;}
+  .insp-side .kf{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.4;}
+  .insp-side .kf:first-of-type{border-top:none;}
+  .insp-side .kf b{color:var(--ink);font-weight:600;min-width:90px;flex:none;}
+
+  /* attya carousel */
+  .attya-intro{color:var(--muted);max-width:72ch;margin:0 0 22px;}
+  .attya-window{background:var(--surface);border:1px solid var(--line2);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px -34px #000;}
+  .attya-stage{position:relative;min-height:380px;}
+  .attya-slide{position:absolute;inset:0;padding:34px 38px;opacity:0;transform:translateX(22px);transition:opacity .45s ease,transform .45s ease;pointer-events:none;overflow:auto;}
+  .attya-slide.active{opacity:1;transform:none;pointer-events:auto;}
+  .attya-slide .sn{position:absolute;top:18px;right:24px;font-family:var(--mono);font-size:11px;color:var(--teal);letter-spacing:.1em;}
+  .attya-slide.title-slide{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+  .attya-slide.title-slide .big{font-family:var(--sora);font-weight:700;font-size:clamp(40px,8vw,72px);letter-spacing:.06em;background:linear-gradient(120deg,var(--teal),var(--honey));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .attya-slide.title-slide .exp{color:var(--teal);font-weight:600;letter-spacing:.03em;margin-top:6px;}
+  .attya-slide.title-slide p{color:var(--muted);max-width:60ch;margin:14px auto 0;font-size:14.5px;}
+  .attya-h{font-family:var(--sora);font-weight:600;font-size:clamp(18px,2.6vw,22px);color:var(--teal);border-left:3px solid var(--honey);padding-left:13px;margin:6px 0 18px;}
+  .attya-list{list-style:none;padding:0;margin:0;}
+  .attya-list li{position:relative;padding-left:22px;margin-bottom:13px;color:var(--muted);font-size:14px;line-height:1.55;}
+  .attya-list li::before{content:"";position:absolute;left:0;top:7px;width:9px;height:9px;border-radius:2px;background:linear-gradient(var(--teal),var(--honey));transform:rotate(45deg);}
+  .attya-list li b{color:var(--ink);}
+  .attya-badge{display:inline-block;margin-top:24px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--honey);background:rgba(246,181,60,.1);border:1px solid rgba(246,181,60,.4);border-radius:100px;padding:8px 16px;}
+  .attya-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+  .attya-tbl th,.attya-tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted);line-height:1.45;}
+  .attya-tbl th{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);}
+  .attya-tbl td b{color:var(--ink);} .attya-tbl tr:last-child td{border-bottom:none;}
+  .attya-ctrls{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-top:1px solid var(--line);background:var(--bg2);}
+  .attya-dots{display:flex;gap:7px;}
+  .attya-dot{width:8px;height:8px;border-radius:50%;background:var(--line2);border:none;padding:0;cursor:pointer;transition:background .2s;}
+  .attya-dot.on{background:var(--teal);}
+  .attya-btn{background:rgba(255,255,255,.05);border:1px solid var(--line2);color:var(--ink);border-radius:9px;padding:8px 16px;font-size:13px;font-weight:600;}
+  .attya-btn:disabled{opacity:.35;cursor:not-allowed;}
+  @media(max-width:860px){.insp{grid-template-columns:1fr;} .attya-slide{padding:26px 22px;} .attya-tbl{font-size:11.5px;} .attya-tbl th,.attya-tbl td{padding:8px 8px;}}
 </style>
 </head>
 <body class="locked">
@@ -240,7 +279,7 @@
         <button onclick="tryUnlock()">Enter</button>
       </div>
       <div id="codeErr"></div>
-      <p class="gate-foot">This is a private demo. Access is by invitation code only. (Note: this is a soft, client-side gate to deter casual access â€” not a security measure.)</p>
+      <p class="gate-foot">This is a private demo. Access is by invitation code only. (Note: this is a soft, client-side gate to deter casual access - not a security measure.)</p>
     </div>
   </div>
 </div>
@@ -251,11 +290,11 @@
       <span class="hex">N</span>
       <div class="brandtext">
         <div class="brandtop"><span class="bname">NAHL</span><span class="modepill local" id="modePill">Local mode</span></div>
-        <div class="desc">A Parent Support Group for Rare Diseases â€” non-medical guidance</div>
+        <div class="desc">A Parent Support Group for Rare Diseases - non-medical guidance</div>
       </div>
     </div>
     <div class="navlinks" id="navlinks">
-      <a href="#pillars">Help</a><a href="#conditions">Conditions</a><a href="#directory">Find care</a><a href="#sources">Sources</a><a href="#about">About</a>
+      <a href="#pillars">Help</a><a href="#conditions">Conditions</a><a href="#directory">Find care</a><a href="#sources">Sources</a><a href="#inspiration">Inspiration</a><a href="#attya">ATTYA</a><a href="#about">About</a>
     </div>
     <button class="bell" id="bell" onclick="toggleBell()" aria-label="Notices">
       <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
@@ -277,12 +316,12 @@
   <div class="hero-content">
     <div class="hero-text">
       <div class="wordmark"><svg viewBox="0 0 1000 250" role="img" aria-label="NAHL - National Alliance for Hereditary Limitations" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="nahlgHero" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34E3C4"/><stop offset="100%" stop-color="#F6B53C"/></linearGradient></defs><text x="500" y="168" text-anchor="middle" textLength="965" lengthAdjust="spacingAndGlyphs" font-family="Sora, sans-serif" font-weight="700" font-size="188" fill="url(#nahlgHero)">N. A. H. L.</text><text x="500" y="230" text-anchor="middle" textLength="965" lengthAdjust="spacingAndGlyphs" font-family="Sora, sans-serif" font-weight="600" font-size="38" fill="#9DB0BD">NATIONAL ALLIANCE FOR HEREDITARY LIMITATIONS</text></svg></div>
-      <p class="lead">A parent support group for rare genetic diseases â€” plain-language knowledge, a verified directory of where to get help in Pakistan, and a 24/7 assistant. Non-medical guidance, grounded in trusted sources; never a substitute for your doctor.</p>
+      <p class="lead">A parent support group for rare genetic diseases - plain-language knowledge, a verified directory of where to get help in Pakistan, and a 24/7 assistant. Non-medical guidance, grounded in trusted sources; never a substitute for your doctor.</p>
       <div class="herobtns">
         <button class="btn-fill" onclick="openChat()">Find help now</button>
         <a class="btn-ghost" href="#conditions">Explore conditions</a>
       </div>
-      <div class="trustline"><span class="zebra" aria-hidden="true"></span> The zebra is the global symbol of rare disease â€” every stripe a different story.</div>
+      <div class="trustline"><span class="zebra" aria-hidden="true"></span> The zebra is the global symbol of rare disease - every stripe a different story.</div>
     </div>
     <aside class="stories" id="stories">
       <div class="sh"><span class="globe"></span> Stories from around the globe</div>
@@ -295,7 +334,7 @@
   <div class="sec-h reveal"><span class="eyebrow">How NAHL helps</span><h2>Four ways in, wherever you are on the journey</h2></div>
   <div class="pillars">
     <div class="pill reveal" onclick="openChat('I was just told my child has a rare condition. Where do I start?')"><div class="pic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><div class="step">START HERE</div><h3>Just diagnosed</h3><p>Plain first steps, what to ask your doctor, and how to steady yourself in the first days.</p></div>
-    <div class="pill reveal" onclick="document.getElementById('conditions').scrollIntoView()"><div class="pic"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 012-2h12v18H6a2 2 0 01-2-2z"/><path d="M8 7h7M8 11h7"/></svg></div><div class="step">LEARN</div><h3>Understand the condition</h3><p>A cited library of rare genetic diseases â€” including which have treatments or trials.</p></div>
+    <div class="pill reveal" onclick="document.getElementById('conditions').scrollIntoView()"><div class="pic"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 012-2h12v18H6a2 2 0 01-2-2z"/><path d="M8 7h7M8 11h7"/></svg></div><div class="step">LEARN</div><h3>Understand the condition</h3><p>A cited library of rare genetic diseases - including which have treatments or trials.</p></div>
     <div class="pill reveal" onclick="document.getElementById('directory').scrollIntoView()"><div class="pic"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.4 7-11a7 7 0 10-14 0c0 4.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div class="step">FIND CARE</div><h3>Find expert care</h3><p>Verified specialists, genetic labs and screening programmes across Pakistan.</p></div>
     <div class="pill reveal" onclick="openChat('How can I connect with other families?')"><div class="pic"><svg viewBox="0 0 24 24"><path d="M16 14a4 4 0 10-8 0"/><circle cx="12" cy="7" r="3"/><path d="M3 20a5 5 0 015-5M21 20a5 5 0 00-5-5"/></svg></div><div class="step">CONNECT</div><h3>You're not alone</h3><p>Find peer support communities and the families who already walk this road.</p></div>
   </div>
@@ -310,7 +349,7 @@
 
 <section id="conditions"><div class="wrap">
   <div class="sec-h reveal"><span class="eyebrow">Verified disease library</span><h2>Conditions &amp; treatment status</h2>
-    <p class="sec-sub">Genetic conditions with a note on globally available treatments or active trials. Search by name, gene or symptom; tap a row to read more. Scroll within the table to see all of them. Treatment availability and access vary by country â€” general information, not medical advice.</p></div>
+    <p class="sec-sub">Genetic conditions with a note on globally available treatments or active trials. Search by name, gene or symptom; tap a row to read more. Scroll within the table to see all of them. Treatment availability and access vary by country - general information, not medical advice.</p></div>
   <div class="toolbar reveal">
     <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
       <input id="condSearch" type="search" placeholder="e.g. weak muscles, CFTR, leukodystrophy, enzyme therapy" aria-label="Search conditions"></div>
@@ -323,8 +362,8 @@
 </div></section>
 
 <section id="directory"><div class="wrap">
-  <div class="sec-h reveal"><span class="eyebrow">Where to get help Â· Pakistan</span><h2>Find expert care</h2>
-    <p class="sec-sub">Public, institutional information â€” listing is not an endorsement. Always verify a specialist on the PMDC register before relying on a listing.</p></div>
+  <div class="sec-h reveal"><span class="eyebrow">Where to get help | Pakistan</span><h2>Find expert care</h2>
+    <p class="sec-sub">Public, institutional information - listing is not an endorsement. Always verify a specialist on the PMDC register before relying on a listing.</p></div>
   <div class="tbl-scroll reveal" style="max-height:none;">
     <table><thead><tr><th>Institution</th><th>City</th><th>What they offer</th><th>Tier</th></tr></thead><tbody id="dirBody"></tbody></table>
   </div>
@@ -339,10 +378,10 @@
 <section><div class="wrap">
   <div class="sec-h reveal"><span class="eyebrow">How reliability is decided</span><h2>Source precedence</h2></div>
   <div class="tiers">
-    <div class="tier reveal"><div class="tl">Tier 1 Â· Authoritative</div><p>Government, academic &amp; peer-reviewed â€” GARD, Orphanet, OMIM, GeneReviews, MedlinePlus. The citation source for every medical claim.</p></div>
-    <div class="tier reveal"><div class="tl">Tier 2 Â· Established</div><p>Reputable disease bodies â€” NORD, EURORDIS, Global Genes, national programmes. Trusted, but verified against Tier 1.</p></div>
-    <div class="tier reveal"><div class="tl">Tier 3 Â· Peer support</div><p>Moderated communities and lived experience. For emotional support and navigation â€” never a source of medical fact.</p></div>
-    <div class="tier reveal"><div class="tl">Tier 4 Â· General</div><p>Wikipedia, news, and AI output (including NAHL's own) â€” orientation only, until traced to a Tier 1â€“2 source.</p></div>
+    <div class="tier reveal"><div class="tl">Tier 1 | Authoritative</div><p>Government, academic &amp; peer-reviewed - GARD, Orphanet, OMIM, GeneReviews, MedlinePlus. The citation source for every medical claim.</p></div>
+    <div class="tier reveal"><div class="tl">Tier 2 | Established</div><p>Reputable disease bodies - NORD, EURORDIS, Global Genes, national programmes. Trusted, but verified against Tier 1.</p></div>
+    <div class="tier reveal"><div class="tl">Tier 3 | Peer support</div><p>Moderated communities and lived experience. For emotional support and navigation - never a source of medical fact.</p></div>
+    <div class="tier reveal"><div class="tl">Tier 4 | General</div><p>Wikipedia, news, and AI output (including NAHL's own) - orientation only, until traced to a Tier 1-2 source.</p></div>
   </div>
 </div></section>
 
@@ -350,14 +389,14 @@
   <div class="reveal">
     <span class="eyebrow">Meet AISHA</span>
     <h2 style="margin-top:9px;">A guide that listens, and knows its limits</h2>
-    <p class="sec-sub">In <b>Global mode</b> the assistant uses Google's Gemini to phrase answers â€” but only from NAHL's verified, cited content, never from the model's own guesses. If the online AI is unavailable it falls back seamlessly to <b>Local mode</b>, a compact offline engine that runs entirely on your device. Either way it cites its sources and never diagnoses or prescribes.</p>
-    <div class="feat"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><b>Grounded &amp; cited.</b> <span>Every answer traces to Tier 1â€“2 sources.</span></div></div>
+    <p class="sec-sub">In <b>Global mode</b> the assistant uses Google's Gemini to phrase answers - but only from NAHL's verified, cited content, never from the model's own guesses. If the online AI is unavailable it falls back seamlessly to <b>Local mode</b>, a compact offline engine that runs entirely on your device. Either way it cites its sources and never diagnoses or prescribes.</p>
+    <div class="feat"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><b>Grounded &amp; cited.</b> <span>Every answer traces to Tier 1-2 sources.</span></div></div>
     <div class="feat"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg><div><b>Safety first.</b> <span>Crisis language routes to human help; no dosages or diagnoses.</span></div></div>
     <div class="feat"><svg viewBox="0 0 24 24"><path d="M4 7V5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2v-2"/><path d="M2 12h9m0 0l-3-3m3 3l-3 3"/></svg><div><b>No pop-ups.</b> <span>Sign-in is never forced; notices live in the bell menu.</span></div></div>
     <button class="btn-fill" style="margin-top:24px;" onclick="openChat()">Try the assistant</button>
   </div>
   <div class="asst-card reveal">
-    <span class="badge-off"><span class="dot"></span> Grounded in verified sources Â· offline fallback</span>
+    <span class="badge-off"><span class="dot"></span> Grounded in verified sources | offline fallback</span>
     <p style="color:var(--muted);font-size:14px;margin:16px 0 12px;">Ask things like:</p>
     <div class="chips">
       <span class="chip" onclick="openChat('What is metachromatic leukodystrophy?')">What is MLD?</span>
@@ -368,9 +407,79 @@
   </div>
 </div></section>
 
+<section id="inspiration"><div class="wrap">
+  <div class="sec-h reveal"><span class="eyebrow">The story behind the name</span><h2>Aisha's story</h2></div>
+  <div class="insp">
+    <div class="insp-body reveal">
+      <p>Aisha was born on Rare Disease Day in 2019, in Islamabad. In time she was diagnosed with infantile metachromatic leukodystrophy (MLD) - the same rare disease that had already taken her elder sister, <span class="nm">Nahl</span>, in 2016.</p>
+      <p>For Nahl, the diagnosis came too late for treatment to be possible. But because her rare mutation had been identified, doctors were able to recognise Aisha's condition early - early enough for her to travel to Milan and receive trial gene therapy. Today she is walking, and is understood to be the only child from Pakistan to have received this treatment.</p>
+      <p>Her family now hopes her story can open a door for other Pakistani children who, like Nahl, are too often diagnosed too late.</p>
+      <p class="insp-quote">This is the story that gives our work its name. NAHL carries the name of the sister who was lost; AISHA, our assistant, carries the name of the sister saved by timely knowledge. Between those two names lies our whole purpose - that no family should learn too late what could have been known in time.</p>
+      <a class="btn-ghost" style="margin-top:6px;display:inline-block;" href="https://www.rarediseaseday.org/heroes/born-on-rare-disease-day-with-a-rarest-of-disease-mutation-rare-amongst-the-many-rare/" target="_blank" rel="noopener">Read the full story at Rare Disease Day</a>
+    </div>
+    <aside class="insp-side reveal">
+      <h4>At a glance</h4>
+      <div class="kf"><b>Born</b><span>Rare Disease Day, 2019 - Islamabad</span></div>
+      <div class="kf"><b>Condition</b><span>Infantile metachromatic leukodystrophy (MLD)</span></div>
+      <div class="kf"><b>Turning point</b><span>Early diagnosis, enabled by her sister's identified mutation</span></div>
+      <div class="kf"><b>Treatment</b><span>Trial gene therapy in Milan</span></div>
+      <div class="kf"><b>Today</b><span>Walking; the only child from Pakistan known to have received it</span></div>
+    </aside>
+  </div>
+</div></section>
+
+<section id="attya"><div class="wrap">
+  <div class="sec-h reveal"><span class="eyebrow">A NAHL sub-initiative</span><h2>ATTYA GeneNext</h2>
+    <p class="attya-intro">ATTYA - Advanced Translational Therapies Yielding Awakening - is a sub-initiative of NAHL: an operational roadmap to build the genetic-medicine infrastructure Pakistan needs to move from lifelong disease management toward one-time molecular cures. The vision, in brief:</p></div>
+  <div class="attya-window reveal">
+    <div class="attya-stage" id="attyaStage">
+      <div class="attya-slide title-slide active"><div class="sn">01 / 06</div>
+        <div class="big">ATTYA</div><div class="exp">Advanced Translational Therapies Yielding Awakening</div>
+        <p>A ready-to-deploy roadmap to accelerate local research, build genetic infrastructure, and move Pakistan from chronic disease management toward definitive molecular cures.</p>
+        <span class="attya-badge">Operational matrix prepped - awaits institutional activation</span></div>
+      <div class="attya-slide"><div class="sn">02 / 06</div><div class="attya-h">The demographic imperative</div>
+        <ul class="attya-list">
+          <li><b>Consanguinity.</b> An estimated 60-70% of marriages in Pakistan are consanguineous, driving a high prevalence of autosomal-recessive conditions.</li>
+          <li><b>Thalassemia burden.</b> Roughly 5,000-9,000 children are born with beta-thalassemia major each year, with a standing patient base above 100,000 dependent on lifelong transfusions.</li>
+          <li><b>Neuromuscular reality.</b> Thousands of children face degenerative conditions such as SMA - largely under-reported, and without advanced local treatment.</li>
+        </ul></div>
+      <div class="attya-slide"><div class="sn">03 / 06</div><div class="attya-h">Forecasted impact model</div>
+        <table class="attya-tbl"><thead><tr><th>Metric</th><th>Status quo (palliative care)</th><th>The ATTYA model (translational cures)</th></tr></thead>
+        <tbody>
+          <tr><td><b>Healthcare infrastructure</b></td><td>Perpetual strain on blood banks, specialist wards and resource pools.</td><td>Fewer readmissions; relief for critical emergency networks.</td></tr>
+          <tr><td><b>Economic burden</b></td><td>Lifelong, compounding cost per patient on symptomatic care.</td><td>High single-intervention efficiency, offsetting decades of cost.</td></tr>
+          <tr><td><b>Human capital</b></td><td>Multi-generational productivity loss for patients and carers.</td><td>Families restored to active roles in the economy.</td></tr>
+        </tbody></table></div>
+      <div class="attya-slide"><div class="sn">04 / 06</div><div class="attya-h">The clinical network</div>
+        <ul class="attya-list">
+          <li><b>CMH-BMTC.</b> Complex cellular transplants, patient conditioning protocols, and sterile isolation environments.</li>
+          <li><b>Aga Khan University Hospital.</b> Precision genomic diagnostics, molecular screening, and bioethics frameworks.</li>
+          <li><b>NUMS &amp; PIMS.</b> Academic anchoring, pre-clinical validation, bio-banking, and access to large patient cohorts.</li>
+          <li><b>Shaukat Khanum (SKMH).</b> Oncology laboratory assets for complex cell biology and viral-vector work.</li>
+        </ul></div>
+      <div class="attya-slide"><div class="sn">05 / 06</div><div class="attya-h">24-month roadmap - Year 1</div>
+        <ul class="attya-list">
+          <li><b>Months 1-6 | Alignment &amp; tech transfer.</b> Activate cross-institution working groups; define target monogenic disorders; begin regulatory alignment with DRAP.</li>
+          <li><b>Months 7-12 | Infrastructure &amp; registries.</b> Upgrade designated spaces to GMP cleanroom standard; launch a central genomic patient registry; deploy ultra-low cold-chain storage.</li>
+        </ul></div>
+      <div class="attya-slide"><div class="sn">06 / 06</div><div class="attya-h">24-month roadmap - Year 2</div>
+        <ul class="attya-list">
+          <li><b>Months 13-18 | Pre-clinical validation.</b> In vitro and in vivo verification of locally engineered vectors; ICU staff cross-training; final bioethics clearance.</li>
+          <li><b>Months 19-24 | First-in-human.</b> Secure IND clearance from DRAP; enrol the first patient cohort; begin localised gene delivery under continuous cell-tracking.</li>
+        </ul>
+        <div class="insp-quote" style="margin-top:16px;">"The future is sovereignty - a permanent framework for indigenous medical innovation."</div></div>
+    </div>
+    <div class="attya-ctrls">
+      <button class="attya-btn" id="attyaPrev" onclick="attyaGo(-1)" disabled>Prev</button>
+      <div class="attya-dots" id="attyaDots"></div>
+      <button class="attya-btn" id="attyaNext" onclick="attyaGo(1)">Next</button>
+    </div>
+  </div>
+</div></section>
+
 <section id="about"><div class="wrap">
   <div class="sec-h reveal"><span class="eyebrow">Families, for families</span><h2>Our promise</h2>
-    <p class="sec-sub">NAHL exists because the hardest part of a rare diagnosis is the silence that follows it â€” the searching, the misdiagnoses, the feeling that no one understands. We can't change the diagnosis, but we can make sure no family faces it without a guide.</p></div>
+    <p class="sec-sub">NAHL exists because the hardest part of a rare diagnosis is the silence that follows it - the searching, the misdiagnoses, the feeling that no one understands. We can't change the diagnosis, but we can make sure no family faces it without a guide.</p></div>
   <div class="mission">
     <div class="mcard reveal"><div class="k">Compassion</div><p>Meeting families with warmth at the moment they need it most.</p></div>
     <div class="mcard reveal"><div class="k">Knowledge</div><p>Clear, cited information that helps you ask better questions.</p></div>
@@ -382,23 +491,23 @@
 <!-- ===== DISCLAIMER ===== -->
 <section class="disclaimer"><div class="wrap">
   <div class="disc-box reveal">
-    <h4><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9l-8 14A2 2 0 004 21h16a2 2 0 001.7-3l-8-14a2 2 0 00-3.4 0z"/></svg> Important â€” please read</h4>
-    <p><b>NAHL â€” National Alliance for Hereditary Limitations â€” is a parent support group offering non-medical guidance and general information only.</b> It is not a hospital, clinic, or medical provider, and nothing here is a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified physician for any medical decision.</p>
+    <h4><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9l-8 14A2 2 0 004 21h16a2 2 0 001.7-3l-8-14a2 2 0 00-3.4 0z"/></svg> Important - please read</h4>
+    <p><b>NAHL - National Alliance for Hereditary Limitations - is a parent support group offering non-medical guidance and general information only.</b> It is not a hospital, clinic, or medical provider, and nothing here is a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified physician for any medical decision.</p>
     <p>The assistant does not diagnose conditions or recommend medicines, doses, or treatments. Information is drawn from trusted sources and cited, but may be incomplete or out of date; treatment and trial availability varies by country and changes over time. Listed institutions are public information and do not imply endorsement or partnership.</p>
-    <p>In <b>Global mode</b>, your messages are sent to Google's Gemini service to generate replies â€” please do not share names or identifying details. <b>Local mode</b> runs entirely on your device. This is a prototype demo; verify all details independently. <b>In an emergency, contact a qualified doctor or your local emergency services immediately.</b></p>
+    <p>In <b>Global mode</b>, your messages are sent to Google's Gemini service to generate replies - please do not share names or identifying details. <b>Local mode</b> runs entirely on your device. This is a prototype demo; verify all details independently. <b>In an emergency, contact a qualified doctor or your local emergency services immediately.</b></p>
   </div>
 </div></section>
 
 <footer><div class="wrap"><div class="foot-row">
   <span class="hex" style="width:26px;height:26px;font-size:12px;">N</span>
-  <span>NAHL Â· National Alliance for Hereditary Limitations Â· Rare disease parent support Â· Pakistan &amp; worldwide</span>
+  <span>NAHL | National Alliance for Hereditary Limitations | Rare disease parent support | Pakistan &amp; worldwide</span>
 </div></div></footer>
 
 <button class="fab" id="fab" onclick="openChat()" aria-label="Open NAHL assistant">
   <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Ask AISHA</button>
 <section class="panel" id="panel" aria-label="NAHL assistant">
   <div class="ph"><span class="hex" style="width:30px;height:30px;font-size:13px;">A</span>
-    <div><div class="ti">AISHA</div><div class="st" id="stBadge">Local Â· offline</div></div>
+    <div><div class="ti">AISHA</div><div class="st" id="stBadge">Local | offline</div></div>
     <button class="x" onclick="closeChat()" aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="msgs" id="msgs"></div>
   <div class="pf">
@@ -407,21 +516,21 @@
       <span class="chip" onclick="ask('Where can I get tested in Pakistan?')">Testing in Pakistan</span>
       <span class="chip" onclick="ask('How do I connect with families?')">Find families</span>
     </div>
-    <div class="prow"><input id="chatInput" placeholder="Ask about a condition or where to get helpâ€¦" aria-label="Message" onkeydown="if(event.key==='Enter')send()"><button class="send" onclick="send()">Send</button></div>
+    <div class="prow"><input id="chatInput" placeholder="Ask about a condition or where to get help..." aria-label="Message" onkeydown="if(event.key==='Enter')send()"><button class="send" onclick="send()">Send</button></div>
   </div>
 </section>
 
 <script>
 /* ============================================================
-   NAHL â€” access gate, bell notices, Local/Global modes,
+   NAHL - access gate, bell notices, Local/Global modes,
    offline engine + optional Google Gemini (Global mode) with offline fallback.
    ============================================================ */
 const CONFIG = {
-  geminiKey: "PASTE_YOUR_GEMINI_KEY_HERE",   /* <-- paste your AQ.â€¦ Gemini key here, between the quotes */
+  geminiKey: "PASTE_YOUR_GEMINI_KEY_HERE",   /* <-- paste your AQ.... Gemini key here, between the quotes */
   geminiModel: "gemini-2.5-flash",
-  helplines: [ /* { name:"â€¦", phone:"â€¦" } add VERIFIED numbers */ ]
+  helplines: [ /* { name:"...", phone:"..." } add VERIFIED numbers */ ]
 };
-const ACCESS = /^MYT\d{3}$/;   // demo access codes: MYT000 â€¦ MYT999
+const ACCESS = /^MYT\d{3}$/;   // demo access codes: MYT000 ... MYT999
 
 /* ---------- access gate ---------- */
 function tryUnlock(){
@@ -455,7 +564,7 @@ const modePill=document.getElementById('modePill'), stBadge=document.getElementB
 function keySet(){ return CONFIG.geminiKey && CONFIG.geminiKey.indexOf('PASTE')<0 && CONFIG.geminiKey.length>15; }
 function setMode(global){ aiOn=global;
   modePill.textContent=global?'Global mode':'Local mode'; modePill.className='modepill '+(global?'global':'local');
-  stBadge.textContent=global?'Global Â· online AI':'Local Â· offline'; }
+  stBadge.textContent=global?'Global | online AI':'Local | offline'; }
 async function gemini(question, ctx){
   const url="https://generativelanguage.googleapis.com/v1beta/models/"+CONFIG.geminiModel+":generateContent";
   const body={ system_instruction:{parts:[{text:SYS_LIMITS}]},
@@ -469,22 +578,22 @@ async function gemini(question, ctx){
   if(!txt) throw new Error("empty");
   return txt;
 }
-if(keySet()){ setMode(true); addNotice("Global mode is on â€” answers use Google's Gemini, grounded in NAHL's verified sources. Your messages are sent to Google to generate replies, so please don't share names or identifying details."); }
-else { setMode(false); addNotice("Local mode â€” the offline engine; nothing leaves your device. To enable Global mode (online AI), add a Gemini API key to CONFIG.geminiKey in the page source."); }
+if(keySet()){ setMode(true); addNotice("Global mode is on - answers use Google's Gemini, grounded in NAHL's verified sources. Your messages are sent to Google to generate replies, so please don't share names or identifying details."); }
+else { setMode(false); addNotice("Local mode - the offline engine; nothing leaves your device. To enable Global mode (online AI), add a Gemini API key to CONFIG.geminiKey in the page source."); }
 
 /* ---------- data ---------- */
 const tierName={T1:"tt1",T2:"tt2"};
-const DIS="General information only â€” not a diagnosis or medical advice. Please consult a qualified doctor.";
+const DIS="General information only - not a diagnosis or medical advice. Please consult a qualified doctor.";
 const KB = {
   stories: [
-    {ctry:"Pakistan Â· MLD", title:"Born on Rare Disease Day â€” Aisha's story",
-     teaser:"Aisha was born on Rare Disease Day 2019 in Islamabad and later diagnosed with infantile MLD â€” the same disease that had taken her elder sister, Nahl, in 2016. Because Nahl's rare mutation had already been identified, Aisha's diagnosis came in time for her to receive trial gene therapy in Milan. Now walking at age three, she became the only child from Pakistan to receive it â€” and her family hopes her story opens doors for others who lack timely diagnosis and treatment.",
+    {ctry:"Pakistan | MLD", title:"Born on Rare Disease Day - Aisha's story",
+     teaser:"Aisha was born on Rare Disease Day 2019 in Islamabad and later diagnosed with infantile MLD - the same disease that had taken her elder sister, Nahl, in 2016. Because Nahl's rare mutation had already been identified, Aisha's diagnosis came in time for her to receive trial gene therapy in Milan. Now walking at age three, she became the only child from Pakistan to receive it - and her family hopes her story opens doors for others who lack timely diagnosis and treatment.",
      src:"Rare Disease Day", url:"https://www.rarediseaseday.org/heroes/born-on-rare-disease-day-with-a-rarest-of-disease-mutation-rare-amongst-the-many-rare/"}
   ],
   conditions: [
     {name:"Beta Thalassemia",gene:"HBB",category:"Blood",inherit:"Autosomal recessive",onset:"Infancy",status:"Transfusion + chelation; gene therapy & HSCT",stype:"st-appr",syn:["thalassemia major","cooley anemia"],kw:["anemia","pale","tired","transfusion","blood","spleen","carrier"],what:"An inherited blood disorder in which the body makes less healthy haemoglobin; the major form causes serious anaemia from early childhood.",signs:"Paleness, tiredness, poor growth, an enlarged spleen and a need for regular transfusions in the major form.",dx:"Blood count and haemoglobin electrophoresis, plus genetic testing of HBB. Carrier screening identifies at-risk couples.",pk:"Among the most common inherited disorders in Pakistan; carrier screening (e.g. via the Punjab Thalassaemia institute) is the main prevention route.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Sickle Cell Disease",gene:"HBB",category:"Blood",inherit:"Autosomal recessive",onset:"Infancy",status:"Hydroxyurea; gene therapy approved; HSCT",stype:"st-appr",syn:["sickle cell"],kw:["pain crisis","anemia","blood","sickle"],what:"An inherited disorder where red blood cells become rigid and sickle-shaped, blocking blood flow and causing anaemia and pain.",signs:"Episodes of pain, anaemia, swelling of hands and feet, and higher infection risk.",dx:"Blood tests including haemoglobin analysis, and genetic testing of HBB.",pk:"Care focuses on preventing crises and complications; seek haematology and genetic counselling.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
-    {name:"Spinal Muscular Atrophy",gene:"SMN1",category:"Neuromuscular",inherit:"Autosomal recessive",onset:"Infancyâ€“childhood",status:"Approved: gene therapy, nusinersen, risdiplam",stype:"st-appr",syn:["sma"],kw:["weak muscles","weakness","floppy","hypotonia","cannot sit","breathing","milestones"],what:"An inherited condition affecting the nerve cells that control voluntary muscles, causing progressive weakness and wasting.",signs:"Low muscle tone (a 'floppy' baby), trouble sitting or walking, and in severe forms feeding and breathing difficulty.",dx:"Genetic testing for changes in the SMN1 gene confirms it.",pk:"Testing is available at tertiary centres such as AKU, Karachi; disease-modifying drugs exist internationally but access is limited.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Spinal Muscular Atrophy",gene:"SMN1",category:"Neuromuscular",inherit:"Autosomal recessive",onset:"Infancy-childhood",status:"Approved: gene therapy, nusinersen, risdiplam",stype:"st-appr",syn:["sma"],kw:["weak muscles","weakness","floppy","hypotonia","cannot sit","breathing","milestones"],what:"An inherited condition affecting the nerve cells that control voluntary muscles, causing progressive weakness and wasting.",signs:"Low muscle tone (a 'floppy' baby), trouble sitting or walking, and in severe forms feeding and breathing difficulty.",dx:"Genetic testing for changes in the SMN1 gene confirms it.",pk:"Testing is available at tertiary centres such as AKU, Karachi; disease-modifying drugs exist internationally but access is limited.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Duchenne Muscular Dystrophy",gene:"DMD",category:"Neuromuscular",inherit:"X-linked",onset:"Early childhood",status:"Steroids; exon-skipping & gene therapy",stype:"st-appr",syn:["dmd","duchenne"],kw:["boys","walking","falls","calf","weakness","climbing"],what:"An inherited muscle-wasting condition that mainly affects boys, caused by changes in the DMD gene.",signs:"Difficulty running or climbing stairs, frequent falls, enlarged calves and a waddling gait in early childhood.",dx:"A high creatine kinase blood level, genetic testing of DMD, sometimes a muscle biopsy.",pk:"Genetic counselling for the family is important; testing is available at major academic centres via PSMG.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Cystic Fibrosis",gene:"CFTR",category:"Multi-system",inherit:"Autosomal recessive",onset:"Childhood",status:"CFTR modulators transform care",stype:"st-appr",syn:["cf"],kw:["lungs","mucus","chest","digestion","salty sweat"],what:"An inherited disorder affecting the lungs and digestive system through thick, sticky mucus.",signs:"Persistent cough and chest infections, poor weight gain and salty-tasting skin.",dx:"Sweat chloride test and genetic testing of CFTR.",pk:"Care is multidisciplinary; specialist respiratory and genetic referral is essential. Modulator access varies.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
     {name:"Phenylketonuria (PKU)",gene:"PAH",category:"Metabolic",inherit:"Autosomal recessive",onset:"Newborn",status:"Treatable: low-Phe diet; sapropterin",stype:"st-mang",syn:["pku"],kw:["newborn screening","diet","developmental delay","phenylalanine"],what:"An inherited metabolic disorder where the body cannot break down phenylalanine; highly treatable if caught early.",signs:"Often none at birth; if untreated, developmental delay and seizures.",dx:"Newborn blood screening and genetic testing of PAH.",pk:"Newborn screening is not yet universal in Pakistan, so awareness matters; testing at centres such as AKU.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
@@ -492,31 +601,31 @@ const KB = {
     {name:"Maple Syrup Urine Disease",gene:"BCKDHA/B",category:"Metabolic",inherit:"Autosomal recessive",onset:"Newborn",status:"Dietary management; trials",stype:"st-mang",syn:["msud"],kw:["metabolic","diet","newborn","sweet urine"],what:"An inherited disorder where certain amino acids build up because they aren't broken down properly.",signs:"Poor feeding, sweet-smelling urine and, if untreated, serious illness in newborns.",dx:"Newborn metabolic screening and genetic testing.",pk:"Lifelong specialised diet under a metabolic team; early recognition is critical.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
     {name:"Galactosemia",gene:"GALT",category:"Metabolic",inherit:"Autosomal recessive",onset:"Newborn",status:"Treatable: galactose-free diet",stype:"st-mang",syn:["galactosemia"],kw:["milk","diet","metabolic","newborn"],what:"An inherited disorder where the body cannot process the sugar galactose, found in milk.",signs:"Feeding problems, jaundice and poor growth in newborns if untreated.",dx:"Newborn screening and genetic testing of GALT.",pk:"Managed with a strict galactose-free diet; seek metabolic/paediatric care.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
     {name:"Glycogen Storage Disease I",gene:"G6PC",category:"Metabolic",inherit:"Autosomal recessive",onset:"Infancy",status:"Dietary (cornstarch) management",stype:"st-mang",syn:["von gierke","gsd1"],kw:["low blood sugar","liver","metabolic"],what:"An inherited disorder where the body cannot release stored glucose properly, causing low blood sugar.",signs:"Low blood sugar, an enlarged liver and poor growth.",dx:"Blood tests and genetic testing.",pk:"Careful feeding schedules (including cornstarch) under specialist supervision.",src:[["GARD","T1"],["Orphanet","T1"]]},
-    {name:"Wilson Disease",gene:"ATP7B",category:"Metabolic",inherit:"Autosomal recessive",onset:"Childhoodâ€“adult",status:"Treatable: chelation, zinc",stype:"st-mang",syn:["wilson"],kw:["copper","liver","tremor","treatable"],what:"An inherited disorder where copper builds up in the body; importantly, it is treatable when caught early.",signs:"Liver problems and/or neurological signs such as tremor from childhood to young adulthood.",dx:"Copper studies, eye examination, liver tests and genetic testing of ATP7B.",pk:"Lifelong therapy reduces copper; early recognition changes the outcome.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
+    {name:"Wilson Disease",gene:"ATP7B",category:"Metabolic",inherit:"Autosomal recessive",onset:"Childhood-adult",status:"Treatable: chelation, zinc",stype:"st-mang",syn:["wilson"],kw:["copper","liver","tremor","treatable"],what:"An inherited disorder where copper builds up in the body; importantly, it is treatable when caught early.",signs:"Liver problems and/or neurological signs such as tremor from childhood to young adulthood.",dx:"Copper studies, eye examination, liver tests and genetic testing of ATP7B.",pk:"Lifelong therapy reduces copper; early recognition changes the outcome.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
     {name:"G6PD Deficiency",gene:"G6PD",category:"Blood",inherit:"X-linked",onset:"Any age",status:"Trigger avoidance",stype:"st-mang",syn:["g6pd","favism"],kw:["hemolysis","jaundice","fava beans","trigger"],what:"A common inherited enzyme condition where red cells can break down when exposed to certain triggers.",signs:"Jaundice, dark urine and tiredness, often after certain foods (e.g. fava beans), some medicines or infection.",dx:"A blood test measuring G6PD enzyme activity.",pk:"Relatively common in parts of Pakistan; the key is identifying and avoiding triggers and informing every doctor.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
     {name:"Congenital Adrenal Hyperplasia",gene:"CYP21A2",category:"Endocrine",inherit:"Autosomal recessive",onset:"Newborn",status:"Treatable: hormone replacement",stype:"st-mang",syn:["cah"],kw:["adrenal","hormone","newborn"],what:"An inherited disorder affecting hormone production by the adrenal glands.",signs:"Varies; can include salt-loss crises in newborns and differences in development.",dx:"Hormone blood tests and genetic testing.",pk:"Managed with hormone replacement; needs endocrinology follow-up.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
-    {name:"Gaucher Disease",gene:"GBA",category:"Lysosomal",inherit:"Autosomal recessive",onset:"Childhoodâ€“adult",status:"Enzyme replacement; substrate reduction",stype:"st-appr",syn:["gaucher"],kw:["spleen","liver","bone","fatigue"],what:"An inherited lysosomal disorder where a fatty substance builds up in organs.",signs:"Enlarged spleen and liver, tiredness, low blood counts and bone problems.",dx:"Enzyme testing and genetic testing of GBA.",pk:"Effective therapies exist internationally; seek specialist/metabolic referral.",src:[["GARD","T1"],["Orphanet","T1"]]},
-    {name:"Fabry Disease",gene:"GLA",category:"Lysosomal",inherit:"X-linked",onset:"Childhoodâ€“adult",status:"Enzyme replacement; oral chaperone",stype:"st-appr",syn:["fabry"],kw:["pain","kidney","heart","skin"],what:"An inherited lysosomal disorder affecting many organs including the kidneys and heart.",signs:"Burning pain in hands and feet, skin spots, and later kidney or heart problems.",dx:"Enzyme testing and genetic testing of GLA.",pk:"Treatments exist internationally; specialist genetic/cardiology/nephrology care is needed.",src:[["GARD","T1"],["Orphanet","T1"]]},
-    {name:"Pompe Disease",gene:"GAA",category:"Lysosomal",inherit:"Autosomal recessive",onset:"Infancyâ€“adult",status:"Enzyme replacement therapy",stype:"st-appr",syn:["pompe"],kw:["muscle","weakness","heart","breathing"],what:"An inherited lysosomal disorder where complex sugars build up, weakening muscles including the heart.",signs:"Muscle weakness and, in infants, heart and breathing problems.",dx:"Enzyme testing and genetic testing of GAA.",pk:"Enzyme replacement is available internationally; early diagnosis matters.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Gaucher Disease",gene:"GBA",category:"Lysosomal",inherit:"Autosomal recessive",onset:"Childhood-adult",status:"Enzyme replacement; substrate reduction",stype:"st-appr",syn:["gaucher"],kw:["spleen","liver","bone","fatigue"],what:"An inherited lysosomal disorder where a fatty substance builds up in organs.",signs:"Enlarged spleen and liver, tiredness, low blood counts and bone problems.",dx:"Enzyme testing and genetic testing of GBA.",pk:"Effective therapies exist internationally; seek specialist/metabolic referral.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Fabry Disease",gene:"GLA",category:"Lysosomal",inherit:"X-linked",onset:"Childhood-adult",status:"Enzyme replacement; oral chaperone",stype:"st-appr",syn:["fabry"],kw:["pain","kidney","heart","skin"],what:"An inherited lysosomal disorder affecting many organs including the kidneys and heart.",signs:"Burning pain in hands and feet, skin spots, and later kidney or heart problems.",dx:"Enzyme testing and genetic testing of GLA.",pk:"Treatments exist internationally; specialist genetic/cardiology/nephrology care is needed.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Pompe Disease",gene:"GAA",category:"Lysosomal",inherit:"Autosomal recessive",onset:"Infancy-adult",status:"Enzyme replacement therapy",stype:"st-appr",syn:["pompe"],kw:["muscle","weakness","heart","breathing"],what:"An inherited lysosomal disorder where complex sugars build up, weakening muscles including the heart.",signs:"Muscle weakness and, in infants, heart and breathing problems.",dx:"Enzyme testing and genetic testing of GAA.",pk:"Enzyme replacement is available internationally; early diagnosis matters.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"MPS I (Hurler syndrome)",gene:"IDUA",category:"Lysosomal",inherit:"Autosomal recessive",onset:"Infancy",status:"Enzyme replacement; HSCT",stype:"st-appr",syn:["hurler","mps1","mucopolysaccharidosis"],kw:["coarse features","organs","development"],what:"An inherited lysosomal disorder where sugar molecules build up, affecting many tissues.",signs:"Distinctive facial features, enlarged organs, joint stiffness and developmental delay.",dx:"Enzyme testing and genetic testing of IDUA.",pk:"Enzyme replacement and transplant exist internationally; early referral is key.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Metachromatic Leukodystrophy",gene:"ARSA",category:"Leukodystrophy",inherit:"Autosomal recessive",onset:"Late-infantile (commonest)",status:"Gene therapy (pre/early-symptomatic)",stype:"st-appr",syn:["mld"],kw:["leukodystrophy","myelin","regression","lost milestones","stiff"],what:"A progressive disease caused by a lack of arylsulfatase-A, which damages myelin around nerves.",signs:"Loss of previously gained abilities, difficulty walking, stiffness and decline in speech and movement.",dx:"Enzyme testing, genetic testing of ARSA and MRI showing white-matter change.",pk:"A gene therapy exists internationally for pre/early-symptomatic cases but access is very limited; early diagnosis is critical.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Krabbe Disease",gene:"GALC",category:"Leukodystrophy",inherit:"Autosomal recessive",onset:"Early infantile",status:"HSCT if very early; trials",stype:"st-supp",syn:["globoid cell leukodystrophy"],kw:["leukodystrophy","myelin","irritability","feeding","stiff","regression"],what:"An inherited disorder affecting the nervous system through a deficiency of the GALC enzyme.",signs:"Irritability, feeding difficulty, stiffness and loss of milestones; early-infantile onset is most severe.",dx:"GALC enzyme testing, genetic testing and imaging.",pk:"Early comprehensive care matters; very early transplant is considered internationally for eligible infants.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Adrenoleukodystrophy (X-ALD)",gene:"ABCD1",category:"Leukodystrophy",inherit:"X-linked",onset:"Childhood",status:"HSCT, gene therapy (cerebral); adrenal Rx",stype:"st-appr",syn:["ald","x-ald"],kw:["leukodystrophy","boys","adrenal","behaviour","vision"],what:"An inherited disease affecting the nervous system and adrenal glands, mainly in males.",signs:"Behavioural or learning changes, vision/hearing problems and adrenal insufficiency.",dx:"Very-long-chain fatty acid blood test, genetic testing, MRI and adrenal tests.",pk:"Early detection allows monitoring and timely treatment of adrenal problems; family genetic counselling matters.",src:[["GARD","T1"],["Orphanet","T1"]]},
-    {name:"Severe Combined Immunodeficiency",gene:"IL2RG / ADA",category:"Immune",inherit:"X-linked / AR",onset:"Infancy",status:"HSCT; gene therapy (ADA-SCID)",stype:"st-appr",syn:["scid","bubble boy"],kw:["infections","immune","newborn"],what:"A group of inherited disorders where the immune system cannot fight infection.",signs:"Frequent, severe or unusual infections and failure to thrive in infancy.",dx:"Immune blood tests and genetic testing; some regions screen newborns.",pk:"A medical emergency in infancy â€” urgent immunology referral; transplant can be curative.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Severe Combined Immunodeficiency",gene:"IL2RG / ADA",category:"Immune",inherit:"X-linked / AR",onset:"Infancy",status:"HSCT; gene therapy (ADA-SCID)",stype:"st-appr",syn:["scid","bubble boy"],kw:["infections","immune","newborn"],what:"A group of inherited disorders where the immune system cannot fight infection.",signs:"Frequent, severe or unusual infections and failure to thrive in infancy.",dx:"Immune blood tests and genetic testing; some regions screen newborns.",pk:"A medical emergency in infancy - urgent immunology referral; transplant can be curative.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Hemophilia A",gene:"F8",category:"Bleeding",inherit:"X-linked",onset:"Infancy",status:"Factor VIII; emicizumab; gene therapy",stype:"st-appr",syn:["haemophilia a"],kw:["bleeding","bruising","joints","clotting"],what:"An inherited bleeding disorder caused by a lack of clotting factor VIII.",signs:"Easy bruising, prolonged bleeding and bleeding into joints.",dx:"Clotting tests and genetic testing of F8.",pk:"Managed with factor replacement and newer therapies; haematology care needed.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
     {name:"Hemophilia B",gene:"F9",category:"Bleeding",inherit:"X-linked",onset:"Infancy",status:"Factor IX; gene therapy approved",stype:"st-appr",syn:["christmas disease"],kw:["bleeding","clotting","joints"],what:"An inherited bleeding disorder caused by a lack of clotting factor IX.",signs:"Prolonged bleeding, easy bruising and joint bleeds.",dx:"Clotting tests and genetic testing of F9.",pk:"Managed with factor replacement; gene therapy exists internationally.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Leber Congenital Amaurosis (RPE65)",gene:"RPE65",category:"Eye",inherit:"Autosomal recessive",onset:"Infancy",status:"Gene therapy (voretigene) approved",stype:"st-appr",syn:["lca","leber congenital amaurosis"],kw:["vision","blindness","eyes","retina"],what:"An inherited cause of severe vision loss from infancy; the RPE65 form has an approved gene therapy.",signs:"Poor vision or blindness from early infancy, with roving eye movements.",dx:"Eye examination and genetic testing identifying the specific gene.",pk:"Genetic confirmation matters because treatment is gene-specific; seek ophthalmology/genetics referral.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Neurofibromatosis type 1",gene:"NF1",category:"Tumour-predisposition",inherit:"Autosomal dominant",onset:"Childhood",status:"Selumetinib for plexiform NF; surveillance",stype:"st-mang",syn:["nf1","neurofibromatosis"],kw:["skin spots","cafe au lait","tumours","nerves"],what:"An inherited condition causing skin changes and benign nerve tumours, with varying other features.",signs:"Light-brown skin patches, freckling and soft nerve-tissue growths.",dx:"Clinical assessment and genetic testing of NF1.",pk:"Regular surveillance is central; a targeted drug exists for some tumours.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
     {name:"Tuberous Sclerosis",gene:"TSC1 / TSC2",category:"Tumour-predisposition",inherit:"Autosomal dominant",onset:"Childhood",status:"mTOR inhibitors (everolimus)",stype:"st-mang",syn:["tsc","tuberous sclerosis"],kw:["seizures","skin","tumours","brain"],what:"An inherited condition causing benign growths in the brain and other organs.",signs:"Seizures, skin changes and developmental or behavioural differences.",dx:"Clinical criteria, imaging and genetic testing.",pk:"mTOR-inhibitor therapy exists for certain features; multidisciplinary follow-up is needed.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Marfan Syndrome",gene:"FBN1",category:"Connective tissue",inherit:"Autosomal dominant",onset:"Childhood",status:"Beta-blockers/ARBs; surveillance & surgery",stype:"st-mang",syn:["marfan"],kw:["tall","heart","aorta","joints","eyes"],what:"An inherited connective-tissue condition affecting the heart, eyes and skeleton.",signs:"Tall slender build, long limbs, joint flexibility and risk of aortic enlargement.",dx:"Clinical assessment, heart and eye checks, and genetic testing of FBN1.",pk:"Heart surveillance and medication reduce risk; cardiology and genetics follow-up is key.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
-    {name:"Osteogenesis Imperfecta",gene:"COL1A1 / COL1A2",category:"Connective tissue",inherit:"Often autosomal dominant",onset:"Birthâ€“childhood",status:"Bisphosphonates; supportive; trials",stype:"st-mang",syn:["oi","brittle bone disease"],kw:["brittle bones","fractures","fragile","blue sclera"],what:"A group of inherited conditions ('brittle bone disease') where bones break easily.",signs:"Frequent fractures, sometimes with blue-tinged eye whites and loose joints.",dx:"Clinical assessment, X-rays and genetic testing.",pk:"Care reduces fractures and supports mobility; orthopaedics, physiotherapy and genetics.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Osteogenesis Imperfecta",gene:"COL1A1 / COL1A2",category:"Connective tissue",inherit:"Often autosomal dominant",onset:"Birth-childhood",status:"Bisphosphonates; supportive; trials",stype:"st-mang",syn:["oi","brittle bone disease"],kw:["brittle bones","fractures","fragile","blue sclera"],what:"A group of inherited conditions ('brittle bone disease') where bones break easily.",signs:"Frequent fractures, sometimes with blue-tinged eye whites and loose joints.",dx:"Clinical assessment, X-rays and genetic testing.",pk:"Care reduces fractures and supports mobility; orthopaedics, physiotherapy and genetics.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Tay-Sachs Disease",gene:"HEXA",category:"Lysosomal",inherit:"Autosomal recessive",onset:"Infancy",status:"Supportive; gene therapy trials",stype:"st-supp",syn:["tay sachs"],kw:["regression","startle","vision","neurological"],what:"An inherited disorder where a harmful substance builds up in nerve cells.",signs:"Loss of milestones, an exaggerated startle response and decline over time.",dx:"Enzyme testing and genetic testing of HEXA.",pk:"Care is supportive; trials are ongoing internationally. Genetic counselling for the family matters.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Huntington Disease",gene:"HTT",category:"Neurodegenerative",inherit:"Autosomal dominant",onset:"Adulthood",status:"Supportive; antisense trials",stype:"st-supp",syn:["huntington"],kw:["movement","chorea","cognition","family history"],what:"An inherited condition causing progressive changes in movement, thinking and mood, usually in adulthood.",signs:"Involuntary movements, difficulty with thinking and emotional changes.",dx:"Genetic testing of HTT, with genetic counselling.",pk:"Care is currently supportive; trials are ongoing. Counselling is important given the inheritance pattern.",src:[["GARD","T1"],["MedlinePlus","T1"]]}
   ],
   directory: [
-    {name:"Pakistani Society of Medical Genetics & Genomics (PSMG)",city:"National",offer:"Professional body â€” the anchor for finding credible medical geneticists and guidance.",tier:"T1"},
-    {name:"Aga Khan University â€” Biochemical Genetics Lab",city:"Karachi",offer:"Tertiary genetic & metabolic testing; home of Pakistan's first inherited-metabolic-disorder Rare Registry.",tier:"T1"},
-    {name:"PMDC Register",city:"National",offer:"Government register of licensed doctors â€” verify any specialist here before relying on a listing.",tier:"T1"},
+    {name:"Pakistani Society of Medical Genetics & Genomics (PSMG)",city:"National",offer:"Professional body - the anchor for finding credible medical geneticists and guidance.",tier:"T1"},
+    {name:"Aga Khan University - Biochemical Genetics Lab",city:"Karachi",offer:"Tertiary genetic & metabolic testing; home of Pakistan's first inherited-metabolic-disorder Rare Registry.",tier:"T1"},
+    {name:"PMDC Register",city:"National",offer:"Government register of licensed doctors - verify any specialist here before relying on a listing.",tier:"T1"},
     {name:"National Institute of Child Health (NICH)",city:"Karachi",offer:"Paediatric care and telehealth genetics clinics.",tier:"T2"},
     {name:"Punjab Thalassaemia & Genetic Disorders Institute",city:"Lahore",offer:"Government screening and cascade testing for thalassaemia and other genetic disorders.",tier:"T2"},
     {name:"SIUT",city:"Karachi",offer:"Free tertiary care relevant to several inherited conditions.",tier:"T2"},
@@ -524,14 +633,14 @@ const KB = {
   ],
   sources: [
     {mono:"Or",name:"Orphanet",role:"Rare disease & orphan-drug profiles",tier:"T1",url:"https://www.orpha.net/"},
-    {mono:"G",name:"GARD Â· NIH",role:"Plain-language rare disease summaries",tier:"T1",url:"https://rarediseases.info.nih.gov/"},
-    {mono:"OM",name:"OMIM",role:"Geneâ€“disease catalogue",tier:"T1",url:"https://www.omim.org/"},
+    {mono:"G",name:"GARD | NIH",role:"Plain-language rare disease summaries",tier:"T1",url:"https://rarediseases.info.nih.gov/"},
+    {mono:"OM",name:"OMIM",role:"Gene-disease catalogue",tier:"T1",url:"https://www.omim.org/"},
     {mono:"GR",name:"GeneReviews",role:"Peer-reviewed clinical chapters",tier:"T1",url:"https://www.ncbi.nlm.nih.gov/books/NBK1116/"},
     {mono:"ML",name:"MedlinePlus",role:"Patient-friendly genetics",tier:"T1",url:"https://medlineplus.gov/genetics/"},
     {mono:"CV",name:"ClinVar",role:"Variant clinical significance",tier:"T1",url:"https://www.ncbi.nlm.nih.gov/clinvar/"},
     {mono:"CT",name:"ClinicalTrials.gov",role:"Active trials by disease & country",tier:"T1",url:"https://clinicaltrials.gov/"},
     {mono:"PM",name:"PubMed",role:"Primary research literature",tier:"T1",url:"https://pubmed.ncbi.nlm.nih.gov/"},
-    {mono:"HP",name:"Monarch Â· HPO",role:"Phenotype & disease ontologies",tier:"T1",url:"https://hpo.jax.org/"},
+    {mono:"HP",name:"Monarch | HPO",role:"Phenotype & disease ontologies",tier:"T1",url:"https://hpo.jax.org/"},
     {mono:"ND",name:"NORD",role:"Disease guides & helpline",tier:"T2",url:"https://rarediseases.org/"},
     {mono:"GG",name:"Global Genes",role:"Caregiver toolkits & advocacy",tier:"T2",url:"https://globalgenes.org/"},
     {mono:"EU",name:"EURORDIS",role:"Rare disease alliance & community",tier:"T2",url:"https://www.eurordis.org/"}
@@ -541,7 +650,7 @@ const KB = {
 /* ---------- render ---------- */
 document.getElementById('storyList').innerHTML = KB.stories.map(s=>
   `<div class="story"><div class="cty"><svg viewBox="0 0 30 20" width="17" height="11" style="vertical-align:middle;border-radius:2px;margin-right:5px"><rect width="30" height="20" fill="#01411C"/><rect width="7.5" height="20" fill="#fff"/><circle cx="18.5" cy="10" r="5" fill="#fff"/><circle cx="20" cy="10" r="4.2" fill="#01411C"/><path d="M23.5 7.2l.6 1.9 1.9.0-1.6 1.2.6 1.9-1.5-1.1-1.5 1.1.6-1.9-1.6-1.2 1.9 0z" fill="#fff"/></svg>${s.ctry}</div><h5>${s.title}</h5><p>${s.teaser}</p>
-   <a class="rd" href="${s.url}" target="_blank" rel="noopener">Read the full story <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M5 12h14M13 6l6 6-6 6"/></svg> ${s.src}</a></div>`).join('');
+   <a class="rd" href="#inspiration">Read Aisha's story <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>`).join('');
 function renderConds(list){
   document.getElementById('condBody').innerHTML = list.length ? list.map(c=>{const i=KB.conditions.indexOf(c);
     return `<tr class="clk" onclick="showCond(${i})"><td><span class="cn">${c.name}</span></td><td><span class="gene">${c.gene}</span></td>
@@ -552,10 +661,10 @@ function renderConds(list){
 }
 function showCond(i){const c=KB.conditions[i],d=document.getElementById('condDetail');
   d.innerHTML=`<button class="close" onclick="document.getElementById('condDetail').classList.remove('show')"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-    <h3>${c.name}</h3><div class="meta">Gene ${c.gene} Â· ${c.inherit} Â· ${c.category}</div>
+    <h3>${c.name}</h3><div class="meta">Gene ${c.gene} | ${c.inherit} | ${c.category}</div>
     <h4>What it is</h4><p>${c.what}</p><h4>Common signs</h4><p>${c.signs}</p><h4>How it is diagnosed</h4><p>${c.dx}</p>
     <h4>Treatment / trials</h4><p>${c.status}. Availability and access vary by country.</p><h4>In Pakistan</h4><p>${c.pk}</p>
-    <h4>Sources</h4><p>${c.src.map(s=>s[0]+' ['+s[1]+']').join('  Â·  ')}</p><div class="disc">${DIS}</div>`;
+    <h4>Sources</h4><p>${c.src.map(s=>s[0]+' ['+s[1]+']').join('  |  ')}</p><div class="disc">${DIS}</div>`;
   d.classList.add('show'); d.scrollIntoView({behavior:'smooth',block:'center'});}
 renderConds(KB.conditions);
 document.getElementById('dirBody').innerHTML = KB.directory.map(o=>
@@ -578,13 +687,13 @@ const NAHL=(function(){
   function gate(q){q=norm(q);if(CRISIS.test(q))return'crisis';if(ADVICE.test(q))return'advice';return'ok';}
   function offline(text){const q=norm(text);
     if(/\b(family|families|support group|connect|alone|other parents)\b/.test(q))
-      return {text:"You are not alone. Communities like RareConnect (EURORDIS) and disease-specific groups connect families worldwide; locally, look for moderated WhatsApp and Facebook groups for your child's condition. Tell me the condition and I'll point you to good starting places â€” PSMG can also help you reach a specialist who often knows local family networks."};
-    if(/\b(gene therapy|treatment|cure|trial|treatable)\b/.test(q)){const tx=KB.conditions.filter(c=>c.stype==='st-appr').slice(0,6).map(c=>"- "+c.name+" â€” "+c.status).join("\n");
+      return {text:"You are not alone. Communities like RareConnect (EURORDIS) and disease-specific groups connect families worldwide; locally, look for moderated WhatsApp and Facebook groups for your child's condition. Tell me the condition and I'll point you to good starting places - PSMG can also help you reach a specialist who often knows local family networks."};
+    if(/\b(gene therapy|treatment|cure|trial|treatable)\b/.test(q)){const tx=KB.conditions.filter(c=>c.stype==='st-appr').slice(0,6).map(c=>"- "+c.name+" - "+c.status).join("\n");
       return {text:"Several conditions in our library now have disease-modifying treatments or active trials internationally (access varies by country). Examples:\n\n"+tx+"\n\nOpen a row in the Conditions table for details, and always discuss options with a specialist.",cites:[["GARD","T1"],["Orphanet","T1"]],dis:DIS};}
     if(/\b(test|testing|genetic|diagnos|where|hospital|doctor|specialist|karachi|lahore|islamabad)\b/.test(q)){const d=KB.directory.slice(0,3).map(o=>"- "+o.name+(o.city!=="National"?" ("+o.city+")":"")).join("\n");
       return {text:"For genetic evaluation and testing in Pakistan, good starting points are:\n\n"+d+"\n\nAlways verify a specialist on the PMDC register first. Tell me the condition and I can be more specific.",cites:[["PSMG","T1"]]};}
     const hits=retrieve(text);
-    if(!hits.length) return {text:"I don't have a verified page on that yet, so I won't guess. The safest next step is a medical geneticist â€” reachable through PSMG â€” or browse the Conditions table on this page. If you describe the main symptoms, I'll try to find a match."};
+    if(!hits.length) return {text:"I don't have a verified page on that yet, so I won't guess. The safest next step is a medical geneticist - reachable through PSMG - or browse the Conditions table on this page. If you describe the main symptoms, I'll try to find a match."};
     const c=hits[0];
     return {text:`Here's what NAHL's verified page on ${c.name} says:\n\n${c.what}\n\nCommon signs: ${c.signs}\n\nTreatment status: ${c.status} (access varies).\n\nIn Pakistan: ${c.pk}\n\nOpen the "${c.name}" row in the Conditions table for the full page.`,cites:c.src,dis:DIS};}
   return {score,retrieve,gate,offline};
@@ -600,20 +709,20 @@ function bot(r){const m=document.createElement('div');m.className='m bot'+(r.cls
   if(r.dis){const d=document.createElement('div');d.className='dis';d.textContent=r.dis;m.appendChild(d);}
   msgs.appendChild(m);msgs.scrollTop=msgs.scrollHeight;return m;}
 function openChat(q){panel.classList.add('open');document.getElementById('fab').style.display='none';
-  if(!msgs.children.length){bot({text:"Assalam-o-alaikum, and welcome. I'm AISHA â€” an Artificially Intelligent System for Hereditary Advisory. I exist for one reason: so that no family facing a rare genetic condition has to search in the dark, or feel alone. I'll help you understand a diagnosis in plain words and point you toward trusted help."});
-    note("A few honest words on how I work: I'm a guide, not a doctor â€” I never diagnose or prescribe. I answer only from verified, cited sources, and if I don't have one I'll say so rather than guess. You're in "+(aiOn?"Global mode â€” Google's Gemini phrases my replies from NAHL's verified content, so please don't share names or identifying details.":"Local mode â€” I'm running on this device's offline engine.")+" In an emergency, please contact a qualified doctor or local emergency services.");}
+  if(!msgs.children.length){bot({text:"Assalam-o-alaikum, and welcome. I'm AISHA - an Artificially Intelligent System for Hereditary Advisory. I exist for one reason: so that no family facing a rare genetic condition has to search in the dark, or feel alone. I'll help you understand a diagnosis in plain words and point you toward trusted help."});
+    note("A few honest words on how I work: I'm a guide, not a doctor - I never diagnose or prescribe. I answer only from verified, cited sources, and if I don't have one I'll say so rather than guess. You're in "+(aiOn?"Global mode - Google's Gemini phrases my replies from NAHL's verified content, so please don't share names or identifying details.":"Local mode - I'm running on this device's offline engine.")+" In an emergency, please contact a qualified doctor or local emergency services.");}
   if(q){ask(q);} else input.focus();}
 function closeChat(){panel.classList.remove('open');document.getElementById('fab').style.display='flex';}
 async function ask(text){
   userMsg(text);
   const g=NAHL.gate(text);
-  if(g==='crisis'){const ex=CONFIG.helplines.length?(" Please reach out now: "+CONFIG.helplines.map(h=>h.name+" â€” "+h.phone).join("; ")):" (Site owner: add verified local helpline numbers in CONFIG.helplines.)";
-    bot({cls:'crisis',text:"I'm so sorry you're carrying this, and I'm glad you reached out. I can't help with this safely, but you deserve support from a real person right now â€” please contact a doctor, someone you trust, or local emergency services."+ex});return;}
-  if(g==='advice'){bot({text:"I can't recommend medicines, doses or treatments â€” that must come from a qualified doctor who knows the full picture. I can explain a condition in general terms or help you find a specialist. Would that help?"});return;}
+  if(g==='crisis'){const ex=CONFIG.helplines.length?(" Please reach out now: "+CONFIG.helplines.map(h=>h.name+" - "+h.phone).join("; ")):" (Site owner: add verified local helpline numbers in CONFIG.helplines.)";
+    bot({cls:'crisis',text:"I'm so sorry you're carrying this, and I'm glad you reached out. I can't help with this safely, but you deserve support from a real person right now - please contact a doctor, someone you trust, or local emergency services."+ex});return;}
+  if(g==='advice'){bot({text:"I can't recommend medicines, doses or treatments - that must come from a qualified doctor who knows the full picture. I can explain a condition in general terms or help you find a specialist. Would that help?"});return;}
   const hits=NAHL.retrieve(text);
   const cites=hits.flatMap(h=>h.src).filter((s,i,a)=>a.findIndex(x=>x[0]===s[0])===i);
   if(aiOn && keySet()){
-    const typing=bot({text:"â€¦"});
+    const typing=bot({text:"..."});
     try{const ctx=hits.length?hits.map(h=>`[${h.name}] What: ${h.what} Signs: ${h.signs} Treatment: ${h.status}. Pakistan: ${h.pk} Sources: ${h.src.map(s=>s[0]).join(', ')}`).join("\n"):"No specific verified NAHL page matched this question.";
       const out=await gemini(text, ctx);
       typing.textContent=out;
@@ -644,6 +753,15 @@ const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.tar
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 function countUp(el){const to=+el.dataset.to,suf=el.dataset.suf||'';let s=null;
   function t(ts){if(!s)s=ts;const p=Math.min((ts-s)/1100,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString()+suf;if(p<1)requestAnimationFrame(t);}requestAnimationFrame(t);}
+/* ---------- ATTYA carousel ---------- */
+(function(){const slides=[].slice.call(document.querySelectorAll('#attyaStage .attya-slide'));if(!slides.length)return;
+  let i=0;const dots=document.getElementById('attyaDots'),prev=document.getElementById('attyaPrev'),next=document.getElementById('attyaNext');
+  dots.innerHTML=slides.map(function(_,k){return '<button class="attya-dot'+(k===0?' on':'')+'" onclick="attyaSet('+k+')" aria-label="Slide '+(k+1)+'"></button>';}).join('');
+  window.attyaSet=function(k){i=k;slides.forEach(function(s,n){s.classList.toggle('active',n===i);});
+    [].slice.call(dots.children).forEach(function(d,n){d.classList.toggle('on',n===i);});
+    prev.disabled=i===0;next.disabled=i===slides.length-1;};
+  window.attyaGo=function(d){var n=i+d;if(n>=0&&n<slides.length)window.attyaSet(n);};
+})();
 </script>
 </body>
 </html>
