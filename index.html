@@ -263,6 +263,27 @@
   .attya-btn{background:rgba(255,255,255,.05);border:1px solid var(--line2);color:var(--ink);border-radius:9px;padding:8px 16px;font-size:13px;font-weight:600;}
   .attya-btn:disabled{opacity:.35;cursor:not-allowed;}
   @media(max-width:860px){.insp{grid-template-columns:1fr;} .attya-slide{padding:26px 22px;} .attya-tbl{font-size:11.5px;} .attya-tbl th,.attya-tbl td{padding:8px 8px;}}
+  /* AISHA header + how-i-work sheet */
+  .ph-txt{min-width:0;}
+  .ph .ti{font-family:var(--sora);font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .ph .st{font-family:var(--mono);font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--teal);background:rgba(52,227,196,.1);border:1px solid var(--line2);border-radius:100px;padding:2px 7px;font-weight:500;}
+  .ph-sub{font-size:10.5px;color:var(--muted);line-height:1.25;margin-top:2px;}
+  .aisha-actions{display:flex;gap:8px;margin-bottom:10px;}
+  .aisha-tab{background:rgba(52,227,196,.08);border:1px solid var(--line2);color:var(--teal);border-radius:100px;padding:6px 13px;font-size:12px;font-weight:600;}
+  .aisha-tab:hover{border-color:var(--teal);}
+  .aisha-sheet{position:absolute;left:0;right:0;bottom:0;top:62px;background:var(--surface);border-top:1px solid var(--line2);border-radius:16px 16px 0 0;transform:translateY(110%);transition:transform .35s ease;z-index:5;display:flex;flex-direction:column;box-shadow:0 -22px 50px -30px #000;}
+  .aisha-sheet.open{transform:translateY(0);}
+  .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:15px 17px;border-bottom:1px solid var(--line);font-family:var(--sora);font-weight:600;font-size:15px;}
+  .sheet-x{background:none;border:1px solid var(--line2);border-radius:8px;color:var(--muted);width:32px;height:32px;display:flex;align-items:center;justify-content:center;}
+  .sheet-x svg{width:16px;height:16px;}
+  .sheet-body{padding:17px;overflow-y:auto;}
+  .sheet-body p{color:var(--muted);font-size:13.5px;line-height:1.55;margin:0 0 13px;}
+  .sheet-body p:last-child{margin:0;} .sheet-body p b{color:var(--ink);}
+  /* carousel extras (shared by HAREEM + ATTYA) */
+  .attya-sub{font-size:13px;color:var(--faint);margin:-8px 0 16px;}
+  .attya-counter{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.06em;}
+  .attya-note{background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--honey);border-radius:0 8px 8px 0;padding:11px 14px;margin:0 0 16px;font-size:12.5px;color:var(--muted);line-height:1.5;}
+  .attya-list li i{color:var(--faint);font-style:italic;}
 </style>
 </head>
 <body class="locked">
@@ -294,7 +315,7 @@
       </div>
     </div>
     <div class="navlinks" id="navlinks">
-      <a href="#pillars">Help</a><a href="#conditions">Conditions</a><a href="#directory">Find care</a><a href="#sources">Sources</a><a href="#inspiration">Inspiration</a><a href="#attya">ATTYA</a><a href="#about">About</a>
+      <a href="#pillars">Help</a><a href="#conditions">Conditions</a><a href="#directory">Find care</a><a href="#sources">Sources</a><a href="#inspiration">Inspiration</a><a href="#hareem">HAREEM</a><a href="#attya">ATTYA</a><a href="#about">About</a>
     </div>
     <button class="bell" id="bell" onclick="toggleBell()" aria-label="Notices">
       <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
@@ -428,6 +449,168 @@
   </div>
 </div></section>
 
+<section id="hareem"><div class="wrap">
+  <div class="sec-h reveal"><span class="eyebrow">A NAHL sub-initiative | Volume I</span><h2>HAREEM</h2>
+    <p class="attya-intro">HAREEM - Hereditary Awareness for Regenerative and Emerging Engineered Medicine - is the awareness foundation behind ATTYA: a plain-spoken reference on what genetic medicine now makes possible, the toll it takes on families, the economics that exclude the developing world, and why Pakistan must build this capability at home.</p></div>
+  <div class="attya-window reveal">
+    <div class="attya-stage" id="hareemStage">
+
+      <div class="attya-slide title-slide active"><div class="sn">01 / 18</div>
+        <div class="big">THE GENETIC REVOLUTION</div>
+        <div class="exp">Volume I: HAREEM</div>
+        <p style="color:var(--teal);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-top:6px;">Hereditary Awareness for Regenerative and Emerging Engineered Medicine</p>
+        <p>A systemic analysis of global cellular breakthroughs, the multi-dimensional attrition borne by affected families, the granular lifecycle of advanced clinical trials, and the structural economic barriers that necessitate a localized shift toward translational medical sovereignty.</p>
+        <span class="attya-badge">Clinical, financial &amp; molecular rationale | systemic reference framework</span></div>
+
+      <div class="attya-slide"><div class="sn">02 / 18</div><div class="attya-h">Global Proof of Concept: Approved Cures (Part 1)</div>
+        <p class="attya-sub">Medical milestones in hematology &amp; ophthalmology</p>
+        <ul class="attya-list">
+          <li><b>Casgevy (Exagamglogene autotemcel):</b> First-ever FDA/EMA approved CRISPR-Cas9 cellular therapy targeting the BCL11A enhancer. Permanently eliminates painful vaso-occlusive crises in Sickle Cell Disease and eradicates blood transfusion dependence in beta-thalassemia major.</li>
+          <li><b>Zynteglo (Betibeglogene autotemcel):</b> A lentiviral vector-based ex vivo autologous CD34+ cell therapy that successfully restores functional, continuous beta-globin production in severe thalassemia phenotypes.</li>
+          <li><b>Luxturna (Voretigene neparvovec):</b> An in vivo adeno-associated virus (AAV2) vector therapy delivering functional RPE65 genes directly to subretinal tissue, permanently reversing inherited Leber congenital amaurosis blindness.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">03 / 18</div><div class="attya-h">Global Proof of Concept: Latest Approved Landmarks (Part 2)</div>
+        <p class="attya-sub">New frontiers in neuromuscular and ultra-rare disorders</p>
+        <ul class="attya-list">
+          <li><b>Lenmeldy (Atidarsagene autotemcel):</b> Landmark 2024 approved ex vivo autologous hematopoietic stem cell gene therapy. Delivers functional ARSA genes to arrest the rapid, fatal neurodegeneration of infantile or juvenile Metachromatic Leukodystrophy (MLD).</li>
+          <li><b>Kebilidi (Eladocagene exuparvovec):</b> An in vivo AAV2 vector carrying a human dopa decarboxylase gene, infused neurosurgically directly into the brain structure. First gene therapy approved for AADC deficiency.</li>
+          <li><b>Lyfgenia (Lovotibeglogene autotemcel) &amp; Beqvez (Fidanacogene elaparvovec):</b> Advanced lentiviral and next-gen AAV vectors. Lyfgenia prevents cellular sickling via a modified gene, while Beqvez provides multi-year Factor IX expression to halt Hemophilia B bleeds.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">04 / 18</div><div class="attya-h">The Active Frontier: Ongoing Clinical Trials (Part 1)</div>
+        <p class="attya-sub">Neurodegenerative &amp; systemic genetic targets</p>
+        <ul class="attya-list">
+          <li><b>Huntington's Disease (Targeted Gene Silencing):</b> Phase I/II clinical trials utilize antisense oligonucleotides (ASOs) and AAV vectors carrying microRNA (miRNA) to directly degrade the toxic, mutant Huntingtin (mHTT) protein before it destroys cortical and striatal neurons.</li>
+          <li><b>Cystic Fibrosis (Inhalation Gene Delivery):</b> Phase II evaluations testing non-viral lipid nanoparticles (LNPs) and engineered lentiviral vectors delivered via nebulizers to transport functional CFTR genes directly to respiratory epithelial cells.</li>
+          <li><b>Duchenne Muscular Dystrophy (Next-Gen Mini-Dystrophin):</b> Expanding Phase III trials evaluating optimized mini-dystrophin vector designs across broader age brackets to sustain long-term cardiac and skeletal muscle structural integrity.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">05 / 18</div><div class="attya-h">The Active Frontier: Ongoing Clinical Trials (Part 2)</div>
+        <p class="attya-sub">Metabolic &amp; deep in-born errors of development</p>
+        <ul class="attya-list">
+          <li><b>Fabry and Gaucher Disease (Ex Vivo &amp; In Vivo Regimes):</b> Active Phase I/II global clinical trials utilizing liver-targeted AAV vectors or gene-edited bone marrow stem cells to induce permanent high-level expression of missing alpha-galactosidase A or glucocerebrosidase enzymes.</li>
+          <li><b>Phenylketonuria (PKU):</b> Phase I/II trials targeting adult profiles using liver-directed AAV vectors to reintroduce the missing PAH gene, permanently lifting extreme, lifelong dietary restrictions.</li>
+          <li><b>Rett Syndrome &amp; Fragile X:</b> Early-stage Phase I trials carefully escalating micro-dosing schemas to introduce tightly regulated MECP2 gene constructs, aiming to correct severe early-childhood developmental and synaptic arrest.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">06 / 18</div><div class="attya-h">The Triad of Attrition: The Reality for Families</div>
+        <p class="attya-sub">The multi-dimensional toll of chronic genetic conditions</p>
+        <ul class="attya-list">
+          <li><b>Physical burden.</b> Perpetual operational routines. Families manage bi-weekly painful hospital infusions, rigorous iron-chelation schedules, or watch irreversible muscle wastage and neurological decline advance daily.</li>
+          <li><b>Emotional burden.</b> The psychological toll of chronic fatal diagnoses. Parents face constant survival anxiety, sibling care neglect, profound guilt over hereditary genetic transmission, and raw trauma.</li>
+          <li><b>Financial burden.</b> Total economic exhaustion. Lifelong palliative requirements consume daily disposable income, deplete generational assets, restrict career advancement, and trigger family bankruptcies.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">07 / 18</div><div class="attya-h">The Capital Engine: Economics of Gene Therapy Development</div>
+        <p class="attya-sub">Why bringing a cure to market costs billions</p>
+        <div class="attya-note">Discovery &amp; Basic R&amp;D (~$1.5 Billion) -&gt; GMP Scale-up &amp; Validation (~$1.5 Billion) -&gt; Scarce Patient Cohort Trials (~$2.0 Billion)</div>
+        <ul class="attya-list">
+          <li><b>The $5 Billion Development Hurdle:</b> Advanced R&amp;D, clinical translation, and extensive regulatory validation drive the total cost of developing a successful gene therapy molecule up to $5 billion.</li>
+          <li><b>The 15-Year Timeline:</b> Sourcing optimized vectors, configuring precision payloads, and executing sequential human clinical trials demands an absolute minimum of 10 to 15 years.</li>
+          <li><b>The Patient Pool Scarcity Paradox:</b> For rare mutations, companies spend massive capital merely identifying, tracking, and flying a tiny pool of global candidates to specialized central trial sites.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">08 / 18</div><div class="attya-h">The Price Tag Wall: Approved Market Costs</div>
+        <p class="attya-sub">Commercial acquisition costs of one-time curative doses</p>
+        <table class="attya-tbl"><thead><tr><th>Gene therapy</th><th>Indication / disease target</th><th>Wholesale price (USD)</th></tr></thead>
+        <tbody>
+          <tr><td><b>Lenmeldy</b></td><td>Metachromatic Leukodystrophy (MLD)</td><td><b>$4,250,000</b></td></tr>
+          <tr><td><b>Hemgenix</b></td><td>Hemophilia B</td><td><b>$3,500,000</b></td></tr>
+          <tr><td><b>Elevidys</b></td><td>Duchenne Muscular Dystrophy (DMD)</td><td><b>$3,200,000</b></td></tr>
+          <tr><td><b>Roctavian</b></td><td>Hemophilia A</td><td><b>$2,900,000</b></td></tr>
+          <tr><td><b>Zynteglo</b></td><td>Beta-Thalassemia Major</td><td><b>$2,800,000</b></td></tr>
+          <tr><td><b>Zolgensma</b></td><td>Spinal Muscular Atrophy (SMA)</td><td><b>$2,125,000</b></td></tr>
+        </tbody></table>
+        <div class="attya-note">The chronic delivery exception (Vyjuvek): while topical applications for Epidermolysis Bullosa cost roughly $25,000 per dose, the required weekly lifetime regimen pushes projected long-term patient exposure costs to $15-$22 million.</div></div>
+
+      <div class="attya-slide"><div class="sn">09 / 18</div><div class="attya-h">The Commercial Pricing Strategy: Rationale &amp; Flaws</div>
+        <p class="attya-sub">The Western "value-based" pricing model</p>
+        <ul class="attya-list">
+          <li><b>The Corporate Justification:</b> Western pharmaceuticals calculate multi-million dollar tags using a "value-based pricing" model. They argue a single $3M injection is cost-effective because it cancels out $4M to $6M in lifetime chronic transfusions and hospital care.</li>
+          <li><b>Amortizing Small Markets:</b> Because rare diseases affect relatively small paper footprints, companies hyper-inflate the per-dose costs to recoup their upfront $5 billion investments within a narrow patent window.</li>
+          <li><b>The Capitalist Blind Spot:</b> This approach assumes the existence of high-income, heavily subsidized Western insurance frameworks. It completely breaks down in developing economies where healthcare is paid entirely out-of-pocket.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">10 / 18</div><div class="attya-h">The Pakistan Paradox: Consanguinity &amp; Financial Exclusion</div>
+        <p class="attya-sub">Why Western commercial models guarantee systemic death sentences</p>
+        <ul class="attya-list">
+          <li><b>The Genetic Density Crisis:</b> Due to deeply entrenched systemic and cultural consanguineous marriage patterns across Pakistan, the prevalence of inherited monogenic disorders - such as Beta-Thalassemia Major and severe neurodevelopmental deficiencies - is among the highest in the world.</li>
+          <li><b>The Income Gap Absurdity:</b> The average monthly household income across Pakistan is roughly PKR 45,000 to 75,000. The cost of a single dose of Zynteglo is $2.8 Million USD (approx. 800 Million PKR).</li>
+          <li><b>The Reality of Exclusion:</b> A multi-million-dollar price tag is functionally infinite for a local citizen. Relying on imported commercial pharmacology means completely abandoning millions of children to early mortality.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">11 / 18</div><div class="attya-h">Operationalizing Mitigation: The Rationale for ATTYA Pakistan</div>
+        <p class="attya-sub">Transforming healthcare through non-profit academic sovereignty</p>
+        <ul class="attya-list">
+          <li><b>De-Commercializing the Molecule:</b> By shifting advanced genetic medicine from a venture-capital, for-profit commercial model to a state-backed academic consortium, we completely eliminate the massive corporate profit margins driving Western prices.</li>
+          <li><b>Repurposing Existing Assets:</b> Establishing localized, domestic viral vector synthesis, cell-processing cleanrooms, and clinical trials within Pakistan's public universities and state medical institutions cuts development infrastructure costs by over 85%.</li>
+          <li><b>The Ultimate Cost Reductions:</b> While imported Western treatments cost $2,800,000 USD per patient, the ATTYA Indigenous Model projects a cost of &lt;$35,000 USD focused strictly on raw materials, local cleanroom operations, and baseline support.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">12 / 18</div><div class="attya-h">Clinical Gateways: Patient Eligibility &amp; Screening</div>
+        <p class="attya-sub">Mitigating trial risk before enrolment</p>
+        <ul class="attya-list">
+          <li><b>Inclusion Criteria Foundations:</b> Requires absolute, definitive molecular and next-generation sequencing confirmation of the targeted monogenic mutation. Enrolment must happen before irreversible end-organ or systemic tissue fibrosis sets in.</li>
+          <li><b>The Exclusion Barriers:</b> Pre-existing neutralizing antibody titers (e.g., anti-AAV capsids) which instantly clear the viral vectors before they target host tissue. Advanced systemic hepatic or renal failure also bars candidates due to baseline conditioning toxicity risks.</li>
+          <li><b>The Registry Framework:</b> Establishing centralized, standardized national registries to aggregate and identify clear eligible cohorts across Pakistan's diverse medical network.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">13 / 18</div><div class="attya-h">The Trial Lifecycle: Enrolment to 15-Year Completion</div>
+        <p class="attya-sub">De-mystifying the operational protocol</p>
+        <div class="attya-note">Genomic Screening &amp; Consent -&gt; Conditioning / Bone Marrow Ablation -&gt; Precision Vector Infusion Window -&gt; 15-Year Longitudinal Follow-up</div>
+        <ul class="attya-list">
+          <li><b>Informed Consent &amp; Genotyping:</b> In-depth counseling explaining the permanent, life-altering nature of genomic alteration to families.</li>
+          <li><b>Conditioning &amp; Harvesting:</b> Preparing the cellular macro-environment (e.g., bone marrow clearance via targeted chemotherapy for blood disorders) or administering transient immunosuppression.</li>
+          <li><b>Precision Infusion Window:</b> Delivering the payload within ultra-sterile, site-specific environments (such as dedicated bone marrow transplant units or highly specialized operating rooms).</li>
+          <li><b>Long-Term Surveillance:</b> Transitioning from acute post-infusion toxicity monitoring to a mandatory 15-year long-term follow-up loop to verify expression durability and check for delayed genomic toxicities.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">14 / 18</div><div class="attya-h">Therapeutic Delivery Frameworks: In Vivo vs. Ex Vivo</div>
+        <p class="attya-sub">Vector mechanics of living medicine</p>
+        <ul class="attya-list">
+          <li><b>In Vivo Model (Direct Systemic Delivery):</b><br><i>The Process:</i> The therapeutic gene payload is packaged directly into a viral vector and injected straight into the patient's body (intravenously, intrathecally, or subretinally).<br><i>Primary Vector:</i> Adeno-Associated Virus (AAV).<br><i>Targets:</i> Non-dividing, long-lived tissues such as the liver, central nervous system, and retina.</li>
+          <li><b>Ex Vivo Model (Cellular Engineering Outside the Body):</b><br><i>The Process:</i> Patient stem cells are harvested, engineered inside a sterile, localized GMP cleanroom laboratory, validated, and then re-infused into the patient.<br><i>Primary Vector:</i> Lentivirus or Retrovirus.<br><i>Targets:</i> Rapidly dividing systems, primarily hematopoietic stem cells (bone marrow) and T-cells.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">15 / 18</div><div class="attya-h">Next-Gen Molecular Engines: Editing Models</div>
+        <p class="attya-sub">Shifting from gene replacement to precision modification</p>
+        <ul class="attya-list">
+          <li><b>CRISPR-Cas9 (The Molecular Scissors):</b> Uses a guide RNA sequence to make targeted double-stranded breaks in the DNA. This approach can either completely "knock out" a faulty gene or allow template-directed repairs.</li>
+          <li><b>Base Editing (The Molecular Pencil):</b> Chemically modifies a single nucleotide base pair (e.g., converting a C to a T) without breaking the DNA backbone. This dramatically lowers the risk of random insertion or deletion errors.</li>
+          <li><b>Prime Editing (The Search-and-Replace Word Processor):</b> An advanced technology capable of writing entirely new genetic sequences directly into specified genomic sites without requiring double-stranded DNA breaks or donor DNA templates.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">16 / 18</div><div class="attya-h">The Biological Ledger: Pros &amp; Cons</div>
+        <p class="attya-sub">Balancing curative power against cellular risks</p>
+        <ul class="attya-list">
+          <li><b>The Crucial Pros (The Upside):</b><br><i>The Curative Paradigm:</i> Corrects the root molecular cause of a disease, replacing decades of painful, lifestyle-limiting palliative management with a single definitive intervention.<br><i>Target Precision:</i> Patches or modifies specific corrupted gene segments while leaving healthy surrounding DNA intact.</li>
+          <li><b>The Crucial Cons (The Biological Risks):</b><br><i>Immunogenicity:</i> Intense immune reactions where the host body flags viral vectors or bacterial proteins as hostile, triggering severe systemic inflammation.<br><i>Off-Target Mutations &amp; Insertional Mutagenesis:</i> The risk of gene editing tools interacting with unintended genomic areas, potentially disrupting vital genes or activating oncogenes.</li>
+        </ul></div>
+
+      <div class="attya-slide"><div class="sn">17 / 18</div><div class="attya-h">Structural Imperative for Indigenous Deployment</div>
+        <p class="attya-sub">The path to autonomy</p>
+        <ul class="attya-list">
+          <li><b>Breaking Commercial Dependence:</b> Relying on imported molecular pharmacology guarantees perpetual exclusion. True access requires the complete localization of biological research and vector manufacturing.</li>
+          <li><b>Capital Repurposing:</b> Redirecting the massive, compounding funds lost to lifetime chronic palliative care toward the establishment of localized, permanent curative infrastructure.</li>
+          <li><b>The Replicable Framework:</b> Once a single local clinical trial lifecycle is successfully completed, it forms a standardized, domestic validation blueprint that can rapidly accommodate subsequent genetic targets.</li>
+        </ul></div>
+
+      <div class="attya-slide title-slide"><div class="sn">18 / 18</div>
+        <div class="big" style="font-size:clamp(28px,5vw,46px);">THE LOGIC DEMANDS ACTION</div>
+        <p>The global science has proven that genetic diseases can be permanently cured. The multi-million-dollar price tags of Western medicine prove that commercial avenues will forever exclude the developing world. The universal structure of clinical trials proves that the science can be localized.</p>
+        <p style="color:var(--teal);font-weight:600;margin-top:14px;">The HAREEM Framework is Complete. The Infrastructure Must Awaken.</p>
+        <span class="attya-badge">Proceed to Volume II: the ATTYA operational matrix, consortium mobilization, and the 24-month roadmap to first-in-human indigenous trials in Pakistan.</span></div>
+
+    </div>
+    <div class="attya-ctrls">
+      <button class="attya-btn" id="hareemPrev" onclick="hareemGo(-1)" disabled>Prev</button>
+      <div class="attya-counter" id="hareemCounter">01 / 18</div>
+      <button class="attya-btn" id="hareemNext" onclick="hareemGo(1)">Next</button>
+    </div>
+  </div>
+</div></section>
+
 <section id="attya"><div class="wrap">
   <div class="sec-h reveal"><span class="eyebrow">A NAHL sub-initiative</span><h2>ATTYA GeneNext</h2>
     <p class="attya-intro">ATTYA - Advanced Translational Therapies Yielding Awakening - is a sub-initiative of NAHL: an operational roadmap to build the genetic-medicine infrastructure Pakistan needs to move from lifelong disease management toward one-time molecular cures. The vision, in brief:</p></div>
@@ -507,10 +690,16 @@
   <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Ask AISHA</button>
 <section class="panel" id="panel" aria-label="NAHL assistant">
   <div class="ph"><span class="hex" style="width:30px;height:30px;font-size:13px;">A</span>
-    <div><div class="ti">AISHA</div><div class="st" id="stBadge">Local | offline</div></div>
+    <div class="ph-txt"><div class="ti">AISHA <span class="st" id="stBadge">Local | offline</span></div>
+      <div class="ph-sub">an Artificially Intelligent System for Hereditary Advisory</div></div>
     <button class="x" onclick="closeChat()" aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="msgs" id="msgs"></div>
+  <div class="aisha-sheet" id="aishaSheet">
+    <div class="sheet-head"><span id="sheetTitle">How AISHA works</span><button class="sheet-x" onclick="hideSheet()" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
   <div class="pf">
+    <div class="aisha-actions"><button class="aisha-tab" onclick="showSheet('how')">How I work</button></div>
     <div class="chips">
       <span class="chip" onclick="ask('Which conditions have gene therapy?')">Gene therapy options</span>
       <span class="chip" onclick="ask('Where can I get tested in Pakistan?')">Testing in Pakistan</span>
@@ -620,7 +809,27 @@ const KB = {
     {name:"Marfan Syndrome",gene:"FBN1",category:"Connective tissue",inherit:"Autosomal dominant",onset:"Childhood",status:"Beta-blockers/ARBs; surveillance & surgery",stype:"st-mang",syn:["marfan"],kw:["tall","heart","aorta","joints","eyes"],what:"An inherited connective-tissue condition affecting the heart, eyes and skeleton.",signs:"Tall slender build, long limbs, joint flexibility and risk of aortic enlargement.",dx:"Clinical assessment, heart and eye checks, and genetic testing of FBN1.",pk:"Heart surveillance and medication reduce risk; cardiology and genetics follow-up is key.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
     {name:"Osteogenesis Imperfecta",gene:"COL1A1 / COL1A2",category:"Connective tissue",inherit:"Often autosomal dominant",onset:"Birth-childhood",status:"Bisphosphonates; supportive; trials",stype:"st-mang",syn:["oi","brittle bone disease"],kw:["brittle bones","fractures","fragile","blue sclera"],what:"A group of inherited conditions ('brittle bone disease') where bones break easily.",signs:"Frequent fractures, sometimes with blue-tinged eye whites and loose joints.",dx:"Clinical assessment, X-rays and genetic testing.",pk:"Care reduces fractures and supports mobility; orthopaedics, physiotherapy and genetics.",src:[["GARD","T1"],["Orphanet","T1"]]},
     {name:"Tay-Sachs Disease",gene:"HEXA",category:"Lysosomal",inherit:"Autosomal recessive",onset:"Infancy",status:"Supportive; gene therapy trials",stype:"st-supp",syn:["tay sachs"],kw:["regression","startle","vision","neurological"],what:"An inherited disorder where a harmful substance builds up in nerve cells.",signs:"Loss of milestones, an exaggerated startle response and decline over time.",dx:"Enzyme testing and genetic testing of HEXA.",pk:"Care is supportive; trials are ongoing internationally. Genetic counselling for the family matters.",src:[["GARD","T1"],["Orphanet","T1"]]},
-    {name:"Huntington Disease",gene:"HTT",category:"Neurodegenerative",inherit:"Autosomal dominant",onset:"Adulthood",status:"Supportive; antisense trials",stype:"st-supp",syn:["huntington"],kw:["movement","chorea","cognition","family history"],what:"An inherited condition causing progressive changes in movement, thinking and mood, usually in adulthood.",signs:"Involuntary movements, difficulty with thinking and emotional changes.",dx:"Genetic testing of HTT, with genetic counselling.",pk:"Care is currently supportive; trials are ongoing. Counselling is important given the inheritance pattern.",src:[["GARD","T1"],["MedlinePlus","T1"]]}
+    {name:"Huntington Disease",gene:"HTT",category:"Neurodegenerative",inherit:"Autosomal dominant",onset:"Adulthood",status:"Supportive; antisense trials",stype:"st-supp",syn:["huntington"],kw:["movement","chorea","cognition","family history"],what:"An inherited condition causing progressive changes in movement, thinking and mood, usually in adulthood.",signs:"Involuntary movements, difficulty with thinking and emotional changes.",dx:"Genetic testing of HTT, with genetic counselling.",pk:"Care is currently supportive; trials are ongoing. Counselling is important given the inheritance pattern.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
+    {name:"Down Syndrome",gene:"Trisomy 21",category:"Chromosomal",inherit:"Usually not inherited (extra chromosome 21)",onset:"From birth",status:"Supportive care; early intervention",stype:"st-supp",syn:["down syndrome","downs","trisomy 21","trisomy21","t21"],kw:["chromosome","developmental","intellectual","heart","thyroid"],what:"A common chromosomal condition caused by an extra copy of chromosome 21, affecting development and physical features.",signs:"Distinctive facial features, low muscle tone, developmental and intellectual delay, and a higher chance of heart and thyroid issues.",dx:"Often suspected on prenatal screening and confirmed by a chromosome (karyotype) test.",pk:"Early-intervention therapies, regular heart and thyroid checks, and inclusive education make a real difference; paediatric and genetics follow-up help.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
+    {name:"Autism Spectrum Disorder",gene:"Polygenic (many genes)",category:"Neurodevelopmental",inherit:"Strongly heritable, complex",onset:"Early childhood",status:"Therapies and developmental supports",stype:"st-supp",syn:["autism","asd","autism spectrum","autistic"],kw:["social","communication","behaviour","sensory","development"],what:"A common neurodevelopmental condition affecting social communication and behaviour, with a wide range of strengths and challenges. It is highly heritable and involves many genes rather than a single one, and it is not caused by vaccines.",signs:"Differences in social interaction and communication, repetitive behaviours or focused interests, and sensory sensitivities - varying widely from person to person.",dx:"Diagnosed through developmental and behavioural assessment by trained clinicians, not by a single genetic test (though genetic testing is sometimes offered).",pk:"Early developmental support, speech and occupational therapy, and understanding at home and school help children thrive; seek a developmental paediatrician.",src:[["MedlinePlus","T1"],["GARD","T1"]]},
+    {name:"ADHD",gene:"Polygenic (many genes)",category:"Neurodevelopmental",inherit:"Highly heritable, complex",onset:"Childhood",status:"Behavioural supports; clinician-led care",stype:"st-supp",syn:["adhd","attention deficit","hyperactivity"],kw:["attention","focus","hyperactive","impulsive","concentration"],what:"A common neurodevelopmental condition involving differences in attention, activity level and impulse control. It is highly heritable and polygenic - not caused by a single gene, or by parenting alone.",signs:"Difficulty sustaining attention, restlessness or over-activity, and impulsivity to a degree that affects daily life.",dx:"Diagnosed by a qualified clinician through history and standardised assessment, not by a genetic test.",pk:"Support at school and home, behavioural strategies, and clinician-led care can help; speak with a paediatrician or child psychiatrist.",src:[["MedlinePlus","T1"]]},
+    {name:"Fragile X Syndrome",gene:"FMR1",category:"Neurodevelopmental",inherit:"X-linked",onset:"Childhood",status:"Therapies and supports; trials",stype:"st-supp",syn:["fragile x","fxs"],kw:["intellectual disability","autism","developmental","learning"],what:"An inherited condition and the most common inherited cause of intellectual disability, caused by changes in the FMR1 gene.",signs:"Developmental and learning delays, social and behavioural differences (sometimes overlapping with autism), and certain physical features.",dx:"Genetic testing of the FMR1 gene.",pk:"Early educational and behavioural support helps; genetic counselling matters because it is inherited.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Turner Syndrome",gene:"Monosomy X (45,X)",category:"Chromosomal",inherit:"Usually not inherited",onset:"Birth / childhood",status:"Hormone therapy and monitoring",stype:"st-mang",syn:["turner","45 x","monosomy x"],kw:["short stature","ovarian","heart","girls"],what:"A chromosomal condition affecting girls, caused by a missing or partly missing X chromosome.",signs:"Short stature, delayed puberty, and sometimes heart or kidney differences.",dx:"Chromosome (karyotype) testing.",pk:"Growth hormone and hormone replacement, plus heart monitoring, are part of care; endocrinology follow-up.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
+    {name:"Klinefelter Syndrome",gene:"47,XXY",category:"Chromosomal",inherit:"Usually not inherited",onset:"Often adolescence / adulthood",status:"Hormone therapy and supports",stype:"st-mang",syn:["klinefelter","47 xxy","xxy"],kw:["boys","tall","fertility","learning"],what:"A chromosomal condition affecting males, caused by an extra X chromosome.",signs:"Can include tall stature, reduced testosterone, fertility difficulties, and sometimes learning differences.",dx:"Chromosome (karyotype) testing.",pk:"Testosterone therapy and educational support where needed; endocrinology and fertility advice.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
+    {name:"Edwards Syndrome",gene:"Trisomy 18",category:"Chromosomal",inherit:"Usually not inherited",onset:"From birth",status:"Supportive / comfort care",stype:"st-supp",syn:["edwards","trisomy 18","trisomy18"],kw:["chromosome","heart","serious"],what:"A serious chromosomal condition caused by an extra copy of chromosome 18, affecting many organ systems.",signs:"Growth problems, heart defects, and significant developmental differences; the outlook is often serious.",dx:"Prenatal screening and confirmatory chromosome testing.",pk:"Care focuses on comfort and family support, with a compassionate multidisciplinary team.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
+    {name:"Patau Syndrome",gene:"Trisomy 13",category:"Chromosomal",inherit:"Usually not inherited",onset:"From birth",status:"Supportive / comfort care",stype:"st-supp",syn:["patau","trisomy 13","trisomy13"],kw:["chromosome","heart","brain"],what:"A serious chromosomal condition caused by an extra copy of chromosome 13, affecting many organs.",signs:"Brain, heart and facial differences; the outlook is often serious.",dx:"Prenatal screening and confirmatory chromosome testing.",pk:"Care focuses on comfort and family support with a multidisciplinary team.",src:[["GARD","T1"]]},
+    {name:"Rett Syndrome",gene:"MECP2",category:"Neurodevelopmental",inherit:"X-linked (mostly de novo)",onset:"Infancy",status:"Supportive; gene therapy trials",stype:"st-supp",syn:["rett"],kw:["girls","regression","hand","developmental"],what:"A genetic neurodevelopmental condition, mainly affecting girls, caused by changes in the MECP2 gene.",signs:"Loss of purposeful hand use and spoken language after early typical development, repetitive hand movements, and movement difficulties.",dx:"Clinical features plus genetic testing of MECP2.",pk:"Therapies and supportive care help; trials are ongoing internationally.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Angelman Syndrome",gene:"UBE3A (15q11-q13)",category:"Neurodevelopmental",inherit:"Genomic imprinting",onset:"Infancy",status:"Supportive; trials",stype:"st-supp",syn:["angelman"],kw:["developmental","seizures","speech","balance"],what:"A genetic neurodevelopmental condition caused by loss of function of the UBE3A gene on chromosome 15.",signs:"Developmental delay, little or no speech, balance and movement issues, seizures, and a characteristically happy demeanour.",dx:"Genetic testing of chromosome 15 / UBE3A.",pk:"Early intervention, seizure management and communication support; trials are ongoing.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Prader-Willi Syndrome",gene:"15q11-q13 (paternal)",category:"Neurodevelopmental",inherit:"Genomic imprinting",onset:"Infancy",status:"Hormone therapy and supports",stype:"st-mang",syn:["prader willi","pws"],kw:["appetite","weight","muscle tone","development"],what:"A genetic condition caused by loss of paternally expressed genes on chromosome 15.",signs:"Low muscle tone and feeding difficulty in infancy, later an intense appetite with a risk of obesity, and developmental differences.",dx:"Genetic testing of chromosome 15.",pk:"Growth hormone, careful management of the food environment, and supports; endocrinology and dietetics.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Williams Syndrome",gene:"7q11.23 deletion",category:"Neurodevelopmental",inherit:"Usually de novo",onset:"Childhood",status:"Monitoring and supports",stype:"st-mang",syn:["williams"],kw:["heart","social","developmental","calcium"],what:"A genetic condition caused by a small deletion on chromosome 7.",signs:"Distinctive facial features, a very sociable personality, narrowing of heart blood vessels, and developmental differences.",dx:"Genetic testing (microarray or FISH) for the 7q11.23 deletion.",pk:"Heart monitoring, calcium checks and developmental support; cardiology and genetics.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"22q11.2 Deletion (DiGeorge)",gene:"22q11.2 deletion",category:"Chromosomal",inherit:"Autosomal dominant / de novo",onset:"Birth / childhood",status:"Multidisciplinary care",stype:"st-mang",syn:["digeorge","22q11","velocardiofacial"],kw:["heart","immune","palate","calcium"],what:"A condition caused by a small missing piece of chromosome 22, affecting several body systems.",signs:"Heart defects, immune and calcium problems, palate differences, and developmental or learning differences.",dx:"Genetic testing (microarray or FISH) for the 22q11.2 deletion.",pk:"Coordinated care across cardiology, immunology and development; genetics follow-up.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Noonan Syndrome",gene:"PTPN11 and others",category:"Multi-system",inherit:"Autosomal dominant",onset:"Birth / childhood",status:"Monitoring and supports",stype:"st-mang",syn:["noonan"],kw:["heart","short stature","bleeding","features"],what:"A genetic condition affecting growth, heart and facial features, caused by changes in genes such as PTPN11.",signs:"Short stature, heart differences, distinctive features, and sometimes a tendency to bruise or bleed.",dx:"Clinical features plus genetic testing.",pk:"Heart monitoring and growth support; cardiology and genetics.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Cri-du-chat Syndrome",gene:"5p deletion",category:"Chromosomal",inherit:"Usually de novo",onset:"From birth",status:"Supportive care and therapies",stype:"st-supp",syn:["cri du chat","5p minus","cat cry"],kw:["high cry","developmental","chromosome"],what:"A chromosomal condition caused by a missing piece of the short arm of chromosome 5.",signs:"A high-pitched, cat-like cry in infancy, developmental delay, and distinctive features.",dx:"Chromosome testing or microarray.",pk:"Early intervention, speech and physical therapy; developmental follow-up.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Hereditary Hemochromatosis",gene:"HFE",category:"Metabolic",inherit:"Autosomal recessive",onset:"Adulthood",status:"Treatable: venesection (blood removal)",stype:"st-mang",syn:["hemochromatosis","haemochromatosis","iron overload"],kw:["iron","liver","fatigue","joints"],what:"An inherited condition where the body absorbs too much iron, which can build up and damage organs.",signs:"Fatigue, joint pain, and over time liver, heart or hormone problems.",dx:"Blood iron studies and genetic testing of HFE.",pk:"Highly treatable - regular blood removal keeps iron normal; early detection prevents damage.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
+    {name:"Familial Hypercholesterolemia",gene:"LDLR (and others)",category:"Cardiometabolic",inherit:"Autosomal dominant",onset:"Any age",status:"Treatable: lifestyle + lipid-lowering therapy",stype:"st-mang",syn:["familial hypercholesterolemia","fh"],kw:["cholesterol","heart","ldl","cardiac"],what:"An inherited condition causing very high cholesterol from early life, raising the risk of early heart disease.",signs:"Often no symptoms until heart problems appear; sometimes cholesterol deposits in skin or tendons.",dx:"Cholesterol blood tests, family history, and genetic testing.",pk:"Very treatable - early diagnosis plus lifestyle and lipid-lowering therapy greatly reduces risk; test relatives.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
+    {name:"Achondroplasia",gene:"FGFR3",category:"Skeletal",inherit:"Autosomal dominant",onset:"From birth",status:"Monitoring; targeted therapy available",stype:"st-mang",syn:["achondroplasia"],kw:["short stature","bones","skeletal","limbs"],what:"The most common form of disproportionate short stature (a skeletal dysplasia), caused by changes in the FGFR3 gene.",signs:"Short limbs with an average-size trunk, a larger head, and characteristic features.",dx:"Clinical and X-ray features plus genetic testing of FGFR3.",pk:"Care focuses on monitoring and quality of life; a targeted medicine exists internationally and access varies.",src:[["GARD","T1"],["Orphanet","T1"]]},
+    {name:"Hereditary Breast & Ovarian Cancer (BRCA)",gene:"BRCA1 / BRCA2",category:"Cancer-predisposition",inherit:"Autosomal dominant",onset:"Adulthood",status:"Surveillance and risk-reducing options",stype:"st-mang",syn:["brca","brca1","brca2","hereditary breast cancer"],kw:["cancer","breast","ovarian","risk"],what:"Inherited changes in the BRCA1 or BRCA2 genes that raise the lifetime risk of breast, ovarian and some other cancers.",signs:"No symptoms in themselves - they indicate increased risk, identified through family history and testing.",dx:"Genetic testing of BRCA1/BRCA2, usually with genetic counselling.",pk:"Knowing carrier status allows enhanced screening and risk-reducing options; counselling is key, and relatives can be tested.",src:[["GARD","T1"],["MedlinePlus","T1"]]},
+    {name:"Polycystic Kidney Disease (ADPKD)",gene:"PKD1 / PKD2",category:"Kidney",inherit:"Autosomal dominant",onset:"Adulthood (usually)",status:"Management; a slowing therapy exists",stype:"st-mang",syn:["polycystic kidney","pkd","adpkd"],kw:["kidney","cysts","blood pressure"],what:"An inherited condition in which fluid-filled cysts grow in the kidneys, which can gradually reduce kidney function.",signs:"High blood pressure, back or side pain, blood in the urine, and gradually reduced kidney function.",dx:"Imaging (ultrasound) and genetic testing of PKD1/PKD2.",pk:"Blood-pressure control and monitoring are central; a therapy that can slow progression exists, and access varies.",src:[["GARD","T1"],["MedlinePlus","T1"]]}
   ],
   directory: [
     {name:"Pakistani Society of Medical Genetics & Genomics (PSMG)",city:"National",offer:"Professional body - the anchor for finding credible medical geneticists and guidance.",tier:"T1"},
@@ -677,25 +886,57 @@ document.getElementById('condSearch').addEventListener('input',e=>{const q=e.tar
 
 /* ---------- engine ---------- */
 const NAHL=(function(){
-  const norm=s=>s.toLowerCase().replace(/[^a-z0-9\s]/g,' ');
-  const CRISIS=/\b(suicide|kill myself|end my life|want to die|self.?harm|harm myself|hurt myself|can'?t go on)\b/;
+  const STOP=new Set("the a an is are was were be to of for in on at it its and or but how do does what when where which who why can could should would will my our your his her their this that with as by from about have has having get got need want know tell explain child kid baby son daughter mother father parent please help".split(/\s+/));
+  const norm=s=>s.toLowerCase().replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();
+  const CRISIS=/\b(suicide|kill myself|end my life|want to die|self.?harm|harm myself|hurt myself|can'?t go on|no reason to live)\b/;
   const ADVICE=/\b(what (medicine|drug|dose|dosage)|how much .*(give|take)|prescribe|should (i|we|my child) take|treat at home|stop .*(medicine|drug))\b/;
-  function score(q,c){q=norm(q);const t=q.split(/\s+/).filter(x=>x.length>2);
-    const hay=norm([c.name,c.gene,c.category,c.status,...(c.syn||[]),...(c.kw||[]),c.what,c.signs].join(' '));
-    let s=0;if(hay.includes(q))s+=5;t.forEach(x=>{if(hay.includes(x))s+=1;});(c.syn||[]).forEach(x=>{if(q.includes(x))s+=4;});if(q.includes(c.gene.toLowerCase()))s+=4;return s;}
-  function retrieve(q){return KB.conditions.map(c=>({c,s:score(q,c)})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s).slice(0,3).map(x=>x.c);}
+  function toks(q){return norm(q).split(' ').filter(w=>w.length>2 && !STOP.has(w));}
+  function score(q,c){
+    const nq=norm(q), tk=toks(q);
+    const name=norm(c.name), syn=(c.syn||[]).map(norm), gene=norm(c.gene);
+    const strong=(name+' '+syn.join(' ')+' '+(c.kw||[]).map(norm).join(' ')).split(' ').filter(Boolean);
+    let s=0;
+    if(name && nq.indexOf(name)>=0) s+=12;
+    syn.forEach(x=>{ if(x && nq.indexOf(x)>=0) s+=10; });
+    const geneParts=gene.split(/[^a-z0-9]+/).filter(w=>w.length>1);
+    tk.forEach(w=>{ if(geneParts.indexOf(w)>=0) s+=8; });
+    tk.forEach(w=>{ if(strong.indexOf(w)>=0) s+=3; });
+    return s;
+  }
+  function ranked(q){return KB.conditions.map(c=>({c,s:score(q,c)})).filter(x=>x.s>0).sort((a,b)=>b.s-a.s);}
+  function retrieve(q){return ranked(q).filter(x=>x.s>=6).slice(0,3).map(x=>x.c);}
+  function best(q){const r=ranked(q);if(!r.length)return{hit:null};const top=r[0],sec=r[1];
+    if(top.s<6) return {hit:null};
+    if(sec && sec.s>=6 && (top.s-sec.s)<3) return {hit:null,amb:true,options:[top.c,sec.c]};
+    return {hit:top.c};}
   function gate(q){q=norm(q);if(CRISIS.test(q))return'crisis';if(ADVICE.test(q))return'advice';return'ok';}
-  function offline(text){const q=norm(text);
-    if(/\b(family|families|support group|connect|alone|other parents)\b/.test(q))
+  const GEN=[
+    {re:/\bwhat (is|are) (a |an )?rare disease|\bdefine rare disease/, a:{text:"A rare disease is one that affects a small number of people - in many definitions, fewer than 1 in 2,000. Individually rare, but together they affect hundreds of millions of people worldwide, and about 7 in 10 begin in childhood. Most - roughly 70-80% - have a genetic cause.",cites:[["Orphanet","T1"],["GARD","T1"]]}},
+    {re:/\bwhat (is|does) (gene|genetic) (therapy|treatment)|\bgene therapy (mean|work)/, a:{text:"Gene therapy aims to treat the root genetic cause of a disease - for example by delivering a working copy of a faulty gene, or by editing it. For some conditions it can be a one-time, potentially curative treatment; for most it is still experimental or newly approved, and access varies greatly by country. Whether it suits a specific person is a question for a specialist.",cites:[["MedlinePlus","T1"],["GARD","T1"]],dis:DIS}},
+    {re:/\bhow .*(inherit|passed)|\b(inherit|hereditary).*(work|mean|happen)|\bwhy.*genetic/, a:{text:"Inherited conditions are passed through genes from parents to children. Common patterns are autosomal recessive (a child needs a change from both parents), autosomal dominant (one copy is enough), and X-linked (carried on the X chromosome). A medical geneticist or genetic counsellor can explain the exact pattern and what it means for a family.",cites:[["MedlinePlus","T1"]]}},
+    {re:/\bcarrier|premarital|cascade screen|\bscreen.*marriage/, a:{text:"A carrier has one copy of a gene change and is usually healthy. When both partners carry the same recessive change, their children can be affected. Carrier screening - including premarital and cascade (family) testing - helps couples understand their risk. This matters especially where marriage within the family is common.",cites:[["MedlinePlus","T1"],["GARD","T1"]]}},
+    {re:/\bnewborn screen|heel prick|screening at birth/, a:{text:"Newborn screening is a simple blood test soon after birth that can detect certain treatable genetic and metabolic conditions early - sometimes before symptoms appear. Early detection can change outcomes. It is not yet universal in Pakistan, so it is worth asking your hospital what is offered.",cites:[["MedlinePlus","T1"]]}},
+    {re:/\bgenetic counsel|counsellor|counselor/, a:{text:"A genetic counsellor helps families understand a diagnosis, how a condition is inherited, testing options, and the choices ahead - in plain language and without pressure. In Pakistan you can reach medical geneticists through PSMG and centres such as AKU.",cites:[["PSMG","T1"]]}},
+    {re:/\bsecond opinion/, a:{text:"Seeking a second opinion is reasonable and common with rare conditions, which are often missed or misdiagnosed. Bring your test results and records, and consider a medical geneticist or a specialist centre. Asking is your right."}},
+    {re:/\b(scared|afraid|overwhelm|hopeless|can'?t cope|exhausted|alone|depress|worried|anxious|crying|give up|lost)\b/, a:{text:"I'm sorry - what you're carrying is heavy, and it's completely understandable to feel this way. You don't have to hold it all at once. Lean on people you trust, connect with other families who understand, and tell your medical team how you are coping, not only how your child is. If the feelings become overwhelming, please reach out to a doctor or someone close to you."}}
+  ];
+  function offline(text){
+    const q=norm(text);
+    for(var i=0;i<GEN.length;i++){ if(GEN[i].re.test(q)) return GEN[i].a; }
+    if(/\b(family|families|support group|connect|other parents|community)\b/.test(q))
       return {text:"You are not alone. Communities like RareConnect (EURORDIS) and disease-specific groups connect families worldwide; locally, look for moderated WhatsApp and Facebook groups for your child's condition. Tell me the condition and I'll point you to good starting places - PSMG can also help you reach a specialist who often knows local family networks."};
-    if(/\b(gene therapy|treatment|cure|trial|treatable)\b/.test(q)){const tx=KB.conditions.filter(c=>c.stype==='st-appr').slice(0,6).map(c=>"- "+c.name+" - "+c.status).join("\n");
-      return {text:"Several conditions in our library now have disease-modifying treatments or active trials internationally (access varies by country). Examples:\n\n"+tx+"\n\nOpen a row in the Conditions table for details, and always discuss options with a specialist.",cites:[["GARD","T1"],["Orphanet","T1"]],dis:DIS};}
-    if(/\b(test|testing|genetic|diagnos|where|hospital|doctor|specialist|karachi|lahore|islamabad)\b/.test(q)){const d=KB.directory.slice(0,3).map(o=>"- "+o.name+(o.city!=="National"?" ("+o.city+")":"")).join("\n");
+    if(/\b(test|testing|diagnos|where|hospital|doctor|specialist|karachi|lahore|islamabad|clinic|\blab\b)\b/.test(q)){const d=KB.directory.slice(0,3).map(o=>"- "+o.name+(o.city!=="National"?" ("+o.city+")":"")).join("\n");
       return {text:"For genetic evaluation and testing in Pakistan, good starting points are:\n\n"+d+"\n\nAlways verify a specialist on the PMDC register first. Tell me the condition and I can be more specific.",cites:[["PSMG","T1"]]};}
-    const hits=retrieve(text);
-    if(!hits.length) return {text:"I don't have a verified page on that yet, so I won't guess. The safest next step is a medical geneticist - reachable through PSMG - or browse the Conditions table on this page. If you describe the main symptoms, I'll try to find a match."};
-    const c=hits[0];
-    return {text:`Here's what NAHL's verified page on ${c.name} says:\n\n${c.what}\n\nCommon signs: ${c.signs}\n\nTreatment status: ${c.status} (access varies).\n\nIn Pakistan: ${c.pk}\n\nOpen the "${c.name}" row in the Conditions table for the full page.`,cites:c.src,dis:DIS};}
+    const b=best(text);
+    if(b.amb) return {text:"I want to answer about the right condition. Did you mean "+b.options.map(c=>c.name).join(" or ")+"? Tell me which, or open it from the Conditions table above."};
+    if(!b.hit){
+      if(/\b(gene therapy|treatment|cure|trial|treatable|therapy)\b/.test(q)){const tx=KB.conditions.filter(c=>c.stype==='st-appr').slice(0,6).map(c=>"- "+c.name+" - "+c.status).join("\n");
+        return {text:"Several conditions in our library now have disease-modifying treatments or active trials internationally (access varies by country). Examples:\n\n"+tx+"\n\nOpen a row in the Conditions table for details, and always discuss options with a specialist.",cites:[["GARD","T1"],["Orphanet","T1"]],dis:DIS};}
+      return {text:"I don't have a verified page on that yet, so I won't guess. The safest next step is a medical geneticist - reachable through PSMG - or browse the Conditions table above. If you name the condition or describe the main symptoms, I'll try to find a match."};
+    }
+    const c=b.hit;
+    return {text:"Here's what NAHL's verified page on "+c.name+" says:\n\n"+c.what+"\n\nCommon signs: "+c.signs+"\n\nTreatment status: "+c.status+" (access varies).\n\nIn Pakistan: "+c.pk+"\n\nOpen the \""+c.name+"\" row in the Conditions table for the full page.",cites:c.src,dis:DIS};
+  }
   return {score,retrieve,gate,offline};
 })();
 const SYS_LIMITS="You are AISHA (Artificially Intelligent System for Hereditary Advisory), the assistant of NAHL, a warm, emotionally steady guide for families affected by rare genetic diseases in Pakistan and worldwide. You are a non-medical parent-support guide. RULES: Use ONLY the information in CONTEXT to make any medical statement; if CONTEXT does not cover it, say you don't have a verified source and suggest seeing a specialist. NEVER diagnose. NEVER recommend medicines, doses, or treatments. Be brief, plain, kind, hopeful but honest. Do not invent facts, names, statistics or sources. Always defer to a qualified doctor.";
@@ -709,10 +950,17 @@ function bot(r){const m=document.createElement('div');m.className='m bot'+(r.cls
   if(r.dis){const d=document.createElement('div');d.className='dis';d.textContent=r.dis;m.appendChild(d);}
   msgs.appendChild(m);msgs.scrollTop=msgs.scrollHeight;return m;}
 function openChat(q){panel.classList.add('open');document.getElementById('fab').style.display='none';
-  if(!msgs.children.length){bot({text:"Assalam-o-alaikum, and welcome. I'm AISHA - an Artificially Intelligent System for Hereditary Advisory. I exist for one reason: so that no family facing a rare genetic condition has to search in the dark, or feel alone. I'll help you understand a diagnosis in plain words and point you toward trusted help."});
-    note("A few honest words on how I work: I'm a guide, not a doctor - I never diagnose or prescribe. I answer only from verified, cited sources, and if I don't have one I'll say so rather than guess. You're in "+(aiOn?"Global mode - Google's Gemini phrases my replies from NAHL's verified content, so please don't share names or identifying details.":"Local mode - I'm running on this device's offline engine.")+" In an emergency, please contact a qualified doctor or local emergency services.");}
+  if(!msgs.children.length){bot({text:"Assalaam-o-Alaikum. I'll help you understand a diagnosis in plain words and point you toward trusted help from resources around the globe."});}
   if(q){ask(q);} else input.focus();}
-function closeChat(){panel.classList.remove('open');document.getElementById('fab').style.display='flex';}
+function closeChat(){panel.classList.remove('open');hideSheet();document.getElementById('fab').style.display='flex';}
+var HOW_HTML='<p><b>I am a guide, not a doctor.</b> I never diagnose conditions or recommend medicines, doses or treatments - those decisions belong with a qualified doctor who knows the full picture.</p>'
++'<p><b>I answer from verified, cited sources.</b> My replies are grounded in trusted references such as GARD, Orphanet, OMIM and MedlinePlus. If I do not have a verified source for something, I will say so rather than guess.</p>'
++'<p><b>Two modes.</b> In <b>Local mode</b> I run entirely on your device, so nothing leaves it. In <b>Global mode</b> I use an online model to phrase answers from the same verified content; in that mode your messages are sent to the AI service, so please avoid sharing names or identifying details.</p>'
++'<p><b>In an emergency</b>, please contact a qualified doctor or your local emergency services right away.</p>';
+function showSheet(kind){var b=document.getElementById('sheetBody'),t=document.getElementById('sheetTitle');
+  if(kind==='how'){t.textContent='How AISHA works';b.innerHTML=HOW_HTML;}
+  document.getElementById('aishaSheet').classList.add('open');}
+function hideSheet(){var s=document.getElementById('aishaSheet');if(s)s.classList.remove('open');}
 async function ask(text){
   userMsg(text);
   const g=NAHL.gate(text);
@@ -761,6 +1009,14 @@ function countUp(el){const to=+el.dataset.to,suf=el.dataset.suf||'';let s=null;
     [].slice.call(dots.children).forEach(function(d,n){d.classList.toggle('on',n===i);});
     prev.disabled=i===0;next.disabled=i===slides.length-1;};
   window.attyaGo=function(d){var n=i+d;if(n>=0&&n<slides.length)window.attyaSet(n);};
+})();
+/* ---------- HAREEM carousel ---------- */
+(function(){var slides=[].slice.call(document.querySelectorAll('#hareemStage .attya-slide'));if(!slides.length)return;
+  var i=0,prev=document.getElementById('hareemPrev'),next=document.getElementById('hareemNext'),ctr=document.getElementById('hareemCounter');
+  window.hareemSet=function(k){i=k;slides.forEach(function(s,n){s.classList.toggle('active',n===i);});
+    ctr.textContent=(i+1<10?'0':'')+(i+1)+' / '+slides.length;
+    prev.disabled=i===0;next.disabled=i===slides.length-1;};
+  window.hareemGo=function(d){var n=i+d;if(n>=0&&n<slides.length)window.hareemSet(n);};
 })();
 </script>
 </body>
