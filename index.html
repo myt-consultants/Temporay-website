@@ -3,7 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NAHL - National Awareness for Hereditary Limitations</title>
+<title>NAHL - National Awareness for Hereditary Limitations | Rare genetic disease support</title>
+<meta name="description" content="NAHL (National Awareness for Hereditary Limitations) is a free, parent-led resource for families facing rare genetic diseases in Pakistan and beyond - plain-language guidance on diagnosis, conditions, caregiver rights, finding expert care, and 100 answers to the questions worried parents ask.">
+<meta name="theme-color" content="#080C12">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NAHL - support for families facing rare genetic diseases">
+<meta property="og:description" content="A free, parent-led resource: diagnosis pathways, conditions, caregiver rights, finding expert care, and 100 answers to the questions worried parents and caregivers ask.">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NAHL - support for families facing rare genetic diseases">
+<meta name="twitter:description" content="A free, parent-led resource for families facing rare genetic diseases - diagnosis, conditions, caregiver rights, and 100 FAQs.">
+<noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
@@ -406,8 +416,8 @@
   .faq-chip{font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--surface);border:1px solid var(--line2);border-radius:100px;padding:6px 13px;cursor:pointer;transition:.15s;}
   .faq-chip:hover{color:var(--ink);}
   .faq-chip.on{background:var(--teal);color:#04201B;border-color:var(--teal);font-weight:700;}
-  .faq-list{display:flex;flex-direction:column;gap:9px;max-height:660px;overflow:auto;padding-right:4px;}
-  .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:0 0 auto;}
+  .faq-list{display:block;max-height:660px;overflow-y:auto;padding-right:4px;}
+  .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:9px;}
   .faq-q{width:100%;text-align:left;background:none;border:none;color:var(--ink);font-family:var(--sora);font-size:15px;font-weight:600;padding:15px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1.35;}
   .faq-q .fqq{flex:1;}
   .faq-q .fqr{display:flex;align-items:center;gap:11px;flex:none;}
@@ -420,6 +430,8 @@
   .faq-a div{padding:0 18px 16px;}
   .faq-none{color:var(--faint);padding:20px;text-align:center;}
   @media(max-width:560px){ .faq-q .fqcat{display:none;} }
+  .stats-src{max-width:760px;margin:16px auto 0;text-align:center;font-size:11.5px;line-height:1.55;color:var(--faint);}
+  .chat-privacy{margin:9px 2px 0;font-size:10.5px;line-height:1.5;color:var(--faint);}
 </style>
 </head>
 <body class="locked">
@@ -432,7 +444,7 @@
       <div class="wm"><svg viewBox="0 0 1000 250" role="img" aria-label="NAHL - National Awareness for Hereditary Limitations" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="nahlgGate" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34E3C4"/><stop offset="100%" stop-color="#F6B53C"/></linearGradient></defs><text x="500" y="168" text-anchor="middle" textLength="965" lengthAdjust="spacingAndGlyphs" font-family="Sora, sans-serif" font-weight="700" font-size="188" fill="url(#nahlgGate)">N. A. H. L.</text><text x="500" y="230" text-anchor="middle" textLength="965" lengthAdjust="spacingAndGlyphs" font-family="Sora, sans-serif" font-weight="600" font-size="38" fill="#9DB0BD">NATIONAL AWARENESS FOR HEREDITARY LIMITATIONS</text></svg></div>
       <p class="gate-prompt">Enter your access code to continue.</p>
       <div class="gate-row">
-        <input id="codeIn" maxlength="6" placeholder="------" autocomplete="off" aria-label="Access code" onkeydown="if(event.key==='Enter')tryUnlock()">
+        <input id="codeIn" maxlength="6" placeholder="------" autocomplete="off" inputmode="numeric" pattern="[A-Za-z0-9]*" aria-label="Access code" onkeydown="if(event.key==='Enter')tryUnlock()">
         <button onclick="tryUnlock()">Enter</button>
       </div>
       <div id="codeErr"></div>
@@ -456,7 +468,7 @@
     <div class="navright">
     <button class="bell" id="bell" onclick="toggleBell()" aria-label="Notices">
       <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
-      <span class="bdot" id="bdot">0</span>
+      <span class="bdot" id="bdot" aria-hidden="true"></span>
     </button>
     <div class="bellmenu" id="bellMenu">
       <h6>Notices</h6>
@@ -498,7 +510,7 @@
                 <div class="atl-copy">"And your Lord inspired the bee, saying, 'Build yourselves houses in the mountains and trees and what people construct. Then feed on all kinds of fruit and follow the ways made easy for you by your Lord.' From their bellies comes a drink of different colours <span class="ayaat-key">in which there is healing for people</span>. There truly is a sign in this for those who think."<span class="ayaat-src">English &mdash; M. A. S. Abdel Haleem</span></div>
                 <div class="atl-copy" aria-hidden="true">"And your Lord inspired the bee, saying, 'Build yourselves houses in the mountains and trees and what people construct. Then feed on all kinds of fruit and follow the ways made easy for you by your Lord.' From their bellies comes a drink of different colours <span class="ayaat-key">in which there is healing for people</span>. There truly is a sign in this for those who think."<span class="ayaat-src">English &mdash; M. A. S. Abdel Haleem</span></div>
               </div></div>
-              <div class="ayaat-ur atl active" id="aylUr" dir="rtl"><div class="atl-track">
+              <div class="ayaat-ur atl active" id="aylUr" dir="rtl" lang="ur"><div class="atl-track">
                 <div class="atl-copy">&#1575;&#1608;&#1585; &#1578;&#1605;&#1729;&#1575;&#1585;&#1746; &#1662;&#1585;&#1608;&#1585;&#1583;&#1711;&#1575;&#1585; &#1606;&#1746; &#1588;&#1729;&#1583; &#1705;&#1740; &#1605;&#1705;&#1726;&#1740;&#1608;&#1722; &#1705;&#1608; &#1575;&#1585;&#1588;&#1575;&#1583; &#1601;&#1585;&#1605;&#1575;&#1740;&#1575; &#1705;&#1729; &#1662;&#1729;&#1575;&#1681;&#1608;&#1722; &#1605;&#1740;&#1722; &#1575;&#1608;&#1585; &#1583;&#1585;&#1582;&#1578;&#1608;&#1722; &#1605;&#1740;&#1722; &#1575;&#1608;&#1585; &#1575;&#1608;&#1606;&#1670;&#1740; &#1575;&#1608;&#1606;&#1670;&#1740; &#1670;&#1726;&#1578;&#1585;&#1740;&#1608;&#1722; &#1605;&#1740;&#1722; &#1580;&#1608; &#1604;&#1608;&#1711; &#1576;&#1606;&#1575;&#1578;&#1746; &#1729;&#1740;&#1722; &#1711;&#1726;&#1585; &#1576;&#1606;&#1575;&#1748; &#1575;&#1608;&#1585; &#1729;&#1585; &#1602;&#1587;&#1605; &#1705;&#1746; &#1605;&#1740;&#1608;&#1746; &#1705;&#1726;&#1575;&#1548; &#1575;&#1608;&#1585; &#1575;&#1662;&#1606;&#1746; &#1662;&#1585;&#1608;&#1585;&#1583;&#1711;&#1575;&#1585; &#1705;&#1746; &#1589;&#1575;&#1601; &#1585;&#1587;&#1578;&#1608;&#1722; &#1662;&#1585; &#1670;&#1604;&#1740; &#1580;&#1575;&#1748; &#1575;&#1587; &#1705;&#1746; &#1662;&#1740;&#1657; &#1587;&#1746; &#1662;&#1740;&#1606;&#1746; &#1705;&#1740; &#1670;&#1740;&#1586; &#1606;&#1705;&#1604;&#1578;&#1740; &#1729;&#1746; &#1580;&#1587; &#1705;&#1746; &#1605;&#1582;&#1578;&#1604;&#1601; &#1585;&#1606;&#1711; &#1729;&#1608;&#1578;&#1746; &#1729;&#1740;&#1722;&#1548; &#1575;&#1587; &#1605;&#1740;&#1722; &#1604;&#1608;&#1711;&#1608;&#1722; (&#1705;&#1746; &#1705;&#1574;&#1740; &#1575;&#1605;&#1585;&#1575;&#1590;) &#1705;&#1740; &#1588;&#1601;&#1575; &#1729;&#1746;&#1748; &#1576;&#1746; &#1588;&#1705; &#1587;&#1608;&#1670;&#1606;&#1746; &#1608;&#1575;&#1604;&#1608;&#1722; &#1705;&#1746; &#1604;&#1740;&#1746; &#1575;&#1587; &#1605;&#1740;&#1722; &#1576;&#1726;&#1740; &#1606;&#1588;&#1575;&#1606;&#1740; &#1729;&#1746;&#1748;<span class="ayaat-src">Urdu &mdash; Fateh Muhammad Jalandhry</span></div>
                 <div class="atl-copy" aria-hidden="true">&#1575;&#1608;&#1585; &#1578;&#1605;&#1729;&#1575;&#1585;&#1746; &#1662;&#1585;&#1608;&#1585;&#1583;&#1711;&#1575;&#1585; &#1606;&#1746; &#1588;&#1729;&#1583; &#1705;&#1740; &#1605;&#1705;&#1726;&#1740;&#1608;&#1722; &#1705;&#1608; &#1575;&#1585;&#1588;&#1575;&#1583; &#1601;&#1585;&#1605;&#1575;&#1740;&#1575; &#1705;&#1729; &#1662;&#1729;&#1575;&#1681;&#1608;&#1722; &#1605;&#1740;&#1722; &#1575;&#1608;&#1585; &#1583;&#1585;&#1582;&#1578;&#1608;&#1722; &#1605;&#1740;&#1722; &#1575;&#1608;&#1585; &#1575;&#1608;&#1606;&#1670;&#1740; &#1575;&#1608;&#1606;&#1670;&#1740; &#1670;&#1726;&#1578;&#1585;&#1740;&#1608;&#1722; &#1605;&#1740;&#1722; &#1580;&#1608; &#1604;&#1608;&#1711; &#1576;&#1606;&#1575;&#1578;&#1746; &#1729;&#1740;&#1722; &#1711;&#1726;&#1585; &#1576;&#1606;&#1575;&#1748; &#1575;&#1608;&#1585; &#1729;&#1585; &#1602;&#1587;&#1605; &#1705;&#1746; &#1605;&#1740;&#1608;&#1746; &#1705;&#1726;&#1575;&#1548; &#1575;&#1608;&#1585; &#1575;&#1662;&#1606;&#1746; &#1662;&#1585;&#1608;&#1585;&#1583;&#1711;&#1575;&#1585; &#1705;&#1746; &#1589;&#1575;&#1601; &#1585;&#1587;&#1578;&#1608;&#1722; &#1662;&#1585; &#1670;&#1604;&#1740; &#1580;&#1575;&#1748; &#1575;&#1587; &#1705;&#1746; &#1662;&#1740;&#1657; &#1587;&#1746; &#1662;&#1740;&#1606;&#1746; &#1705;&#1740; &#1670;&#1740;&#1586; &#1606;&#1705;&#1604;&#1578;&#1740; &#1729;&#1746; &#1580;&#1587; &#1705;&#1746; &#1605;&#1582;&#1578;&#1604;&#1601; &#1585;&#1606;&#1711; &#1729;&#1608;&#1578;&#1746; &#1729;&#1740;&#1722;&#1548; &#1575;&#1587; &#1605;&#1740;&#1722; &#1604;&#1608;&#1711;&#1608;&#1722; (&#1705;&#1746; &#1705;&#1574;&#1740; &#1575;&#1605;&#1585;&#1575;&#1590;) &#1705;&#1740; &#1588;&#1601;&#1575; &#1729;&#1746;&#1748; &#1576;&#1746; &#1588;&#1705; &#1587;&#1608;&#1670;&#1606;&#1746; &#1608;&#1575;&#1604;&#1608;&#1722; &#1705;&#1746; &#1604;&#1740;&#1746; &#1575;&#1587; &#1605;&#1740;&#1722; &#1576;&#1726;&#1740; &#1606;&#1588;&#1575;&#1606;&#1740; &#1729;&#1746;&#1748;<span class="ayaat-src">Urdu &mdash; Fateh Muhammad Jalandhry</span></div>
               </div></div>
@@ -507,7 +519,7 @@
           <div class="attya-slide"><div class="sn">02 / 10</div>
             <div class="ayaat-banner">Explanation of Ayaat 68-69 : Surah Nahl (Al-Qur'aan)</div>
             <div class="attya-h">Inspired to gather from everywhere</div>
-            <p class="ayaat-trans">Allah places a quiet instruction in one of the smallest creatures. The bee is guided to the mountains, the trees, and the shelters people raise - then to draw from <b>every kind of fruit and flower</b>, ranging far yet never losing its way home. Nothing it touches is wasted.</p></div>
+            <p class="ayaat-trans">Allah places a quiet instruction in one of the smallest creatures. The bee is guided to the mountains, the trees, and the shelters people raise - then to draw from <strong>every kind of fruit and flower</strong>, ranging far yet never losing its way home. Nothing it touches is wasted.</p></div>
 
           <div class="attya-slide"><div class="sn">03 / 10</div>
             <div class="ayaat-banner">Explanation of Ayaat 68-69 : Surah Nahl (Al-Qur'aan)</div>
@@ -517,7 +529,7 @@
           <div class="attya-slide"><div class="sn">04 / 10</div>
             <div class="ayaat-banner">Explanation of Ayaat 68-69 : Surah Nahl (Al-Qur'aan)</div>
             <div class="attya-h">A sign for those who reflect</div>
-            <p class="ayaat-trans">The verse closes for <i>"those who think"</i> - <b>yatafakkarun</b>. The sign is bound to reflection and knowledge: study creation, gather widely, and turn what is gathered into something that heals. That is the spirit NAHL tries to follow.</p></div>
+            <p class="ayaat-trans">The verse closes for <i>"those who think"</i> - <strong>yatafakkarun</strong>. The sign is bound to reflection and knowledge: study creation, gather widely, and turn what is gathered into something that heals. That is the spirit NAHL tries to follow.</p></div>
 
           <div class="attya-slide"><div class="sn">05 / 10</div>
             <div class="attya-h">Why the name NAHL</div>
@@ -529,7 +541,7 @@
             <div class="attya-h">A normal beginning, then regression</div>
             <ul class="attya-list">
               <li>In late-infantile MLD, development looks typical for the first one to two years.</li>
-              <li>Then skills already gained begin to slip - <b>walking, sitting and speech are gradually lost</b>.</li>
+              <li>Then skills already gained begin to slip - <strong>walking, sitting and speech are gradually lost</strong>.</li>
               <li>The cause: a faulty <i>ARSA</i> gene lets sulfatides build up and strip the protective myelin from nerves.</li>
             </ul></div>
 
@@ -567,7 +579,7 @@
           <div class="attya-slide"><div class="sn">08 / 10</div>
             <div class="ayaat-banner ban-mld">Nahl's sacrifice and Natural History of MLD</div>
             <div class="attya-h">The family's parallel toll</div>
-            <p class="ayaat-trans">Beside the child's decline runs the family's own - the long diagnostic odyssey, the cost, the round-the-clock care, the watching, and the grief. Nahl's short life was the sacrifice that gave this work its name; <b>AISHA</b>, the assistant, is named for the sister reached in time.</p></div>
+            <p class="ayaat-trans">Beside the child's decline runs the family's own - the long diagnostic odyssey, the cost, the round-the-clock care, the watching, and the grief. Nahl's short life was the sacrifice that gave this work its name; <strong>AISHA</strong>, the assistant, is named for the sister reached in time.</p></div>
 
           <div class="attya-slide"><div class="sn">09 / 10</div>
             <div class="ayaat-banner ban-proj">Surah Al Nahl to Project NAHL through Aisha's NAHL</div>
@@ -606,7 +618,9 @@
   <div class="stat reveal"><div class="num" data-to="300" data-suf="M+">0</div><div class="lbl">people affected worldwide</div></div>
   <div class="stat reveal"><div class="num" data-to="72" data-suf="%">0</div><div class="lbl">are genetic in origin</div></div>
   <div class="stat reveal"><div class="num" data-to="70" data-suf="%">0</div><div class="lbl">begin in childhood</div></div>
-</div></div></section>
+</div>
+<p class="stats-src reveal">Indicative figures, widely cited by rare-disease bodies such as the WHO, the US National Institutes of Health (NIH/GARD), Orphanet, and EURORDIS. Exact numbers vary by source and definition; treat them as general scale, not precise counts.</p>
+</div></section>
 
 <section id="diagnosis"><div class="wrap">
   <div class="sec-h reveal"><span class="eyebrow">Before the library | how a diagnosis is reached</span><h2>The road to a genetic diagnosis</h2>
@@ -621,12 +635,12 @@
     <div class="diag-card">
       <div class="diag-step">Step 2 - the "litmus" tests</div>
       <h4>Simple, cheap, fast first-line tests</h4>
-      <p>For some conditions one inexpensive test is nearly decisive: a <b>CBC + haemoglobin electrophoresis / HPLC</b> for thalassemia, basic <b>enzyme or metabolite assays</b> for many metabolic disorders, or a <b>karyotype</b> for chromosomal conditions like Down syndrome.</p>
+      <p>For some conditions one inexpensive test is nearly decisive: a <strong>CBC + haemoglobin electrophoresis / HPLC</strong> for thalassemia, basic <strong>enzyme or metabolite assays</strong> for many metabolic disorders, or a <strong>karyotype</strong> for chromosomal conditions like Down syndrome.</p>
     </div>
     <div class="diag-card">
       <div class="diag-step">Step 3</div>
       <h4>Targeted gene or panel testing</h4>
-      <p>If a specific disease is suspected, a single-gene test or a focused <b>NGS panel</b> (a curated group of related genes) is ordered - efficient when the clinical picture points somewhere specific.</p>
+      <p>If a specific disease is suspected, a single-gene test or a focused <strong>NGS panel</strong> (a curated group of related genes) is ordered - efficient when the clinical picture points somewhere specific.</p>
     </div>
     <div class="diag-card">
       <div class="diag-step">Step 4</div>
@@ -636,7 +650,7 @@
     <div class="diag-card">
       <div class="diag-step">Step 5 - going broad</div>
       <h4>Whole Exome Sequencing (WES)</h4>
-      <p>When the picture is unclear, multi-system, or doesn't fit one disease, WES reads all ~20,000 protein-coding genes at once. The exome is ~1% of the genome but holds roughly <b>85%</b> of known disease-causing changes. Bodies such as the ACMG recommend exome / genome as a first- or second-line test for unexplained developmental delay, intellectual disability, or multiple congenital anomalies.</p>
+      <p>When the picture is unclear, multi-system, or doesn't fit one disease, WES reads all ~20,000 protein-coding genes at once. The exome is ~1% of the genome but holds roughly <strong>85%</strong> of known disease-causing changes. Bodies such as the ACMG recommend exome / genome as a first- or second-line test for unexplained developmental delay, intellectual disability, or multiple congenital anomalies.</p>
     </div>
     <div class="diag-card">
       <div class="diag-step">Step 6</div>
@@ -646,26 +660,26 @@
     <div class="diag-card">
       <div class="diag-step">Step 7</div>
       <h4>Enzyme &amp; functional assays</h4>
-      <p>To prove a suspected variant truly causes disease, the protein itself is tested - for example measuring <b>enzyme activity</b> (such as low arylsulfatase-A in MLD, or other lysosomal / metabolic enzymes). Low or absent activity confirms the biochemical defect behind the gene change.</p>
+      <p>To prove a suspected variant truly causes disease, the protein itself is tested - for example measuring <strong>enzyme activity</strong> (such as low arylsulfatase-A in MLD, or other lysosomal / metabolic enzymes). Low or absent activity confirms the biochemical defect behind the gene change.</p>
     </div>
     <div class="diag-card">
       <div class="diag-step">Step 8 - novel / unreported variants</div>
       <h4>Segregation &amp; re-analysis</h4>
-      <p>For a change never reported before, the work turns iterative: <b>segregation testing</b> across affected and unaffected relatives, RNA studies, and <b>re-analysis</b> months later as databases grow. This is how a "variant of uncertain significance" slowly becomes a real answer - and why a novel mutation can take far longer than a textbook one.</p>
+      <p>For a change never reported before, the work turns iterative: <strong>segregation testing</strong> across affected and unaffected relatives, RNA studies, and <strong>re-analysis</strong> months later as databases grow. This is how a "variant of uncertain significance" slowly becomes a real answer - and why a novel mutation can take far longer than a textbook one.</p>
     </div>
   </div>
 
   <div class="diag-labs reveal">
     <h4>Where WES / WGS can be done - by blood sample, abroad or via a national route</h4>
-    <p>Pakistan has limited local exome / genome capacity, so samples are often sent to established international laboratories. Many accept a simple blood sample or a <b>dried-blood-spot card</b> shipped internationally. The cleanest route is <b>through a clinical geneticist</b> (for example via AKU or a PSMG-affiliated clinic), who selects the test, ships the sample, and interprets the report. Examples of reputable international labs:</p>
+    <p>Pakistan has limited local exome / genome capacity, so samples are often sent to established international laboratories. Many accept a simple blood sample or a <strong>dried-blood-spot card</strong> shipped internationally. The cleanest route is <strong>through a clinical geneticist</strong> (for example via AKU or a PSMG-affiliated clinic), who selects the test, ships the sample, and interprets the report. Examples of reputable international labs:</p>
     <ul class="attya-list">
-      <li><a class="dlink" href="https://www.centogene.com/" target="_blank" rel="noopener"><b>CENTOGENE</b></a> (Germany) - rare-disease-focused WES / WGS with a worldwide dried-blood-spot service.</li>
-      <li><a class="dlink" href="https://blueprintgenetics.com/" target="_blank" rel="noopener"><b>Blueprint Genetics</b></a> (Finland, part of Quest) - CAP / ISO-15189 accredited WES, available across many regions including the Middle East and Asia.</li>
-      <li><a class="dlink" href="https://3billion.io/" target="_blank" rel="noopener"><b>3billion</b></a> (South Korea) - exome sequencing built around rare disease, with free periodic re-analysis.</li>
-      <li><a class="dlink" href="https://www.genedx.com/" target="_blank" rel="noopener"><b>GeneDx</b></a> (USA) - exome and genome sequencing with one of the largest rare-disease datasets.</li>
-      <li><a class="dlink" href="https://www.baylorgenetics.com/" target="_blank" rel="noopener"><b>Baylor Genetics</b></a> (USA) - long-established clinical exome / genome laboratory accepting international referrals.</li>
-      <li><a class="dlink" href="https://www.cegat.com/" target="_blank" rel="noopener"><b>CeGaT</b></a> (Germany) - diagnostic exome / genome sequencing that accepts international samples.</li>
-      <li><a class="dlink" href="https://www.fulgentgenetics.com/" target="_blank" rel="noopener"><b>Fulgent Genetics</b></a> (USA) - broad exome and panel-testing menu.</li>
+      <li><a class="dlink" href="https://www.centogene.com/" target="_blank" rel="noopener noreferrer"><strong>CENTOGENE</strong></a> (Germany) - rare-disease-focused WES / WGS with a worldwide dried-blood-spot service.</li>
+      <li><a class="dlink" href="https://blueprintgenetics.com/" target="_blank" rel="noopener noreferrer"><strong>Blueprint Genetics</strong></a> (Finland, part of Quest) - CAP / ISO-15189 accredited WES, available across many regions including the Middle East and Asia.</li>
+      <li><a class="dlink" href="https://3billion.io/" target="_blank" rel="noopener noreferrer"><strong>3billion</strong></a> (South Korea) - exome sequencing built around rare disease, with free periodic re-analysis.</li>
+      <li><a class="dlink" href="https://www.genedx.com/" target="_blank" rel="noopener noreferrer"><strong>GeneDx</strong></a> (USA) - exome and genome sequencing with one of the largest rare-disease datasets.</li>
+      <li><a class="dlink" href="https://www.baylorgenetics.com/" target="_blank" rel="noopener noreferrer"><strong>Baylor Genetics</strong></a> (USA) - long-established clinical exome / genome laboratory accepting international referrals.</li>
+      <li><a class="dlink" href="https://www.cegat.com/" target="_blank" rel="noopener noreferrer"><strong>CeGaT</strong></a> (Germany) - diagnostic exome / genome sequencing that accepts international samples.</li>
+      <li><a class="dlink" href="https://www.fulgentgenetics.com/" target="_blank" rel="noopener noreferrer"><strong>Fulgent Genetics</strong></a> (USA) - broad exome and panel-testing menu.</li>
     </ul>
     <div class="attya-note">Examples for orientation only - not endorsements, and availability, shipping rules and costs change. Patient fees for exome / genome commonly run from a few hundred to several thousand US dollars. Always go through a qualified clinician or geneticist, who can also advise on national or sponsored options and on consent and data handling.</div>
   </div>
@@ -713,10 +727,10 @@
   <div class="reveal">
     <span class="eyebrow">Meet AISHA</span>
     <h2 style="margin-top:9px;">A guide that listens, and knows its limits</h2>
-    <p class="sec-sub">In <b>Global mode</b> the assistant uses Google's Gemini to phrase answers - but only from NAHL's verified, cited content, never from the model's own guesses. If the online AI is unavailable it falls back seamlessly to <b>Local mode</b>, a compact offline engine that runs entirely on your device. Either way it cites its sources and never diagnoses or prescribes.</p>
-    <div class="feat"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><b>Grounded &amp; cited.</b> <span>Every answer traces to Tier 1-2 sources.</span></div></div>
-    <div class="feat"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg><div><b>Safety first.</b> <span>Crisis language routes to human help; no dosages or diagnoses.</span></div></div>
-    <div class="feat"><svg viewBox="0 0 24 24"><path d="M4 7V5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2v-2"/><path d="M2 12h9m0 0l-3-3m3 3l-3 3"/></svg><div><b>No pop-ups.</b> <span>Sign-in is never forced; notices live in the bell menu.</span></div></div>
+    <p class="sec-sub">In <strong>Global mode</strong> the assistant uses Google's Gemini to phrase answers - but only from NAHL's verified, cited content, never from the model's own guesses. If the online AI is unavailable it falls back seamlessly to <strong>Local mode</strong>, a compact offline engine that runs entirely on your device. Either way it cites its sources and never diagnoses or prescribes.</p>
+    <div class="feat"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><div><strong>Grounded &amp; cited.</strong> <span>Every answer traces to Tier 1-2 sources.</span></div></div>
+    <div class="feat"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg><div><strong>Safety first.</strong> <span>Crisis language routes to human help; no dosages or diagnoses.</span></div></div>
+    <div class="feat"><svg viewBox="0 0 24 24"><path d="M4 7V5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2v-2"/><path d="M2 12h9m0 0l-3-3m3 3l-3 3"/></svg><div><strong>No pop-ups.</strong> <span>Sign-in is never forced; notices live in the bell menu.</span></div></div>
     <button class="btn-fill" style="margin-top:24px;" onclick="openChat()">Try the assistant</button>
   </div>
   <div class="asst-card reveal">
@@ -739,15 +753,15 @@
       <p>For Nahl, the diagnosis came too late for treatment to be possible. But because her rare mutation had been identified, doctors were able to recognise Aisha's condition early - early enough for her to travel to Milan and receive trial gene therapy. Today she is walking, and is understood to be the only child from Pakistan to have received this treatment.</p>
       <p>Her family now hopes her story can open a door for other Pakistani children who, like Nahl, are too often diagnosed too late.</p>
       <p class="insp-quote">This is the story that gives our work its name. NAHL carries the name of the sister who was lost; AISHA, our assistant, carries the name of the sister saved by timely knowledge. Between those two names lies our whole purpose - that no family should learn too late what could have been known in time.</p>
-      <a class="btn-ghost" style="margin-top:6px;display:inline-block;" href="https://www.rarediseaseday.org/heroes/born-on-rare-disease-day-with-a-rarest-of-disease-mutation-rare-amongst-the-many-rare/" target="_blank" rel="noopener">Read the full story at Rare Disease Day</a>
+      <a class="btn-ghost" style="margin-top:6px;display:inline-block;" href="https://www.rarediseaseday.org/heroes/born-on-rare-disease-day-with-a-rarest-of-disease-mutation-rare-amongst-the-many-rare/" target="_blank" rel="noopener noreferrer">Read the full story at Rare Disease Day</a>
     </div>
     <aside class="insp-side reveal">
       <h4>At a glance</h4>
-      <div class="kf"><b>Born</b><span>Rare Disease Day, 2019 - Islamabad</span></div>
-      <div class="kf"><b>Condition</b><span>Infantile metachromatic leukodystrophy (MLD)</span></div>
-      <div class="kf"><b>Turning point</b><span>Early diagnosis, enabled by her sister's identified mutation</span></div>
-      <div class="kf"><b>Treatment</b><span>Trial gene therapy in Milan</span></div>
-      <div class="kf"><b>Today</b><span>Walking; the only child from Pakistan known to have received it</span></div>
+      <div class="kf"><strong>Born</strong><span>Rare Disease Day, 2019 - Islamabad</span></div>
+      <div class="kf"><strong>Condition</strong><span>Infantile metachromatic leukodystrophy (MLD)</span></div>
+      <div class="kf"><strong>Turning point</strong><span>Early diagnosis, enabled by her sister's identified mutation</span></div>
+      <div class="kf"><strong>Treatment</strong><span>Trial gene therapy in Milan</span></div>
+      <div class="kf"><strong>Today</strong><span>Walking; the only child from Pakistan known to have received it</span></div>
     </aside>
   </div>
 </div></section>
@@ -768,135 +782,135 @@
       <div class="attya-slide"><div class="sn">02 / 18</div><div class="attya-h">Global Proof of Concept: Approved Cures (Part 1)</div>
         <p class="attya-sub">Medical milestones in hematology &amp; ophthalmology</p>
         <ul class="attya-list">
-          <li><b>Casgevy (Exagamglogene autotemcel):</b> First-ever FDA/EMA approved CRISPR-Cas9 cellular therapy targeting the BCL11A enhancer. Permanently eliminates painful vaso-occlusive crises in Sickle Cell Disease and eradicates blood transfusion dependence in beta-thalassemia major.</li>
-          <li><b>Zynteglo (Betibeglogene autotemcel):</b> A lentiviral vector-based ex vivo autologous CD34+ cell therapy that successfully restores functional, continuous beta-globin production in severe thalassemia phenotypes.</li>
-          <li><b>Luxturna (Voretigene neparvovec):</b> An in vivo adeno-associated virus (AAV2) vector therapy delivering functional RPE65 genes directly to subretinal tissue, permanently reversing inherited Leber congenital amaurosis blindness.</li>
+          <li><strong>Casgevy (Exagamglogene autotemcel):</strong> First-ever FDA/EMA approved CRISPR-Cas9 cellular therapy targeting the BCL11A enhancer. Permanently eliminates painful vaso-occlusive crises in Sickle Cell Disease and eradicates blood transfusion dependence in beta-thalassemia major.</li>
+          <li><strong>Zynteglo (Betibeglogene autotemcel):</strong> A lentiviral vector-based ex vivo autologous CD34+ cell therapy that successfully restores functional, continuous beta-globin production in severe thalassemia phenotypes.</li>
+          <li><strong>Luxturna (Voretigene neparvovec):</strong> An in vivo adeno-associated virus (AAV2) vector therapy delivering functional RPE65 genes directly to subretinal tissue, permanently reversing inherited Leber congenital amaurosis blindness.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">03 / 18</div><div class="attya-h">Global Proof of Concept: Latest Approved Landmarks (Part 2)</div>
         <p class="attya-sub">New frontiers in neuromuscular and ultra-rare disorders</p>
         <ul class="attya-list">
-          <li><b>Lenmeldy (Atidarsagene autotemcel):</b> Landmark 2024 approved ex vivo autologous hematopoietic stem cell gene therapy. Delivers functional ARSA genes to arrest the rapid, fatal neurodegeneration of infantile or juvenile Metachromatic Leukodystrophy (MLD).</li>
-          <li><b>Kebilidi (Eladocagene exuparvovec):</b> An in vivo AAV2 vector carrying a human dopa decarboxylase gene, infused neurosurgically directly into the brain structure. First gene therapy approved for AADC deficiency.</li>
-          <li><b>Lyfgenia (Lovotibeglogene autotemcel) &amp; Beqvez (Fidanacogene elaparvovec):</b> Advanced lentiviral and next-gen AAV vectors. Lyfgenia prevents cellular sickling via a modified gene, while Beqvez provides multi-year Factor IX expression to halt Hemophilia B bleeds.</li>
+          <li><strong>Lenmeldy (Atidarsagene autotemcel):</strong> Landmark 2024 approved ex vivo autologous hematopoietic stem cell gene therapy. Delivers functional ARSA genes to arrest the rapid, fatal neurodegeneration of infantile or juvenile Metachromatic Leukodystrophy (MLD).</li>
+          <li><strong>Kebilidi (Eladocagene exuparvovec):</strong> An in vivo AAV2 vector carrying a human dopa decarboxylase gene, infused neurosurgically directly into the brain structure. First gene therapy approved for AADC deficiency.</li>
+          <li><strong>Lyfgenia (Lovotibeglogene autotemcel) &amp; Beqvez (Fidanacogene elaparvovec):</strong> Advanced lentiviral and next-gen AAV vectors. Lyfgenia prevents cellular sickling via a modified gene, while Beqvez provides multi-year Factor IX expression to halt Hemophilia B bleeds.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">04 / 18</div><div class="attya-h">The Active Frontier: Ongoing Clinical Trials (Part 1)</div>
         <p class="attya-sub">Neurodegenerative &amp; systemic genetic targets</p>
         <ul class="attya-list">
-          <li><b>Huntington's Disease (Targeted Gene Silencing):</b> Phase I/II clinical trials utilize antisense oligonucleotides (ASOs) and AAV vectors carrying microRNA (miRNA) to directly degrade the toxic, mutant Huntingtin (mHTT) protein before it destroys cortical and striatal neurons.</li>
-          <li><b>Cystic Fibrosis (Inhalation Gene Delivery):</b> Phase II evaluations testing non-viral lipid nanoparticles (LNPs) and engineered lentiviral vectors delivered via nebulizers to transport functional CFTR genes directly to respiratory epithelial cells.</li>
-          <li><b>Duchenne Muscular Dystrophy (Next-Gen Mini-Dystrophin):</b> Expanding Phase III trials evaluating optimized mini-dystrophin vector designs across broader age brackets to sustain long-term cardiac and skeletal muscle structural integrity.</li>
+          <li><strong>Huntington's Disease (Targeted Gene Silencing):</strong> Phase I/II clinical trials utilize antisense oligonucleotides (ASOs) and AAV vectors carrying microRNA (miRNA) to directly degrade the toxic, mutant Huntingtin (mHTT) protein before it destroys cortical and striatal neurons.</li>
+          <li><strong>Cystic Fibrosis (Inhalation Gene Delivery):</strong> Phase II evaluations testing non-viral lipid nanoparticles (LNPs) and engineered lentiviral vectors delivered via nebulizers to transport functional CFTR genes directly to respiratory epithelial cells.</li>
+          <li><strong>Duchenne Muscular Dystrophy (Next-Gen Mini-Dystrophin):</strong> Expanding Phase III trials evaluating optimized mini-dystrophin vector designs across broader age brackets to sustain long-term cardiac and skeletal muscle structural integrity.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">05 / 18</div><div class="attya-h">The Active Frontier: Ongoing Clinical Trials (Part 2)</div>
         <p class="attya-sub">Metabolic &amp; deep in-born errors of development</p>
         <ul class="attya-list">
-          <li><b>Fabry and Gaucher Disease (Ex Vivo &amp; In Vivo Regimes):</b> Active Phase I/II global clinical trials utilizing liver-targeted AAV vectors or gene-edited bone marrow stem cells to induce permanent high-level expression of missing alpha-galactosidase A or glucocerebrosidase enzymes.</li>
-          <li><b>Phenylketonuria (PKU):</b> Phase I/II trials targeting adult profiles using liver-directed AAV vectors to reintroduce the missing PAH gene, permanently lifting extreme, lifelong dietary restrictions.</li>
-          <li><b>Rett Syndrome &amp; Fragile X:</b> Early-stage Phase I trials carefully escalating micro-dosing schemas to introduce tightly regulated MECP2 gene constructs, aiming to correct severe early-childhood developmental and synaptic arrest.</li>
+          <li><strong>Fabry and Gaucher Disease (Ex Vivo &amp; In Vivo Regimes):</strong> Active Phase I/II global clinical trials utilizing liver-targeted AAV vectors or gene-edited bone marrow stem cells to induce permanent high-level expression of missing alpha-galactosidase A or glucocerebrosidase enzymes.</li>
+          <li><strong>Phenylketonuria (PKU):</strong> Phase I/II trials targeting adult profiles using liver-directed AAV vectors to reintroduce the missing PAH gene, permanently lifting extreme, lifelong dietary restrictions.</li>
+          <li><strong>Rett Syndrome &amp; Fragile X:</strong> Early-stage Phase I trials carefully escalating micro-dosing schemas to introduce tightly regulated MECP2 gene constructs, aiming to correct severe early-childhood developmental and synaptic arrest.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">06 / 18</div><div class="attya-h">The Triad of Attrition: The Reality for Families</div>
         <p class="attya-sub">The multi-dimensional toll of chronic genetic conditions</p>
         <ul class="attya-list">
-          <li><b>Physical burden.</b> Perpetual operational routines. Families manage bi-weekly painful hospital infusions, rigorous iron-chelation schedules, or watch irreversible muscle wastage and neurological decline advance daily.</li>
-          <li><b>Emotional burden.</b> The psychological toll of chronic fatal diagnoses. Parents face constant survival anxiety, sibling care neglect, profound guilt over hereditary genetic transmission, and raw trauma.</li>
-          <li><b>Financial burden.</b> Total economic exhaustion. Lifelong palliative requirements consume daily disposable income, deplete generational assets, restrict career advancement, and trigger family bankruptcies.</li>
+          <li><strong>Physical burden.</strong> Perpetual operational routines. Families manage bi-weekly painful hospital infusions, rigorous iron-chelation schedules, or watch irreversible muscle wastage and neurological decline advance daily.</li>
+          <li><strong>Emotional burden.</strong> The psychological toll of chronic fatal diagnoses. Parents face constant survival anxiety, sibling care neglect, profound guilt over hereditary genetic transmission, and raw trauma.</li>
+          <li><strong>Financial burden.</strong> Total economic exhaustion. Lifelong palliative requirements consume daily disposable income, deplete generational assets, restrict career advancement, and trigger family bankruptcies.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">07 / 18</div><div class="attya-h">The Capital Engine: Economics of Gene Therapy Development</div>
         <p class="attya-sub">Why bringing a cure to market costs billions</p>
         <div class="attya-note">Discovery &amp; Basic R&amp;D (~$1.5 Billion) -&gt; GMP Scale-up &amp; Validation (~$1.5 Billion) -&gt; Scarce Patient Cohort Trials (~$2.0 Billion)</div>
         <ul class="attya-list">
-          <li><b>The $5 Billion Development Hurdle:</b> Advanced R&amp;D, clinical translation, and extensive regulatory validation drive the total cost of developing a successful gene therapy molecule up to $5 billion.</li>
-          <li><b>The 15-Year Timeline:</b> Sourcing optimized vectors, configuring precision payloads, and executing sequential human clinical trials demands an absolute minimum of 10 to 15 years.</li>
-          <li><b>The Patient Pool Scarcity Paradox:</b> For rare mutations, companies spend massive capital merely identifying, tracking, and flying a tiny pool of global candidates to specialized central trial sites.</li>
+          <li><strong>The $5 Billion Development Hurdle:</strong> Advanced R&amp;D, clinical translation, and extensive regulatory validation drive the total cost of developing a successful gene therapy molecule up to $5 billion.</li>
+          <li><strong>The 15-Year Timeline:</strong> Sourcing optimized vectors, configuring precision payloads, and executing sequential human clinical trials demands an absolute minimum of 10 to 15 years.</li>
+          <li><strong>The Patient Pool Scarcity Paradox:</strong> For rare mutations, companies spend massive capital merely identifying, tracking, and flying a tiny pool of global candidates to specialized central trial sites.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">08 / 18</div><div class="attya-h">The Price Tag Wall: Approved Market Costs</div>
         <p class="attya-sub">Commercial acquisition costs of one-time curative doses</p>
         <table class="attya-tbl"><thead><tr><th>Gene therapy</th><th>Indication / disease target</th><th>Wholesale price (USD)</th></tr></thead>
         <tbody>
-          <tr><td><b>Lenmeldy</b></td><td>Metachromatic Leukodystrophy (MLD)</td><td><b>$4,250,000</b></td></tr>
-          <tr><td><b>Hemgenix</b></td><td>Hemophilia B</td><td><b>$3,500,000</b></td></tr>
-          <tr><td><b>Elevidys</b></td><td>Duchenne Muscular Dystrophy (DMD)</td><td><b>$3,200,000</b></td></tr>
-          <tr><td><b>Roctavian</b></td><td>Hemophilia A</td><td><b>$2,900,000</b></td></tr>
-          <tr><td><b>Zynteglo</b></td><td>Beta-Thalassemia Major</td><td><b>$2,800,000</b></td></tr>
-          <tr><td><b>Zolgensma</b></td><td>Spinal Muscular Atrophy (SMA)</td><td><b>$2,125,000</b></td></tr>
+          <tr><td><strong>Lenmeldy</strong></td><td>Metachromatic Leukodystrophy (MLD)</td><td><strong>$4,250,000</strong></td></tr>
+          <tr><td><strong>Hemgenix</strong></td><td>Hemophilia B</td><td><strong>$3,500,000</strong></td></tr>
+          <tr><td><strong>Elevidys</strong></td><td>Duchenne Muscular Dystrophy (DMD)</td><td><strong>$3,200,000</strong></td></tr>
+          <tr><td><strong>Roctavian</strong></td><td>Hemophilia A</td><td><strong>$2,900,000</strong></td></tr>
+          <tr><td><strong>Zynteglo</strong></td><td>Beta-Thalassemia Major</td><td><strong>$2,800,000</strong></td></tr>
+          <tr><td><strong>Zolgensma</strong></td><td>Spinal Muscular Atrophy (SMA)</td><td><strong>$2,125,000</strong></td></tr>
         </tbody></table>
         <div class="attya-note">The chronic delivery exception (Vyjuvek): while topical applications for Epidermolysis Bullosa cost roughly $25,000 per dose, the required weekly lifetime regimen pushes projected long-term patient exposure costs to $15-$22 million.</div></div>
 
       <div class="attya-slide"><div class="sn">09 / 18</div><div class="attya-h">The Commercial Pricing Strategy: Rationale &amp; Flaws</div>
         <p class="attya-sub">The Western "value-based" pricing model</p>
         <ul class="attya-list">
-          <li><b>The Corporate Justification:</b> Western pharmaceuticals calculate multi-million dollar tags using a "value-based pricing" model. They argue a single $3M injection is cost-effective because it cancels out $4M to $6M in lifetime chronic transfusions and hospital care.</li>
-          <li><b>Amortizing Small Markets:</b> Because rare diseases affect relatively small paper footprints, companies hyper-inflate the per-dose costs to recoup their upfront $5 billion investments within a narrow patent window.</li>
-          <li><b>The Capitalist Blind Spot:</b> This approach assumes the existence of high-income, heavily subsidized Western insurance frameworks. It completely breaks down in developing economies where healthcare is paid entirely out-of-pocket.</li>
+          <li><strong>The Corporate Justification:</strong> Western pharmaceuticals calculate multi-million dollar tags using a "value-based pricing" model. They argue a single $3M injection is cost-effective because it cancels out $4M to $6M in lifetime chronic transfusions and hospital care.</li>
+          <li><strong>Amortizing Small Markets:</strong> Because rare diseases affect relatively small paper footprints, companies hyper-inflate the per-dose costs to recoup their upfront $5 billion investments within a narrow patent window.</li>
+          <li><strong>The Capitalist Blind Spot:</strong> This approach assumes the existence of high-income, heavily subsidized Western insurance frameworks. It completely breaks down in developing economies where healthcare is paid entirely out-of-pocket.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">10 / 18</div><div class="attya-h">The Pakistan Paradox: Consanguinity &amp; Financial Exclusion</div>
         <p class="attya-sub">Why Western commercial models guarantee systemic death sentences</p>
         <ul class="attya-list">
-          <li><b>The Genetic Density Crisis:</b> Due to deeply entrenched systemic and cultural consanguineous marriage patterns across Pakistan, the prevalence of inherited monogenic disorders - such as Beta-Thalassemia Major and severe neurodevelopmental deficiencies - is among the highest in the world.</li>
-          <li><b>The Income Gap Absurdity:</b> The average monthly household income across Pakistan is roughly PKR 45,000 to 75,000. The cost of a single dose of Zynteglo is $2.8 Million USD (approx. 800 Million PKR).</li>
-          <li><b>The Reality of Exclusion:</b> A multi-million-dollar price tag is functionally infinite for a local citizen. Relying on imported commercial pharmacology means completely abandoning millions of children to early mortality.</li>
+          <li><strong>The Genetic Density Crisis:</strong> Due to deeply entrenched systemic and cultural consanguineous marriage patterns across Pakistan, the prevalence of inherited monogenic disorders - such as Beta-Thalassemia Major and severe neurodevelopmental deficiencies - is among the highest in the world.</li>
+          <li><strong>The Income Gap Absurdity:</strong> The average monthly household income across Pakistan is roughly PKR 45,000 to 75,000. The cost of a single dose of Zynteglo is $2.8 Million USD (approx. 800 Million PKR).</li>
+          <li><strong>The Reality of Exclusion:</strong> A multi-million-dollar price tag is functionally infinite for a local citizen. Relying on imported commercial pharmacology means completely abandoning millions of children to early mortality.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">11 / 18</div><div class="attya-h">Operationalizing Mitigation: The Rationale for ATTYA Pakistan</div>
         <p class="attya-sub">Transforming healthcare through non-profit academic sovereignty</p>
         <ul class="attya-list">
-          <li><b>De-Commercializing the Molecule:</b> By shifting advanced genetic medicine from a venture-capital, for-profit commercial model to a state-backed academic consortium, we completely eliminate the massive corporate profit margins driving Western prices.</li>
-          <li><b>Repurposing Existing Assets:</b> Establishing localized, domestic viral vector synthesis, cell-processing cleanrooms, and clinical trials within Pakistan's public universities and state medical institutions cuts development infrastructure costs by over 85%.</li>
-          <li><b>The Ultimate Cost Reductions:</b> While imported Western treatments cost $2,800,000 USD per patient, the ATTYA Indigenous Model projects a cost of &lt;$35,000 USD focused strictly on raw materials, local cleanroom operations, and baseline support.</li>
+          <li><strong>De-Commercializing the Molecule:</strong> By shifting advanced genetic medicine from a venture-capital, for-profit commercial model to a state-backed academic consortium, we completely eliminate the massive corporate profit margins driving Western prices.</li>
+          <li><strong>Repurposing Existing Assets:</strong> Establishing localized, domestic viral vector synthesis, cell-processing cleanrooms, and clinical trials within Pakistan's public universities and state medical institutions cuts development infrastructure costs by over 85%.</li>
+          <li><strong>The Ultimate Cost Reductions:</strong> While imported Western treatments cost $2,800,000 USD per patient, the ATTYA Indigenous Model projects a cost of &lt;$35,000 USD focused strictly on raw materials, local cleanroom operations, and baseline support.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">12 / 18</div><div class="attya-h">Clinical Gateways: Patient Eligibility &amp; Screening</div>
         <p class="attya-sub">Mitigating trial risk before enrolment</p>
         <ul class="attya-list">
-          <li><b>Inclusion Criteria Foundations:</b> Requires absolute, definitive molecular and next-generation sequencing confirmation of the targeted monogenic mutation. Enrolment must happen before irreversible end-organ or systemic tissue fibrosis sets in.</li>
-          <li><b>The Exclusion Barriers:</b> Pre-existing neutralizing antibody titers (e.g., anti-AAV capsids) which instantly clear the viral vectors before they target host tissue. Advanced systemic hepatic or renal failure also bars candidates due to baseline conditioning toxicity risks.</li>
-          <li><b>The Registry Framework:</b> Establishing centralized, standardized national registries to aggregate and identify clear eligible cohorts across Pakistan's diverse medical network.</li>
+          <li><strong>Inclusion Criteria Foundations:</strong> Requires absolute, definitive molecular and next-generation sequencing confirmation of the targeted monogenic mutation. Enrolment must happen before irreversible end-organ or systemic tissue fibrosis sets in.</li>
+          <li><strong>The Exclusion Barriers:</strong> Pre-existing neutralizing antibody titers (e.g., anti-AAV capsids) which instantly clear the viral vectors before they target host tissue. Advanced systemic hepatic or renal failure also bars candidates due to baseline conditioning toxicity risks.</li>
+          <li><strong>The Registry Framework:</strong> Establishing centralized, standardized national registries to aggregate and identify clear eligible cohorts across Pakistan's diverse medical network.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">13 / 18</div><div class="attya-h">The Trial Lifecycle: Enrolment to 15-Year Completion</div>
         <p class="attya-sub">De-mystifying the operational protocol</p>
         <div class="attya-note">Genomic Screening &amp; Consent -&gt; Conditioning / Bone Marrow Ablation -&gt; Precision Vector Infusion Window -&gt; 15-Year Longitudinal Follow-up</div>
         <ul class="attya-list">
-          <li><b>Informed Consent &amp; Genotyping:</b> In-depth counseling explaining the permanent, life-altering nature of genomic alteration to families.</li>
-          <li><b>Conditioning &amp; Harvesting:</b> Preparing the cellular macro-environment (e.g., bone marrow clearance via targeted chemotherapy for blood disorders) or administering transient immunosuppression.</li>
-          <li><b>Precision Infusion Window:</b> Delivering the payload within ultra-sterile, site-specific environments (such as dedicated bone marrow transplant units or highly specialized operating rooms).</li>
-          <li><b>Long-Term Surveillance:</b> Transitioning from acute post-infusion toxicity monitoring to a mandatory 15-year long-term follow-up loop to verify expression durability and check for delayed genomic toxicities.</li>
+          <li><strong>Informed Consent &amp; Genotyping:</strong> In-depth counseling explaining the permanent, life-altering nature of genomic alteration to families.</li>
+          <li><strong>Conditioning &amp; Harvesting:</strong> Preparing the cellular macro-environment (e.g., bone marrow clearance via targeted chemotherapy for blood disorders) or administering transient immunosuppression.</li>
+          <li><strong>Precision Infusion Window:</strong> Delivering the payload within ultra-sterile, site-specific environments (such as dedicated bone marrow transplant units or highly specialized operating rooms).</li>
+          <li><strong>Long-Term Surveillance:</strong> Transitioning from acute post-infusion toxicity monitoring to a mandatory 15-year long-term follow-up loop to verify expression durability and check for delayed genomic toxicities.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">14 / 18</div><div class="attya-h">Therapeutic Delivery Frameworks: In Vivo vs. Ex Vivo</div>
         <p class="attya-sub">Vector mechanics of living medicine</p>
         <ul class="attya-list">
-          <li><b>In Vivo Model (Direct Systemic Delivery):</b><br><i>The Process:</i> The therapeutic gene payload is packaged directly into a viral vector and injected straight into the patient's body (intravenously, intrathecally, or subretinally).<br><i>Primary Vector:</i> Adeno-Associated Virus (AAV).<br><i>Targets:</i> Non-dividing, long-lived tissues such as the liver, central nervous system, and retina.</li>
-          <li><b>Ex Vivo Model (Cellular Engineering Outside the Body):</b><br><i>The Process:</i> Patient stem cells are harvested, engineered inside a sterile, localized GMP cleanroom laboratory, validated, and then re-infused into the patient.<br><i>Primary Vector:</i> Lentivirus or Retrovirus.<br><i>Targets:</i> Rapidly dividing systems, primarily hematopoietic stem cells (bone marrow) and T-cells.</li>
+          <li><strong>In Vivo Model (Direct Systemic Delivery):</strong><br><i>The Process:</i> The therapeutic gene payload is packaged directly into a viral vector and injected straight into the patient's body (intravenously, intrathecally, or subretinally).<br><i>Primary Vector:</i> Adeno-Associated Virus (AAV).<br><i>Targets:</i> Non-dividing, long-lived tissues such as the liver, central nervous system, and retina.</li>
+          <li><strong>Ex Vivo Model (Cellular Engineering Outside the Body):</strong><br><i>The Process:</i> Patient stem cells are harvested, engineered inside a sterile, localized GMP cleanroom laboratory, validated, and then re-infused into the patient.<br><i>Primary Vector:</i> Lentivirus or Retrovirus.<br><i>Targets:</i> Rapidly dividing systems, primarily hematopoietic stem cells (bone marrow) and T-cells.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">15 / 18</div><div class="attya-h">Next-Gen Molecular Engines: Editing Models</div>
         <p class="attya-sub">Shifting from gene replacement to precision modification</p>
         <ul class="attya-list">
-          <li><b>CRISPR-Cas9 (The Molecular Scissors):</b> Uses a guide RNA sequence to make targeted double-stranded breaks in the DNA. This approach can either completely "knock out" a faulty gene or allow template-directed repairs.</li>
-          <li><b>Base Editing (The Molecular Pencil):</b> Chemically modifies a single nucleotide base pair (e.g., converting a C to a T) without breaking the DNA backbone. This dramatically lowers the risk of random insertion or deletion errors.</li>
-          <li><b>Prime Editing (The Search-and-Replace Word Processor):</b> An advanced technology capable of writing entirely new genetic sequences directly into specified genomic sites without requiring double-stranded DNA breaks or donor DNA templates.</li>
+          <li><strong>CRISPR-Cas9 (The Molecular Scissors):</strong> Uses a guide RNA sequence to make targeted double-stranded breaks in the DNA. This approach can either completely "knock out" a faulty gene or allow template-directed repairs.</li>
+          <li><strong>Base Editing (The Molecular Pencil):</strong> Chemically modifies a single nucleotide base pair (e.g., converting a C to a T) without breaking the DNA backbone. This dramatically lowers the risk of random insertion or deletion errors.</li>
+          <li><strong>Prime Editing (The Search-and-Replace Word Processor):</strong> An advanced technology capable of writing entirely new genetic sequences directly into specified genomic sites without requiring double-stranded DNA breaks or donor DNA templates.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">16 / 18</div><div class="attya-h">The Biological Ledger: Pros &amp; Cons</div>
         <p class="attya-sub">Balancing curative power against cellular risks</p>
         <ul class="attya-list">
-          <li><b>The Crucial Pros (The Upside):</b><br><i>The Curative Paradigm:</i> Corrects the root molecular cause of a disease, replacing decades of painful, lifestyle-limiting palliative management with a single definitive intervention.<br><i>Target Precision:</i> Patches or modifies specific corrupted gene segments while leaving healthy surrounding DNA intact.</li>
-          <li><b>The Crucial Cons (The Biological Risks):</b><br><i>Immunogenicity:</i> Intense immune reactions where the host body flags viral vectors or bacterial proteins as hostile, triggering severe systemic inflammation.<br><i>Off-Target Mutations &amp; Insertional Mutagenesis:</i> The risk of gene editing tools interacting with unintended genomic areas, potentially disrupting vital genes or activating oncogenes.</li>
+          <li><strong>The Crucial Pros (The Upside):</strong><br><i>The Curative Paradigm:</i> Corrects the root molecular cause of a disease, replacing decades of painful, lifestyle-limiting palliative management with a single definitive intervention.<br><i>Target Precision:</i> Patches or modifies specific corrupted gene segments while leaving healthy surrounding DNA intact.</li>
+          <li><strong>The Crucial Cons (The Biological Risks):</strong><br><i>Immunogenicity:</i> Intense immune reactions where the host body flags viral vectors or bacterial proteins as hostile, triggering severe systemic inflammation.<br><i>Off-Target Mutations &amp; Insertional Mutagenesis:</i> The risk of gene editing tools interacting with unintended genomic areas, potentially disrupting vital genes or activating oncogenes.</li>
         </ul></div>
 
       <div class="attya-slide"><div class="sn">17 / 18</div><div class="attya-h">Structural Imperative for Indigenous Deployment</div>
         <p class="attya-sub">The path to autonomy</p>
         <ul class="attya-list">
-          <li><b>Breaking Commercial Dependence:</b> Relying on imported molecular pharmacology guarantees perpetual exclusion. True access requires the complete localization of biological research and vector manufacturing.</li>
-          <li><b>Capital Repurposing:</b> Redirecting the massive, compounding funds lost to lifetime chronic palliative care toward the establishment of localized, permanent curative infrastructure.</li>
-          <li><b>The Replicable Framework:</b> Once a single local clinical trial lifecycle is successfully completed, it forms a standardized, domestic validation blueprint that can rapidly accommodate subsequent genetic targets.</li>
+          <li><strong>Breaking Commercial Dependence:</strong> Relying on imported molecular pharmacology guarantees perpetual exclusion. True access requires the complete localization of biological research and vector manufacturing.</li>
+          <li><strong>Capital Repurposing:</strong> Redirecting the massive, compounding funds lost to lifetime chronic palliative care toward the establishment of localized, permanent curative infrastructure.</li>
+          <li><strong>The Replicable Framework:</strong> Once a single local clinical trial lifecycle is successfully completed, it forms a standardized, domestic validation blueprint that can rapidly accommodate subsequent genetic targets.</li>
         </ul></div>
 
       <div class="attya-slide title-slide"><div class="sn">18 / 18</div>
@@ -927,33 +941,33 @@
         <span class="attya-badge">Operational matrix prepped - awaits institutional activation</span></div>
       <div class="attya-slide"><div class="sn">02 / 06</div><div class="attya-h">The demographic imperative</div>
         <ul class="attya-list">
-          <li><b>Consanguinity.</b> An estimated 60-70% of marriages in Pakistan are consanguineous, driving a high prevalence of autosomal-recessive conditions.</li>
-          <li><b>Thalassemia burden.</b> Roughly 5,000-9,000 children are born with beta-thalassemia major each year, with a standing patient base above 100,000 dependent on lifelong transfusions.</li>
-          <li><b>Neuromuscular reality.</b> Thousands of children face degenerative conditions such as SMA - largely under-reported, and without advanced local treatment.</li>
+          <li><strong>Consanguinity.</strong> An estimated 60-70% of marriages in Pakistan are consanguineous, driving a high prevalence of autosomal-recessive conditions.</li>
+          <li><strong>Thalassemia burden.</strong> Roughly 5,000-9,000 children are born with beta-thalassemia major each year, with a standing patient base above 100,000 dependent on lifelong transfusions.</li>
+          <li><strong>Neuromuscular reality.</strong> Thousands of children face degenerative conditions such as SMA - largely under-reported, and without advanced local treatment.</li>
         </ul></div>
       <div class="attya-slide"><div class="sn">03 / 06</div><div class="attya-h">Forecasted impact model</div>
         <table class="attya-tbl"><thead><tr><th>Metric</th><th>Status quo (palliative care)</th><th>The ATTYA model (translational cures)</th></tr></thead>
         <tbody>
-          <tr><td><b>Healthcare infrastructure</b></td><td>Perpetual strain on blood banks, specialist wards and resource pools.</td><td>Fewer readmissions; relief for critical emergency networks.</td></tr>
-          <tr><td><b>Economic burden</b></td><td>Lifelong, compounding cost per patient on symptomatic care.</td><td>High single-intervention efficiency, offsetting decades of cost.</td></tr>
-          <tr><td><b>Human capital</b></td><td>Multi-generational productivity loss for patients and carers.</td><td>Families restored to active roles in the economy.</td></tr>
+          <tr><td><strong>Healthcare infrastructure</strong></td><td>Perpetual strain on blood banks, specialist wards and resource pools.</td><td>Fewer readmissions; relief for critical emergency networks.</td></tr>
+          <tr><td><strong>Economic burden</strong></td><td>Lifelong, compounding cost per patient on symptomatic care.</td><td>High single-intervention efficiency, offsetting decades of cost.</td></tr>
+          <tr><td><strong>Human capital</strong></td><td>Multi-generational productivity loss for patients and carers.</td><td>Families restored to active roles in the economy.</td></tr>
         </tbody></table></div>
       <div class="attya-slide"><div class="sn">04 / 06</div><div class="attya-h">The clinical network</div>
         <ul class="attya-list">
-          <li><b>CMH-BMTC.</b> Complex cellular transplants, patient conditioning protocols, and sterile isolation environments.</li>
-          <li><b>Aga Khan University Hospital.</b> Precision genomic diagnostics, molecular screening, and bioethics frameworks.</li>
-          <li><b>NUMS &amp; PIMS.</b> Academic anchoring, pre-clinical validation, bio-banking, and access to large patient cohorts.</li>
-          <li><b>Shaukat Khanum (SKMH).</b> Oncology laboratory assets for complex cell biology and viral-vector work.</li>
+          <li><strong>CMH-BMTC.</strong> Complex cellular transplants, patient conditioning protocols, and sterile isolation environments.</li>
+          <li><strong>Aga Khan University Hospital.</strong> Precision genomic diagnostics, molecular screening, and bioethics frameworks.</li>
+          <li><strong>NUMS &amp; PIMS.</strong> Academic anchoring, pre-clinical validation, bio-banking, and access to large patient cohorts.</li>
+          <li><strong>Shaukat Khanum (SKMH).</strong> Oncology laboratory assets for complex cell biology and viral-vector work.</li>
         </ul></div>
       <div class="attya-slide"><div class="sn">05 / 06</div><div class="attya-h">24-month roadmap - Year 1</div>
         <ul class="attya-list">
-          <li><b>Months 1-6 | Alignment &amp; tech transfer.</b> Activate cross-institution working groups; define target monogenic disorders; begin regulatory alignment with DRAP.</li>
-          <li><b>Months 7-12 | Infrastructure &amp; registries.</b> Upgrade designated spaces to GMP cleanroom standard; launch a central genomic patient registry; deploy ultra-low cold-chain storage.</li>
+          <li><strong>Months 1-6 | Alignment &amp; tech transfer.</strong> Activate cross-institution working groups; define target monogenic disorders; begin regulatory alignment with DRAP.</li>
+          <li><strong>Months 7-12 | Infrastructure &amp; registries.</strong> Upgrade designated spaces to GMP cleanroom standard; launch a central genomic patient registry; deploy ultra-low cold-chain storage.</li>
         </ul></div>
       <div class="attya-slide"><div class="sn">06 / 06</div><div class="attya-h">24-month roadmap - Year 2</div>
         <ul class="attya-list">
-          <li><b>Months 13-18 | Pre-clinical validation.</b> In vitro and in vivo verification of locally engineered vectors; ICU staff cross-training; final bioethics clearance.</li>
-          <li><b>Months 19-24 | First-in-human.</b> Secure IND clearance from DRAP; enrol the first patient cohort; begin localised gene delivery under continuous cell-tracking.</li>
+          <li><strong>Months 13-18 | Pre-clinical validation.</strong> In vitro and in vivo verification of locally engineered vectors; ICU staff cross-training; final bioethics clearance.</li>
+          <li><strong>Months 19-24 | First-in-human.</strong> Secure IND clearance from DRAP; enrol the first patient cohort; begin localised gene delivery under continuous cell-tracking.</li>
         </ul>
         <div class="insp-quote" style="margin-top:16px;">"The future is sovereignty - a permanent framework for indigenous medical innovation."</div></div>
     </div>
@@ -983,25 +997,25 @@
     <div class="care-card reveal">
       <div class="care-k"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9A5.2 5.2 0 0112 5a5.2 5.2 0 019.5 7c-2.5 4.5-9.5 9-9.5 9z"/></svg> Your rights</div>
       <ul class="care-list">
-        <li>To <b>clear, honest information</b> in a language you understand, and the time to absorb it.</li>
-        <li>To <b>ask questions</b>, seek a second opinion, and be a partner in every decision about your child.</li>
-        <li>To <b>access your child's records</b>, reports and test results.</li>
-        <li>To be treated with <b>respect and dignity</b> - never judged for what you do not yet know.</li>
-        <li>To <b>your own health and rest</b>; caring for yourself is part of caring for them.</li>
-        <li>To <b>emotional support</b> and the company of families who understand.</li>
-        <li>To <b>say "I need help"</b> without shame, and to lean on family, community and faith.</li>
+        <li>To <strong>clear, honest information</strong> in a language you understand, and the time to absorb it.</li>
+        <li>To <strong>ask questions</strong>, seek a second opinion, and be a partner in every decision about your child.</li>
+        <li>To <strong>access your child's records</strong>, reports and test results.</li>
+        <li>To be treated with <strong>respect and dignity</strong> - never judged for what you do not yet know.</li>
+        <li>To <strong>your own health and rest</strong>; caring for yourself is part of caring for them.</li>
+        <li>To <strong>emotional support</strong> and the company of families who understand.</li>
+        <li>To <strong>say "I need help"</strong> without shame, and to lean on family, community and faith.</li>
       </ul>
     </div>
     <div class="care-card reveal">
       <div class="care-k"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg> Your responsibilities</div>
       <ul class="care-list">
-        <li>To share an <b>accurate history</b> and your honest observations with the care team.</li>
-        <li>To follow agreed care plans as best you can, and to <b>speak up</b> when something isn't working.</li>
-        <li>To keep <b>records organised</b> - reports, medicines, appointments and questions.</li>
-        <li>To <b>learn enough to partner</b> with clinicians, without trying to replace them.</li>
-        <li>To protect your child's <b>dignity, privacy and comfort</b> at every step.</li>
-        <li>To watch for your <b>own burnout</b> and seek respite <i>before</i> you are empty.</li>
-        <li>To hold on to <b>hope and patience</b> - for your child, and for yourself.</li>
+        <li>To share an <strong>accurate history</strong> and your honest observations with the care team.</li>
+        <li>To follow agreed care plans as best you can, and to <strong>speak up</strong> when something isn't working.</li>
+        <li>To keep <strong>records organised</strong> - reports, medicines, appointments and questions.</li>
+        <li>To <strong>learn enough to partner</strong> with clinicians, without trying to replace them.</li>
+        <li>To protect your child's <strong>dignity, privacy and comfort</strong> at every step.</li>
+        <li>To watch for your <strong>own burnout</strong> and seek respite <i>before</i> you are empty.</li>
+        <li>To hold on to <strong>hope and patience</strong> - for your child, and for yourself.</li>
       </ul>
     </div>
   </div>
@@ -1024,9 +1038,9 @@
 <section class="disclaimer"><div class="wrap">
   <div class="disc-box reveal">
     <h4><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9l-8 14A2 2 0 004 21h16a2 2 0 001.7-3l-8-14a2 2 0 00-3.4 0z"/></svg> Important - please read</h4>
-    <p><b>NAHL - National Awareness for Hereditary Limitations - is a parent support group offering non-medical guidance and general information only.</b> It is not a hospital, clinic, or medical provider, and nothing here is a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified physician for any medical decision.</p>
+    <p><strong>NAHL - National Awareness for Hereditary Limitations - is a parent support group offering non-medical guidance and general information only.</strong> It is not a hospital, clinic, or medical provider, and nothing here is a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified physician for any medical decision.</p>
     <p>The assistant does not diagnose conditions or recommend medicines, doses, or treatments. Information is drawn from trusted sources and cited, but may be incomplete or out of date; treatment and trial availability varies by country and changes over time. Listed institutions are public information and do not imply endorsement or partnership.</p>
-    <p>In <b>Global mode</b>, your messages are sent to Google's Gemini service to generate replies - please do not share names or identifying details. <b>Local mode</b> runs entirely on your device. This is a prototype demo; verify all details independently. <b>In an emergency, contact a qualified doctor or your local emergency services immediately.</b></p>
+    <p>In <strong>Global mode</strong>, your messages are sent to Google's Gemini service to generate replies - please do not share names or identifying details. <strong>Local mode</strong> runs entirely on your device. This is a prototype demo; verify all details independently. <strong>In an emergency, contact a qualified doctor or your local emergency services immediately.</strong></p>
   </div>
 </div></section>
 
@@ -1053,6 +1067,7 @@
       <span class="chip" onclick="ask('How do I connect with families?')">Find families</span>
     </div>
     <div class="prow"><input id="chatInput" placeholder="Ask about a condition or where to get help..." aria-label="Message" onkeydown="if(event.key==='Enter')send()"><button class="send" onclick="send()">Send</button></div>
+    <p class="chat-privacy">Local mode runs entirely on your device - nothing you type is sent anywhere. Global mode sends your message to Google Gemini to phrase the reply, so avoid sharing names or identifying details. AISHA never diagnoses or prescribes.</p>
   </div>
 </section>
 
@@ -1225,9 +1240,9 @@ function showCond(i){const c=KB.conditions[i],d=document.getElementById('condDet
   d.classList.add('show'); d.scrollIntoView({behavior:'smooth',block:'center'});}
 renderConds(KB.conditions);
 document.getElementById('dirBody').innerHTML = KB.directory.map(o=>
-  `<tr><td>${o.url?`<a class="cn dlink" href="${o.url}" target="_blank" rel="noopener">${o.name}</a>`:`<span class="cn">${o.name}</span>`}</td><td>${o.city}</td><td>${o.offer}</td><td><span class="pilltag ${tierName[o.tier]}">${o.tier}</span></td></tr>`).join('');
+  `<tr><td>${o.url?`<a class="cn dlink" href="${o.url}" target="_blank" rel="noopener noreferrer">${o.name}</a>`:`<span class="cn">${o.name}</span>`}</td><td>${o.city}</td><td>${o.offer}</td><td><span class="pilltag ${tierName[o.tier]}">${o.tier}</span></td></tr>`).join('');
 document.getElementById('monoGrid').innerHTML = KB.sources.map(s=>
-  `<a class="mono" href="${s.url}" target="_blank" rel="noopener"><div class="mhex">${s.mono}</div><div class="mn">${s.name}</div>
+  `<a class="mono" href="${s.url}" target="_blank" rel="noopener noreferrer"><div class="mhex">${s.mono}</div><div class="mn">${s.name}</div>
    <div class="mr">${s.role}</div><div class="mr"><span class="pilltag ${tierName[s.tier]}">${s.tier}</span></div></a>`).join('');
 document.getElementById('condSearch').addEventListener('input',e=>{const q=e.target.value.toLowerCase().trim();
   renderConds(q?KB.conditions.filter(c=>NAHL.score(q,c)>0):KB.conditions);});
@@ -1301,10 +1316,10 @@ function openChat(q){panel.classList.add('open');var _f=document.getElementById(
   if(!msgs.children.length){bot({text:"Assalaam-o-Alaikum. I'll help you understand a diagnosis in plain words and point you toward trusted help from resources around the globe."});}
   if(q){ask(q);} else input.focus();}
 function closeChat(){panel.classList.remove('open');hideSheet();var _f=document.getElementById('fab');if(_f)_f.style.display='flex';}
-var HOW_HTML='<p><b>I am a guide, not a doctor.</b> I never diagnose conditions or recommend medicines, doses or treatments - those decisions belong with a qualified doctor who knows the full picture.</p>'
-+'<p><b>I answer from verified, cited sources.</b> My replies are grounded in trusted references such as GARD, Orphanet, OMIM and MedlinePlus. If I do not have a verified source for something, I will say so rather than guess.</p>'
-+'<p><b>Two modes.</b> In <b>Local mode</b> I run entirely on your device, so nothing leaves it. In <b>Global mode</b> I use an online model to phrase answers from the same verified content; in that mode your messages are sent to the AI service, so please avoid sharing names or identifying details.</p>'
-+'<p><b>In an emergency</b>, please contact a qualified doctor or your local emergency services right away.</p>';
+var HOW_HTML='<p><strong>I am a guide, not a doctor.</strong> I never diagnose conditions or recommend medicines, doses or treatments - those decisions belong with a qualified doctor who knows the full picture.</p>'
++'<p><strong>I answer from verified, cited sources.</strong> My replies are grounded in trusted references such as GARD, Orphanet, OMIM and MedlinePlus. If I do not have a verified source for something, I will say so rather than guess.</p>'
++'<p><strong>Two modes.</strong> In <strong>Local mode</strong> I run entirely on your device, so nothing leaves it. In <strong>Global mode</strong> I use an online model to phrase answers from the same verified content; in that mode your messages are sent to the AI service, so please avoid sharing names or identifying details.</p>'
++'<p><strong>In an emergency</strong>, please contact a qualified doctor or your local emergency services right away.</p>';
 function showSheet(kind){var b=document.getElementById('sheetBody'),t=document.getElementById('sheetTitle');
   if(kind==='how'){t.textContent='How AISHA works';b.innerHTML=HOW_HTML;}
   document.getElementById('aishaSheet').classList.add('open');}
