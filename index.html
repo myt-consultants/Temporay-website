@@ -21,7 +21,7 @@
   :root{
     --bg:#080C12; --bg2:#0C121A; --surface:#111A24; --surface2:#16212E;
     --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.15);
-    --ink:#EAF2F6; --muted:#9DB0BD; --faint:#6B7C89;
+    --ink:#EAF2F6; --muted:#9DB0BD; --faint:#7E90A0;
     --teal:#34E3C4; --honey:#F6B53C; --blue:#5AA9F0;
     --t1:#34E3C4; --t2:#5AA9F0;
     --sora:'Sora',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -184,7 +184,7 @@
   .feat{display:flex;gap:11px;margin-top:16px;} .feat svg{width:19px;height:19px;stroke:var(--teal);fill:none;stroke-width:1.8;flex-shrink:0;margin-top:2px;}
   .feat b{color:var(--ink);font-weight:600;font-size:14.5px;} .feat span{color:var(--muted);font-size:13.5px;}
   .chips{display:flex;gap:7px;flex-wrap:wrap;}
-  .chip{font-size:11.5px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:100px;padding:6px 11px;cursor:pointer;transition:border-color .2s,color .2s;}
+  .chip{font-family:inherit;line-height:1.2;font-size:11.5px;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:100px;padding:6px 11px;cursor:pointer;transition:border-color .2s,color .2s;}
   .chip:hover{border-color:var(--teal);color:var(--ink);}
 
   .mission{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:24px;}
@@ -207,10 +207,10 @@
   .fab svg{width:19px;height:19px;stroke:#04201B;fill:none;stroke-width:2;}
   .panel{position:fixed;bottom:22px;right:22px;z-index:100;width:min(420px,94vw);height:min(640px,84vh);background:var(--surface);border:1px solid var(--line2);border-radius:20px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.9);}
   .panel.open{display:flex;}
-  .ph{display:flex;align-items:center;gap:11px;padding:15px 17px;border-bottom:1px solid var(--line);}
+  .ph{display:flex;align-items:center;gap:11px;padding:12px 17px;border-bottom:1px solid var(--line);}
   .ph .ti{font-family:var(--sora);font-weight:600;font-size:15px;} .ph .st{font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--teal);}
   .ph .x{margin-left:auto;background:none;border:none;color:var(--muted);font-size:23px;line-height:1;}
-  .msgs{flex:1;overflow-y:auto;padding:17px;display:flex;flex-direction:column;gap:13px;}
+  .msgs{flex:1;overflow-y:auto;padding:13px 17px;display:flex;flex-direction:column;gap:13px;}
   .m{max-width:88%;padding:11px 14px;border-radius:14px;font-size:14px;line-height:1.55;white-space:pre-wrap;}
   .m.bot{background:var(--bg2);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:5px;}
   .m.user{background:var(--teal);color:#04201B;align-self:flex-end;border-bottom-right-radius:5px;font-weight:500;}
@@ -219,7 +219,7 @@
   .m .cites{margin-top:9px;font-size:11px;color:var(--faint);}
   .m .cites .c{font-family:var(--mono);font-size:9px;background:rgba(52,227,196,.12);color:var(--teal);padding:1px 6px;border-radius:5px;margin-left:4px;}
   .m .dis{margin-top:8px;font-size:10.5px;color:var(--faint);font-style:italic;}
-  .pf{border-top:1px solid var(--line);padding:12px;}
+  .pf{border-top:1px solid var(--line);padding:11px 12px;}
   .pf .chips{margin-bottom:10px;}
   .prow{display:flex;gap:8px;}
   .prow input{flex:1;background:var(--bg2);border:1px solid var(--line2);border-radius:10px;color:var(--ink);font-size:14px;padding:11px 13px;outline:none;}
@@ -269,12 +269,13 @@
   .attya-tbl th,.attya-tbl td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted);line-height:1.45;}
   .attya-tbl th{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);}
   .attya-tbl td b{color:var(--ink);} .attya-tbl tr:last-child td{border-bottom:none;}
-  .attya-ctrls{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-top:1px solid var(--line);background:var(--bg2);}
-  .attya-dots{display:flex;gap:7px;}
+  .attya-ctrls{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 18px;border-top:1px solid var(--line);background:var(--bg2);}
+  .attya-dots{display:flex;gap:7px;flex:1 1 auto;justify-content:center;flex-wrap:wrap;}
   .attya-dot{width:8px;height:8px;border-radius:50%;background:var(--line2);border:none;padding:0;cursor:pointer;transition:background .2s;}
   .attya-dot.on{background:var(--teal);}
-  .attya-btn{background:rgba(255,255,255,.05);border:1px solid var(--line2);color:var(--ink);border-radius:9px;padding:8px 16px;font-size:13px;font-weight:600;}
+  .attya-btn{flex:none;background:rgba(255,255,255,.05);border:1px solid var(--line2);color:var(--ink);border-radius:9px;padding:8px 16px;font-size:13px;font-weight:600;}
   .attya-btn:disabled{opacity:.35;cursor:not-allowed;}
+  @media (max-width:600px){ .attya-ctrls{padding:11px 12px;} .attya-btn{padding:7px 13px;font-size:12px;} .attya-dots{gap:5px;} }
   @media(max-width:860px){.insp{grid-template-columns:1fr;} .attya-slide{padding:26px 22px;} .attya-tbl{font-size:11.5px;} .attya-tbl th,.attya-tbl td{padding:8px 8px;}}
   /* AISHA header + how-i-work sheet */
   .ph-txt{min-width:0;}
@@ -309,7 +310,11 @@
   .atg-btn.active{background:var(--teal);color:#04201B;font-weight:700;}
   .atl{display:none;height:clamp(132px,19vh,162px);overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);}
   .atl.active{display:block;}
-  .atl-track{animation:atlroll 24s linear infinite;}
+  .atl-track{animation:atlroll 32s linear infinite;animation-play-state:paused;}
+  .ayaat-go .atl-track{animation-play-state:running;}
+  #ayaatStage .attya-slide.ay1{justify-content:flex-start;}
+  .ay1 .ayaat-tpane{flex:1 1 auto;display:flex;flex-direction:column;min-height:0;}
+  .ay1 .atl{flex:1 1 auto;height:auto;min-height:0;}
   .atl:hover .atl-track{animation-play-state:paused;}
   .atl-copy{padding-bottom:18px;}
   @keyframes atlroll{from{transform:translateY(0);}to{transform:translateY(-50%);}}
@@ -432,6 +437,75 @@
   @media(max-width:560px){ .faq-q .fqcat{display:none;} }
   .stats-src{max-width:760px;margin:16px auto 0;text-align:center;font-size:11.5px;line-height:1.55;color:var(--faint);}
   .chat-privacy{margin:9px 2px 0;font-size:10.5px;line-height:1.5;color:var(--faint);}
+  #codeIn:focus-visible,.search input:focus-visible,.prow input:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  tbody tr.clk:focus-visible{outline:2px solid var(--teal);outline-offset:-2px;}
+  /* nav meta buttons + divider */
+  .navmeta{font-family:var(--sora);font-size:14px;font-weight:500;color:var(--muted);background:none;border:none;text-align:left;padding:0;cursor:pointer;transition:color .2s;}
+  .navmeta:hover{color:var(--ink);}
+  .navdiv{height:1px;background:var(--line2);margin:3px 0;display:block;}
+  /* ===== slide-down windows ===== */
+  .winwrap{position:fixed;inset:0;z-index:200;display:none;justify-content:center;align-items:flex-start;padding:0 16px 32px;overflow-y:auto;background:rgba(4,7,11,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;transition:opacity .3s ease;}
+  .winwrap.open{display:flex;opacity:1;}
+  .win{width:100%;max-width:640px;margin-top:74px;background:linear-gradient(180deg,var(--surface2),var(--surface));border:1px solid var(--line2);border-radius:18px;box-shadow:0 40px 90px -40px #000;transform:translateY(-26px);transition:transform .38s cubic-bezier(.2,.8,.25,1);overflow:hidden;}
+  .winwrap.open .win{transform:translateY(0);}
+  .win-head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface2);z-index:2;}
+  .win-head h3{font-family:var(--sora);font-size:19px;font-weight:700;margin:2px 0 0;color:var(--ink);}
+  .win-x{flex:none;width:34px;height:34px;border-radius:9px;border:1px solid var(--line2);background:none;color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;}
+  .win-x:hover{color:var(--ink);border-color:var(--ink);}
+  .win-x svg{width:16px;height:16px;}
+  .win-body{padding:22px;}
+  /* CEO letter */
+  .ceo{border-left:3px solid var(--honey);padding:2px 0 2px 18px;margin:0 0 22px;}
+  .ceo-ey{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--honey);}
+  .ceo p{font-size:14.5px;line-height:1.85;color:var(--ink);margin:12px 0;}
+  .ceo p.lede{font-size:16px;}
+  .ceo .em{color:var(--honey);font-style:italic;}
+  .ceo .vow{font-family:var(--sora);font-size:15px;font-style:italic;color:var(--teal);line-height:1.7;margin-top:16px;}
+  .ceo-sign{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line2);}
+  .ceo-sign .nm{font-family:var(--sora);font-weight:700;color:var(--ink);font-size:15px;}
+  .ceo-sign .ttl{font-size:12.5px;color:var(--muted);margin-top:2px;}
+  .ceo-sign .ph{font-size:11px;color:var(--faint);margin-top:6px;}
+  .win-sub{font-size:13.5px;line-height:1.7;color:var(--muted);margin:0 0 18px;}
+  .win-cta{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--teal);background:none;border:1px solid var(--teal);border-radius:100px;padding:8px 15px;cursor:pointer;transition:.2s;}
+  .win-cta:hover{background:var(--teal);color:#04201B;}
+  .cx-rows{display:flex;flex-direction:column;gap:11px;margin:0 0 8px;}
+  .cx-row{display:flex;align-items:center;gap:13px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;color:var(--ink);text-decoration:none;transition:border-color .2s;}
+  .cx-row:hover{border-color:var(--line2);}
+  .cx-ic{flex:none;width:34px;height:34px;border-radius:9px;background:rgba(52,227,196,.1);display:flex;align-items:center;justify-content:center;color:var(--teal);}
+  .cx-ic svg{width:17px;height:17px;}
+  .cx-row.wa .cx-ic{background:rgba(37,211,102,.14);color:#25D366;}
+  .cx-tx .k{font-size:11px;color:var(--faint);font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase;}
+  .cx-tx .v{font-size:14px;color:var(--ink);margin-top:1px;}
+  .cx-demo{font-size:11px;color:var(--faint);margin:9px 0 20px;}
+  .qf-h{font-family:var(--sora);font-size:15px;font-weight:600;color:var(--ink);margin:0 0 3px;}
+  .qf-s{font-size:12.5px;color:var(--muted);margin:0 0 15px;}
+  .qf label{display:block;font-size:11.5px;color:var(--muted);margin:0 0 5px;font-weight:500;}
+  .qf .fld{margin-bottom:13px;}
+  .qf input,.qf select,.qf textarea{width:100%;background:var(--bg2);border:1px solid var(--line2);border-radius:10px;color:var(--ink);font-family:inherit;font-size:14px;padding:11px 13px;outline:none;}
+  .qf input:focus-visible,.qf select:focus-visible,.qf textarea:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  .qf textarea{resize:vertical;min-height:96px;line-height:1.55;}
+  .qf .send{width:100%;background:var(--teal);color:#04201B;border:none;border-radius:10px;font-family:var(--sora);font-weight:700;font-size:14px;padding:12px;cursor:pointer;transition:filter .2s;}
+  .qf .send:hover{filter:brightness(1.06);}
+  .qf-err{color:#F6836C;font-size:12px;margin:-6px 0 12px;display:none;}
+  .qf-ok{display:none;text-align:center;padding:26px 12px;}
+  .qf-ok .tick{width:52px;height:52px;border-radius:50%;background:rgba(52,227,196,.14);color:var(--teal);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+  .qf-ok .tick svg{width:26px;height:26px;}
+  .qf-ok h4{font-family:var(--sora);color:var(--ink);font-size:17px;margin:0 0 6px;}
+  .qf-ok p{font-size:13px;color:var(--muted);line-height:1.6;margin:0;}
+  @media (max-width:600px){ .win{margin-top:64px;} .win-body{padding:18px;} .ceo p{font-size:14px;} }
+  /* ===== NAHL motto ticker ===== */
+  .moto-band{position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(246,181,60,.09),rgba(52,227,196,.04)),#0A0E14;padding:14px 0;}
+  .moto-inner{display:flex;align-items:center;gap:16px;}
+  .moto-label{flex:none;font-family:var(--sora);font-weight:800;font-size:clamp(14px,3.4vw,17px);letter-spacing:.03em;text-transform:uppercase;padding-right:16px;border-right:1px solid var(--line2);white-space:nowrap;color:#FBD37E;text-shadow:0 0 14px rgba(246,181,60,.35);}
+  .moto-viewport{flex:1;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
+  .moto-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:moto-scroll 38s linear infinite;}
+  .moto-viewport:hover .moto-track{animation-play-state:paused;}
+  @keyframes moto-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .moto-copy{font-family:var(--sora);font-weight:700;font-size:clamp(15px,3.9vw,19px);line-height:1.5;padding-right:20px;letter-spacing:.01em;background:linear-gradient(100deg,#F4B740 0%,#F4B740 42%,#FFFFFF 50%,#F4B740 58%,#F4B740 100%);background-size:230% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#F4B740;animation:moto-shine 4.5s linear infinite;text-shadow:0 0 22px rgba(246,181,60,.22);}
+  @keyframes moto-shine{to{background-position:-230% center;}}
+  .moto-copy .dx{font-weight:800;letter-spacing:.05em;}
+  .moto-copy .sp{padding:0 20px;font-size:.85em;}
+  @media (max-width:600px){ .moto-inner{gap:11px;} .moto-label{padding-right:11px;} }
 </style>
 </head>
 <body class="locked">
@@ -444,7 +518,7 @@
       <div class="wm"><svg viewBox="0 0 1000 250" role="img" aria-label="NAHL - National Awareness for Hereditary Limitations" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="nahlgGate" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#34E3C4"/><stop offset="100%" stop-color="#F6B53C"/></linearGradient></defs><text x="500" y="168" text-anchor="middle" textLength="965" lengthAdjust="spacingAndGlyphs" font-family="Sora, sans-serif" font-weight="700" font-size="188" fill="url(#nahlgGate)">N. A. H. L.</text><text x="500" y="230" text-anchor="middle" textLength="965" lengthAdjust="spacingAndGlyphs" font-family="Sora, sans-serif" font-weight="600" font-size="38" fill="#9DB0BD">NATIONAL AWARENESS FOR HEREDITARY LIMITATIONS</text></svg></div>
       <p class="gate-prompt">Enter your access code to continue.</p>
       <div class="gate-row">
-        <input id="codeIn" maxlength="6" placeholder="------" autocomplete="off" inputmode="numeric" pattern="[A-Za-z0-9]*" aria-label="Access code" onkeydown="if(event.key==='Enter')tryUnlock()">
+        <input id="codeIn" type="text" maxlength="6" placeholder="------" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Access code" onkeydown="if(event.key==='Enter')tryUnlock()">
         <button onclick="tryUnlock()">Enter</button>
       </div>
       <div id="codeErr"></div>
@@ -463,7 +537,10 @@
       </div>
     </div>
     <div class="navlinks" id="navlinks">
-      <a href="#pillars">Help</a><a href="#diagnosis">Diagnosis</a><a href="#conditions">Conditions</a><a href="#caregivers">Caregivers</a><a href="#directory">Find care</a><a href="#sources">Sources</a><a href="#inspiration">Inspiration</a><a href="#hareem">HAREEM</a><a href="#attya">ATTYA</a><a href="#about">About</a><a href="#faqs">FAQs</a>
+      <a href="#pillars">Help</a><a href="#diagnosis">Diagnosis</a><a href="#conditions">Conditions</a><a href="#caregivers">Caregivers</a><a href="#directory">Find care</a><a href="#sources">Sources</a><a href="#inspiration">Inspiration</a><a href="#hareem">HAREEM</a><a href="#attya">ATTYA</a><a href="#faqs">FAQs</a>
+      <span class="navdiv" aria-hidden="true"></span>
+      <button type="button" class="navmeta" data-win="about">About us</button>
+      <button type="button" class="navmeta" data-win="contact">Contact us</button>
     </div>
     <div class="navright">
     <button class="bell" id="bell" onclick="toggleBell()" aria-label="Notices">
@@ -475,7 +552,7 @@
       <div id="noticeList"></div>
     </div>
     <button class="cta cta-aisha" onclick="openChat()" aria-label="Ask AISHA"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span class="cta-label">Ask AISHA</span></button>
-    <button class="navtoggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <button class="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="navlinks" onclick="var n=document.getElementById('navlinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
 </nav>
@@ -498,7 +575,7 @@
       <div class="attya-window">
         <div class="attya-stage" id="ayaatStage">
 
-          <div class="attya-slide active"><div class="sn">01 / 10</div>
+          <div class="attya-slide active ay1"><div class="sn">01 / 10</div>
             <div class="ayaat-ref">Surah An-Nahl 16:68-69 &middot; "The Bee"</div>
             <div class="ayaat-marquee"><div class="ayaat-marquee-track">&#1608;&#1614;&#1571;&#1614;&#1608;&#1618;&#1581;&#1614;&#1609;&#1648; &#1585;&#1614;&#1576;&#1617;&#1615;&#1603;&#1614; &#1573;&#1616;&#1604;&#1614;&#1609; &#1575;&#1604;&#1606;&#1617;&#1614;&#1581;&#1618;&#1604;&#1616; &#1571;&#1614;&#1606;&#1616; &#1575;&#1578;&#1617;&#1614;&#1582;&#1616;&#1584;&#1616;&#1610; &#1605;&#1616;&#1606;&#1614; &#1575;&#1604;&#1618;&#1580;&#1616;&#1576;&#1614;&#1575;&#1604;&#1616; &#1576;&#1615;&#1610;&#1615;&#1608;&#1578;&#1611;&#1575; &#1608;&#1614;&#1605;&#1616;&#1606;&#1614; &#1575;&#1604;&#1588;&#1617;&#1614;&#1580;&#1614;&#1585;&#1616; &#1608;&#1614;&#1605;&#1616;&#1605;&#1617;&#1614;&#1575; &#1610;&#1614;&#1593;&#1618;&#1585;&#1616;&#1588;&#1615;&#1608;&#1606;&#1614; &#1757; &#1579;&#1615;&#1605;&#1617;&#1614; &#1603;&#1615;&#1604;&#1616;&#1610; &#1605;&#1616;&#1606; &#1603;&#1615;&#1604;&#1617;&#1616; &#1575;&#1604;&#1579;&#1617;&#1614;&#1605;&#1614;&#1585;&#1614;&#1575;&#1578;&#1616; &#1601;&#1614;&#1575;&#1587;&#1618;&#1604;&#1615;&#1603;&#1616;&#1610; &#1587;&#1615;&#1576;&#1615;&#1604;&#1614; &#1585;&#1614;&#1576;&#1617;&#1616;&#1603;&#1616; &#1584;&#1615;&#1604;&#1615;&#1604;&#1611;&#1575; &#1754; &#1610;&#1614;&#1582;&#1618;&#1585;&#1615;&#1580;&#1615; &#1605;&#1616;&#1606; &#1576;&#1615;&#1591;&#1615;&#1608;&#1606;&#1616;&#1607;&#1614;&#1575; &#1588;&#1614;&#1585;&#1614;&#1575;&#1576;&#1612; &#1605;&#1617;&#1615;&#1582;&#1618;&#1578;&#1614;&#1604;&#1616;&#1601;&#1612; &#1571;&#1614;&#1604;&#1618;&#1608;&#1614;&#1575;&#1606;&#1615;&#1607;&#1615; &#1601;&#1616;&#1610;&#1607;&#1616; &#1588;&#1616;&#1601;&#1614;&#1575;&#1569;&#1612; &#1604;&#1617;&#1616;&#1604;&#1606;&#1617;&#1614;&#1575;&#1587;&#1616; &#1754; &#1573;&#1616;&#1606;&#1617;&#1614; &#1601;&#1616;&#1610; &#1584;&#1614;&#1648;&#1604;&#1616;&#1603;&#1614; &#1604;&#1614;&#1570;&#1610;&#1614;&#1577;&#1611; &#1604;&#1617;&#1616;&#1602;&#1614;&#1608;&#1618;&#1605;&#1613; &#1610;&#1614;&#1578;&#1614;&#1601;&#1614;&#1603;&#1617;&#1614;&#1585;&#1615;&#1608;&#1606;&#1614; <span class="marq-gap"></span> &#1608;&#1614;&#1571;&#1614;&#1608;&#1618;&#1581;&#1614;&#1609;&#1648; &#1585;&#1614;&#1576;&#1617;&#1615;&#1603;&#1614; &#1573;&#1616;&#1604;&#1614;&#1609; &#1575;&#1604;&#1606;&#1617;&#1614;&#1581;&#1618;&#1604;&#1616; &#1571;&#1614;&#1606;&#1616; &#1575;&#1578;&#1617;&#1614;&#1582;&#1616;&#1584;&#1616;&#1610; &#1605;&#1616;&#1606;&#1614; &#1575;&#1604;&#1618;&#1580;&#1616;&#1576;&#1614;&#1575;&#1604;&#1616; &#1576;&#1615;&#1610;&#1615;&#1608;&#1578;&#1611;&#1575; &#1608;&#1614;&#1605;&#1616;&#1606;&#1614; &#1575;&#1604;&#1588;&#1617;&#1614;&#1580;&#1614;&#1585;&#1616; &#1608;&#1614;&#1605;&#1616;&#1605;&#1617;&#1614;&#1575; &#1610;&#1614;&#1593;&#1618;&#1585;&#1616;&#1588;&#1615;&#1608;&#1606;&#1614; &#1757; &#1579;&#1615;&#1605;&#1617;&#1614; &#1603;&#1615;&#1604;&#1616;&#1610; &#1605;&#1616;&#1606; &#1603;&#1615;&#1604;&#1617;&#1616; &#1575;&#1604;&#1579;&#1617;&#1614;&#1605;&#1614;&#1585;&#1614;&#1575;&#1578;&#1616; &#1601;&#1614;&#1575;&#1587;&#1618;&#1604;&#1615;&#1603;&#1616;&#1610; &#1587;&#1615;&#1576;&#1615;&#1604;&#1614; &#1585;&#1614;&#1576;&#1617;&#1616;&#1603;&#1616; &#1584;&#1615;&#1604;&#1615;&#1604;&#1611;&#1575; &#1754; &#1610;&#1614;&#1582;&#1618;&#1585;&#1615;&#1580;&#1615; &#1605;&#1616;&#1606; &#1576;&#1615;&#1591;&#1615;&#1608;&#1606;&#1616;&#1607;&#1614;&#1575; &#1588;&#1614;&#1585;&#1614;&#1575;&#1576;&#1612; &#1605;&#1617;&#1615;&#1582;&#1618;&#1578;&#1614;&#1604;&#1616;&#1601;&#1612; &#1571;&#1614;&#1604;&#1618;&#1608;&#1614;&#1575;&#1606;&#1615;&#1607;&#1615; &#1601;&#1616;&#1610;&#1607;&#1616; &#1588;&#1616;&#1601;&#1614;&#1575;&#1569;&#1612; &#1604;&#1617;&#1616;&#1604;&#1606;&#1617;&#1614;&#1575;&#1587;&#1616; &#1754; &#1573;&#1616;&#1606;&#1617;&#1614; &#1601;&#1616;&#1610; &#1584;&#1614;&#1648;&#1604;&#1616;&#1603;&#1614; &#1604;&#1614;&#1570;&#1610;&#1614;&#1577;&#1611; &#1604;&#1617;&#1616;&#1602;&#1614;&#1608;&#1618;&#1605;&#1613; &#1610;&#1614;&#1578;&#1614;&#1601;&#1614;&#1603;&#1617;&#1614;&#1585;&#1615;&#1608;&#1606;&#1614; <span class="marq-gap"></span> </div></div>
             <div class="ayaat-toggle">
@@ -602,6 +679,16 @@
     </aside>
   </div>
 </header>
+
+<div class="moto-band reveal">
+  <div class="wrap moto-inner">
+    <span class="moto-label">NAHL&#39;s Motto</span>
+    <div class="moto-viewport"><div class="moto-track">
+      <span class="moto-copy">We exist to close the distance between &ldquo;too late&rdquo; and &ldquo;in time&rdquo; <span class="dx">DIAGNOSIS</span>. Born from the loss of one child and the saving of another, our mission is simple: no parent should learn at a graveside, what a test could have told them at a cradle.<span class="sp">&#10022;</span></span>
+      <span class="moto-copy" aria-hidden="true">We exist to close the distance between &ldquo;too late&rdquo; and &ldquo;in time&rdquo; <span class="dx">DIAGNOSIS</span>. Born from the loss of one child and the saving of another, our mission is simple: no parent should learn at a graveside, what a test could have told them at a cradle.<span class="sp">&#10022;</span></span>
+    </div></div>
+  </div>
+</div>
 
 <section id="pillars"><div class="wrap">
   <div class="sec-h reveal"><span class="eyebrow">How NAHL helps</span><h2>Four ways in, wherever you are on the journey</h2></div>
@@ -737,10 +824,10 @@
     <span class="badge-off"><span class="dot"></span> Grounded in verified sources | offline fallback</span>
     <p style="color:var(--muted);font-size:14px;margin:16px 0 12px;">Ask things like:</p>
     <div class="chips">
-      <span class="chip" onclick="openChat('What is metachromatic leukodystrophy?')">What is MLD?</span>
-      <span class="chip" onclick="openChat('Which conditions have gene therapy?')">Conditions with gene therapy</span>
-      <span class="chip" onclick="openChat('Where can I get genetic testing in Karachi?')">Testing in Karachi</span>
-      <span class="chip" onclick="openChat('thalassemia carrier screening')">Carrier screening</span>
+      <button class="chip" type="button" onclick="openChat('What is metachromatic leukodystrophy?')">What is MLD?</button>
+      <button class="chip" type="button" onclick="openChat('Which conditions have gene therapy?')">Conditions with gene therapy</button>
+      <button class="chip" type="button" onclick="openChat('Where can I get genetic testing in Karachi?')">Testing in Karachi</button>
+      <button class="chip" type="button" onclick="openChat('thalassemia carrier screening')">Carrier screening</button>
     </div>
   </div>
 </div></section>
@@ -1054,7 +1141,7 @@
     <div class="ph-txt"><div class="ti">AISHA <span class="st" id="stBadge">Local | offline</span></div>
       <div class="ph-sub">an Artificially Intelligent System for Hereditary Advisory</div></div>
     <button class="x" onclick="closeChat()" aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  <div class="msgs" id="msgs"></div>
+  <div class="msgs" id="msgs" role="log" aria-live="polite" aria-relevant="additions"></div>
   <div class="aisha-sheet" id="aishaSheet">
     <div class="sheet-head"><span id="sheetTitle">How AISHA works</span><button class="sheet-x" onclick="hideSheet()" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
     <div class="sheet-body" id="sheetBody"></div>
@@ -1062,12 +1149,11 @@
   <div class="pf">
     <div class="aisha-actions"><button class="aisha-tab" onclick="showSheet('how')">How I work</button></div>
     <div class="chips">
-      <span class="chip" onclick="ask('Which conditions have gene therapy?')">Gene therapy options</span>
-      <span class="chip" onclick="ask('Where can I get tested in Pakistan?')">Testing in Pakistan</span>
-      <span class="chip" onclick="ask('How do I connect with families?')">Find families</span>
+      <button class="chip" type="button" onclick="ask('Which conditions have gene therapy?')">Gene therapy options</button>
+      <button class="chip" type="button" onclick="ask('Where can I get tested in Pakistan?')">Testing in Pakistan</button>
+      <button class="chip" type="button" onclick="ask('How do I connect with families?')">Find families</button>
     </div>
     <div class="prow"><input id="chatInput" placeholder="Ask about a condition or where to get help..." aria-label="Message" onkeydown="if(event.key==='Enter')send()"><button class="send" onclick="send()">Send</button></div>
-    <p class="chat-privacy">Local mode runs entirely on your device - nothing you type is sent anywhere. Global mode sends your message to Google Gemini to phrase the reply, so avoid sharing names or identifying details. AISHA never diagnoses or prescribes.</p>
   </div>
 </section>
 
@@ -1082,14 +1168,15 @@ const CONFIG = {
   helplines: [ /* { name:"...", phone:"..." } add VERIFIED numbers */ ]
 };
 const ACCESS = /^MYT\d{3}$/;   // demo access codes: MYT000 ... MYT999
+const EXTRA = new Set(['ATTYAA','JIKMYT']);   // additional access passcodes
 
 /* ---------- access gate ---------- */
 function tryUnlock(){
   const v=(document.getElementById('codeIn').value||'').trim().toUpperCase();
-  if(ACCESS.test(v)){ try{sessionStorage.setItem('nahl_ok','1');}catch(e){} unlock(); }
+  if(ACCESS.test(v) || EXTRA.has(v)){ try{sessionStorage.setItem('nahl_ok','1');}catch(e){} unlock(); }
   else{ document.getElementById('codeErr').textContent='Invalid code. Please check and try again.'; }
 }
-function unlock(){ document.getElementById('gate').classList.add('hide'); document.body.classList.remove('locked'); }
+function unlock(){ document.getElementById('gate').classList.add('hide'); document.body.classList.remove('locked'); setTimeout(function(){document.body.classList.add('ayaat-go');},3000); }
 (function(){ try{ if(sessionStorage.getItem('nahl_ok')==='1'){ unlock(); } }catch(e){}
   window.addEventListener('DOMContentLoaded',()=>{const i=document.getElementById('codeIn'); if(i && !document.getElementById('gate').classList.contains('hide')) i.focus();});
 })();
@@ -1225,7 +1312,7 @@ const KB = {
 /* ---------- render ---------- */
 function renderConds(list){
   document.getElementById('condBody').innerHTML = list.length ? list.map(c=>{const i=KB.conditions.indexOf(c);
-    return `<tr class="clk" onclick="showCond(${i})"><td><span class="cn">${c.name}</span></td><td><span class="gene">${c.gene}</span></td>
+    return `<tr class="clk" onclick="showCond(${i})" tabindex="0" role="button" aria-label="View details for ${c.name}" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showCond(${i})}"><td><span class="cn">${c.name}</span></td><td><span class="gene">${c.gene}</span></td>
       <td><span class="pilltag cat">${c.category}</span></td><td>${c.inherit}</td><td>${c.onset}</td>
       <td><span class="pilltag ${c.stype}">${c.status}</span></td><td><span class="pilltag ${tierName[c.src[0][1]]}">${c.src[0][0]}</span></td></tr>`;}).join('')
     : `<tr><td colspan="7" style="color:var(--faint)">No matching condition in the library yet.</td></tr>`;
@@ -1411,11 +1498,126 @@ var FAQCATS={diag:"Understanding it",gen:"Genetics & inheritance",test:"Testing"
   function render(){
     var f=FAQS.filter(function(q){var okc=curCat==='all'||q.c===curCat;var okq=!curQ||(q.q+' '+q.a).toLowerCase().indexOf(curQ)>=0;return okc&&okq;});
     cntEl.textContent=f.length+' of '+FAQS.length+' shown';
-    listEl.innerHTML=f.length? f.map(function(q){return '<div class="faq-item"><button class="faq-q" onclick="this.parentNode.classList.toggle(\'open\')"><span class="fqq">'+q.q+'</span><span class="fqr"><span class="fqcat">'+FAQCATS[q.c]+'</span><svg class="fqx" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div>'+q.a+'</div></div></div>';}).join('') : '<div class="faq-none">No questions match - try another word.</div>';
+    listEl.innerHTML=f.length? f.map(function(q){return '<div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="var it=this.parentNode;var o=it.classList.toggle(\'open\');this.setAttribute(\'aria-expanded\',o)"><span class="fqq">'+q.q+'</span><span class="fqr"><span class="fqcat">'+FAQCATS[q.c]+'</span><svg class="fqx" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div>'+q.a+'</div></div></div>';}).join('') : '<div class="faq-none">No questions match - try another word.</div>';
   }
   searchEl.addEventListener('input',function(e){curQ=e.target.value.toLowerCase().trim();render();});
   render();
 })();
 </script>
+<!-- ===== slide-down windows: About us / Contact us ===== -->
+<div class="winwrap" id="winAbout" role="dialog" aria-modal="true" aria-labelledby="winAboutTitle">
+  <div class="win">
+    <div class="win-head">
+      <div><span class="ceo-ey">Who we are</span><h3 id="winAboutTitle">About us</h3></div>
+      <button class="win-x" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="win-body">
+      <div class="ceo">
+        <div class="ceo-ey">A letter from our founder</div>
+        <p class="lede">I did not choose this work; it chose me the day a doctor spoke a word I could not spell, and my world changed forever.</p>
+        <p>My daughter, Nahl, was radiant with laughter until a rare inherited illness slowly took her voice, her steps, her sight &mdash; and finally, her breath. We searched every page, knocked on every door, but by the time we understood the illness, it had already claimed her. She left too soon, leaving a silence that will never fully lift.</p>
+        <p>Yet she also left us a gift. Because of what we learned <span class="em">too late</span> for her, we tested <span class="em">in time</span> for her sister. Aisha is alive today &mdash; growing, arguing, gloriously herself &mdash; because knowledge arrived early enough to matter. That difference, between too late and in time, is why this organization exists.</p>
+        <p>NAHL carries the name of the daughter we lost. AISHA, our companion tool, carries the name of the daughter we saved. Between those names lives our purpose: that no parent should learn at a graveside what a simple test could have told them at a cradle.</p>
+        <p>We are not a hospital, and we hold no cure. What we offer is what I once begged for and could not find: clear answers, a map through the fear, the names of those who can truly help, and the steady hand of someone who has walked this road and is still standing.</p>
+        <p>If you have just been handed news too heavy to carry, hear me gently: you are not alone, you did nothing to cause this, and for the children still with you, it is not too late to act.</p>
+        <p class="vow">For Nahl, whom we could not save. For Aisha &mdash; and for your child &mdash; whom we still can.</p>
+        <div class="ceo-sign">
+          <div class="nm">[ Your name here ]</div>
+          <div class="ttl">Founder &amp; Chief Executive, NAHL &middot; Mother to Nahl and Aisha</div>
+          <div class="ph">Replace the bracketed name with your own.</div>
+        </div>
+      </div>
+      <p class="win-sub">NAHL - National Awareness for Hereditary Limitations - is a free, parent-led initiative for families facing rare genetic disease in Pakistan and beyond. We exist so that no family has to search alone for what could have been known in time.</p>
+      <button class="win-cta" id="aboutPromiseBtn">Read our full promise <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<div class="winwrap" id="winContact" role="dialog" aria-modal="true" aria-labelledby="winContactTitle">
+  <div class="win">
+    <div class="win-head">
+      <div><span class="ceo-ey">We are here</span><h3 id="winContactTitle">Contact us</h3></div>
+      <button class="win-x" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="win-body">
+      <p class="win-sub">Whether you need a hand, want to share your story, or have a suggestion or concern - we would be honoured to hear from you.</p>
+      <div class="cx-rows">
+        <a class="cx-row wa" href="https://wa.me/923001234567?text=Hi%20NAHL%2C%20I%20have%20a%20question" target="_blank" rel="noopener noreferrer">
+          <span class="cx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-12 7.6L3 21l1.9-5.7A8.5 8.5 0 1121 11.5z"/></svg></span>
+          <span class="cx-tx"><span class="k">WhatsApp</span><span class="v">+92 300 1234567</span></span>
+        </a>
+        <a class="cx-row" href="tel:+923001234567">
+          <span class="cx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.5-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg></span>
+          <span class="cx-tx"><span class="k">Phone</span><span class="v">+92 300 1234567</span></span>
+        </a>
+        <a class="cx-row" id="cxEmail" href="#">
+          <span class="cx-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <span class="cx-tx"><span class="k">Email</span><span class="v" id="cxEmailV">loading...</span></span>
+        </a>
+      </div>
+      <p class="cx-demo">These are demo placeholders - replace the number and email with your real details before sharing.</p>
+      <form class="qf" id="qForm" novalidate>
+        <div class="qf-h">Suggestions &amp; complaints</div>
+        <div class="qf-s">Tell us what would help, or what went wrong. Every message is read.</div>
+        <div class="fld"><label for="qName">Your name</label><input id="qName" type="text" autocomplete="name"></div>
+        <div class="fld"><label for="qEmail">Email (optional)</label><input id="qEmail" type="email" autocomplete="email"></div>
+        <div class="fld"><label for="qType">Type</label><select id="qType"><option>Suggestion</option><option>Complaint</option><option>Question</option><option>Share my story</option></select></div>
+        <div class="fld"><label for="qMsg">Message</label><textarea id="qMsg" placeholder="Write your message..."></textarea></div>
+        <div class="qf-err" id="qErr"></div>
+        <button class="send" type="submit">Send message</button>
+      </form>
+      <div class="qf-ok" id="qOk">
+        <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h4>Thank you - your message matters</h4>
+        <p>We have received your note (demo). On the live site this connects to email or a form service so your care team can reply.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var lastTrigger=null;
+  window.openWin=function(id){
+    var w=document.getElementById(id==='about'?'winAbout':'winContact'); if(!w) return;
+    lastTrigger=document.activeElement;
+    w.classList.add('open'); document.body.style.overflow='hidden';
+    var x=w.querySelector('.win-x'); if(x) setTimeout(function(){try{x.focus();}catch(e){}},60);
+  };
+  function closeWin(w){
+    if(!w) w=document.querySelector('.winwrap.open');
+    if(!w) return;
+    w.classList.remove('open'); document.body.style.overflow='';
+    if(lastTrigger&&lastTrigger.focus){try{lastTrigger.focus();}catch(e){}}
+  }
+  document.querySelectorAll('#navlinks [data-win]').forEach(function(b){
+    b.addEventListener('click',function(){ openWin(b.dataset.win); });
+  });
+  var navlinks=document.getElementById('navlinks'), navtoggle=document.querySelector('.navtoggle');
+  if(navlinks){ navlinks.addEventListener('click',function(e){
+    if(e.target.closest('a,[data-win]')){ navlinks.classList.remove('open'); if(navtoggle) navtoggle.setAttribute('aria-expanded','false'); }
+  }); }
+  document.querySelectorAll('.winwrap').forEach(function(w){
+    w.addEventListener('click',function(e){ if(e.target===w) closeWin(w); });
+    var x=w.querySelector('.win-x'); if(x) x.addEventListener('click',function(){ closeWin(w); });
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ var o=document.querySelector('.winwrap.open'); if(o) closeWin(o); } });
+  var pc=document.getElementById('aboutPromiseBtn');
+  if(pc) pc.addEventListener('click',function(){ closeWin(document.getElementById('winAbout')); var el=document.getElementById('about'); if(el) setTimeout(function(){el.scrollIntoView({behavior:'smooth'});},260); });
+  // email assembled in JS (kept out of raw HTML). Dummy demo address - replace user/domain.
+  (function(){ var u='care', d='nahl.org.pk'; var v=document.getElementById('cxEmailV'), a=document.getElementById('cxEmail');
+    if(v&&a){ v.textContent=u+'@'+d; a.href='mailto:'+u+'@'+d; } })();
+  // query form (demo: no backend). To go live, POST to a form service or wire a mailto here.
+  var form=document.getElementById('qForm');
+  if(form){ form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('qName'), msg=document.getElementById('qMsg'), err=document.getElementById('qErr');
+    if(!name.value.trim()||!msg.value.trim()){ err.textContent='Please add your name and a message.'; err.style.display='block'; return; }
+    err.style.display='none'; form.style.display='none';
+    document.getElementById('qOk').style.display='block';
+  }); }
+})();
+</script>
+
 </body>
 </html>
