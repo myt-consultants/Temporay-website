@@ -205,13 +205,13 @@
 
   .fab{position:fixed;bottom:22px;right:22px;z-index:90;background:var(--teal);color:#04201B;border:none;border-radius:100px;padding:14px 20px;font-weight:600;font-size:15px;display:flex;gap:9px;align-items:center;box-shadow:0 14px 36px -10px rgba(52,227,196,.6);}
   .fab svg{width:19px;height:19px;stroke:#04201B;fill:none;stroke-width:2;}
-  .panel{position:fixed;bottom:22px;right:22px;z-index:100;width:min(420px,94vw);height:min(640px,84vh);background:var(--surface);border:1px solid var(--line2);border-radius:20px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.9);}
+  .panel{position:fixed;bottom:22px;right:22px;z-index:100;width:min(460px,95vw);height:min(720px,88vh);padding:0;background:var(--surface);border:1px solid var(--line2);border-radius:20px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.9);}
   .panel.open{display:flex;}
   .ph{display:flex;align-items:center;gap:11px;padding:12px 17px;border-bottom:1px solid var(--line);}
   .ph .ti{font-family:var(--sora);font-weight:600;font-size:15px;} .ph .st{font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--teal);}
   .ph .x{margin-left:auto;background:none;border:none;color:var(--muted);font-size:23px;line-height:1;}
   .msgs{flex:1;overflow-y:auto;padding:13px 17px;display:flex;flex-direction:column;gap:13px;}
-  .m{max-width:88%;padding:11px 14px;border-radius:14px;font-size:14px;line-height:1.55;white-space:pre-wrap;}
+  .m{max-width:88%;padding:11px 14px;border-radius:14px;font-size:14px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;}
   .m.bot{background:var(--bg2);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:5px;}
   .m.user{background:var(--teal);color:#04201B;align-self:flex-end;border-bottom-right-radius:5px;font-weight:500;}
   .m.crisis{background:rgba(246,181,60,.08);border-color:rgba(246,181,60,.4);}
@@ -231,7 +231,7 @@
     .bname{font-size:17px;} .desc{font-size:10.5px;}
     .gate-box{flex-direction:column;text-align:center;} .gate-helix{width:110px;flex:none;height:200px;} .gate-row,.gate-foot{margin-left:auto;margin-right:auto;}
     section{padding:52px 0;}
-    .panel{bottom:0;right:0;width:100vw;height:88vh;border-radius:20px 20px 0 0;}
+    .panel{bottom:0;right:0;width:100vw;height:90vh;padding:0;border-radius:20px 20px 0 0;}
   }
   @media (max-width:430px){ .hero-img{flex:0 0 78px;} .desc{display:none;} }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;} .reveal{opacity:1;transform:none;}}
@@ -1370,6 +1370,7 @@ const NAHL=(function(){
     {re:/\bsecond opinion/, a:{text:"Seeking a second opinion is reasonable and common with rare conditions, which are often missed or misdiagnosed. Bring your test results and records, and consider a medical geneticist or a specialist centre. Asking is your right."}},
     {re:/\b(scared|afraid|overwhelm|hopeless|can'?t cope|exhausted|alone|depress|worried|anxious|crying|give up|lost)\b/, a:{text:"I'm sorry - what you're carrying is heavy, and it's completely understandable to feel this way. You don't have to hold it all at once. Lean on people you trust, connect with other families who understand, and tell your medical team how you are coping, not only how your child is. If the feelings become overwhelming, please reach out to a doctor or someone close to you."}}
   ];
+  const NOMATCH=["I don't have a verified page on that yet, so I won't guess. The safest next step is a medical geneticist - reachable through PSMG - or browse the Conditions table above. If you name the condition or describe the main symptoms, I'll try to find a match.","That one isn't in my verified library yet, and I'd rather not guess than risk misleading you. A medical geneticist - PSMG can help you reach one - is the surest next step. Tell me the condition's name or the main symptoms and I'll search what I do have.","I want to be honest: I don't have a confirmed source on that, so I'll hold back rather than invent an answer. You could scan the Conditions table above, or reach a geneticist through PSMG. If you share the condition or a symptom or two, I'll try again.","I couldn't match that to a verified page, and guessing wouldn't be fair to you. The dependable route is a medical geneticist via PSMG. Give me the condition's name, or describe what you're seeing, and I'll look more carefully.","This falls outside what I can confirm right now, so I won't speculate. A specialist - most directly a medical geneticist through PSMG - is the right next step. Name the condition or its main signs and I'll check my library for a match.","I don't yet have a trustworthy page for that, and I'd rather say so than mislead you. Try the Conditions table above, or ask PSMG to connect you with a geneticist. If you tell me the condition or the symptoms, I'll take another look.","I'm drawing a blank on a verified source for that - and I won't fill the gap with a guess. The safest path is a medical geneticist, reachable through PSMG. Share the condition's name or the key symptoms and I'll search again.","That isn't something I can speak to with confidence yet, so I'll be upfront instead of guessing. A geneticist - PSMG can point you to one - is your best next step. Tell me the condition or what you're noticing and I'll try to help.","I don't have a confirmed answer for that, and I care too much about getting it right to improvise. Browse the Conditions table above, or reach a specialist through PSMG. If you name the condition or a couple of symptoms, I'll dig deeper.","Honestly, that's beyond my verified notes for now - and I'd rather admit it than steer you wrong. A medical geneticist via PSMG is the reliable next step. Give me the condition or the main symptoms and I'll search what I have."];
   function offline(text){
     const q=norm(text);
     for(var i=0;i<GEN.length;i++){ if(GEN[i].re.test(q)) return GEN[i].a; }
@@ -1382,7 +1383,7 @@ const NAHL=(function(){
     if(!b.hit){
       if(/\b(gene therapy|treatment|cure|trial|treatable|therapy)\b/.test(q)){const tx=KB.conditions.filter(c=>c.stype==='st-appr').slice(0,6).map(c=>"- "+c.name+" - "+c.status).join("\n");
         return {text:"Several conditions in our library now have disease-modifying treatments or active trials internationally (access varies by country). Examples:\n\n"+tx+"\n\nOpen a row in the Conditions table for details, and always discuss options with a specialist.",cites:[["GARD","T1"],["Orphanet","T1"]],dis:DIS};}
-      return {text:"I don't have a verified page on that yet, so I won't guess. The safest next step is a medical geneticist - reachable through PSMG - or browse the Conditions table above. If you name the condition or describe the main symptoms, I'll try to find a match."};
+      return {text:NOMATCH[Math.floor(Math.random()*NOMATCH.length)]};
     }
     const c=b.hit;
     return {text:"Here's what NAHL's verified page on "+c.name+" says:\n\n"+c.what+"\n\nCommon signs: "+c.signs+"\n\nTreatment status: "+c.status+" (access varies).\n\nIn Pakistan: "+c.pk+"\n\nOpen the \""+c.name+"\" row in the Conditions table for the full page.",cites:c.src,dis:DIS};
