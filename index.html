@@ -335,7 +335,7 @@
   @keyframes slInLeft{from{opacity:0;transform:translateX(-46px);}to{opacity:1;transform:none;}}
   /* hero-side Ayaat carousel - compact, fixed height, internal scroll */
   .hero-ayaat{min-width:0;align-self:stretch;}
-  #ayaatStage{height:clamp(392px,53vh,476px);}
+  #ayaatStage{height:clamp(408px,56vh,512px);}
   #ayaatStage .attya-slide{padding:20px 22px;}
   #ayaatStage{position:relative;overflow:hidden;}
   #ayaatStage::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill='none' stroke='%23F6B53C' stroke-width='1.1'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l11 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/svg%3E");}
@@ -506,6 +506,25 @@
   .moto-copy .dx{font-weight:800;letter-spacing:.05em;}
   .moto-copy .sp{padding:0 20px;font-size:.85em;}
   @media (max-width:600px){ .moto-inner{gap:11px;} .moto-label{padding-right:11px;} }
+  /* ---- static-height decks (HAREEM + ATTYA): pin the window so moving slides forward/back - or zooming - never resizes it; longer slides scroll inside ---- */
+  #hareemStage,#attyaStage{height:clamp(452px,62vh,568px);overflow:hidden;}
+  #hareemStage .attya-slide.active,#attyaStage .attya-slide.active{height:100%;overflow-y:auto;overscroll-behavior:contain;}
+  #hareemStage .attya-slide.title-slide.active,#attyaStage .attya-slide.title-slide.active{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;min-height:0;}
+  /* ---- tables never clip/hide on narrow screens ---- */
+  .attya-tbl{table-layout:fixed;min-width:0;}
+  .attya-tbl th,.attya-tbl td{overflow-wrap:anywhere;}
+  /* HAREEM price table stays a scannable table: proportion the columns, keep prices on one line */
+  #hareemStage .attya-tbl th:nth-child(1),#hareemStage .attya-tbl td:nth-child(1){width:25%;}
+  #hareemStage .attya-tbl th:nth-child(3),#hareemStage .attya-tbl td:nth-child(3){width:31%;}
+  /* ATTYA impact table -> stacked cards on phones (prose columns read badly cramped in thirds) */
+  @media(max-width:600px){
+    #attyaStage .attya-tbl,#attyaStage .attya-tbl tbody,#attyaStage .attya-tbl tr,#attyaStage .attya-tbl td{display:block;width:100%;}
+    #attyaStage .attya-tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+    #attyaStage .attya-tbl tr{border:1px solid var(--line);border-left:3px solid var(--honey);border-radius:0 10px 10px 0;padding:12px 14px;margin-bottom:12px;background:var(--bg2);}
+    #attyaStage .attya-tbl td{border:none;padding:0 0 10px;}
+    #attyaStage .attya-tbl tr td:last-child{padding-bottom:0;}
+    #attyaStage .attya-tbl td::before{content:attr(data-label);display:block;font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);margin-bottom:3px;}
+  }
 </style>
 </head>
 <body class="locked">
@@ -1035,9 +1054,9 @@
       <div class="attya-slide"><div class="sn">03 / 06</div><div class="attya-h">Forecasted impact model</div>
         <table class="attya-tbl"><thead><tr><th>Metric</th><th>Status quo (palliative care)</th><th>The ATTYA model (translational cures)</th></tr></thead>
         <tbody>
-          <tr><td><strong>Healthcare infrastructure</strong></td><td>Perpetual strain on blood banks, specialist wards and resource pools.</td><td>Fewer readmissions; relief for critical emergency networks.</td></tr>
-          <tr><td><strong>Economic burden</strong></td><td>Lifelong, compounding cost per patient on symptomatic care.</td><td>High single-intervention efficiency, offsetting decades of cost.</td></tr>
-          <tr><td><strong>Human capital</strong></td><td>Multi-generational productivity loss for patients and carers.</td><td>Families restored to active roles in the economy.</td></tr>
+          <tr><td data-label="Metric"><strong>Healthcare infrastructure</strong></td><td data-label="Status quo">Perpetual strain on blood banks, specialist wards and resource pools.</td><td data-label="ATTYA model">Fewer readmissions; relief for critical emergency networks.</td></tr>
+          <tr><td data-label="Metric"><strong>Economic burden</strong></td><td data-label="Status quo">Lifelong, compounding cost per patient on symptomatic care.</td><td data-label="ATTYA model">High single-intervention efficiency, offsetting decades of cost.</td></tr>
+          <tr><td data-label="Metric"><strong>Human capital</strong></td><td data-label="Status quo">Multi-generational productivity loss for patients and carers.</td><td data-label="ATTYA model">Families restored to active roles in the economy.</td></tr>
         </tbody></table></div>
       <div class="attya-slide"><div class="sn">04 / 06</div><div class="attya-h">The clinical network</div>
         <ul class="attya-list">
@@ -1168,7 +1187,7 @@ const CONFIG = {
   helplines: [ /* { name:"...", phone:"..." } add VERIFIED numbers */ ]
 };
 const ACCESS = /^MYT\d{3}$/;   // demo access codes: MYT000 ... MYT999
-const EXTRA = new Set(['ATTYAA','JIKMYT']);   // additional access passcodes
+const EXTRA = new Set(['ATTYAA','JIKMYT','HUMERA','MYTG54','FUAD51']);   // additional access passcodes
 
 /* ---------- access gate ---------- */
 function tryUnlock(){
