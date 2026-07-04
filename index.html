@@ -103,11 +103,13 @@
   .wordmark{width:100%;max-width:560px;}
   .wordmark svg{width:100%;height:auto;display:block;}
   .lead{font-size:clamp(14px,1.5vw,16px);color:var(--muted);max-width:52ch;margin:20px 0 0;}
-  .herobtns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;}
-  .btn-fill{background:var(--teal);color:#04201B;border:none;border-radius:9px;padding:11px 22px;font-weight:600;font-size:15px;transition:transform .15s,box-shadow .2s;}
+  .herobtns{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:26px;align-items:stretch;}
+  .btn-fill{background:var(--teal);color:#04201B;border:none;border-radius:10px;padding:13px 12px;font-weight:700;font-size:14.5px;transition:transform .15s,box-shadow .2s;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.2;min-height:52px;}
   .btn-fill:hover{transform:translateY(-1px);box-shadow:0 10px 30px -10px rgba(52,227,196,.7);}
-  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line2);border-radius:9px;padding:11px 20px;font-weight:600;font-size:15px;transition:border-color .2s,background .2s;}
-  .btn-ghost:hover{border-color:var(--teal);background:rgba(52,227,196,.06);}
+  .btn-ghost{background:rgba(255,255,255,.035);color:var(--ink);border:1px solid var(--line2);border-radius:10px;padding:13px 12px;font-weight:600;font-size:14.5px;transition:border-color .2s,background .2s,color .2s;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.2;min-height:52px;}
+  .btn-ghost:hover{border-color:var(--teal);background:rgba(52,227,196,.10);color:var(--teal);}
+  @media(max-width:760px){ .herobtns{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  @media(max-width:430px){ .herobtns{grid-template-columns:1fr;} }
   .trustline{display:flex;align-items:center;gap:10px;margin-top:24px;color:var(--faint);font-size:12px;font-family:var(--mono);letter-spacing:.03em;}
   .zebra{width:24px;height:13px;border-radius:3px;background:repeating-linear-gradient(115deg,var(--ink) 0 3px,transparent 3px 6px);opacity:.8;flex-shrink:0;}
 
@@ -509,6 +511,10 @@
   @media (max-width:600px){ .moto-inner{gap:11px;} .moto-label{padding-right:11px;} }
   /* ---- static-height decks (HAREEM + ATTYA): pin the window so moving slides forward/back - or zooming - never resizes it; longer slides scroll inside ---- */
   #attyaStage{height:clamp(468px,70vh,580px);overflow:hidden;}
+  #geneStage{height:clamp(484px,76vh,624px);overflow:hidden;}
+  .gene-fig{margin:2px 0 12px;text-align:center;}
+  .gene-fig svg{width:100%;max-width:470px;height:auto;max-height:212px;display:block;margin:0 auto;}
+  #geneStage .mono{font-family:var(--mono);font-size:.9em;color:var(--honey2);}
   /* ---- ATTYA roadmap flowchart ---- */
   .rmap{display:flex;flex-direction:column;align-items:stretch;margin:2px 0 0;}
   .rmap-step{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--honey);border-radius:9px;padding:10px 14px;display:flex;flex-direction:column;gap:2px;align-items:center;text-align:center;}
@@ -518,8 +524,8 @@
   .rmap-fin{border-left-color:var(--teal);background:linear-gradient(90deg,rgba(52,227,196,.09),transparent);}
   .rmap-fin .rmap-t{color:var(--teal);}
   #hareemStage{height:clamp(480px,74vh,640px);overflow:hidden;}
-  #hareemStage .attya-slide.active,#attyaStage .attya-slide.active{height:100%;overflow-y:auto;overscroll-behavior:contain;}
-  #hareemStage .attya-slide.title-slide.active,#attyaStage .attya-slide.title-slide.active{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;min-height:0;}
+  #hareemStage .attya-slide.active,#attyaStage .attya-slide.active,#geneStage .attya-slide.active{height:100%;overflow-y:auto;overscroll-behavior:contain;}
+  #hareemStage .attya-slide.title-slide.active,#attyaStage .attya-slide.title-slide.active,#geneStage .attya-slide.title-slide.active{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;min-height:0;}
   /* ---- tables never clip/hide on narrow screens ---- */
   .attya-tbl{table-layout:fixed;min-width:0;}
   .attya-tbl th,.attya-tbl td{overflow-wrap:anywhere;}
@@ -541,10 +547,11 @@
   @media(min-width:981px){
     #hareemStage{height:clamp(500px,62vh,580px);}
     #attyaStage{height:clamp(500px,60vh,570px);}
-    #hareemStage .attya-slide.active,#attyaStage .attya-slide.active{display:flex;flex-direction:column;justify-content:center;}
-    #hareemStage .attya-h,#attyaStage .attya-h{font-size:calc(24px*var(--cscale));}
-    #hareemStage .attya-sub,#attyaStage .attya-sub{font-size:calc(14.5px*var(--cscale));margin-bottom:20px;}
-    #hareemStage .attya-list li,#attyaStage .attya-list li{font-size:calc(17px*var(--cscale));line-height:1.65;margin-bottom:16px;}
+    #geneStage{height:clamp(520px,70vh,644px);}
+    #hareemStage .attya-slide.active,#attyaStage .attya-slide.active,#geneStage .attya-slide.active{display:flex;flex-direction:column;justify-content:center;}
+    #hareemStage .attya-h,#attyaStage .attya-h,#geneStage .attya-h{font-size:calc(24px*var(--cscale));}
+    #hareemStage .attya-sub,#attyaStage .attya-sub,#geneStage .attya-sub{font-size:calc(14.5px*var(--cscale));margin-bottom:16px;}
+    #hareemStage .attya-list li,#attyaStage .attya-list li,#geneStage .attya-list li{font-size:calc(17px*var(--cscale));line-height:1.65;margin-bottom:16px;}
     #hareemStage .attya-note,#attyaStage .attya-note{font-size:calc(14px*var(--cscale));}
     #attyaStage .rmap-t{font-size:16px;} #attyaStage .rmap-ph{font-size:11px;} #attyaStage .rmap-step{padding:12px 16px;}
   }
@@ -579,7 +586,7 @@
       </div>
     </div>
     <div class="navlinks" id="navlinks">
-      <a href="#pillars">Help</a><a href="#diagnosis">Diagnosis</a><a href="#conditions">Conditions</a><a href="#caregivers">Caregivers</a><a href="#directory">Find care</a><a href="#sources">Sources</a><a href="#inspiration">Inspiration</a><a href="#hareem">HAREEM</a><a href="#attya">ATTYA</a><a href="#faqs">FAQs</a>
+      <a href="#pillars">Help</a><a href="#genetics">Genetics</a><a href="#diagnosis">Diagnosis</a><a href="#conditions">Conditions</a><a href="#caregivers">Caregivers</a><a href="#directory">Find care</a><a href="#sources">Sources</a><a href="#inspiration">Inspiration</a><a href="#hareem">HAREEM</a><a href="#attya">ATTYA</a><a href="#faqs">FAQs</a>
       <span class="navdiv" aria-hidden="true"></span>
       <button type="button" class="navmeta" data-win="about">About us</button>
       <button type="button" class="navmeta" data-win="contact">Contact us</button>
@@ -610,7 +617,8 @@
       <div class="herobtns">
         <button class="btn-fill" onclick="openChat()">Find help now</button>
         <a class="btn-ghost" href="#conditions">Explore conditions</a>
-        <a class="btn-ghost" href="#caregivers">Caregivers' rights &amp; responsibilities</a>
+        <a class="btn-ghost" href="#genetics">How genetics work</a>
+        <a class="btn-ghost" href="#caregivers">Caregivers' rights</a>
       </div>
     </div>
     <aside class="hero-ayaat reveal">
@@ -739,6 +747,131 @@
   <div class="stat reveal"><div class="num" data-to="70" data-suf="%">0</div><div class="lbl">begin in childhood</div></div>
 </div>
 <p class="stats-src reveal">Indicative figures, widely cited by rare-disease bodies such as the WHO, the US National Institutes of Health (NIH/GARD), Orphanet, and EURORDIS. Exact numbers vary by source and definition; treat them as general scale, not precise counts.</p>
+</div></section>
+
+<section id="genetics"><div class="wrap">
+  <div class="sec-h reveal"><span class="eyebrow">Start here | the science, in plain words</span><h2>How genetics work</h2>
+    <p class="attya-intro">Before the diagnosis and the library, a short, jargon-free primer: how inherited disease happens, when a mutation matters, how it is detected, and why finding it early opens real doors. Educational only - never a substitute for your doctor.</p></div>
+  <div class="attya-window">
+    <div class="attya-stage" id="geneStage">
+
+          <div class="attya-slide title-slide active"><div class="sn"></div>
+        <div class="big">How Genetics Work</div>
+        <p style="color:var(--teal);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-top:6px;">From a single gene to a diagnosis - in plain language</p>
+        <p>A short, jargon-free tour of how inherited disease actually happens: how mutations arise, when they matter, how they're read by science, and why finding them early opens real doors - even before there's a cure.</p>
+        <span class="attya-badge">Educational overview &middot; not a substitute for a clinician</span></div>
+
+          <div class="attya-slide"><div class="sn"></div><div class="attya-h">The blueprint: genes and proteins</div>
+        <p class="attya-sub">What DNA is actually for</p>
+        <div class="gene-fig"><svg viewBox="0 0 460 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DNA to gene to protein">
+<g stroke="#34E3C4" stroke-width="2.4" fill="none"><path d="M22 26 C58 52 22 78 58 104 C22 118 58 128 40 138"/><path d="M58 26 C22 52 58 78 22 104 C58 118 22 128 40 138"/></g>
+<g stroke="#F6B53C" stroke-width="2"><line x1="30" y1="40" x2="50" y2="40"/><line x1="26" y1="65" x2="54" y2="65"/><line x1="30" y1="90" x2="50" y2="90"/></g>
+<text x="40" y="16" text-anchor="middle" fill="#9AA7B4" font-size="12" font-family="Sora, system-ui, sans-serif">DNA</text>
+<text x="150" y="80" text-anchor="middle" fill="#68788a" font-size="22">&#8594;</text>
+<rect x="185" y="55" width="120" height="26" rx="5" fill="none" stroke="#2C3A4B"/>
+<rect x="205" y="55" width="34" height="26" fill="#F6B53C" opacity="0.85"/><rect x="255" y="55" width="26" height="26" fill="#F6B53C" opacity="0.55"/>
+<text x="245" y="46" text-anchor="middle" fill="#9AA7B4" font-size="12" font-family="Sora, system-ui, sans-serif">a gene (an instruction)</text>
+<text x="245" y="102" text-anchor="middle" fill="#68788a" font-size="11" font-family="ui-monospace, monospace">...ATG CAG TCC...</text>
+<text x="345" y="80" text-anchor="middle" fill="#68788a" font-size="22">&#8594;</text>
+<g fill="none" stroke="#34E3C4" stroke-width="2.6"><path d="M385 95 q10 -34 26 -20 q18 16 34 -2 q10 -14 22 8"/></g>
+<g fill="#FBD37E"><circle cx="385" cy="95" r="4"/><circle cx="411" cy="75" r="4"/><circle cx="429" cy="72" r="4"/><circle cx="445" cy="70" r="4"/><circle cx="467" cy="81" r="4"/></g>
+<text x="430" y="120" text-anchor="middle" fill="#9AA7B4" font-size="12" font-family="Sora, system-ui, sans-serif">protein (does the work)</text></svg></div>
+        <ul class="attya-list"><li><strong>Genes are instructions.</strong> Your DNA is a 3-billion-letter manual. Each gene is one instruction for building a specific protein.</li><li><strong>Proteins do the work.</strong> They carry oxygen, digest food, build the brain. If an instruction is misspelt, the protein it makes can be faulty or missing - and that is where genetic disease begins.</li></ul></div>
+
+          <div class="attya-slide"><div class="sn"></div><div class="attya-h">How mutations happen</div>
+        <p class="attya-sub">A change in the spelling of a gene</p>
+        <div class="gene-fig"><svg viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Types of mutation">
+<text x="10" y="20" fill="#9AA7B4" font-size="11" font-family="Sora, system-ui, sans-serif">Original</text><rect x="10" y="26" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="21" y="42" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">A</text><rect x="36" y="26" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="47" y="42" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">C</text><rect x="62" y="26" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="73" y="42" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">G</text><rect x="88" y="26" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="99" y="42" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">T</text><rect x="114" y="26" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="125" y="42" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">A</text><rect x="140" y="26" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="151" y="42" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">C</text>
+<text x="250" y="20" fill="#F0736B" font-size="11" font-family="Sora, system-ui, sans-serif">Substitution</text><rect x="250" y="26" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="261" y="42" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">A</text><rect x="276" y="26" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="287" y="42" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">C</text><rect x="302" y="26" width="22" height="22" rx="4" fill="#F0736B" stroke="none"/><text x="313" y="42" text-anchor="middle" fill="#2b0f0d" font-size="12" font-family="ui-monospace, monospace">A</text><rect x="328" y="26" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="339" y="42" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">T</text><rect x="354" y="26" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="365" y="42" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">A</text><rect x="380" y="26" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="391" y="42" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">C</text>
+<text x="10" y="86" fill="#34E3C4" font-size="11" font-family="Sora, system-ui, sans-serif">Insertion</text><rect x="10" y="92" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="21" y="108" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">A</text><rect x="36" y="92" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="47" y="108" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">C</text><rect x="62" y="92" width="22" height="22" rx="4" fill="#34E3C4" stroke="none"/><text x="73" y="108" text-anchor="middle" fill="#04201b" font-size="12" font-family="ui-monospace, monospace">G</text><rect x="88" y="92" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="99" y="108" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">G</text><rect x="114" y="92" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="125" y="108" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">T</text><rect x="140" y="92" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="151" y="108" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">A</text><rect x="166" y="92" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="177" y="108" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">C</text>
+<text x="250" y="86" fill="#FBD37E" font-size="11" font-family="Sora, system-ui, sans-serif">Deletion</text><rect x="250" y="92" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="261" y="108" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">A</text><rect x="276" y="92" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="287" y="108" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">C</text><rect x="302" y="92" width="22" height="22" rx="4" fill="none" stroke="#2C3A4B" stroke-dasharray="3 2"/><text x="313" y="108" text-anchor="middle" fill="#68788a" font-size="12" font-family="ui-monospace, monospace">_</text><rect x="328" y="92" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="339" y="108" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">T</text><rect x="354" y="92" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="365" y="108" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">A</text><rect x="380" y="92" width="22" height="22" rx="4" fill="#18222F" stroke="none"/><text x="391" y="108" text-anchor="middle" fill="#EEF3F8" font-size="12" font-family="ui-monospace, monospace">C</text>
+<text x="10" y="156" fill="#FBD37E" font-size="11" font-family="Sora, system-ui, sans-serif">Repeat expansion</text>
+<rect x="10" y="162" width="22" height="22" rx="4" fill="#18222F" stroke="#2C3A4B" opacity="1"/><text x="21" y="178" text-anchor="middle" fill="#EEF3F8" font-size="11" font-family="ui-monospace, monospace">C</text><rect x="36" y="162" width="22" height="22" rx="4" fill="#18222F" stroke="#2C3A4B" opacity="1"/><text x="47" y="178" text-anchor="middle" fill="#EEF3F8" font-size="11" font-family="ui-monospace, monospace">C</text><rect x="62" y="162" width="22" height="22" rx="4" fill="#F6B53C" stroke="none" opacity="0.7"/><text x="73" y="178" text-anchor="middle" fill="#2b1a00" font-size="11" font-family="ui-monospace, monospace">C</text><rect x="88" y="162" width="22" height="22" rx="4" fill="#F6B53C" stroke="none" opacity="0.8"/><text x="99" y="178" text-anchor="middle" fill="#2b1a00" font-size="11" font-family="ui-monospace, monospace">C</text><rect x="114" y="162" width="22" height="22" rx="4" fill="#F6B53C" stroke="none" opacity="0.9"/><text x="125" y="178" text-anchor="middle" fill="#2b1a00" font-size="11" font-family="ui-monospace, monospace">C</text><rect x="140" y="162" width="22" height="22" rx="4" fill="#F6B53C" stroke="none" opacity="1.0"/><text x="151" y="178" text-anchor="middle" fill="#2b1a00" font-size="11" font-family="ui-monospace, monospace">C</text>
+<text x="250" y="176" fill="#9AA7B4" font-size="11" font-family="Sora, system-ui, sans-serif">a triplet repeated far</text><text x="250" y="190" fill="#9AA7B4" font-size="11" font-family="Sora, system-ui, sans-serif">too many times</text></svg></div>
+        <ul class="attya-list"><li><strong>Copying isn't perfect.</strong> Every time a cell divides it copies 3 billion letters; rare typos slip through. Some are inherited from a parent; some appear new.</li><li><strong>Different kinds of change.</strong> A single letter swapped (substitution), letters added or lost (insertion/deletion), or a short sequence repeated far too many times - each can change the protein.</li></ul></div>
+
+          <div class="attya-slide"><div class="sn"></div><div class="attya-h">When a change becomes 'pathogenic'</div>
+        <p class="attya-sub">Not every mutation causes disease</p>
+        <div class="gene-fig"><svg viewBox="0 0 460 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Variant pathogenicity spectrum">
+<text x="10" y="26" fill="#EEF3F8" font-size="12" font-family="Sora, system-ui, sans-serif">Most DNA changes are harmless. Specialists grade each one:</text>
+<rect x="10" y="40" width="86" height="30" fill="#4FD6A8" opacity="0.9"/><rect x="98" y="40" width="86" height="30" fill="#34E3C4" opacity="0.9"/><rect x="186" y="40" width="86" height="30" fill="#9AA7B4" opacity="0.9"/><rect x="274" y="40" width="86" height="30" fill="#F6B53C" opacity="0.9"/><rect x="362" y="40" width="86" height="30" fill="#F0736B" opacity="0.9"/><text x="53" y="88" text-anchor="middle" fill="#9AA7B4" font-size="9.5" font-family="Sora, system-ui, sans-serif">Benign</text><text x="141" y="88" text-anchor="middle" fill="#9AA7B4" font-size="9.5" font-family="Sora, system-ui, sans-serif">Likely benign</text><text x="229" y="88" text-anchor="middle" fill="#9AA7B4" font-size="9.5" font-family="Sora, system-ui, sans-serif">Uncertain (VUS)</text><text x="317" y="88" text-anchor="middle" fill="#9AA7B4" font-size="9.5" font-family="Sora, system-ui, sans-serif">Likely pathogenic</text><text x="405" y="88" text-anchor="middle" fill="#9AA7B4" font-size="9.5" font-family="Sora, system-ui, sans-serif">Pathogenic</text>
+<polygon points="240,74 232,86 248,86" fill="#FBD37E"/><text x="240" y="108" text-anchor="middle" fill="#FBD37E" font-size="9.5" font-family="Sora, system-ui, sans-serif">30-50% land here at first - needs more evidence</text></svg></div>
+        <ul class="attya-list"><li><strong>Most changes are harmless.</strong> We all carry thousands of variants. Scientists grade each one from benign to pathogenic using the international ACMG rules.</li><li><strong>Uncertainty is normal.</strong> Between 30-50% first land as a 'variant of uncertain significance' (VUS) - not proven harmful, awaiting more evidence. Whether a variant causes disease also depends on dominant vs recessive inheritance and penetrance.</li></ul></div>
+
+          <div class="attya-slide"><div class="sn"></div><div class="attya-h">How it's inherited (1 of 2)</div>
+        <p class="attya-sub">The recessive pattern - and consanguinity</p>
+        <div class="gene-fig"><svg viewBox="0 0 460 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Autosomal recessive inheritance">
+<text x="150" y="16" text-anchor="middle" fill="#9AA7B4" font-size="11" font-family="Sora, system-ui, sans-serif">Carrier father (Aa)</text>
+<text x="18" y="96" text-anchor="middle" fill="#9AA7B4" font-size="11" font-family="Sora, system-ui, sans-serif" transform="rotate(-90 18 96)">Carrier mother (Aa)</text>
+<text x="93" y="42" text-anchor="middle" fill="#EEF3F8" font-size="13" font-family="ui-monospace, monospace">A</text><text x="169" y="42" text-anchor="middle" fill="#EEF3F8" font-size="13" font-family="ui-monospace, monospace">a</text>
+<text x="40" y="82" text-anchor="middle" fill="#EEF3F8" font-size="13" font-family="ui-monospace, monospace">A</text><text x="40" y="140" text-anchor="middle" fill="#EEF3F8" font-size="13" font-family="ui-monospace, monospace">a</text>
+<rect x="60" y="50" width="66" height="46" rx="6" fill="#18222F" stroke="#2C3A4B"/><text x="93" y="74" text-anchor="middle" fill="#4FD6A8" font-size="16" font-family="ui-monospace, monospace">AA</text><text x="93" y="90" text-anchor="middle" fill="#4FD6A8" font-size="8.5" font-family="Sora, system-ui, sans-serif">unaffected</text><rect x="136" y="50" width="66" height="46" rx="6" fill="#18222F" stroke="#2C3A4B"/><text x="169" y="74" text-anchor="middle" fill="#34E3C4" font-size="16" font-family="ui-monospace, monospace">Aa</text><text x="169" y="90" text-anchor="middle" fill="#34E3C4" font-size="8.5" font-family="Sora, system-ui, sans-serif">carrier</text>
+<rect x="60" y="108" width="66" height="46" rx="6" fill="#18222F" stroke="#2C3A4B"/><text x="93" y="132" text-anchor="middle" fill="#34E3C4" font-size="16" font-family="ui-monospace, monospace">Aa</text><text x="93" y="148" text-anchor="middle" fill="#34E3C4" font-size="8.5" font-family="Sora, system-ui, sans-serif">carrier</text><rect x="136" y="108" width="66" height="46" rx="6" fill="#3a1614" stroke="#2C3A4B"/><text x="169" y="132" text-anchor="middle" fill="#F0736B" font-size="16" font-family="ui-monospace, monospace">aa</text><text x="169" y="148" text-anchor="middle" fill="#F0736B" font-size="8.5" font-family="Sora, system-ui, sans-serif">affected</text>
+<g transform="translate(250,40)">
+<circle cx="20" cy="12" r="10" fill="#4FD6A8"/><text x="45" y="16" fill="#EEF3F8" font-size="12" font-family="Sora, system-ui, sans-serif">25% unaffected</text>
+<circle cx="20" cy="52" r="10" fill="#34E3C4"/><text x="45" y="56" fill="#EEF3F8" font-size="12" font-family="Sora, system-ui, sans-serif">50% carriers (healthy)</text>
+<circle cx="20" cy="92" r="10" fill="#F0736B"/><text x="45" y="96" fill="#EEF3F8" font-size="12" font-family="Sora, system-ui, sans-serif">25% affected</text>
+<text x="0" y="128" fill="#FBD37E" font-size="10.5" font-family="Sora, system-ui, sans-serif">Why cousin marriage raises the odds:</text>
+<text x="0" y="143" fill="#9AA7B4" font-size="10.5" font-family="Sora, system-ui, sans-serif">relatives share more hidden 'a' copies.</text></g></svg></div>
+        <ul class="attya-list"><li><strong>Two hidden copies needed.</strong> In recessive conditions (most thalassemia, MLD, many others) a child must inherit a faulty copy from <em>both</em> parents. Carrier parents are healthy but each pass it on 50% of the time.</li><li><strong>Why it matters here.</strong> Relatives share more of the same hidden variants, so cousin marriage sharply raises the chance a child inherits two faulty copies.</li></ul></div>
+
+          <div class="attya-slide"><div class="sn"></div><div class="attya-h">How it's inherited (2 of 2)</div>
+        <p class="attya-sub">Other patterns in brief</p>
+        <ul class="attya-list"><li><strong>Dominant.</strong> One faulty copy is enough; often seen in every generation of a family.</li><li><strong>X-linked.</strong> Carried on the X chromosome - boys, with a single X, are usually affected more often (e.g. Duchenne, haemophilia).</li><li><strong>Mitochondrial.</strong> Passed only from the mother, through the cell's tiny energy factories.</li></ul></div>
+
+          <div class="attya-slide"><div class="sn"></div><div class="attya-h">Why finding it early matters</div>
+        <p class="attya-sub">Time is the one thing you can't get back</p>
+        <ul class="attya-list"><li><strong>End the diagnostic odyssey.</strong> Families often spend years and savings on wrong turns; a definitive genetic test can stop the guesswork.</li><li><strong>Some windows close.</strong> For conditions like MLD or SMA, treatment works best <em>before</em> irreversible damage - which is why newborn screening exists.</li><li><strong>It protects the whole family.</strong> A diagnosis enables carrier testing for relatives and informed choices for future pregnancies.</li></ul></div>
+
+          <div class="attya-slide"><div class="sn"></div><div class="attya-h">Bioinformatics: reading the genome</div>
+        <p class="attya-sub">How computers turn data into an answer</p>
+        <div class="gene-fig"><svg viewBox="0 0 460 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bioinformatics pipeline">
+<text x="10" y="24" fill="#EEF3F8" font-size="12" font-family="Sora, system-ui, sans-serif">Turning 3 billion DNA letters into one answer:</text><rect x="6" y="44" width="82" height="52" rx="8" fill="#18222F" stroke="#2C3A4B"/><text x="47" y="66" text-anchor="middle" fill="#EEF3F8" font-size="10.5" font-weight="600" font-family="Sora, system-ui, sans-serif">Sample</text><text x="47" y="82" text-anchor="middle" fill="#9AA7B4" font-size="8" font-family="Sora, system-ui, sans-serif">DNA from blood/saliva</text><text x="92" y="74" text-anchor="middle" fill="#68788a" font-size="14">&#8594;</text><rect x="96" y="44" width="82" height="52" rx="8" fill="#18222F" stroke="#2C3A4B"/><text x="137" y="66" text-anchor="middle" fill="#EEF3F8" font-size="10.5" font-weight="600" font-family="Sora, system-ui, sans-serif">Sequencing</text><text x="137" y="82" text-anchor="middle" fill="#9AA7B4" font-size="8" font-family="Sora, system-ui, sans-serif">reads the letters</text><text x="182" y="74" text-anchor="middle" fill="#68788a" font-size="14">&#8594;</text><rect x="186" y="44" width="82" height="52" rx="8" fill="#18222F" stroke="#2C3A4B"/><text x="227" y="66" text-anchor="middle" fill="#EEF3F8" font-size="10.5" font-weight="600" font-family="Sora, system-ui, sans-serif">Variant calling</text><text x="227" y="82" text-anchor="middle" fill="#9AA7B4" font-size="8" font-family="Sora, system-ui, sans-serif">spots the differences</text><text x="272" y="74" text-anchor="middle" fill="#68788a" font-size="14">&#8594;</text><rect x="276" y="44" width="82" height="52" rx="8" fill="#18222F" stroke="#2C3A4B"/><text x="317" y="66" text-anchor="middle" fill="#EEF3F8" font-size="10.5" font-weight="600" font-family="Sora, system-ui, sans-serif">Databases</text><text x="317" y="82" text-anchor="middle" fill="#9AA7B4" font-size="8" font-family="Sora, system-ui, sans-serif">ClinVar / gnomAD / OMIM</text><text x="362" y="74" text-anchor="middle" fill="#68788a" font-size="14">&#8594;</text><rect x="366" y="44" width="82" height="52" rx="8" fill="#18222F" stroke="#34E3C4"/><text x="407" y="66" text-anchor="middle" fill="#EEF3F8" font-size="10.5" font-weight="600" font-family="Sora, system-ui, sans-serif">Interpretation</text><text x="407" y="82" text-anchor="middle" fill="#9AA7B4" font-size="8" font-family="Sora, system-ui, sans-serif">ACMG grade + report</text>
+<text x="230" y="114" text-anchor="middle" fill="#FBD37E" font-size="9.5" font-family="Sora, system-ui, sans-serif">Free public databases do the heavy lifting - no data leaves the lab needed to read them.</text></svg></div>
+        <ul class="attya-list"><li><strong>Too big to read by eye.</strong> Software lines up the reads, flags each difference, and checks it against free public libraries - <span class="mono">ClinVar</span> (meaning), <span class="mono">gnomAD</span> (how common), <span class="mono">OMIM</span> (gene-disease links).</li></ul></div>
+
+          <div class="attya-slide"><div class="sn"></div><div class="attya-h">Narrowing the unknowns</div>
+        <p class="attya-sub">AI and re-analysis keep improving the odds</p>
+        <ul class="attya-list"><li><strong>AI now helps too.</strong> Tools like AlphaMissense and SpliceAI predict whether a change is harmful, shrinking the 'uncertain' pile faster than before.</li><li><strong>A second look pays off.</strong> A first genome test answers roughly a quarter to a third of cases; re-analysing the same data a year or two later - as the databases grow - solves more, with no new sample needed.</li></ul></div>
+
+          <div class="attya-slide"><div class="sn"></div><div class="attya-h">What can actually be done</div>
+        <p class="attya-sub">A ladder of options - even without a cure</p>
+        <ul class="attya-list"><li><strong>Supportive &amp; symptomatic care.</strong> Transfusions, physiotherapy, nutrition, seizure control - relief and dignity, available today, everywhere.</li><li><strong>Disease-modifying &amp; targeted therapy.</strong> Enzyme replacement, special diets, and drugs aimed at the specific fault.</li><li><strong>Gene therapy &amp; clinical trials.</strong> One-time genetic correction where it exists; and trials that offer access to tomorrow's treatment, today.</li></ul></div>
+
+          <div class="attya-slide"><div class="sn"></div><div class="attya-h">How genetic disease is treated at the source</div>
+        <p class="attya-sub">Fixing the instruction, not just the symptom</p>
+        <div class="gene-fig"><svg viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gene therapy: in vivo and ex vivo">
+<text x="10" y="18" fill="#34E3C4" font-size="12" font-weight="600" font-family="Sora, system-ui, sans-serif">In vivo &#8212; fix inside the body</text>
+<rect x="14" y="28" width="90" height="40" rx="8" fill="#18222F" stroke="#2C3A4B"/><text x="59" y="46" text-anchor="middle" fill="#EEF3F8" font-size="10" font-family="Sora, system-ui, sans-serif">Healthy gene</text><text x="59" y="60" text-anchor="middle" fill="#9AA7B4" font-size="9" font-family="Sora, system-ui, sans-serif">in a safe virus</text>
+<text x="118" y="52" fill="#68788a" font-size="16">&#8594;</text>
+<rect x="140" y="28" width="70" height="40" rx="8" fill="#18222F" stroke="#2C3A4B"/><text x="175" y="52" text-anchor="middle" fill="#EEF3F8" font-size="10" font-family="Sora, system-ui, sans-serif">Infused</text>
+<text x="224" y="52" fill="#68788a" font-size="16">&#8594;</text>
+<rect x="246" y="28" width="86" height="40" rx="8" fill="#18222F" stroke="#34E3C4"/><text x="289" y="46" text-anchor="middle" fill="#34E3C4" font-size="10" font-family="Sora, system-ui, sans-serif">Cells make the</text><text x="289" y="60" text-anchor="middle" fill="#34E3C4" font-size="10" font-family="Sora, system-ui, sans-serif">missing protein</text>
+<line x1="10" y1="90" x2="450" y2="90" stroke="#2C3A4B" stroke-dasharray="3 3"/>
+<text x="10" y="112" fill="#FBD37E" font-size="12" font-weight="600" font-family="Sora, system-ui, sans-serif">Ex vivo &#8212; fix cells in a lab</text>
+<rect x="14" y="122" width="76" height="40" rx="8" fill="#18222F" stroke="#2C3A4B"/><text x="52" y="140" text-anchor="middle" fill="#EEF3F8" font-size="10" font-family="Sora, system-ui, sans-serif">Collect the</text><text x="52" y="154" text-anchor="middle" fill="#EEF3F8" font-size="10" font-family="Sora, system-ui, sans-serif">patient's cells</text>
+<text x="94" y="146" fill="#68788a" font-size="16">&#8594;</text>
+<rect x="116" y="122" width="80" height="40" rx="8" fill="#18222F" stroke="#2C3A4B"/><text x="156" y="140" text-anchor="middle" fill="#EEF3F8" font-size="10" font-family="Sora, system-ui, sans-serif">Correct them</text><text x="156" y="154" text-anchor="middle" fill="#9AA7B4" font-size="9" font-family="Sora, system-ui, sans-serif">(e.g. CRISPR)</text>
+<text x="200" y="146" fill="#68788a" font-size="16">&#8594;</text>
+<rect x="222" y="122" width="76" height="40" rx="8" fill="#18222F" stroke="#2C3A4B"/><text x="260" y="146" text-anchor="middle" fill="#EEF3F8" font-size="10" font-family="Sora, system-ui, sans-serif">Grow &amp; check</text>
+<text x="302" y="146" fill="#68788a" font-size="16">&#8594;</text>
+<rect x="324" y="122" width="86" height="40" rx="8" fill="#18222F" stroke="#34E3C4"/><text x="367" y="146" text-anchor="middle" fill="#34E3C4" font-size="10" font-family="Sora, system-ui, sans-serif">Return to patient</text>
+<text x="230" y="188" text-anchor="middle" fill="#9AA7B4" font-size="9.5" font-family="Sora, system-ui, sans-serif">40+ cell &amp; gene therapies are now approved worldwide &#8212; Casgevy (2023) was the first using CRISPR.</text></svg></div>
+        <ul class="attya-list"><li><strong>Two routes.</strong> Deliver a healthy gene straight into the body (<em>in vivo</em>), or take out the patient's cells, correct them in a lab, and return them (<em>ex vivo</em>).</li><li><strong>Real, but not yet reachable for most.</strong> These cures exist and are growing - the barrier for families here is cost and access, which is exactly what NAHL's ATTYA roadmap addresses.</li></ul></div>
+
+          <div class="attya-slide title-slide"><div class="sn"></div>
+        <div class="big" style="font-size:clamp(26px,4.6vw,42px);">Knowledge is the first treatment</div>
+        <p>Understanding <em>how</em> a condition works turns a frightening unknown into a set of questions you can ask - and answer. That is where a real path to help begins.</p>
+        <p style="color:var(--teal);font-weight:600;margin-top:14px;">Next: the road to a genetic diagnosis &#8212; and a cited library of conditions.</p>
+        <span class="attya-badge">Ask AISHA anything on this page &middot; explore the condition library</span></div>
+
+    </div>
+    <div class="attya-ctrls">
+      <button class="attya-btn" id="genePrev" onclick="geneGo(-1)" disabled>Prev</button>
+      <div class="attya-dots" id="geneDots"></div>
+      <button class="attya-btn" id="geneNext" onclick="geneGo(1)">Next</button>
+    </div>
+  </div>
 </div></section>
 
 <section id="diagnosis"><div class="wrap">
@@ -1530,6 +1663,16 @@ function countUp(el){const to=+el.dataset.to,suf=el.dataset.suf||'';let s=null;
     [].slice.call(dots.children).forEach(function(d,n){d.classList.toggle('on',n===i);});
     prev.disabled=i===0;next.disabled=i===slides.length-1;};
   window.attyaGo=function(d){var n=i+d;if(n>=0&&n<slides.length)window.attyaSet(n);};
+})();
+/* ---------- How-genetics carousel ---------- */
+(function(){const slides=[].slice.call(document.querySelectorAll('#geneStage .attya-slide'));if(!slides.length)return;
+  let i=0;const dots=document.getElementById('geneDots'),prev=document.getElementById('genePrev'),next=document.getElementById('geneNext');
+  slides.forEach(function(s,n){var sn=s.querySelector('.sn');if(sn)sn.textContent=(n+1<10?'0':'')+(n+1)+' / '+slides.length;});
+  dots.innerHTML=slides.map(function(_,k){return '<button class="attya-dot'+(k===0?' on':'')+'" onclick="geneSet('+k+')" aria-label="Slide '+(k+1)+'"></button>';}).join('');
+  window.geneSet=function(k){i=k;slides.forEach(function(s,n){s.classList.toggle('active',n===i);});
+    [].slice.call(dots.children).forEach(function(d,n){d.classList.toggle('on',n===i);});
+    prev.disabled=i===0;next.disabled=i===slides.length-1;};
+  window.geneGo=function(d){var n=i+d;if(n>=0&&n<slides.length)window.geneSet(n);};
 })();
 /* ---------- Ayaat carousel ---------- */
 (function(){const slides=[].slice.call(document.querySelectorAll('#ayaatStage .attya-slide'));if(!slides.length)return;
