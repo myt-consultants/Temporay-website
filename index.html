@@ -345,7 +345,7 @@
   #ayaatStage .attya-h{font-size:18.5px;line-height:1.24;margin:0;font-weight:700;}
   #ayaatStage .attya-h::after{content:"";display:block;width:40px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--teal),var(--honey));margin:12px 0 14px;}
   #ayaatStage .ayaat-trans{font-size:14px;line-height:1.74;color:var(--ink);opacity:.94;}
-  #ayaatStage .ayaat-banner{align-self:flex-start;margin-bottom:18px;font-size:10px;}
+  #ayaatStage .ayaat-banner{align-self:flex-start;margin-bottom:18px;font-size:10px;max-width:calc(100% - 56px);}
   #ayaatStage .attya-list{margin:2px 0 0;} #ayaatStage .attya-list li{font-size:13.4px;margin-bottom:12px;line-height:1.55;}
   #ayaatStage .ayaat-flow{gap:0;} #ayaatStage .flow-step{font-size:12px;padding:9px 12px;}
   #ayaatStage .attya-badge{align-self:flex-start;margin-top:18px;}
@@ -508,7 +508,15 @@
   .moto-copy .sp{padding:0 20px;font-size:.85em;}
   @media (max-width:600px){ .moto-inner{gap:11px;} .moto-label{padding-right:11px;} }
   /* ---- static-height decks (HAREEM + ATTYA): pin the window so moving slides forward/back - or zooming - never resizes it; longer slides scroll inside ---- */
-  #attyaStage{height:clamp(452px,62vh,568px);overflow:hidden;}
+  #attyaStage{height:clamp(468px,70vh,580px);overflow:hidden;}
+  /* ---- ATTYA roadmap flowchart ---- */
+  .rmap{display:flex;flex-direction:column;align-items:stretch;margin:2px 0 0;}
+  .rmap-step{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--honey);border-radius:9px;padding:10px 14px;display:flex;flex-direction:column;gap:2px;align-items:center;text-align:center;}
+  .rmap-ph{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);}
+  .rmap-t{font-family:var(--sora);font-weight:700;font-size:14px;color:var(--ink);line-height:1.3;}
+  .rmap-arrow{align-self:center;color:var(--honey);font-size:11px;line-height:1;margin:5px 0;}
+  .rmap-fin{border-left-color:var(--teal);background:linear-gradient(90deg,rgba(52,227,196,.09),transparent);}
+  .rmap-fin .rmap-t{color:var(--teal);}
   #hareemStage{height:clamp(480px,74vh,640px);overflow:hidden;}
   #hareemStage .attya-slide.active,#attyaStage .attya-slide.active{height:100%;overflow-y:auto;overscroll-behavior:contain;}
   #hareemStage .attya-slide.title-slide.active,#attyaStage .attya-slide.title-slide.active{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;min-height:0;}
@@ -518,6 +526,8 @@
   /* HAREEM price table stays a scannable table: proportion the columns, keep prices on one line */
   #hareemStage .attya-tbl th:nth-child(1),#hareemStage .attya-tbl td:nth-child(1){width:25%;}
   #hareemStage .attya-tbl th:nth-child(3),#hareemStage .attya-tbl td:nth-child(3){width:31%;}
+  #hareemStage .attya-tbl td{overflow-wrap:break-word;}
+  #hareemStage .attya-tbl td:nth-child(3){white-space:nowrap;}
   /* ATTYA impact table -> stacked cards on phones (prose columns read badly cramped in thirds) */
   @media(max-width:600px){
     #attyaStage .attya-tbl,#attyaStage .attya-tbl tbody,#attyaStage .attya-tbl tr,#attyaStage .attya-tbl td{display:block;width:100%;}
@@ -526,6 +536,17 @@
     #attyaStage .attya-tbl td{border:none;padding:0 0 10px;}
     #attyaStage .attya-tbl tr td:last-child{padding-bottom:0;}
     #attyaStage .attya-tbl td::before{content:attr(data-label);display:block;font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);margin-bottom:3px;}
+  }
+  /* ---- HAREEM: desktop gets a fuller, vertically-centred layout with larger type; mobile keeps the denser top-aligned layout ---- */
+  @media(min-width:981px){
+    #hareemStage{height:clamp(500px,62vh,580px);}
+    #attyaStage{height:clamp(500px,60vh,570px);}
+    #hareemStage .attya-slide.active,#attyaStage .attya-slide.active{display:flex;flex-direction:column;justify-content:center;}
+    #hareemStage .attya-h,#attyaStage .attya-h{font-size:calc(24px*var(--cscale));}
+    #hareemStage .attya-sub,#attyaStage .attya-sub{font-size:calc(14.5px*var(--cscale));margin-bottom:20px;}
+    #hareemStage .attya-list li,#attyaStage .attya-list li{font-size:calc(17px*var(--cscale));line-height:1.65;margin-bottom:16px;}
+    #hareemStage .attya-note,#attyaStage .attya-note{font-size:calc(14px*var(--cscale));}
+    #attyaStage .rmap-t{font-size:16px;} #attyaStage .rmap-ph{font-size:11px;} #attyaStage .rmap-step{padding:12px 16px;}
   }
 </style>
 </head>
@@ -930,12 +951,12 @@
         <p class="attya-sub">Commercial acquisition costs of one-time curative doses</p>
         <table class="attya-tbl"><thead><tr><th>Gene therapy</th><th>Indication / disease target</th><th>Wholesale price (USD)</th></tr></thead>
         <tbody>
-          <tr><td><strong>Lenmeldy</strong></td><td>Metachromatic Leukodystrophy (MLD)</td><td><strong>$4,250,000</strong></td></tr>
-          <tr><td><strong>Hemgenix</strong></td><td>Hemophilia B</td><td><strong>$3,500,000</strong></td></tr>
-          <tr><td><strong>Elevidys</strong></td><td>Duchenne Muscular Dystrophy (DMD)</td><td><strong>$3,200,000</strong></td></tr>
-          <tr><td><strong>Roctavian</strong></td><td>Hemophilia A</td><td><strong>$2,900,000</strong></td></tr>
-          <tr><td><strong>Zynteglo</strong></td><td>Beta-Thalassemia Major</td><td><strong>$2,800,000</strong></td></tr>
-          <tr><td><strong>Zolgensma</strong></td><td>Spinal Muscular Atrophy (SMA)</td><td><strong>$2,125,000</strong></td></tr>
+          <tr><td data-label="Gene therapy"><strong>Lenmeldy</strong></td><td data-label="Indication / disease target">Metachromatic Leukodystrophy (MLD)</td><td data-label="Wholesale price (USD)"><strong>$4,250,000</strong></td></tr>
+          <tr><td data-label="Gene therapy"><strong>Hemgenix</strong></td><td data-label="Indication / disease target">Hemophilia B</td><td data-label="Wholesale price (USD)"><strong>$3,500,000</strong></td></tr>
+          <tr><td data-label="Gene therapy"><strong>Elevidys</strong></td><td data-label="Indication / disease target">Duchenne Muscular Dystrophy (DMD)</td><td data-label="Wholesale price (USD)"><strong>$3,200,000</strong></td></tr>
+          <tr><td data-label="Gene therapy"><strong>Roctavian</strong></td><td data-label="Indication / disease target">Hemophilia A</td><td data-label="Wholesale price (USD)"><strong>$2,900,000</strong></td></tr>
+          <tr><td data-label="Gene therapy"><strong>Zynteglo</strong></td><td data-label="Indication / disease target">Beta-Thalassemia Major</td><td data-label="Wholesale price (USD)"><strong>$2,800,000</strong></td></tr>
+          <tr><td data-label="Gene therapy"><strong>Zolgensma</strong></td><td data-label="Indication / disease target">Spinal Muscular Atrophy (SMA)</td><td data-label="Wholesale price (USD)"><strong>$2,125,000</strong></td></tr>
         </tbody></table></div>
 
       <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Chronic-Delivery Exception</div>
@@ -1024,7 +1045,7 @@
       <div class="attya-slide title-slide"><div class="sn"></div>
         <div class="big" style="font-size:clamp(30px,5.4vw,50px);">ATTYA</div>
         <div class="exp">Volume II</div>
-        <p style="color:var(--teal);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-top:6px;">Academic Translational Therapeutics for Youth &amp; Access</p>
+        <p style="color:var(--teal);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-top:6px;">Advanced Translational Therapies Yielding Awakening</p>
         <p>Where HAREEM builds the case, ATTYA builds the machine. Volume II turns this framework into an operational blueprint for Pakistan - a non-profit academic consortium, indigenous viral-vector manufacturing and GMP cleanrooms, national patient registries, and a staged roadmap toward the first in-human, locally-run gene-therapy trials.</p>
         <span class="attya-badge">Proceed to Volume II: the ATTYA operational matrix, consortium mobilization, and the 24-month roadmap to first-in-human indigenous trials in Pakistan.</span></div>
     </div>
@@ -1043,41 +1064,68 @@
     <p class="attya-intro">ATTYA - Advanced Translational Therapies Yielding Awakening - is a sub-initiative of NAHL: an operational roadmap to build the genetic-medicine infrastructure Pakistan needs to move from lifelong disease management toward one-time molecular cures. The vision, in brief:</p></div>
   <div class="attya-window reveal">
     <div class="attya-stage" id="attyaStage">
-      <div class="attya-slide title-slide active"><div class="sn">01 / 06</div>
+      <div class="attya-slide title-slide active"><div class="sn"></div>
         <div class="big">ATTYA</div><div class="exp">Advanced Translational Therapies Yielding Awakening</div>
         <p>A ready-to-deploy roadmap to accelerate local research, build genetic infrastructure, and move Pakistan from chronic disease management toward definitive molecular cures.</p>
         <span class="attya-badge">Operational matrix prepped - awaits institutional activation</span></div>
-      <div class="attya-slide"><div class="sn">02 / 06</div><div class="attya-h">The demographic imperative</div>
-        <ul class="attya-list">
-          <li><strong>Consanguinity.</strong> An estimated 60-70% of marriages in Pakistan are consanguineous, driving a high prevalence of autosomal-recessive conditions.</li>
-          <li><strong>Thalassemia burden.</strong> Roughly 5,000-9,000 children are born with beta-thalassemia major each year, with a standing patient base above 100,000 dependent on lifelong transfusions.</li>
-          <li><strong>Neuromuscular reality.</strong> Thousands of children face degenerative conditions such as SMA - largely under-reported, and without advanced local treatment.</li>
-        </ul></div>
-      <div class="attya-slide"><div class="sn">03 / 06</div><div class="attya-h">Forecasted impact model</div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Gene therapy, in plain terms</div>
+        <p class="attya-sub">The idea behind a one-time cure</p>
+        <ul class="attya-list"><li><strong>Treat the cause, not the symptom.</strong> Most inherited diseases come from a single faulty instruction in a personâ€™s DNA. Conventional medicine manages the downstream damage for life; gene therapy aims to correct or replace that faulty instruction itself - ideally just once.</li><li><strong>Two ways to deliver it.</strong> Either a corrected gene is carried into the body by a harmless, engineered virus (<i>in vivo</i>), or a patientâ€™s own cells are collected, fixed in a lab, and returned (<i>ex vivo</i>).</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">How the field grew up</div>
+        <p class="attya-sub">From risky experiment to approved medicine</p>
+        <ul class="attya-list"><li><strong>From setbacks to science.</strong> The first gene-therapy trials in the 1990s met serious safety setbacks. The field then spent two decades making its delivery viruses far safer, more targeted and more predictable.</li><li><strong>From experimental to approved.</strong> The late 2010s brought the first regulator-approved gene therapies - for inherited blindness and spinal muscular atrophy - and by the early 2020s, CRISPR-based cures for sickle cell disease and beta-thalassemia had reached patients.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Why Pakistan is fertile ground</div>
+        <p class="attya-sub">The opportunity, stated plainly</p>
+        <ul class="attya-list"><li><strong>The need is already here.</strong> A high burden of inherited disease and a large, young patient population place the demand for curative genetic medicine among the highest anywhere in the world.</li><li><strong>The building blocks exist.</strong> Transplant units, university genomics labs and oncology cell-biology facilities already perform much of the underlying work. What is missing is coordination and intent - not raw capability.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The demographic imperative (1 of 2)</div>
+        <ul class="attya-list"><li><strong>Consanguinity.</strong> An estimated 60-70% of marriages in Pakistan are consanguineous, driving a high prevalence of autosomal-recessive conditions.</li><li><strong>Thalassemia burden.</strong> Roughly 5,000-9,000 children are born with beta-thalassemia major each year, with a standing patient base above 100,000 dependent on lifelong transfusions.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The demographic imperative (2 of 2)</div>
+        <ul class="attya-list"><li><strong>Neuromuscular reality.</strong> Thousands of children face degenerative conditions such as SMA - largely under-reported, and without advanced local treatment.</li><li><strong>The cost of waiting.</strong> Every year without local capability means another cohort of children managed palliatively - while curative science already exists elsewhere.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Forecasted impact model</div>
         <table class="attya-tbl"><thead><tr><th>Metric</th><th>Status quo (palliative care)</th><th>The ATTYA model (translational cures)</th></tr></thead>
         <tbody>
           <tr><td data-label="Metric"><strong>Healthcare infrastructure</strong></td><td data-label="Status quo">Perpetual strain on blood banks, specialist wards and resource pools.</td><td data-label="ATTYA model">Fewer readmissions; relief for critical emergency networks.</td></tr>
           <tr><td data-label="Metric"><strong>Economic burden</strong></td><td data-label="Status quo">Lifelong, compounding cost per patient on symptomatic care.</td><td data-label="ATTYA model">High single-intervention efficiency, offsetting decades of cost.</td></tr>
           <tr><td data-label="Metric"><strong>Human capital</strong></td><td data-label="Status quo">Multi-generational productivity loss for patients and carers.</td><td data-label="ATTYA model">Families restored to active roles in the economy.</td></tr>
         </tbody></table></div>
-      <div class="attya-slide"><div class="sn">04 / 06</div><div class="attya-h">The clinical network</div>
-        <ul class="attya-list">
-          <li><strong>CMH-BMTC.</strong> Complex cellular transplants, patient conditioning protocols, and sterile isolation environments.</li>
-          <li><strong>Aga Khan University Hospital.</strong> Precision genomic diagnostics, molecular screening, and bioethics frameworks.</li>
-          <li><strong>NUMS &amp; PIMS.</strong> Academic anchoring, pre-clinical validation, bio-banking, and access to large patient cohorts.</li>
-          <li><strong>Shaukat Khanum (SKMH).</strong> Oncology laboratory assets for complex cell biology and viral-vector work.</li>
-        </ul></div>
-      <div class="attya-slide"><div class="sn">05 / 06</div><div class="attya-h">24-month roadmap - Year 1</div>
-        <ul class="attya-list">
-          <li><strong>Months 1-6 | Alignment &amp; tech transfer.</strong> Activate cross-institution working groups; define target monogenic disorders; begin regulatory alignment with DRAP.</li>
-          <li><strong>Months 7-12 | Infrastructure &amp; registries.</strong> Upgrade designated spaces to GMP cleanroom standard; launch a central genomic patient registry; deploy ultra-low cold-chain storage.</li>
-        </ul></div>
-      <div class="attya-slide"><div class="sn">06 / 06</div><div class="attya-h">24-month roadmap - Year 2</div>
-        <ul class="attya-list">
-          <li><strong>Months 13-18 | Pre-clinical validation.</strong> In vitro and in vivo verification of locally engineered vectors; ICU staff cross-training; final bioethics clearance.</li>
-          <li><strong>Months 19-24 | First-in-human.</strong> Secure IND clearance from DRAP; enrol the first patient cohort; begin localised gene delivery under continuous cell-tracking.</li>
-        </ul>
-        <div class="insp-quote" style="margin-top:16px;">"The future is sovereignty - a permanent framework for indigenous medical innovation."</div></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The clinical network (1 of 2)</div>
+        <p class="attya-sub">Assets already on the ground</p>
+        <ul class="attya-list"><li><strong>CMH-BMTC.</strong> Complex cellular transplants, patient conditioning protocols, and sterile isolation environments.</li><li><strong>Aga Khan University Hospital.</strong> Precision genomic diagnostics, molecular screening, and bioethics frameworks.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The clinical network (2 of 2)</div>
+        <p class="attya-sub">Assets already on the ground</p>
+        <ul class="attya-list"><li><strong>NUMS &amp; PIMS.</strong> Academic anchoring, pre-clinical validation, bio-banking, and access to large patient cohorts.</li><li><strong>Shaukat Khanum (SKMH).</strong> Oncology laboratory assets for complex cell biology and viral-vector work.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The 24-month roadmap at a glance</div>
+        <p class="attya-sub">Four phases, one continuous pipeline</p>
+        <div class="rmap">
+          <div class="rmap-step"><span class="rmap-ph">Phase 1 &middot; Months 1-6</span><span class="rmap-t">Alignment &amp; Tech Transfer</span></div>
+          <div class="rmap-arrow" aria-hidden="true">&#9660;</div>
+          <div class="rmap-step"><span class="rmap-ph">Phase 2 &middot; Months 7-12</span><span class="rmap-t">Infrastructure &amp; Registries</span></div>
+          <div class="rmap-arrow" aria-hidden="true">&#9660;</div>
+          <div class="rmap-step"><span class="rmap-ph">Phase 3 &middot; Months 13-18</span><span class="rmap-t">Pre-clinical Validation</span></div>
+          <div class="rmap-arrow" aria-hidden="true">&#9660;</div>
+          <div class="rmap-step rmap-fin"><span class="rmap-ph">Phase 4 &middot; Months 19-24</span><span class="rmap-t">First-in-Human Trial</span></div>
+        </div></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">24-month roadmap - Year 1</div>
+        <ul class="attya-list"><li><strong>Months 1-6 | Alignment &amp; tech transfer.</strong> Activate cross-institution working groups; define target monogenic disorders; begin regulatory alignment with DRAP.</li><li><strong>Months 7-12 | Infrastructure &amp; registries.</strong> Upgrade designated spaces to GMP cleanroom standard; launch a central genomic patient registry; deploy ultra-low cold-chain storage.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">24-month roadmap - Year 2</div>
+        <ul class="attya-list"><li><strong>Months 13-18 | Pre-clinical validation.</strong> In vitro and in vivo verification of locally engineered vectors; ICU staff cross-training; final bioethics clearance.</li><li><strong>Months 19-24 | First-in-human.</strong> Secure IND clearance from DRAP; enrol the first patient cohort; begin localised gene delivery under continuous cell-tracking.</li></ul></div>
+
+      <div class="attya-slide title-slide"><div class="sn"></div>
+        <div class="big" style="font-size:clamp(30px,5.2vw,48px);">THE AWAKENING</div>
+        <p>A permanent, indigenous framework for genetic medicine - where a Pakistani childâ€™s cure is designed, manufactured and delivered at home, not priced out of reach abroad. Each completed trial becomes the blueprint for the next disease, and the next.</p>
+        <div class="insp-quote" style="margin-top:16px;">"The future is sovereignty - a permanent framework for indigenous medical innovation."</div>
+        <span class="attya-badge">From one-time cures to a self-sustaining national capability</span></div>
     </div>
     <div class="attya-ctrls">
       <button class="attya-btn" id="attyaPrev" onclick="attyaGo(-1)" disabled>Prev</button>
@@ -1476,6 +1524,7 @@ function countUp(el){const to=+el.dataset.to,suf=el.dataset.suf||'';let s=null;
 /* ---------- ATTYA carousel ---------- */
 (function(){const slides=[].slice.call(document.querySelectorAll('#attyaStage .attya-slide'));if(!slides.length)return;
   let i=0;const dots=document.getElementById('attyaDots'),prev=document.getElementById('attyaPrev'),next=document.getElementById('attyaNext');
+  slides.forEach(function(s,n){var sn=s.querySelector('.sn');if(sn)sn.textContent=(n+1<10?'0':'')+(n+1)+' / '+slides.length;});
   dots.innerHTML=slides.map(function(_,k){return '<button class="attya-dot'+(k===0?' on':'')+'" onclick="attyaSet('+k+')" aria-label="Slide '+(k+1)+'"></button>';}).join('');
   window.attyaSet=function(k){i=k;slides.forEach(function(s,n){s.classList.toggle('active',n===i);});
     [].slice.call(dots.children).forEach(function(d,n){d.classList.toggle('on',n===i);});
