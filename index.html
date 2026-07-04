@@ -366,10 +366,10 @@
   .attya-zoom{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.05em;}
   .attya-zoom button{background:rgba(255,255,255,.05);border:1px solid var(--line2);color:var(--ink);border-radius:7px;width:30px;height:28px;font-weight:700;font-size:12px;cursor:pointer;}
   .attya-zoom button:hover{border-color:var(--teal);color:var(--teal);}
-  #hareemStage .attya-h{font-size:calc(20px*var(--cscale));}
-  #hareemStage .attya-sub{font-size:calc(13px*var(--cscale));}
-  #hareemStage .attya-list li{font-size:calc(14px*var(--cscale));}
-  #hareemStage .attya-note{font-size:calc(12.5px*var(--cscale));}
+  #hareemStage .attya-h{font-size:calc(21px*var(--cscale));}
+  #hareemStage .attya-sub{font-size:calc(13.5px*var(--cscale));}
+  #hareemStage .attya-list li{font-size:calc(15px*var(--cscale));line-height:1.5;margin-bottom:11px;}
+  #hareemStage .attya-note{font-size:calc(13px*var(--cscale));}
   #hareemStage .attya-tbl th{font-size:calc(10px*var(--cscale));}
   #hareemStage .attya-tbl td{font-size:calc(13px*var(--cscale));}
   #hareemStage .attya-slide.title-slide p{font-size:calc(14.5px*var(--cscale));}
@@ -401,14 +401,15 @@
   .care-note{margin-top:18px;text-align:center;font-style:italic;color:var(--honey);font-size:15px;border:1px dashed var(--line2);border-radius:14px;padding:16px 20px;background:rgba(246,181,60,.04);}
   @media(max-width:760px){ .care-grid{grid-template-columns:1fr;} }
   /* slide 7 progression vertical marquee */
-  .prog-window{height:clamp(150px,23vh,196px);overflow:hidden;position:relative;margin:3px 0 11px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 11%,#000 89%,transparent);mask-image:linear-gradient(180deg,transparent,#000 11%,#000 89%,transparent);}
-  .prog-track{animation:progroll 30s linear infinite;}
+  .prog-window{height:clamp(200px,32vh,270px);overflow:hidden;position:relative;margin:3px 0 4px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(180deg,transparent,#000 8%,#000 92%,transparent);}
+  .prog-track{will-change:transform;}
   .prog-window:hover .prog-track{animation-play-state:paused;}
   @keyframes progroll{from{transform:translateY(0);}to{transform:translateY(-50%);}}
   .prog-copy{display:flex;flex-direction:column;gap:8px;padding-bottom:8px;}
   .prog-step{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--honey);border-radius:9px;padding:8px 12px;font-size:clamp(12px,3.2vw,13px);line-height:1.4;color:var(--ink);display:flex;gap:9px;align-items:flex-start;}
   .prog-step .pn{font-family:var(--mono);font-size:10px;color:var(--teal);flex:none;margin-top:2px;}
-  .prog-end{font-size:clamp(12px,3.2vw,13px);line-height:1.55;color:var(--honey);font-style:italic;border-top:1px dashed var(--line2);padding-top:11px;}
+  .prog-step-fin{border-left-color:var(--teal);color:var(--honey);font-style:italic;line-height:1.55;}
+  .prog-step-fin .pn{color:var(--honey);font-size:12px;}
   /* responsive Ayaat slide fonts */
   #ayaatStage .attya-h{font-size:clamp(17px,4.6vw,19.5px);}
   #ayaatStage .ayaat-trans{font-size:clamp(13px,3.5vw,14.5px);line-height:1.7;}
@@ -495,19 +496,20 @@
   @media (max-width:600px){ .win{margin-top:64px;} .win-body{padding:18px;} .ceo p{font-size:14px;} }
   /* ===== NAHL motto ticker ===== */
   .moto-band{position:relative;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(246,181,60,.09),rgba(52,227,196,.04)),#0A0E14;padding:14px 0;}
-  .moto-inner{display:flex;align-items:center;gap:16px;}
-  .moto-label{flex:none;font-family:var(--sora);font-weight:800;font-size:clamp(14px,3.4vw,17px);letter-spacing:.03em;text-transform:uppercase;padding-right:16px;border-right:1px solid var(--line2);white-space:nowrap;color:#FBD37E;text-shadow:0 0 14px rgba(246,181,60,.35);}
+  .moto-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;}
+  .moto-label{font-family:var(--sora);font-weight:800;font-size:clamp(14px,3.4vw,17px);letter-spacing:.03em;text-transform:uppercase;color:#FBD37E;text-shadow:0 0 14px rgba(246,181,60,.35);}
   .moto-viewport{flex:1;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
   .moto-track{display:inline-flex;white-space:nowrap;will-change:transform;animation:moto-scroll 38s linear infinite;}
   .moto-viewport:hover .moto-track{animation-play-state:paused;}
   @keyframes moto-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-  .moto-copy{font-family:var(--sora);font-weight:700;font-size:clamp(15px,3.9vw,19px);line-height:1.5;padding-right:20px;letter-spacing:.01em;background:linear-gradient(100deg,#F4B740 0%,#F4B740 42%,#FFFFFF 50%,#F4B740 58%,#F4B740 100%);background-size:230% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#F4B740;animation:moto-shine 4.5s linear infinite;text-shadow:0 0 22px rgba(246,181,60,.22);}
+  .moto-copy{display:block;max-width:80ch;margin:0 auto;text-align:center;font-family:var(--sora);font-weight:700;font-size:clamp(15px,3.9vw,19px);line-height:1.5;letter-spacing:.01em;background:linear-gradient(100deg,#F4B740 0%,#F4B740 42%,#FFFFFF 50%,#F4B740 58%,#F4B740 100%);background-size:230% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#F4B740;animation:moto-shine 4.5s linear infinite;text-shadow:0 0 22px rgba(246,181,60,.22);}
   @keyframes moto-shine{to{background-position:-230% center;}}
   .moto-copy .dx{font-weight:800;letter-spacing:.05em;}
   .moto-copy .sp{padding:0 20px;font-size:.85em;}
   @media (max-width:600px){ .moto-inner{gap:11px;} .moto-label{padding-right:11px;} }
   /* ---- static-height decks (HAREEM + ATTYA): pin the window so moving slides forward/back - or zooming - never resizes it; longer slides scroll inside ---- */
-  #hareemStage,#attyaStage{height:clamp(452px,62vh,568px);overflow:hidden;}
+  #attyaStage{height:clamp(452px,62vh,568px);overflow:hidden;}
+  #hareemStage{height:clamp(480px,74vh,640px);overflow:hidden;}
   #hareemStage .attya-slide.active,#attyaStage .attya-slide.active{height:100%;overflow-y:auto;overscroll-behavior:contain;}
   #hareemStage .attya-slide.title-slide.active,#attyaStage .attya-slide.title-slide.active{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;min-height:0;}
   /* ---- tables never clip/hide on narrow screens ---- */
@@ -594,7 +596,7 @@
       <div class="attya-window">
         <div class="attya-stage" id="ayaatStage">
 
-          <div class="attya-slide active ay1"><div class="sn">01 / 10</div>
+          <div class="attya-slide active ay1"><div class="sn">01 / 11</div>
             <div class="ayaat-ref">Surah An-Nahl 16:68-69 &middot; "The Bee"</div>
             <div class="ayaat-marquee"><div class="ayaat-marquee-track">&#1608;&#1614;&#1571;&#1614;&#1608;&#1618;&#1581;&#1614;&#1609;&#1648; &#1585;&#1614;&#1576;&#1617;&#1615;&#1603;&#1614; &#1573;&#1616;&#1604;&#1614;&#1609; &#1575;&#1604;&#1606;&#1617;&#1614;&#1581;&#1618;&#1604;&#1616; &#1571;&#1614;&#1606;&#1616; &#1575;&#1578;&#1617;&#1614;&#1582;&#1616;&#1584;&#1616;&#1610; &#1605;&#1616;&#1606;&#1614; &#1575;&#1604;&#1618;&#1580;&#1616;&#1576;&#1614;&#1575;&#1604;&#1616; &#1576;&#1615;&#1610;&#1615;&#1608;&#1578;&#1611;&#1575; &#1608;&#1614;&#1605;&#1616;&#1606;&#1614; &#1575;&#1604;&#1588;&#1617;&#1614;&#1580;&#1614;&#1585;&#1616; &#1608;&#1614;&#1605;&#1616;&#1605;&#1617;&#1614;&#1575; &#1610;&#1614;&#1593;&#1618;&#1585;&#1616;&#1588;&#1615;&#1608;&#1606;&#1614; &#1757; &#1579;&#1615;&#1605;&#1617;&#1614; &#1603;&#1615;&#1604;&#1616;&#1610; &#1605;&#1616;&#1606; &#1603;&#1615;&#1604;&#1617;&#1616; &#1575;&#1604;&#1579;&#1617;&#1614;&#1605;&#1614;&#1585;&#1614;&#1575;&#1578;&#1616; &#1601;&#1614;&#1575;&#1587;&#1618;&#1604;&#1615;&#1603;&#1616;&#1610; &#1587;&#1615;&#1576;&#1615;&#1604;&#1614; &#1585;&#1614;&#1576;&#1617;&#1616;&#1603;&#1616; &#1584;&#1615;&#1604;&#1615;&#1604;&#1611;&#1575; &#1754; &#1610;&#1614;&#1582;&#1618;&#1585;&#1615;&#1580;&#1615; &#1605;&#1616;&#1606; &#1576;&#1615;&#1591;&#1615;&#1608;&#1606;&#1616;&#1607;&#1614;&#1575; &#1588;&#1614;&#1585;&#1614;&#1575;&#1576;&#1612; &#1605;&#1617;&#1615;&#1582;&#1618;&#1578;&#1614;&#1604;&#1616;&#1601;&#1612; &#1571;&#1614;&#1604;&#1618;&#1608;&#1614;&#1575;&#1606;&#1615;&#1607;&#1615; &#1601;&#1616;&#1610;&#1607;&#1616; &#1588;&#1616;&#1601;&#1614;&#1575;&#1569;&#1612; &#1604;&#1617;&#1616;&#1604;&#1606;&#1617;&#1614;&#1575;&#1587;&#1616; &#1754; &#1573;&#1616;&#1606;&#1617;&#1614; &#1601;&#1616;&#1610; &#1584;&#1614;&#1648;&#1604;&#1616;&#1603;&#1614; &#1604;&#1614;&#1570;&#1610;&#1614;&#1577;&#1611; &#1604;&#1617;&#1616;&#1602;&#1614;&#1608;&#1618;&#1605;&#1613; &#1610;&#1614;&#1578;&#1614;&#1601;&#1614;&#1603;&#1617;&#1614;&#1585;&#1615;&#1608;&#1606;&#1614; <span class="marq-gap"></span> &#1608;&#1614;&#1571;&#1614;&#1608;&#1618;&#1581;&#1614;&#1609;&#1648; &#1585;&#1614;&#1576;&#1617;&#1615;&#1603;&#1614; &#1573;&#1616;&#1604;&#1614;&#1609; &#1575;&#1604;&#1606;&#1617;&#1614;&#1581;&#1618;&#1604;&#1616; &#1571;&#1614;&#1606;&#1616; &#1575;&#1578;&#1617;&#1614;&#1582;&#1616;&#1584;&#1616;&#1610; &#1605;&#1616;&#1606;&#1614; &#1575;&#1604;&#1618;&#1580;&#1616;&#1576;&#1614;&#1575;&#1604;&#1616; &#1576;&#1615;&#1610;&#1615;&#1608;&#1578;&#1611;&#1575; &#1608;&#1614;&#1605;&#1616;&#1606;&#1614; &#1575;&#1604;&#1588;&#1617;&#1614;&#1580;&#1614;&#1585;&#1616; &#1608;&#1614;&#1605;&#1616;&#1605;&#1617;&#1614;&#1575; &#1610;&#1614;&#1593;&#1618;&#1585;&#1616;&#1588;&#1615;&#1608;&#1606;&#1614; &#1757; &#1579;&#1615;&#1605;&#1617;&#1614; &#1603;&#1615;&#1604;&#1616;&#1610; &#1605;&#1616;&#1606; &#1603;&#1615;&#1604;&#1617;&#1616; &#1575;&#1604;&#1579;&#1617;&#1614;&#1605;&#1614;&#1585;&#1614;&#1575;&#1578;&#1616; &#1601;&#1614;&#1575;&#1587;&#1618;&#1604;&#1615;&#1603;&#1616;&#1610; &#1587;&#1615;&#1576;&#1615;&#1604;&#1614; &#1585;&#1614;&#1576;&#1617;&#1616;&#1603;&#1616; &#1584;&#1615;&#1604;&#1615;&#1604;&#1611;&#1575; &#1754; &#1610;&#1614;&#1582;&#1618;&#1585;&#1615;&#1580;&#1615; &#1605;&#1616;&#1606; &#1576;&#1615;&#1591;&#1615;&#1608;&#1606;&#1616;&#1607;&#1614;&#1575; &#1588;&#1614;&#1585;&#1614;&#1575;&#1576;&#1612; &#1605;&#1617;&#1615;&#1582;&#1618;&#1578;&#1614;&#1604;&#1616;&#1601;&#1612; &#1571;&#1614;&#1604;&#1618;&#1608;&#1614;&#1575;&#1606;&#1615;&#1607;&#1615; &#1601;&#1616;&#1610;&#1607;&#1616; &#1588;&#1616;&#1601;&#1614;&#1575;&#1569;&#1612; &#1604;&#1617;&#1616;&#1604;&#1606;&#1617;&#1614;&#1575;&#1587;&#1616; &#1754; &#1573;&#1616;&#1606;&#1617;&#1614; &#1601;&#1616;&#1610; &#1584;&#1614;&#1648;&#1604;&#1616;&#1603;&#1614; &#1604;&#1614;&#1570;&#1610;&#1614;&#1577;&#1611; &#1604;&#1617;&#1616;&#1602;&#1614;&#1608;&#1618;&#1605;&#1613; &#1610;&#1614;&#1578;&#1614;&#1601;&#1614;&#1603;&#1617;&#1614;&#1585;&#1615;&#1608;&#1606;&#1614; <span class="marq-gap"></span> </div></div>
             <div class="ayaat-toggle">
@@ -612,27 +614,27 @@
               </div></div>
             </div></div>
 
-          <div class="attya-slide"><div class="sn">02 / 10</div>
+          <div class="attya-slide"><div class="sn">02 / 11</div>
             <div class="ayaat-banner">Explanation of Ayaat 68-69 : Surah Nahl (Al-Qur'aan)</div>
             <div class="attya-h">Inspired to gather from everywhere</div>
             <p class="ayaat-trans">Allah places a quiet instruction in one of the smallest creatures. The bee is guided to the mountains, the trees, and the shelters people raise - then to draw from <strong>every kind of fruit and flower</strong>, ranging far yet never losing its way home. Nothing it touches is wasted.</p></div>
 
-          <div class="attya-slide"><div class="sn">03 / 10</div>
+          <div class="attya-slide"><div class="sn">03 / 11</div>
             <div class="ayaat-banner">Explanation of Ayaat 68-69 : Surah Nahl (Al-Qur'aan)</div>
             <div class="attya-h">From its labour comes healing</div>
             <p class="ayaat-trans">From all the bee gathers emerges <i>"a drink of different colours, in which there is healing for people."</i> Honey is among the few things the Qur'an names with <span class="ayaat-key">shifa'</span> - a healing. A frail creature, following its Lord's design, returns something that mends the human body.</p></div>
 
-          <div class="attya-slide"><div class="sn">04 / 10</div>
+          <div class="attya-slide"><div class="sn">04 / 11</div>
             <div class="ayaat-banner">Explanation of Ayaat 68-69 : Surah Nahl (Al-Qur'aan)</div>
             <div class="attya-h">A sign for those who reflect</div>
             <p class="ayaat-trans">The verse closes for <i>"those who think"</i> - <strong>yatafakkarun</strong>. The sign is bound to reflection and knowledge: study creation, gather widely, and turn what is gathered into something that heals. That is the spirit NAHL tries to follow.</p></div>
 
-          <div class="attya-slide"><div class="sn">05 / 10</div>
+          <div class="attya-slide"><div class="sn">05 / 11</div>
             <div class="attya-h">Why the name NAHL</div>
             <p class="ayaat-trans">NAHL takes its name from this verse - and also from Aisha's elder sister's traumatic short life, who couldn't be saved due to no treatment options for the cruel rare genetic disease, known as infantile MLD (Metachromatic Leukodystrophy).</p>
             <span class="attya-badge">An-Nahl &middot; the bee &middot; the sister remembered</span></div>
 
-          <div class="attya-slide"><div class="sn">06 / 10</div>
+          <div class="attya-slide"><div class="sn">06 / 11</div>
             <div class="ayaat-banner ban-mld">Nahl's sacrifice and Natural History of MLD</div>
             <div class="attya-h">A normal beginning, then regression</div>
             <ul class="attya-list">
@@ -641,7 +643,7 @@
               <li>The cause: a faulty <i>ARSA</i> gene lets sulfatides build up and strip the protective myelin from nerves.</li>
             </ul></div>
 
-          <div class="attya-slide"><div class="sn">07 / 10</div>
+          <div class="attya-slide"><div class="sn">07 / 11</div>
             <div class="ayaat-banner ban-mld">Nahl's sacrifice and Natural History of MLD</div>
             <div class="attya-h">The natural course of disease progression</div>
             <div class="prog-window"><div class="prog-track">
@@ -656,37 +658,30 @@
                 <div class="prog-step"><span class="pn">08</span><span>Loss of awareness and responsiveness; full dependence on care</span></div>
                 <div class="prog-step"><span class="pn">09</span><span>Severe spasticity, immobility, and frequent infections</span></div>
                 <div class="prog-step"><span class="pn">10</span><span>Breathing itself becomes too hard for the body to sustain</span></div>
+                <div class="prog-step prog-step-fin"><span class="pn">&#10022;</span><span>Eventually the disease takes away even the ability to breathe, bringing life to its close - as it did for Nahl, and for many others on their journey to the Hereafter, leaving a lasting mark on the families they leave behind.</span></div>
                 </div>
-                <div class="prog-copy" aria-hidden="true">
-                <div class="prog-step"><span class="pn">01</span><span>Normal development for the first ~1-2 years</span></div>
-                <div class="prog-step"><span class="pn">02</span><span>First red flags - irritability, frequent falls, stiff or clumsy legs</span></div>
-                <div class="prog-step"><span class="pn">03</span><span>Regression - milestones already reached begin to slip away</span></div>
-                <div class="prog-step"><span class="pn">04</span><span>Walking, then sitting, then speech are gradually lost</span></div>
-                <div class="prog-step"><span class="pn">05</span><span>Rising muscle stiffness (spasticity) and weakness</span></div>
-                <div class="prog-step"><span class="pn">06</span><span>Seizures begin</span></div>
-                <div class="prog-step"><span class="pn">07</span><span>Trouble swallowing and feeding; loss of vision and hearing</span></div>
-                <div class="prog-step"><span class="pn">08</span><span>Loss of awareness and responsiveness; full dependence on care</span></div>
-                <div class="prog-step"><span class="pn">09</span><span>Severe spasticity, immobility, and frequent infections</span></div>
-                <div class="prog-step"><span class="pn">10</span><span>Breathing itself becomes too hard for the body to sustain</span></div>
-                </div>
-            </div></div>
-            <div class="prog-end">Eventually the disease takes away even the ability to breathe, bringing life to its close - as it did for Nahl, and for many others on their journey to the Hereafter, leaving a lasting mark on the families they leave behind.</div></div>
+            </div></div></div>
 
-          <div class="attya-slide"><div class="sn">08 / 10</div>
+          <div class="attya-slide"><div class="sn">08 / 11</div>
             <div class="ayaat-banner ban-mld">Nahl's sacrifice and Natural History of MLD</div>
             <div class="attya-h">The family's parallel toll</div>
             <p class="ayaat-trans">Beside the child's decline runs the family's own - the long diagnostic odyssey, the cost, the round-the-clock care, the watching, and the grief. Nahl's short life was the sacrifice that gave this work its name; <strong>AISHA</strong>, the assistant, is named for the sister reached in time.</p></div>
 
-          <div class="attya-slide"><div class="sn">09 / 10</div>
+          <div class="attya-slide"><div class="sn">09 / 11</div>
             <div class="ayaat-banner ban-proj">Surah Al Nahl to Project NAHL through Aisha's NAHL</div>
             <div class="attya-h">Gather, as the bee gathers</div>
             <p class="ayaat-trans">The knowledge families need already exists - scattered across Orphanet, GARD, OMIM, GeneReviews, ClinVar and the trial registries. Like the bee drawing from every flower, NAHL ranges across all of it.</p></div>
 
-          <div class="attya-slide"><div class="sn">10 / 10</div>
+          <div class="attya-slide"><div class="sn">10 / 11</div>
             <div class="ayaat-banner ban-proj">Surah Al Nahl to Project NAHL through Aisha's NAHL</div>
             <div class="attya-h">Distill it - and open doors that heal</div>
             <p class="ayaat-trans">NAHL reproduces that scattered knowledge as plain words and a verified path to help - turning countless sources into one clear answer, and opening doors toward diagnosis, trusted care and treatment.</p>
-            <p class="ayaat-trans" style="margin-top:10px;"><span class="ayaat-key">"...in which there is healing for people."</span> From Surah An-Nahl, to a sister's loss, to the help now carried forward in her name.</p></div>
+            <span class="attya-badge">Gather widely &middot; distill simply &middot; guide truly</span></div>
+
+          <div class="attya-slide"><div class="sn">11 / 11</div>
+            <div class="ayaat-banner ban-proj">Surah Al Nahl to Project NAHL through Aisha's NAHL</div>
+            <div class="attya-h">The circle closes - healing carried forward</div>
+            <p class="ayaat-trans">From a verse about the bee, to a sister lost and a sister saved, one thread holds: knowledge, gathered and distilled, becomes <span class="ayaat-key">"healing for people."</span> That promise of An-Nahl is what NAHL now carries forward - freely, for every family seeking answers.</p></div>
 
         </div>
         <div class="attya-ctrls">
@@ -702,10 +697,7 @@
 <div class="moto-band reveal">
   <div class="wrap moto-inner">
     <span class="moto-label">NAHL&#39;s Motto</span>
-    <div class="moto-viewport"><div class="moto-track">
-      <span class="moto-copy">We exist to close the distance between &ldquo;too late&rdquo; and &ldquo;in time&rdquo; <span class="dx">DIAGNOSIS</span>. Born from the loss of one child and the saving of another, our mission is simple: no parent should learn at a graveside, what a test could have told them at a cradle.<span class="sp">&#10022;</span></span>
-      <span class="moto-copy" aria-hidden="true">We exist to close the distance between &ldquo;too late&rdquo; and &ldquo;in time&rdquo; <span class="dx">DIAGNOSIS</span>. Born from the loss of one child and the saving of another, our mission is simple: no parent should learn at a graveside, what a test could have told them at a cradle.<span class="sp">&#10022;</span></span>
-    </div></div>
+    <p class="moto-copy">We exist to close the distance between &ldquo;too late&rdquo; and &ldquo;in time&rdquo; <span class="dx">DIAGNOSIS</span>. Born from the loss of one child and the saving of another, our mission is simple: no parent should learn at a graveside, what a test could have told them at a cradle.</p>
   </div>
 </div>
 
@@ -878,63 +870,63 @@
   <div class="attya-window reveal">
     <div class="attya-stage" id="hareemStage">
 
-      <div class="attya-slide title-slide active"><div class="sn">01 / 18</div>
+      <div class="attya-slide title-slide active"><div class="sn"></div>
         <div class="big">THE GENETIC REVOLUTION</div>
         <div class="exp">Volume I: HAREEM</div>
         <p style="color:var(--teal);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-top:6px;">Hereditary Awareness for Regenerative and Emerging Engineered Medicine</p>
         <p>A systemic analysis of global cellular breakthroughs, the multi-dimensional attrition borne by affected families, the granular lifecycle of advanced clinical trials, and the structural economic barriers that necessitate a localized shift toward translational medical sovereignty.</p>
         <span class="attya-badge">Clinical, financial &amp; molecular rationale | systemic reference framework</span></div>
 
-      <div class="attya-slide"><div class="sn">02 / 18</div><div class="attya-h">Global Proof of Concept: Approved Cures (Part 1)</div>
-        <p class="attya-sub">Medical milestones in hematology &amp; ophthalmology</p>
-        <ul class="attya-list">
-          <li><strong>Casgevy (Exagamglogene autotemcel):</strong> First-ever FDA/EMA approved CRISPR-Cas9 cellular therapy targeting the BCL11A enhancer. Permanently eliminates painful vaso-occlusive crises in Sickle Cell Disease and eradicates blood transfusion dependence in beta-thalassemia major.</li>
-          <li><strong>Zynteglo (Betibeglogene autotemcel):</strong> A lentiviral vector-based ex vivo autologous CD34+ cell therapy that successfully restores functional, continuous beta-globin production in severe thalassemia phenotypes.</li>
-          <li><strong>Luxturna (Voretigene neparvovec):</strong> An in vivo adeno-associated virus (AAV2) vector therapy delivering functional RPE65 genes directly to subretinal tissue, permanently reversing inherited Leber congenital amaurosis blindness.</li>
-        </ul></div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Approved Cures: Blood Disorders</div>
+        <p class="attya-sub">First-ever curative platforms in haematology</p>
+        <ul class="attya-list"><li><strong>Casgevy (Exagamglogene autotemcel):</strong> First-ever FDA/EMA approved CRISPR-Cas9 cellular therapy targeting the BCL11A enhancer. Permanently eliminates painful vaso-occlusive crises in Sickle Cell Disease and eradicates blood transfusion dependence in beta-thalassemia major.</li><li><strong>Zynteglo (Betibeglogene autotemcel):</strong> A lentiviral vector-based ex vivo autologous CD34+ cell therapy that successfully restores functional, continuous beta-globin production in severe thalassemia phenotypes.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">03 / 18</div><div class="attya-h">Global Proof of Concept: Latest Approved Landmarks (Part 2)</div>
-        <p class="attya-sub">New frontiers in neuromuscular and ultra-rare disorders</p>
-        <ul class="attya-list">
-          <li><strong>Lenmeldy (Atidarsagene autotemcel):</strong> Landmark 2024 approved ex vivo autologous hematopoietic stem cell gene therapy. Delivers functional ARSA genes to arrest the rapid, fatal neurodegeneration of infantile or juvenile Metachromatic Leukodystrophy (MLD).</li>
-          <li><strong>Kebilidi (Eladocagene exuparvovec):</strong> An in vivo AAV2 vector carrying a human dopa decarboxylase gene, infused neurosurgically directly into the brain structure. First gene therapy approved for AADC deficiency.</li>
-          <li><strong>Lyfgenia (Lovotibeglogene autotemcel) &amp; Beqvez (Fidanacogene elaparvovec):</strong> Advanced lentiviral and next-gen AAV vectors. Lyfgenia prevents cellular sickling via a modified gene, while Beqvez provides multi-year Factor IX expression to halt Hemophilia B bleeds.</li>
-        </ul></div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Approved Cures: Inherited Blindness</div>
+        <p class="attya-sub">Restoring vision at the genetic source</p>
+        <ul class="attya-list"><li><strong>Luxturna (Voretigene neparvovec):</strong> An in vivo adeno-associated virus (AAV2) vector therapy delivering functional RPE65 genes directly to subretinal tissue, permanently reversing inherited Leber congenital amaurosis blindness.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">04 / 18</div><div class="attya-h">The Active Frontier: Ongoing Clinical Trials (Part 1)</div>
-        <p class="attya-sub">Neurodegenerative &amp; systemic genetic targets</p>
-        <ul class="attya-list">
-          <li><strong>Huntington's Disease (Targeted Gene Silencing):</strong> Phase I/II clinical trials utilize antisense oligonucleotides (ASOs) and AAV vectors carrying microRNA (miRNA) to directly degrade the toxic, mutant Huntingtin (mHTT) protein before it destroys cortical and striatal neurons.</li>
-          <li><strong>Cystic Fibrosis (Inhalation Gene Delivery):</strong> Phase II evaluations testing non-viral lipid nanoparticles (LNPs) and engineered lentiviral vectors delivered via nebulizers to transport functional CFTR genes directly to respiratory epithelial cells.</li>
-          <li><strong>Duchenne Muscular Dystrophy (Next-Gen Mini-Dystrophin):</strong> Expanding Phase III trials evaluating optimized mini-dystrophin vector designs across broader age brackets to sustain long-term cardiac and skeletal muscle structural integrity.</li>
-        </ul></div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Approved Landmarks: Neurodegeneration</div>
+        <p class="attya-sub">Arresting fatal decline of the nervous system</p>
+        <ul class="attya-list"><li><strong>Lenmeldy (Atidarsagene autotemcel):</strong> Landmark 2024 approved ex vivo autologous hematopoietic stem cell gene therapy. Delivers functional ARSA genes to arrest the rapid, fatal neurodegeneration of infantile or juvenile Metachromatic Leukodystrophy (MLD).</li><li><strong>Kebilidi (Eladocagene exuparvovec):</strong> An in vivo AAV2 vector carrying a human dopa decarboxylase gene, infused neurosurgically directly into the brain structure. First gene therapy approved for AADC deficiency.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">05 / 18</div><div class="attya-h">The Active Frontier: Ongoing Clinical Trials (Part 2)</div>
-        <p class="attya-sub">Metabolic &amp; deep in-born errors of development</p>
-        <ul class="attya-list">
-          <li><strong>Fabry and Gaucher Disease (Ex Vivo &amp; In Vivo Regimes):</strong> Active Phase I/II global clinical trials utilizing liver-targeted AAV vectors or gene-edited bone marrow stem cells to induce permanent high-level expression of missing alpha-galactosidase A or glucocerebrosidase enzymes.</li>
-          <li><strong>Phenylketonuria (PKU):</strong> Phase I/II trials targeting adult profiles using liver-directed AAV vectors to reintroduce the missing PAH gene, permanently lifting extreme, lifelong dietary restrictions.</li>
-          <li><strong>Rett Syndrome &amp; Fragile X:</strong> Early-stage Phase I trials carefully escalating micro-dosing schemas to introduce tightly regulated MECP2 gene constructs, aiming to correct severe early-childhood developmental and synaptic arrest.</li>
-        </ul></div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Approved Landmarks: Sickling &amp; Bleeding</div>
+        <p class="attya-sub">Next-generation vectors in blood disease</p>
+        <ul class="attya-list"><li><strong>Lyfgenia (Lovotibeglogene autotemcel) &amp; Beqvez (Fidanacogene elaparvovec):</strong> Advanced lentiviral and next-gen AAV vectors. Lyfgenia prevents cellular sickling via a modified gene, while Beqvez provides multi-year Factor IX expression to halt Hemophilia B bleeds.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">06 / 18</div><div class="attya-h">The Triad of Attrition: The Reality for Families</div>
-        <p class="attya-sub">The multi-dimensional toll of chronic genetic conditions</p>
-        <ul class="attya-list">
-          <li><strong>Physical burden.</strong> Perpetual operational routines. Families manage bi-weekly painful hospital infusions, rigorous iron-chelation schedules, or watch irreversible muscle wastage and neurological decline advance daily.</li>
-          <li><strong>Emotional burden.</strong> The psychological toll of chronic fatal diagnoses. Parents face constant survival anxiety, sibling care neglect, profound guilt over hereditary genetic transmission, and raw trauma.</li>
-          <li><strong>Financial burden.</strong> Total economic exhaustion. Lifelong palliative requirements consume daily disposable income, deplete generational assets, restrict career advancement, and trigger family bankruptcies.</li>
-        </ul></div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Active Trials: Neurodegenerative &amp; Systemic</div>
+        <p class="attya-sub">Silencing toxic proteins, delivering by breath</p>
+        <ul class="attya-list"><li><strong>Huntington's Disease (Targeted Gene Silencing):</strong> Phase I/II clinical trials utilize antisense oligonucleotides (ASOs) and AAV vectors carrying microRNA (miRNA) to directly degrade the toxic, mutant Huntingtin (mHTT) protein before it destroys cortical and striatal neurons.</li><li><strong>Cystic Fibrosis (Inhalation Gene Delivery):</strong> Phase II evaluations testing non-viral lipid nanoparticles (LNPs) and engineered lentiviral vectors delivered via nebulizers to transport functional CFTR genes directly to respiratory epithelial cells.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">07 / 18</div><div class="attya-h">The Capital Engine: Economics of Gene Therapy Development</div>
-        <p class="attya-sub">Why bringing a cure to market costs billions</p>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Active Trials: Muscle Integrity</div>
+        <p class="attya-sub">Sustaining cardiac and skeletal structure</p>
+        <ul class="attya-list"><li><strong>Duchenne Muscular Dystrophy (Next-Gen Mini-Dystrophin):</strong> Expanding Phase III trials evaluating optimized mini-dystrophin vector designs across broader age brackets to sustain long-term cardiac and skeletal muscle structural integrity.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Active Trials: Metabolic Errors</div>
+        <p class="attya-sub">Restoring missing enzymes and pathways</p>
+        <ul class="attya-list"><li><strong>Fabry and Gaucher Disease (Ex Vivo &amp; In Vivo Regimes):</strong> Active Phase I/II global clinical trials utilizing liver-targeted AAV vectors or gene-edited bone marrow stem cells to induce permanent high-level expression of missing alpha-galactosidase A or glucocerebrosidase enzymes.</li><li><strong>Phenylketonuria (PKU):</strong> Phase I/II trials targeting adult profiles using liver-directed AAV vectors to reintroduce the missing PAH gene, permanently lifting extreme, lifelong dietary restrictions.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Active Trials: Developmental Targets</div>
+        <p class="attya-sub">Correcting early synaptic arrest</p>
+        <ul class="attya-list"><li><strong>Rett Syndrome &amp; Fragile X:</strong> Early-stage Phase I trials carefully escalating micro-dosing schemas to introduce tightly regulated MECP2 gene constructs, aiming to correct severe early-childhood developmental and synaptic arrest.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Triad of Attrition (1 of 2)</div>
+        <p class="attya-sub">The multi-dimensional toll on families</p>
+        <ul class="attya-list"><li><strong>Physical burden.</strong> Perpetual operational routines. Families manage bi-weekly painful hospital infusions, rigorous iron-chelation schedules, or watch irreversible muscle wastage and neurological decline advance daily.</li><li><strong>Emotional burden.</strong> The psychological toll of chronic fatal diagnoses. Parents face constant survival anxiety, sibling care neglect, profound guilt over hereditary genetic transmission, and raw trauma.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Triad of Attrition (2 of 2)</div>
+        <p class="attya-sub">The multi-dimensional toll on families</p>
+        <ul class="attya-list"><li><strong>Financial burden.</strong> Total economic exhaustion. Lifelong palliative requirements consume daily disposable income, deplete generational assets, restrict career advancement, and trigger family bankruptcies.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Capital Engine (1 of 2)</div>
+        <p class="attya-sub">Why a cure costs billions</p>
         <div class="attya-note">Discovery &amp; Basic R&amp;D (~$1.5 Billion) -&gt; GMP Scale-up &amp; Validation (~$1.5 Billion) -&gt; Scarce Patient Cohort Trials (~$2.0 Billion)</div>
-        <ul class="attya-list">
-          <li><strong>The $5 Billion Development Hurdle:</strong> Advanced R&amp;D, clinical translation, and extensive regulatory validation drive the total cost of developing a successful gene therapy molecule up to $5 billion.</li>
-          <li><strong>The 15-Year Timeline:</strong> Sourcing optimized vectors, configuring precision payloads, and executing sequential human clinical trials demands an absolute minimum of 10 to 15 years.</li>
-          <li><strong>The Patient Pool Scarcity Paradox:</strong> For rare mutations, companies spend massive capital merely identifying, tracking, and flying a tiny pool of global candidates to specialized central trial sites.</li>
-        </ul></div>
+        <ul class="attya-list"><li><strong>The $5 Billion Development Hurdle:</strong> Advanced R&amp;D, clinical translation, and extensive regulatory validation drive the total cost of developing a successful gene therapy molecule up to $5 billion.</li><li><strong>The 15-Year Timeline:</strong> Sourcing optimized vectors, configuring precision payloads, and executing sequential human clinical trials demands an absolute minimum of 10 to 15 years.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">08 / 18</div><div class="attya-h">The Price Tag Wall: Approved Market Costs</div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Capital Engine (2 of 2)</div>
+        <p class="attya-sub">Why a cure costs billions</p>
+        <ul class="attya-list"><li><strong>The Patient Pool Scarcity Paradox:</strong> For rare mutations, companies spend massive capital merely identifying, tracking, and flying a tiny pool of global candidates to specialized central trial sites.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Price Tag Wall: Approved Market Costs</div>
         <p class="attya-sub">Commercial acquisition costs of one-time curative doses</p>
         <table class="attya-tbl"><thead><tr><th>Gene therapy</th><th>Indication / disease target</th><th>Wholesale price (USD)</th></tr></thead>
         <tbody>
@@ -944,92 +936,102 @@
           <tr><td><strong>Roctavian</strong></td><td>Hemophilia A</td><td><strong>$2,900,000</strong></td></tr>
           <tr><td><strong>Zynteglo</strong></td><td>Beta-Thalassemia Major</td><td><strong>$2,800,000</strong></td></tr>
           <tr><td><strong>Zolgensma</strong></td><td>Spinal Muscular Atrophy (SMA)</td><td><strong>$2,125,000</strong></td></tr>
-        </tbody></table>
-        <div class="attya-note">The chronic delivery exception (Vyjuvek): while topical applications for Epidermolysis Bullosa cost roughly $25,000 per dose, the required weekly lifetime regimen pushes projected long-term patient exposure costs to $15-$22 million.</div></div>
+        </tbody></table></div>
 
-      <div class="attya-slide"><div class="sn">09 / 18</div><div class="attya-h">The Commercial Pricing Strategy: Rationale &amp; Flaws</div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Chronic-Delivery Exception</div>
+        <p class="attya-sub">When &quot;one-time&quot; becomes a lifetime</p>
+        <div class="attya-note">The chronic delivery exception (Vyjuvek): while topical applications for Epidermolysis Bullosa cost roughly $25,000 per dose, the required weekly lifetime regimen pushes projected long-term patient exposure costs to $15-$22 million.</div>
+        <ul class="attya-list"><li>A &quot;cheaper&quot; per-dose price can still become one of the most expensive treatments of all - because, unlike a single curative infusion, it must be re-applied for life.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Pricing Strategy: Rationale</div>
         <p class="attya-sub">The Western "value-based" pricing model</p>
-        <ul class="attya-list">
-          <li><strong>The Corporate Justification:</strong> Western pharmaceuticals calculate multi-million dollar tags using a "value-based pricing" model. They argue a single $3M injection is cost-effective because it cancels out $4M to $6M in lifetime chronic transfusions and hospital care.</li>
-          <li><strong>Amortizing Small Markets:</strong> Because rare diseases affect relatively small paper footprints, companies hyper-inflate the per-dose costs to recoup their upfront $5 billion investments within a narrow patent window.</li>
-          <li><strong>The Capitalist Blind Spot:</strong> This approach assumes the existence of high-income, heavily subsidized Western insurance frameworks. It completely breaks down in developing economies where healthcare is paid entirely out-of-pocket.</li>
-        </ul></div>
+        <ul class="attya-list"><li><strong>The Corporate Justification:</strong> Western pharmaceuticals calculate multi-million dollar tags using a "value-based pricing" model. They argue a single $3M injection is cost-effective because it cancels out $4M to $6M in lifetime chronic transfusions and hospital care.</li><li><strong>Amortizing Small Markets:</strong> Because rare diseases affect relatively small paper footprints, companies hyper-inflate the per-dose costs to recoup their upfront $5 billion investments within a narrow patent window.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">10 / 18</div><div class="attya-h">The Pakistan Paradox: Consanguinity &amp; Financial Exclusion</div>
-        <p class="attya-sub">Why Western commercial models guarantee systemic death sentences</p>
-        <ul class="attya-list">
-          <li><strong>The Genetic Density Crisis:</strong> Due to deeply entrenched systemic and cultural consanguineous marriage patterns across Pakistan, the prevalence of inherited monogenic disorders - such as Beta-Thalassemia Major and severe neurodevelopmental deficiencies - is among the highest in the world.</li>
-          <li><strong>The Income Gap Absurdity:</strong> The average monthly household income across Pakistan is roughly PKR 45,000 to 75,000. The cost of a single dose of Zynteglo is $2.8 Million USD (approx. 800 Million PKR).</li>
-          <li><strong>The Reality of Exclusion:</strong> A multi-million-dollar price tag is functionally infinite for a local citizen. Relying on imported commercial pharmacology means completely abandoning millions of children to early mortality.</li>
-        </ul></div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Pricing Strategy: The Flaw</div>
+        <p class="attya-sub">Where the model breaks down</p>
+        <ul class="attya-list"><li><strong>The Capitalist Blind Spot:</strong> This approach assumes the existence of high-income, heavily subsidized Western insurance frameworks. It completely breaks down in developing economies where healthcare is paid entirely out-of-pocket.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">11 / 18</div><div class="attya-h">Operationalizing Mitigation: The Rationale for ATTYA Pakistan</div>
-        <p class="attya-sub">Transforming healthcare through non-profit academic sovereignty</p>
-        <ul class="attya-list">
-          <li><strong>De-Commercializing the Molecule:</strong> By shifting advanced genetic medicine from a venture-capital, for-profit commercial model to a state-backed academic consortium, we completely eliminate the massive corporate profit margins driving Western prices.</li>
-          <li><strong>Repurposing Existing Assets:</strong> Establishing localized, domestic viral vector synthesis, cell-processing cleanrooms, and clinical trials within Pakistan's public universities and state medical institutions cuts development infrastructure costs by over 85%.</li>
-          <li><strong>The Ultimate Cost Reductions:</strong> While imported Western treatments cost $2,800,000 USD per patient, the ATTYA Indigenous Model projects a cost of &lt;$35,000 USD focused strictly on raw materials, local cleanroom operations, and baseline support.</li>
-        </ul></div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Pakistan Paradox (1 of 2)</div>
+        <p class="attya-sub">Why Western commercial models exclude us</p>
+        <ul class="attya-list"><li><strong>The Genetic Density Crisis:</strong> Due to deeply entrenched systemic and cultural consanguineous marriage patterns across Pakistan, the prevalence of inherited monogenic disorders - such as Beta-Thalassemia Major and severe neurodevelopmental deficiencies - is among the highest in the world.</li><li><strong>The Income Gap Absurdity:</strong> The average monthly household income across Pakistan is roughly PKR 45,000 to 75,000. The cost of a single dose of Zynteglo is $2.8 Million USD (approx. 800 Million PKR).</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">12 / 18</div><div class="attya-h">Clinical Gateways: Patient Eligibility &amp; Screening</div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Pakistan Paradox (2 of 2)</div>
+        <p class="attya-sub">Why Western commercial models exclude us</p>
+        <ul class="attya-list"><li><strong>The Reality of Exclusion:</strong> A multi-million-dollar price tag is functionally infinite for a local citizen. Relying on imported commercial pharmacology means completely abandoning millions of children to early mortality.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Rationale for ATTYA Pakistan (1 of 2)</div>
+        <p class="attya-sub">Healthcare through academic sovereignty</p>
+        <ul class="attya-list"><li><strong>De-Commercializing the Molecule:</strong> By shifting advanced genetic medicine from a venture-capital, for-profit commercial model to a state-backed academic consortium, we completely eliminate the massive corporate profit margins driving Western prices.</li><li><strong>Repurposing Existing Assets:</strong> Establishing localized, domestic viral vector synthesis, cell-processing cleanrooms, and clinical trials within Pakistan's public universities and state medical institutions cuts development infrastructure costs by over 85%.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Rationale for ATTYA Pakistan (2 of 2)</div>
+        <p class="attya-sub">Healthcare through academic sovereignty</p>
+        <ul class="attya-list"><li><strong>The Ultimate Cost Reductions:</strong> While imported Western treatments cost $2,800,000 USD per patient, the ATTYA Indigenous Model projects a cost of &lt;$35,000 USD focused strictly on raw materials, local cleanroom operations, and baseline support.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Clinical Gateways: Screening (1 of 2)</div>
         <p class="attya-sub">Mitigating trial risk before enrolment</p>
-        <ul class="attya-list">
-          <li><strong>Inclusion Criteria Foundations:</strong> Requires absolute, definitive molecular and next-generation sequencing confirmation of the targeted monogenic mutation. Enrolment must happen before irreversible end-organ or systemic tissue fibrosis sets in.</li>
-          <li><strong>The Exclusion Barriers:</strong> Pre-existing neutralizing antibody titers (e.g., anti-AAV capsids) which instantly clear the viral vectors before they target host tissue. Advanced systemic hepatic or renal failure also bars candidates due to baseline conditioning toxicity risks.</li>
-          <li><strong>The Registry Framework:</strong> Establishing centralized, standardized national registries to aggregate and identify clear eligible cohorts across Pakistan's diverse medical network.</li>
-        </ul></div>
+        <ul class="attya-list"><li><strong>Inclusion Criteria Foundations:</strong> Requires absolute, definitive molecular and next-generation sequencing confirmation of the targeted monogenic mutation. Enrolment must happen before irreversible end-organ or systemic tissue fibrosis sets in.</li><li><strong>The Exclusion Barriers:</strong> Pre-existing neutralizing antibody titers (e.g., anti-AAV capsids) which instantly clear the viral vectors before they target host tissue. Advanced systemic hepatic or renal failure also bars candidates due to baseline conditioning toxicity risks.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">13 / 18</div><div class="attya-h">The Trial Lifecycle: Enrolment to 15-Year Completion</div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Clinical Gateways: Screening (2 of 2)</div>
+        <p class="attya-sub">Mitigating trial risk before enrolment</p>
+        <ul class="attya-list"><li><strong>The Registry Framework:</strong> Establishing centralized, standardized national registries to aggregate and identify clear eligible cohorts across Pakistan's diverse medical network.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Trial Lifecycle (1 of 2)</div>
         <p class="attya-sub">De-mystifying the operational protocol</p>
         <div class="attya-note">Genomic Screening &amp; Consent -&gt; Conditioning / Bone Marrow Ablation -&gt; Precision Vector Infusion Window -&gt; 15-Year Longitudinal Follow-up</div>
-        <ul class="attya-list">
-          <li><strong>Informed Consent &amp; Genotyping:</strong> In-depth counseling explaining the permanent, life-altering nature of genomic alteration to families.</li>
-          <li><strong>Conditioning &amp; Harvesting:</strong> Preparing the cellular macro-environment (e.g., bone marrow clearance via targeted chemotherapy for blood disorders) or administering transient immunosuppression.</li>
-          <li><strong>Precision Infusion Window:</strong> Delivering the payload within ultra-sterile, site-specific environments (such as dedicated bone marrow transplant units or highly specialized operating rooms).</li>
-          <li><strong>Long-Term Surveillance:</strong> Transitioning from acute post-infusion toxicity monitoring to a mandatory 15-year long-term follow-up loop to verify expression durability and check for delayed genomic toxicities.</li>
-        </ul></div>
+        <ul class="attya-list"><li><strong>Informed Consent &amp; Genotyping:</strong> In-depth counseling explaining the permanent, life-altering nature of genomic alteration to families.</li><li><strong>Conditioning &amp; Harvesting:</strong> Preparing the cellular macro-environment (e.g., bone marrow clearance via targeted chemotherapy for blood disorders) or administering transient immunosuppression.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">14 / 18</div><div class="attya-h">Therapeutic Delivery Frameworks: In Vivo vs. Ex Vivo</div>
-        <p class="attya-sub">Vector mechanics of living medicine</p>
-        <ul class="attya-list">
-          <li><strong>In Vivo Model (Direct Systemic Delivery):</strong><br><i>The Process:</i> The therapeutic gene payload is packaged directly into a viral vector and injected straight into the patient's body (intravenously, intrathecally, or subretinally).<br><i>Primary Vector:</i> Adeno-Associated Virus (AAV).<br><i>Targets:</i> Non-dividing, long-lived tissues such as the liver, central nervous system, and retina.</li>
-          <li><strong>Ex Vivo Model (Cellular Engineering Outside the Body):</strong><br><i>The Process:</i> Patient stem cells are harvested, engineered inside a sterile, localized GMP cleanroom laboratory, validated, and then re-infused into the patient.<br><i>Primary Vector:</i> Lentivirus or Retrovirus.<br><i>Targets:</i> Rapidly dividing systems, primarily hematopoietic stem cells (bone marrow) and T-cells.</li>
-        </ul></div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Trial Lifecycle (2 of 2)</div>
+        <p class="attya-sub">De-mystifying the operational protocol</p>
+        <ul class="attya-list"><li><strong>Precision Infusion Window:</strong> Delivering the payload within ultra-sterile, site-specific environments (such as dedicated bone marrow transplant units or highly specialized operating rooms).</li><li><strong>Long-Term Surveillance:</strong> Transitioning from acute post-infusion toxicity monitoring to a mandatory 15-year long-term follow-up loop to verify expression durability and check for delayed genomic toxicities.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">15 / 18</div><div class="attya-h">Next-Gen Molecular Engines: Editing Models</div>
-        <p class="attya-sub">Shifting from gene replacement to precision modification</p>
-        <ul class="attya-list">
-          <li><strong>CRISPR-Cas9 (The Molecular Scissors):</strong> Uses a guide RNA sequence to make targeted double-stranded breaks in the DNA. This approach can either completely "knock out" a faulty gene or allow template-directed repairs.</li>
-          <li><strong>Base Editing (The Molecular Pencil):</strong> Chemically modifies a single nucleotide base pair (e.g., converting a C to a T) without breaking the DNA backbone. This dramatically lowers the risk of random insertion or deletion errors.</li>
-          <li><strong>Prime Editing (The Search-and-Replace Word Processor):</strong> An advanced technology capable of writing entirely new genetic sequences directly into specified genomic sites without requiring double-stranded DNA breaks or donor DNA templates.</li>
-        </ul></div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Delivery Frameworks: In Vivo</div>
+        <p class="attya-sub">Direct systemic delivery</p>
+        <ul class="attya-list"><li><strong>In Vivo Model (Direct Systemic Delivery):</strong><br><i>The Process:</i> The therapeutic gene payload is packaged directly into a viral vector and injected straight into the patient's body (intravenously, intrathecally, or subretinally).<br><i>Primary Vector:</i> Adeno-Associated Virus (AAV).<br><i>Targets:</i> Non-dividing, long-lived tissues such as the liver, central nervous system, and retina.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">16 / 18</div><div class="attya-h">The Biological Ledger: Pros &amp; Cons</div>
-        <p class="attya-sub">Balancing curative power against cellular risks</p>
-        <ul class="attya-list">
-          <li><strong>The Crucial Pros (The Upside):</strong><br><i>The Curative Paradigm:</i> Corrects the root molecular cause of a disease, replacing decades of painful, lifestyle-limiting palliative management with a single definitive intervention.<br><i>Target Precision:</i> Patches or modifies specific corrupted gene segments while leaving healthy surrounding DNA intact.</li>
-          <li><strong>The Crucial Cons (The Biological Risks):</strong><br><i>Immunogenicity:</i> Intense immune reactions where the host body flags viral vectors or bacterial proteins as hostile, triggering severe systemic inflammation.<br><i>Off-Target Mutations &amp; Insertional Mutagenesis:</i> The risk of gene editing tools interacting with unintended genomic areas, potentially disrupting vital genes or activating oncogenes.</li>
-        </ul></div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Delivery Frameworks: Ex Vivo</div>
+        <p class="attya-sub">Cellular engineering outside the body</p>
+        <ul class="attya-list"><li><strong>Ex Vivo Model (Cellular Engineering Outside the Body):</strong><br><i>The Process:</i> Patient stem cells are harvested, engineered inside a sterile, localized GMP cleanroom laboratory, validated, and then re-infused into the patient.<br><i>Primary Vector:</i> Lentivirus or Retrovirus.<br><i>Targets:</i> Rapidly dividing systems, primarily hematopoietic stem cells (bone marrow) and T-cells.</li></ul></div>
 
-      <div class="attya-slide"><div class="sn">17 / 18</div><div class="attya-h">Structural Imperative for Indigenous Deployment</div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Molecular Engines: Editing (1 of 2)</div>
+        <p class="attya-sub">From gene replacement to precision edits</p>
+        <ul class="attya-list"><li><strong>CRISPR-Cas9 (The Molecular Scissors):</strong> Uses a guide RNA sequence to make targeted double-stranded breaks in the DNA. This approach can either completely "knock out" a faulty gene or allow template-directed repairs.</li><li><strong>Base Editing (The Molecular Pencil):</strong> Chemically modifies a single nucleotide base pair (e.g., converting a C to a T) without breaking the DNA backbone. This dramatically lowers the risk of random insertion or deletion errors.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Molecular Engines: Editing (2 of 2)</div>
+        <p class="attya-sub">From gene replacement to precision edits</p>
+        <ul class="attya-list"><li><strong>Prime Editing (The Search-and-Replace Word Processor):</strong> An advanced technology capable of writing entirely new genetic sequences directly into specified genomic sites without requiring double-stranded DNA breaks or donor DNA templates.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Biological Ledger: Pros</div>
+        <p class="attya-sub">The curative upside</p>
+        <ul class="attya-list"><li><strong>The Crucial Pros (The Upside):</strong><br><i>The Curative Paradigm:</i> Corrects the root molecular cause of a disease, replacing decades of painful, lifestyle-limiting palliative management with a single definitive intervention.<br><i>Target Precision:</i> Patches or modifies specific corrupted gene segments while leaving healthy surrounding DNA intact.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">The Biological Ledger: Cons</div>
+        <p class="attya-sub">The biological risks</p>
+        <ul class="attya-list"><li><strong>The Crucial Cons (The Biological Risks):</strong><br><i>Immunogenicity:</i> Intense immune reactions where the host body flags viral vectors or bacterial proteins as hostile, triggering severe systemic inflammation.<br><i>Off-Target Mutations &amp; Insertional Mutagenesis:</i> The risk of gene editing tools interacting with unintended genomic areas, potentially disrupting vital genes or activating oncogenes.</li></ul></div>
+
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Structural Imperative (1 of 2)</div>
         <p class="attya-sub">The path to autonomy</p>
-        <ul class="attya-list">
-          <li><strong>Breaking Commercial Dependence:</strong> Relying on imported molecular pharmacology guarantees perpetual exclusion. True access requires the complete localization of biological research and vector manufacturing.</li>
-          <li><strong>Capital Repurposing:</strong> Redirecting the massive, compounding funds lost to lifetime chronic palliative care toward the establishment of localized, permanent curative infrastructure.</li>
-          <li><strong>The Replicable Framework:</strong> Once a single local clinical trial lifecycle is successfully completed, it forms a standardized, domestic validation blueprint that can rapidly accommodate subsequent genetic targets.</li>
-        </ul></div>
+        <ul class="attya-list"><li><strong>Breaking Commercial Dependence:</strong> Relying on imported molecular pharmacology guarantees perpetual exclusion. True access requires the complete localization of biological research and vector manufacturing.</li><li><strong>Capital Repurposing:</strong> Redirecting the massive, compounding funds lost to lifetime chronic palliative care toward the establishment of localized, permanent curative infrastructure.</li></ul></div>
 
-      <div class="attya-slide title-slide"><div class="sn">18 / 18</div>
+      <div class="attya-slide"><div class="sn"></div><div class="attya-h">Structural Imperative (2 of 2)</div>
+        <p class="attya-sub">The path to autonomy</p>
+        <ul class="attya-list"><li><strong>The Replicable Framework:</strong> Once a single local clinical trial lifecycle is successfully completed, it forms a standardized, domestic validation blueprint that can rapidly accommodate subsequent genetic targets.</li></ul></div>
+
+      <div class="attya-slide title-slide"><div class="sn"></div>
         <div class="big" style="font-size:clamp(28px,5vw,46px);">THE LOGIC DEMANDS ACTION</div>
         <p>The global science has proven that genetic diseases can be permanently cured. The multi-million-dollar price tags of Western medicine prove that commercial avenues will forever exclude the developing world. The universal structure of clinical trials proves that the science can be localized.</p>
-        <p style="color:var(--teal);font-weight:600;margin-top:14px;">The HAREEM Framework is Complete. The Infrastructure Must Awaken.</p>
-        <span class="attya-badge">Proceed to Volume II: the ATTYA operational matrix, consortium mobilization, and the 24-month roadmap to first-in-human indigenous trials in Pakistan.</span></div>
+        <p style="color:var(--teal);font-weight:600;margin-top:14px;">The HAREEM Framework is Complete. The Infrastructure Must Awaken.</p></div>
 
+      <div class="attya-slide title-slide"><div class="sn"></div>
+        <div class="big" style="font-size:clamp(30px,5.4vw,50px);">ATTYA</div>
+        <div class="exp">Volume II</div>
+        <p style="color:var(--teal);font-size:13px;letter-spacing:.04em;text-transform:uppercase;margin-top:6px;">Academic Translational Therapeutics for Youth &amp; Access</p>
+        <p>Where HAREEM builds the case, ATTYA builds the machine. Volume II turns this framework into an operational blueprint for Pakistan - a non-profit academic consortium, indigenous viral-vector manufacturing and GMP cleanrooms, national patient registries, and a staged roadmap toward the first in-human, locally-run gene-therapy trials.</p>
+        <span class="attya-badge">Proceed to Volume II: the ATTYA operational matrix, consortium mobilization, and the 24-month roadmap to first-in-human indigenous trials in Pakistan.</span></div>
     </div>
     <div class="attya-ctrls">
       <button class="attya-btn" id="hareemPrev" onclick="hareemGo(-1)" disabled>Prev</button>
       <div class="attya-mid">
-        <div class="attya-zoom"><button onclick="hareemZoom(-1)" aria-label="Smaller text">A-</button><span id="hareemCounter">01 / 18</span><button onclick="hareemZoom(1)" aria-label="Larger text">A+</button></div>
+        <div class="attya-zoom"><button onclick="hareemZoom(-1)" aria-label="Smaller text">A-</button><span id="hareemCounter">01 / 35</span><button onclick="hareemZoom(1)" aria-label="Larger text">A+</button></div>
       </div>
       <button class="attya-btn" id="hareemNext" onclick="hareemGo(1)">Next</button>
     </div>
@@ -1187,7 +1189,7 @@ const CONFIG = {
   helplines: [ /* { name:"...", phone:"..." } add VERIFIED numbers */ ]
 };
 const ACCESS = /^MYT\d{3}$/;   // demo access codes: MYT000 ... MYT999
-const EXTRA = new Set(['ATTYAA','JIKMYT','HUMERA','MYTG54','FUAD51']);   // additional access passcodes
+const EXTRA = new Set(['ATTYAA','JIKMYT','HUMERA','MYTG54','FUAD51','YASHFA','TUFAIL','LADDDU','NIDO54','FAWWAN','KAMI54','NOMI54','AFBMTC','SARMAD','HAREEM']);   // additional access passcodes
 
 /* ---------- access gate ---------- */
 function tryUnlock(){
@@ -1486,7 +1488,8 @@ function countUp(el){const to=+el.dataset.to,suf=el.dataset.suf||'';let s=null;
   dots.innerHTML=slides.map(function(_,k){return '<button class="attya-dot'+(k===0?' on':'')+'" onclick="ayaatSet('+k+')" aria-label="Slide '+(k+1)+'"></button>';}).join('');
   window.ayaatSet=function(k){i=k;slides.forEach(function(s,n){s.classList.toggle('active',n===i);});
     [].slice.call(dots.children).forEach(function(d,n){d.classList.toggle('on',n===i);});
-    prev.disabled=i===0;next.disabled=i===slides.length-1;};
+    prev.disabled=i===0;next.disabled=i===slides.length-1;
+    var _a=slides[i];if(_a&&_a.querySelector('.prog-window')){if(window.progStart)window.progStart();}else{if(window.progStop)window.progStop();}};
   window.ayaatGo=function(d){var n=i+d;if(n>=0&&n<slides.length)window.ayaatSet(n);};
   window.ayaatLang=function(l){
     document.querySelectorAll('#ayaatStage .atg-btn').forEach(function(b){b.classList.toggle('active',b.dataset.l===l);});
@@ -1494,9 +1497,29 @@ function countUp(el){const to=+el.dataset.to,suf=el.dataset.suf||'';let s=null;
     if(en)en.classList.toggle('active',l==='en'); if(ur)ur.classList.toggle('active',l==='ur');
   };
 })();
+/* progression auto-scroll (Ayaat slide 07): begins 3s after the slide is shown, pauses 3s once the final point is fully visible, then loops */
+(function(){var timers=[];
+  function clr(){timers.forEach(clearTimeout);timers=[];}
+  window.progStop=function(){clr();var tr=document.querySelector('#ayaatStage .prog-track');if(tr){tr.style.transition='none';tr.style.transform='translateY(0)';}};
+  window.progStart=function(){clr();
+    var win=document.querySelector('#ayaatStage .prog-window'),tr=win&&win.querySelector('.prog-track');if(!tr)return;
+    (function cycle(){
+      tr.style.transition='none';tr.style.transform='translateY(0)';void tr.offsetHeight;
+      timers.push(setTimeout(function(){
+        var over=Math.max(0,tr.scrollHeight-win.clientHeight);
+        if(over<=0){timers.push(setTimeout(cycle,6000));return;}
+        var dur=Math.max(5000,Math.round(over*42));
+        tr.style.transition='transform '+dur+'ms linear';tr.style.transform='translateY(-'+over+'px)';
+        timers.push(setTimeout(function(){timers.push(setTimeout(cycle,3000));},dur));
+      },3000));
+    })();
+  };
+})();
 /* ---------- HAREEM carousel ---------- */
 (function(){var slides=[].slice.call(document.querySelectorAll('#hareemStage .attya-slide'));if(!slides.length)return;
   var i=0,prev=document.getElementById('hareemPrev'),next=document.getElementById('hareemNext'),ctr=document.getElementById('hareemCounter');
+  slides.forEach(function(s,n){var sn=s.querySelector('.sn');if(sn)sn.textContent=(n+1<10?'0':'')+(n+1)+' / '+slides.length;});
+  if(ctr)ctr.textContent='01 / '+slides.length;
   window.hareemSet=function(k){i=k;slides.forEach(function(s,n){s.classList.toggle('active',n===i);});
     ctr.textContent=(i+1<10?'0':'')+(i+1)+' / '+slides.length;
     prev.disabled=i===0;next.disabled=i===slides.length-1;};
