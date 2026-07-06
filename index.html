@@ -518,6 +518,7 @@
   .gbtn{margin-left:8px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:5px 11px;border-radius:100px;border:1px solid var(--teal);background:transparent;color:var(--teal);cursor:pointer;transition:background .15s,color .15s;}
   .gbtn:hover{background:rgba(52,227,196,.12);}
   .gbtn.on{background:var(--teal);color:#04201b;font-weight:700;}
+  .cites.web{margin-top:7px;font-size:12px;color:var(--faint);} .cites.web a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(52,227,196,.4);} .cites.web a:hover{border-color:var(--teal);}
   /* ---- ATTYA roadmap flowchart ---- */
   .rmap{display:flex;flex-direction:column;align-items:stretch;margin:2px 0 0;}
   .rmap-step{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--honey);border-radius:9px;padding:10px 14px;display:flex;flex-direction:column;gap:2px;align-items:center;text-align:center;}
@@ -1405,18 +1406,24 @@ function keySet(){ return getKey().length>15; }
 function setMode(global){ aiOn=global;
   modePill.textContent=global?'Global mode':'Local mode'; modePill.className='modepill '+(global?'global':'local');
   stBadge.textContent=global?'Global | online AI':'Local | offline'; }
-async function gemini(question, ctx){
+async function gemini(question, ctx, useSearch){
   const url="https://generativelanguage.googleapis.com/v1beta/models/"+CONFIG.geminiModel+":generateContent?key="+encodeURIComponent(getKey());
   const body={ system_instruction:{parts:[{text:SYS_LIMITS}]},
     contents:[{role:"user",parts:[{text:"CONTEXT:\n"+ctx+"\n\nQUESTION: "+question}]}],
-    generationConfig:{temperature:0.3,maxOutputTokens:380} };
+    generationConfig:{temperature:0.35,maxOutputTokens:800} };
+  if(useSearch) body.tools=[{google_search:{}}];
   const r=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
   if(!r.ok) throw new Error("http "+r.status);
   const data=await r.json();
   const cand=(data.candidates||[])[0]||{}; const parts=(cand.content||{}).parts||[];
   const txt=parts.map(p=>p.text||"").join("").trim();
   if(!txt) throw new Error("empty");
-  return txt;
+  var sources=[];
+  try{ var gm=cand.groundingMetadata||cand.grounding_metadata||{}; var chunks=gm.groundingChunks||gm.grounding_chunks||[];
+    sources=chunks.map(function(c){var w=c.web||{};return {title:w.title||w.uri||'source', uri:w.uri||''};}).filter(function(x){return x.uri;});
+    var seen={}; sources=sources.filter(function(x){if(seen[x.uri])return false;seen[x.uri]=1;return true;}).slice(0,5);
+  }catch(e){}
+  return {text:txt, sources:sources};
 }
 function renderGlobalBtn(){
   if(!globalEligible()) return;
@@ -1618,8 +1625,9 @@ const NAHL=(function(){
   }
   return {score,retrieve,gate,offline};
 })();
-const SYS_LIMITS="You are AISHA (Artificially Intelligent System for Hereditary Advisory), the assistant of NAHL, a warm, emotionally steady guide for families affected by rare genetic diseases in Pakistan and worldwide. You are a non-medical parent-support guide. RULES: Use ONLY the information in CONTEXT to make any medical statement; if CONTEXT does not cover it, say you don't have a verified source and suggest seeing a specialist. NEVER diagnose. NEVER recommend medicines, doses, or treatments. Be brief, plain, kind, hopeful but honest. Do not invent facts, names, statistics or sources. Always defer to a qualified doctor.";
+const SYS_LIMITS="You are AISHA (Artificially Intelligent System for Hereditary Advisory), NAHL's warm, plain-spoken guide for families facing rare genetic diseases in Pakistan and worldwide. GOAL: give genuinely useful, accurate information a parent can understand and act on. SOURCES: prefer and cite the NAHL CONTEXT below when it is relevant; you MAY ALSO draw freely on well-established medical and genetics knowledge to explain conditions, inheritance, diagnostic tests (for example enzyme assays and genetic testing such as ARSA testing for MLD), management and supportive-care options, and the general landscape of approved therapies and clinical trials. SAFETY (always): this is general education, not a diagnosis or personalised medical advice; never diagnose a specific person, and never give medicine doses or a prescription; always tell the reader to confirm with a qualified doctor, clinical geneticist or genetic counsellor. RECENCY: for things that change - current clinical trials, newly approved drugs, news, weather, or local hospitals and specialists - if a web-search tool is provided in this request, use it to find the latest and briefly cite the source links; if no search tool is available, explain what generally exists and tell the reader to verify via official sources such as ClinicalTrials.gov, established disease foundations, or their treating team. Either way do NOT invent trial names, study IDs, statistics, dates, prices, sources or clinic details - state only what the sources or established knowledge support. STYLE: warm, clear, plain language, hopeful but honest; reasonably concise but complete enough to be truly helpful.";
 
+const LIVE_INTENT=/\b(latest|current|currently|recent|recently|today|tonight|this week|right now|news|updates?|weather|forecast|temperature|rain|trial|trials|clinicaltrials|study|studies|enroll|enrolling|recruit|recruiting|approved|near me|nearby|nearest|hospital|hospitals|clinic|clinics|doctor|doctors|specialist|specialists|marham|oladoc|appointment|price|prices|cost|fee|fees|20(2[4-9]|3[0-9]))\b/i;
 /* ---------- chat ---------- */
 const panel=document.getElementById('panel'),msgs=document.getElementById('msgs'),input=document.getElementById('chatInput');
 function userMsg(t){const m=document.createElement('div');m.className='m user';m.textContent=t;msgs.appendChild(m);msgs.scrollTop=msgs.scrollHeight;}
@@ -1650,10 +1658,12 @@ async function ask(text){
   const cites=hits.flatMap(h=>h.src).filter((s,i,a)=>a.findIndex(x=>x[0]===s[0])===i);
   if(aiOn && keySet()){
     const typing=bot({text:"..."});
-    try{const ctx=hits.length?hits.map(h=>`[${h.name}] What: ${h.what} Signs: ${h.signs} Treatment: ${h.status}. Pakistan: ${h.pk} Sources: ${h.src.map(s=>s[0]).join(', ')}`).join("\n"):"No specific verified NAHL page matched this question.";
-      const out=await gemini(text, ctx);
-      typing.textContent=out;
-      if(cites.length){const c=document.createElement('div');c.className='cites';c.innerHTML='Sources: '+cites.map(s=>s[0]+'<span class="c">'+s[1]+'</span>').join(' ');typing.appendChild(c);}
+    try{const ctx=hits.length?hits.map(h=>`[${h.name}] What: ${h.what} Signs: ${h.signs} Treatment: ${h.status}. Pakistan: ${h.pk} Sources: ${h.src.map(s=>s[0]).join(', ')}`).join("\n"):"(No NAHL-specific page matched this question - answer from well-established general medical and genetics knowledge, keeping the safety and recency rules above.)";
+      const wantSearch=LIVE_INTENT.test(text);
+      const res=await gemini(text, ctx, wantSearch);
+      typing.textContent=res.text;
+      if(res.sources&&res.sources.length){const wc=document.createElement('div');wc.className='cites web';wc.innerHTML='Live web sources: '+res.sources.map(function(x){var t=(x.title||'source');t=t.length>46?t.slice(0,46)+'\u2026':t;return '<a href="'+String(x.uri).replace(/"/g,'&quot;')+'" target="_blank" rel="noopener noreferrer">'+t+'</a>';}).join(' \u00b7 ');typing.appendChild(wc);}
+      if(cites.length){const c=document.createElement('div');c.className='cites';c.innerHTML='NAHL sources: '+cites.map(s=>s[0]+'<span class="c">'+s[1]+'</span>').join(' ');typing.appendChild(c);}
       const d=document.createElement('div');d.className='dis';d.textContent=DIS;typing.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
     }catch(e){typing.remove();setMode(false);addNotice('Online AI was unavailable (quota, key, or network), so I answered from the offline engine and switched to Local mode for now.');bot(NAHL.offline(text));}
   } else { bot(NAHL.offline(text)); }
