@@ -519,6 +519,15 @@
   .gbtn:hover{background:rgba(52,227,196,.12);}
   .gbtn.on{background:var(--teal);color:#04201b;font-weight:700;}
   .cites.web{margin-top:7px;font-size:12px;color:var(--faint);} .cites.web a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(52,227,196,.4);} .cites.web a:hover{border-color:var(--teal);}
+  .nectar-toast{position:absolute;left:50%;transform:translateX(-50%);bottom:80px;z-index:40;background:rgba(9,14,20,.94);border:1px solid var(--line2);border-radius:12px;padding:9px 15px 11px;box-shadow:0 12px 34px rgba(0,0,0,.5);max-width:82%;min-width:236px;}
+  .nectar-row{display:flex;align-items:center;gap:9px;}
+  .nectar-dot{width:9px;height:9px;border-radius:2px;background:var(--honey);flex:none;animation:nectarpulse 1s ease-in-out infinite;}
+  .nectar-txt{font-size:12.5px;color:var(--honey2);animation:nectarflash 1.5s ease-in-out infinite;}
+  .nectar-bar{margin-top:8px;height:3px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden;}
+  .nectar-bar i{display:block;height:100%;width:38%;border-radius:3px;background:linear-gradient(90deg,transparent,var(--honey),var(--teal),transparent);animation:nectarslide 1.15s linear infinite;}
+  @keyframes nectarpulse{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.2)}}
+  @keyframes nectarflash{0%,100%{opacity:.5}50%{opacity:1}}
+  @keyframes nectarslide{0%{transform:translateX(-130%)}100%{transform:translateX(360%)}}
   /* ---- ATTYA roadmap flowchart ---- */
   .rmap{display:flex;flex-direction:column;align-items:stretch;margin:2px 0 0;}
   .rmap-step{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--honey);border-radius:9px;padding:10px 14px;display:flex;flex-direction:column;gap:2px;align-items:center;text-align:center;}
@@ -1410,7 +1419,7 @@ async function gemini(question, ctx, useSearch){
   const url="https://generativelanguage.googleapis.com/v1beta/models/"+CONFIG.geminiModel+":generateContent?key="+encodeURIComponent(getKey());
   const body={ system_instruction:{parts:[{text:SYS_LIMITS}]},
     contents:[{role:"user",parts:[{text:"CONTEXT:\n"+ctx+"\n\nQUESTION: "+question}]}],
-    generationConfig:{temperature:0.35,maxOutputTokens:800} };
+    generationConfig:{temperature:0.4,maxOutputTokens:2500} };
   if(useSearch) body.tools=[{google_search:{}}];
   const r=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
   if(!r.ok) throw new Error("http "+r.status);
@@ -1625,9 +1634,49 @@ const NAHL=(function(){
   }
   return {score,retrieve,gate,offline};
 })();
-const SYS_LIMITS="You are AISHA (Artificially Intelligent System for Hereditary Advisory), NAHL's warm, plain-spoken guide for families facing rare genetic diseases in Pakistan and worldwide. GOAL: give genuinely useful, accurate information a parent can understand and act on. SOURCES: prefer and cite the NAHL CONTEXT below when it is relevant; you MAY ALSO draw freely on well-established medical and genetics knowledge to explain conditions, inheritance, diagnostic tests (for example enzyme assays and genetic testing such as ARSA testing for MLD), management and supportive-care options, and the general landscape of approved therapies and clinical trials. SAFETY (always): this is general education, not a diagnosis or personalised medical advice; never diagnose a specific person, and never give medicine doses or a prescription; always tell the reader to confirm with a qualified doctor, clinical geneticist or genetic counsellor. RECENCY: for things that change - current clinical trials, newly approved drugs, news, weather, or local hospitals and specialists - if a web-search tool is provided in this request, use it to find the latest and briefly cite the source links; if no search tool is available, explain what generally exists and tell the reader to verify via official sources such as ClinicalTrials.gov, established disease foundations, or their treating team. Either way do NOT invent trial names, study IDs, statistics, dates, prices, sources or clinic details - state only what the sources or established knowledge support. STYLE: warm, clear, plain language, hopeful but honest; reasonably concise but complete enough to be truly helpful.";
+const SYS_LIMITS="You are AISHA, NAHL's warm, plain-spoken guide for families facing rare genetic disease in Pakistan and worldwide. ANSWER STYLE: lead with a direct, specific answer in the very first sentence - no throat-clearing, no long preambles. Then give the concrete details the sources or established knowledge support: for clinical trials, name them with their recruiting status, phase and where they are; for tests, name the actual tests; for management, list the real options. Use short paragraphs or bullet points so a worried parent can scan it. When a source or the live data has a useful web page, include a clickable markdown link like [ClinicalTrials.gov listing](https://example). USE THE FACTS PROVIDED: when the CONTEXT below contains LIVE data (clinical trials or weather) or a web-search tool is available, build the answer on that current data and cite the links - do NOT retreat into vague generalities when specifics are available. SAFETY: this is general information, not a diagnosis or a prescription; never diagnose a specific person and never give medicine doses. Put ONE short line at the very end reminding the reader to confirm with their doctor or clinical geneticist and to verify current specifics via the linked sources. Never invent trial names, IDs, statistics, prices, dates or sources - use only what the CONTEXT, the live data, or well-established knowledge supports. STYLE: warm, clear, hopeful but honest.";
 
 const LIVE_INTENT=/\b(latest|current|currently|recent|recently|today|tonight|this week|right now|news|updates?|weather|forecast|temperature|rain|trial|trials|clinicaltrials|study|studies|enroll|enrolling|recruit|recruiting|approved|near me|nearby|nearest|hospital|hospitals|clinic|clinics|doctor|doctors|specialist|specialists|marham|oladoc|appointment|price|prices|cost|fee|fees|20(2[4-9]|3[0-9]))\b/i;
+var TRIALS_INTENT=/\b(trials?|clinicaltrials|recruiting|enroll(ing)?)\b/i;
+var WEATHER_INTENT=/\b(weather|forecast|temperature|how hot|how cold|will it rain)\b/i;
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function renderRich(t){var h=esc(t);
+  h=h.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,function(_,tx,u){return '<a href="'+u.replace(/"/g,'&quot;')+'" target="_blank" rel="noopener noreferrer">'+tx+'</a>';});
+  h=h.replace(/(^|[\s(])(https?:\/\/[^\s<)]+)/g,function(_,pre,u){return pre+'<a href="'+u.replace(/"/g,'&quot;')+'" target="_blank" rel="noopener noreferrer">'+u.replace(/^https?:\/\//,'')+'</a>';});
+  h=h.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+  h=h.replace(/\n/g,'<br>');
+  return h;}
+var NECTAR_MSGS=["Gathering the knowledge nectar\u2026","Consulting trusted sources\u2026","Distilling the findings\u2026","Purifying the response\u2026"];
+function nectarStart(){var m=document.createElement('div');m.className='nectar-toast';m.id='aishaProg';
+  m.innerHTML='<div class="nectar-row"><span class="nectar-dot"></span><span class="nectar-txt">NAHL is extracting the knowledge nectar from online sources\u2026</span></div><div class="nectar-bar"><i></i></div>';
+  (typeof panel!=='undefined'&&panel?panel:document.body).appendChild(m);var i=0,t=m.querySelector('.nectar-txt');
+  m._t=setInterval(function(){i=(i+1)%NECTAR_MSGS.length;if(t)t.textContent=NECTAR_MSGS[i];},1150);return m;}
+function nectarSet(x){var m=document.getElementById('aishaProg');if(m){if(m._t){clearInterval(m._t);m._t=null;}var t=m.querySelector('.nectar-txt');if(t)t.textContent=x;}}
+function nectarStop(){var m=document.getElementById('aishaProg');if(m){if(m._t)clearInterval(m._t);m.remove();}}
+async function fetchTrials(q){
+  var cond=q.replace(/\b(latest|current|currently|recent|recently|new|newest|any|the|trials?|clinical|clinicaltrials|studies|study|for|on|about|is|are|there|show|me|please|list|find|give|updates?|recruiting|enrolling|near|nearby)\b/gi,' ').replace(/[?.,]/g,' ').replace(/\s+/g,' ').trim();
+  if(cond.length<2)cond=q;
+  var url='https://clinicaltrials.gov/api/v2/studies?query.cond='+encodeURIComponent(cond)+'&pageSize=6&sort=LastUpdatePostDate%3Adesc';
+  var r=await fetch(url);if(!r.ok)throw new Error('ct'+r.status);var d=await r.json();var st=d.studies||[];
+  if(!st.length)return {facts:'',links:[]};
+  var facts='LIVE CLINICALTRIALS.GOV DATA for "'+cond+'" (most recently updated first):\n';var links=[];
+  st.slice(0,6).forEach(function(z){var p=z.protocolSection||{};var id=p.identificationModule||{};var stt=p.statusModule||{};var des=p.designModule||{};var lc=p.contactsLocationsModule||{};
+    var nct=id.nctId||'';var title=id.briefTitle||id.officialTitle||'';var status=stt.overallStatus||'';var phase=(des.phases||[]).join('/')||'N/A';
+    var ct=[];(lc.locations||[]).forEach(function(l){if(l.country)ct.push(l.country);});ct=ct.filter(function(c,i,a){return a.indexOf(c)===i;}).slice(0,5);
+    facts+='- '+title+' [NCT'+nct+'] status:'+status+' phase:'+phase+' locations:'+(ct.join(', ')||'see listing')+'\n';
+    if(nct)links.push({title:'NCT'+nct+' \u2013 '+(title.length>44?title.slice(0,44)+'\u2026':title),uri:'https://clinicaltrials.gov/study/'+nct});});
+  return {facts:facts,links:links};}
+async function fetchWeather(q){
+  var m=q.match(/(?:weather|forecast|temperature|rain)[^a-zA-Z]*(?:in|for|at|of)\s+([a-zA-Z][a-zA-Z\s,]{1,40})/i)||q.match(/\b(?:in|for|at)\s+([A-Z][a-zA-Z\s,]{2,40})/);
+  var city=m?m[1].replace(/\b(today|tomorrow|now|this week|please|the)\b/gi,'').replace(/[?.,]/g,'').trim():'';
+  if(!city)return {facts:'',links:[]};
+  var g=await fetch('https://geocoding-api.open-meteo.com/v1/search?count=1&name='+encodeURIComponent(city));var gd=await g.json();var loc=(gd.results||[])[0];
+  if(!loc)return {facts:'',links:[]};
+  var w=await fetch('https://api.open-meteo.com/v1/forecast?latitude='+loc.latitude+'&longitude='+loc.longitude+'&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&forecast_days=3&timezone=auto');
+  var wd=await w.json();var cu=wd.current||{};var dy=wd.daily||{};
+  var facts='LIVE WEATHER (Open-Meteo) for '+loc.name+', '+(loc.country||'')+': now '+cu.temperature_2m+'\u00b0C (feels '+cu.apparent_temperature+'\u00b0C), humidity '+cu.relative_humidity_2m+'%, wind '+cu.wind_speed_10m+' km/h. Next 3 days high/low: ';
+  (dy.time||[]).forEach(function(t,i){facts+=t+' '+dy.temperature_2m_max[i]+'/'+dy.temperature_2m_min[i]+'\u00b0C; ';});
+  return {facts:facts,links:[]};}
 /* ---------- chat ---------- */
 const panel=document.getElementById('panel'),msgs=document.getElementById('msgs'),input=document.getElementById('chatInput');
 function userMsg(t){const m=document.createElement('div');m.className='m user';m.textContent=t;msgs.appendChild(m);msgs.scrollTop=msgs.scrollHeight;}
@@ -1657,15 +1706,21 @@ async function ask(text){
   const hits=NAHL.retrieve(text);
   const cites=hits.flatMap(h=>h.src).filter((s,i,a)=>a.findIndex(x=>x[0]===s[0])===i);
   if(aiOn && keySet()){
-    const typing=bot({text:"..."});
-    try{const ctx=hits.length?hits.map(h=>`[${h.name}] What: ${h.what} Signs: ${h.signs} Treatment: ${h.status}. Pakistan: ${h.pk} Sources: ${h.src.map(s=>s[0]).join(', ')}`).join("\n"):"(No NAHL-specific page matched this question - answer from well-established general medical and genetics knowledge, keeping the safety and recency rules above.)";
-      const wantSearch=LIVE_INTENT.test(text);
-      const res=await gemini(text, ctx, wantSearch);
-      typing.textContent=res.text;
-      if(res.sources&&res.sources.length){const wc=document.createElement('div');wc.className='cites web';wc.innerHTML='Live web sources: '+res.sources.map(function(x){var t=(x.title||'source');t=t.length>46?t.slice(0,46)+'\u2026':t;return '<a href="'+String(x.uri).replace(/"/g,'&quot;')+'" target="_blank" rel="noopener noreferrer">'+t+'</a>';}).join(' \u00b7 ');typing.appendChild(wc);}
-      if(cites.length){const c=document.createElement('div');c.className='cites';c.innerHTML='NAHL sources: '+cites.map(s=>s[0]+'<span class="c">'+s[1]+'</span>').join(' ');typing.appendChild(c);}
-      const d=document.createElement('div');d.className='dis';d.textContent=DIS;typing.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
-    }catch(e){typing.remove();setMode(false);addNotice('Online AI was unavailable (quota, key, or network), so I answered from the offline engine and switched to Local mode for now.');bot(NAHL.offline(text));}
+    nectarStart();
+    try{
+      var ctx=hits.length?hits.map(function(h){return '['+h.name+'] What: '+h.what+' Signs: '+h.signs+' Treatment: '+h.status+'. Pakistan: '+h.pk+' Sources: '+h.src.map(function(s){return s[0];}).join(', ');}).join('\n'):'(No NAHL-specific page matched - answer from well-established general medical and genetics knowledge, following the rules above.)';
+      var extra='';var extraLinks=[];var wantSearch=LIVE_INTENT.test(text);
+      if(TRIALS_INTENT.test(text)){nectarSet('Searching ClinicalTrials.gov\u2026');try{var tr=await fetchTrials(text);if(tr.facts){extra+='\n\n'+tr.facts;extraLinks=extraLinks.concat(tr.links);wantSearch=false;}}catch(e){}}
+      else if(WEATHER_INTENT.test(text)){nectarSet('Checking the live forecast\u2026');try{var we=await fetchWeather(text);if(we.facts){extra+='\n\n'+we.facts;wantSearch=false;}}catch(e){}}
+      nectarSet(wantSearch?'Searching trusted web sources\u2026':'Distilling the findings\u2026');
+      var res=await gemini(text, ctx+extra, wantSearch);
+      nectarStop();
+      var m=bot({text:res.text});m.innerHTML=renderRich(res.text);
+      var allLinks=extraLinks.concat(res.sources||[]);var seen={};allLinks=allLinks.filter(function(x){if(!x.uri||seen[x.uri])return false;seen[x.uri]=1;return true;}).slice(0,6);
+      if(allLinks.length){var wc=document.createElement('div');wc.className='cites web';wc.innerHTML='Visit directly: '+allLinks.map(function(x){var t=x.title||x.uri;t=t.length>50?t.slice(0,50)+'\u2026':t;return '<a href="'+String(x.uri).replace(/"/g,'&quot;')+'" target="_blank" rel="noopener noreferrer">'+t+'</a>';}).join(' \u00b7 ');m.appendChild(wc);}
+      if(cites.length){var c=document.createElement('div');c.className='cites';c.innerHTML='NAHL sources: '+cites.map(function(s){return s[0]+'<span class="c">'+s[1]+'</span>';}).join(' ');m.appendChild(c);}
+      var dd=document.createElement('div');dd.className='dis';dd.textContent=DIS;m.appendChild(dd);msgs.scrollTop=msgs.scrollHeight;
+    }catch(e){nectarStop();setMode(false);addNotice('Online AI was unavailable (quota, key, or network), so I answered from the offline engine and switched to Local mode for now.');bot(NAHL.offline(text));}
   } else { bot(NAHL.offline(text)); }
 }
 function send(){const t=input.value.trim();if(!t)return;input.value='';ask(t);}
