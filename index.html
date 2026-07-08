@@ -64,9 +64,9 @@
   .brandtext{min-width:0;}
   .brandtop{display:flex;align-items:center;gap:9px;}
   .bname{font-family:var(--sora);font-weight:700;font-size:19px;letter-spacing:.05em;}
-  .modepill{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:100px;border:1px solid var(--line2);}
-  .modepill.local{color:var(--muted);background:rgba(255,255,255,.04);}
-  .modepill.global{color:var(--teal);background:rgba(52,227,196,.1);border-color:rgba(52,227,196,.4);}
+  .modepill{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:4px 11px;border-radius:100px;border:1px solid var(--line2);line-height:1;white-space:nowrap;}
+  .modepill.local{color:var(--muted);background:rgba(255,255,255,.05);border-color:var(--line2);}
+  .modepill.global{color:#04201b;background:var(--teal);border-color:var(--teal);font-weight:700;}
   .desc{font-size:11.5px;color:var(--muted);line-height:1.25;margin-top:2px;}
   .navlinks{display:none;}
   .navlinks.open{display:flex;flex-direction:column;position:absolute;top:calc(100% + 8px);right:16px;background:var(--bg2);border:1px solid var(--line2);border-radius:13px;padding:14px 18px;gap:14px;box-shadow:0 22px 55px -30px #000;min-width:184px;z-index:60;}
@@ -515,7 +515,7 @@
   .gene-fig{margin:2px 0 12px;text-align:center;}
   .gene-fig svg{width:100%;max-width:470px;height:auto;max-height:212px;display:block;margin:0 auto;}
   #geneStage .mono{font-family:var(--mono);font-size:.9em;color:var(--honey2);}
-  .gbtn{margin-left:8px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:5px 11px;border-radius:100px;border:1px solid var(--teal);background:transparent;color:var(--teal);cursor:pointer;transition:background .15s,color .15s;}
+  .gbtn{margin-left:8px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:4px 11px;border-radius:100px;border:1px solid var(--teal);background:transparent;color:var(--teal);cursor:pointer;line-height:1;white-space:nowrap;transition:background .15s,color .15s;}
   .gbtn:hover{background:rgba(52,227,196,.12);}
   .gbtn.on{background:var(--teal);color:#04201b;font-weight:700;}
   @media(max-width:640px){ .brandtop{flex-wrap:wrap;gap:6px 8px;} #gbtn{font-size:10px;padding:4px 9px;margin-left:0;margin-top:1px;} }
@@ -1375,7 +1375,7 @@ const EXTRA = new Set(['ATTYAA','JIKMYT','HUMERA','MYTG54','FUAD51','YASHFA','TU
 const GCODE=/^MYTAI\d$/;   // <-- DEDICATED global-mode passcodes: MYTAI0 .. MYTAI9. Unlock with any of these to enable Global mode on that device. Change this pattern to revoke everywhere (kill switch).
 function isGlobalCode(v){ return GCODE.test(v); }
 function getKey(){ try{ return (localStorage.getItem('nahl_gk')||CONFIG.geminiKey||'').trim(); }catch(e){ return (CONFIG.geminiKey||'').trim(); } }
-function globalEligible(){ try{ var c=localStorage.getItem('nahl_gcode'); return !!(c && GCODE.test(c)); }catch(e){ return false; } }
+function globalEligible(){ try{ if(sessionStorage.getItem('nahl_gses')!=='1') return false; var c=localStorage.getItem('nahl_gcode'); return !!(c && GCODE.test(c)); }catch(e){ return false; } }
 
 /* ---------- access gate ---------- */
 try{console.log('%cProject NAHL — build byok-global-v3','color:#34E3C4;font-weight:700');}catch(e){}
@@ -1384,7 +1384,7 @@ function tryUnlock(){
   if(ACCESS.test(v) || EXTRA.has(v) || isGlobalCode(v)){
     unlock();                                             /* unlock FIRST - nothing below can block it */
     try{ sessionStorage.setItem('nahl_ok','1'); }catch(e){}
-    try{ if(isGlobalCode(v)) localStorage.setItem('nahl_gcode',v); }catch(e){}
+    try{ if(isGlobalCode(v)){ sessionStorage.setItem('nahl_gses','1'); localStorage.setItem('nahl_gcode',v); } else { sessionStorage.removeItem('nahl_gses'); } }catch(e){}
     try{ if(globalEligible() && typeof renderGlobalBtn==='function'){ renderGlobalBtn(); if(keySet()){ setMode(true); } else { addNotice("Global mode is available on this device - open the assistant, click 'Enable Global mode', and paste a Gemini API key to switch on the online AI."); } } }catch(e){}
   }
   else{ var er=document.getElementById('codeErr'); if(er) er.textContent='Invalid code. Please check and try again.'; }
@@ -1414,8 +1414,8 @@ let aiOn=false;
 const modePill=document.getElementById('modePill'), stBadge=document.getElementById('stBadge');
 function keySet(){ return getKey().length>15; }
 function setMode(global){ aiOn=global;
-  modePill.textContent=global?'Global mode':'Local mode'; modePill.className='modepill '+(global?'global':'local');
-  stBadge.textContent=global?'Global | online AI':'Local | offline'; }
+  modePill.textContent=global?'\u25CF Global mode':'\u25CB Local mode'; modePill.className='modepill '+(global?'global':'local');
+  stBadge.textContent=global?'Global \u00b7 online AI':'Local \u00b7 offline'; }
 async function gemini(question, ctx, useSearch){
   const url="https://generativelanguage.googleapis.com/v1beta/models/"+CONFIG.geminiModel+":generateContent?key="+encodeURIComponent(getKey());
   const body={ system_instruction:{parts:[{text:SYS_LIMITS}]},
