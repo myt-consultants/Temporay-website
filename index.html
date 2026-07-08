@@ -518,6 +518,7 @@
   .gbtn{margin-left:8px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;padding:5px 11px;border-radius:100px;border:1px solid var(--teal);background:transparent;color:var(--teal);cursor:pointer;transition:background .15s,color .15s;}
   .gbtn:hover{background:rgba(52,227,196,.12);}
   .gbtn.on{background:var(--teal);color:#04201b;font-weight:700;}
+  @media(max-width:640px){ .brandtop{flex-wrap:wrap;gap:6px 8px;} #gbtn{font-size:10px;padding:4px 9px;margin-left:0;margin-top:1px;} }
   .cites.web{margin-top:7px;font-size:12px;color:var(--faint);} .cites.web a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(52,227,196,.4);} .cites.web a:hover{border-color:var(--teal);}
   .nectar-toast{position:absolute;left:50%;transform:translateX(-50%);bottom:80px;z-index:40;background:rgba(9,14,20,.94);border:1px solid var(--line2);border-radius:12px;padding:9px 15px 11px;box-shadow:0 12px 34px rgba(0,0,0,.5);max-width:82%;min-width:236px;}
   .nectar-row{display:flex;align-items:center;gap:9px;}
@@ -1349,7 +1350,7 @@
     <div class="sheet-body" id="sheetBody"></div>
   </div>
   <div class="pf">
-    <div class="aisha-actions"><button class="aisha-tab" onclick="showSheet('how')">How I work</button></div>
+    
     <div class="chips">
       <button class="chip" type="button" onclick="ask('Which conditions have gene therapy?')">Gene therapy options</button>
       <button class="chip" type="button" onclick="ask('Where can I get tested in Pakistan?')">Testing in Pakistan</button>
@@ -1719,7 +1720,7 @@ async function ask(text){
       var allLinks=extraLinks.concat(res.sources||[]);var seen={};allLinks=allLinks.filter(function(x){if(!x.uri||seen[x.uri])return false;seen[x.uri]=1;return true;}).slice(0,6);
       if(allLinks.length){var wc=document.createElement('div');wc.className='cites web';wc.innerHTML='Visit directly: '+allLinks.map(function(x){var t=x.title||x.uri;t=t.length>50?t.slice(0,50)+'\u2026':t;return '<a href="'+String(x.uri).replace(/"/g,'&quot;')+'" target="_blank" rel="noopener noreferrer">'+t+'</a>';}).join(' \u00b7 ');m.appendChild(wc);}
       if(cites.length){var c=document.createElement('div');c.className='cites';c.innerHTML='NAHL sources: '+cites.map(function(s){return s[0]+'<span class="c">'+s[1]+'</span>';}).join(' ');m.appendChild(c);}
-      var dd=document.createElement('div');dd.className='dis';dd.textContent=DIS;m.appendChild(dd);msgs.scrollTop=msgs.scrollHeight;
+      var dd=document.createElement('div');dd.className='dis';dd.textContent=DIS;m.appendChild(dd);try{msgs.scrollTop+=m.getBoundingClientRect().top-msgs.getBoundingClientRect().top-8;}catch(e){}
     }catch(e){nectarStop();setMode(false);addNotice('Online AI was unavailable (quota, key, or network), so I answered from the offline engine and switched to Local mode for now.');bot(NAHL.offline(text));}
   } else { bot(NAHL.offline(text)); }
 }
